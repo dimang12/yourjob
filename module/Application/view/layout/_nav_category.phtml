@@ -1,0 +1,39 @@
+<div class="panel-group sothyka-panel" id="accordion">
+		 <?php foreach ($this->getCate as $key => $li):?>		 
+		 	<?php if($li['cate_parent'] == 0):?>
+			  <div class="panel panel-default">
+			    <div class="panel-heading view-all">
+			      <h4 class="panel-title">	
+			        <a class='cate-name' data-cate='<?php echo $li['category_id']?>' data-id='<?php echo strtok($li['cate_name'], " ")?>'data-toggle="collapse" data-parent="#accordion" href="<?php echo "#". strtok($li['cate_name'], " ")?>">
+			          <?php 
+						echo $this->language($li , 'cate_name');
+						?>
+			        </a> 
+			        <a href='<?php echo $this->basepath()?>/products/application/<?php echo $li['cate_alias']?>?cateId=<?php echo $li['category_id']?>'><small  class='sm-view-all hidden' style="color: rgba(0, 178, 92, 0.8); float: right; cursor: pointer;margin-top: 3px;">View all</small>
+			     </a>
+			     </h4>
+			    </div>
+			    <?php  $subCateString = ''; $cl= "";?>
+			    <?php foreach ($this->getCate as $subkey => $subli):  $active ='';?>
+					<?php  if($this->curCateId == $subli['category_id'] && $subli['cate_parent'] == $li['category_id']) {$cl="in"; $active='active';}?>
+			    		<?php if($subli['cate_parent'] == $li['category_id']) :?>
+							<?php $subCateString .= "<a class='".$active."' href='".$this->basepath()."/products/application/series/".$subli['cate_alias']."'>".$this->language($subli, 'cate_name').'</a><br />'?>			     
+			    		<?php endif;?>
+			    	<?php endforeach;?>
+			    <div id="<?php echo strtok($li['cate_name'], " ")?>" class="panel-collapse collapse <?php echo $cl?>">
+					<div class="panel-body">
+						<?php echo $subCateString;?>
+			     	</div>
+				</div>
+			  </div>  
+		  	<?php endif;?>
+		  <?php endforeach;?>
+</div>
+<br />
+
+<script>
+	$(function(){
+		$('.view-all').mouseover(function(){$(this).parents('.panel-default').find('.sm-view-all').removeClass('hidden');});	
+		$('.view-all').mouseout(function(){$(this).parents('.panel-default').find('.sm-view-all').addClass('hidden');});	
+	});
+</script>

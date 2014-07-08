@@ -1,0 +1,236 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ZendSkeletonApplication\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-16 12:09+0700\n"
+"PO-Revision-Date: 2014-05-16 12:10+0700\n"
+"Last-Translator: Pin Vuthy <pinvuthy.info@gmail.com>\n"
+"Language-Team: \n"
+"Language: km_KH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../view/error/404.phtml:1
+msgid "A 404 error occurred"
+msgstr "បញ្ហា៤០៤"
+
+#: ../view/error/404.phtml:10
+msgid "The requested controller was unable to dispatch the request."
+msgstr "The requested controller was unable to dispatch the request."
+
+#: ../view/error/404.phtml:13
+#, fuzzy
+msgid ""
+"The requested controller could not be mapped to an existing controller class."
+msgstr "The requested controller was unable to dispatch the request."
+
+#: ../view/error/404.phtml:16
+#, fuzzy
+msgid "The requested controller was not dispatchable."
+msgstr "The requested controller was unable to dispatch the request."
+
+#: ../view/error/404.phtml:19
+msgid "The requested URL could not be matched by routing."
+msgstr "គោលដៅនៃសេចក្តីណែនាំតំបន់បណ្ដាញរបស់អ្នកគឺ:"
+
+#: ../view/error/404.phtml:22
+msgid "We cannot determine at this time why a 404 was generated."
+msgstr ""
+
+#: ../view/error/404.phtml:34
+msgid "Controller"
+msgstr "Controller"
+
+#: ../view/error/404.phtml:41
+#, php-format
+msgid "resolves to %s"
+msgstr ""
+
+#: ../view/error/404.phtml:53 ../view/error/index.phtml:8
+msgid "Additional information"
+msgstr "ព៌តមានបន្ថែម"
+
+#: ../view/error/404.phtml:56 ../view/error/404.phtml:80
+#: ../view/error/index.phtml:11 ../view/error/index.phtml:35
+msgid "File"
+msgstr "ឯកសារ"
+
+#: ../view/error/404.phtml:60 ../view/error/404.phtml:84
+#: ../view/error/index.phtml:15 ../view/error/index.phtml:39
+msgid "Message"
+msgstr "សារ"
+
+#: ../view/error/404.phtml:64 ../view/error/404.phtml:88
+#: ../view/error/index.phtml:19 ../view/error/index.phtml:43
+msgid "Stack trace"
+msgstr ""
+
+#: ../view/error/404.phtml:74 ../view/error/index.phtml:29
+msgid "Previous exceptions"
+msgstr ""
+
+#: ../view/error/404.phtml:103 ../view/error/index.phtml:58
+#, fuzzy
+msgid "No Exception available"
+msgstr "Exception"
+
+#: ../view/error/index.phtml:1
+#, fuzzy
+msgid "An error occurred"
+msgstr "A 404 error occurred"
+
+#: ../view/application/partial/_home.phtml:31
+msgid "Welcome to Sothyka Shera"
+msgstr "ស្វាគមន៏មកកាន់ សុធីកា ឈើរ៉ា"
+
+#: ../view/application/partial/_home.phtml:33
+msgid ""
+"There needs to be a purpose for every component of a website. They each have "
+"to support the goals and purpose of the site."
+msgstr ""
+"ចាំបាច់ត្រូវមានការគោលបំណងសម្រាប់គ្រប់សមាសភាគនៃគេហទំព័រមួយ។ "
+"ពួកគេមានដើម្បីគាំទ្រដល់គោលដៅនិងគោលបំណងនៃតំបន់នោះ។"
+
+#: ../view/application/partial/_home.phtml:35
+msgid ""
+"In this way, a thoughtful approach to the design and the copy of your "
+"website introductory text is important."
+msgstr "នៅក្នុងវិធីនេះជាវិធីសាស្រ្តគិតបារម្ភទៅនឹងការរៀបចំនិងច្បាប់ចម្លងនៃអត្ថបទវេបសាយដំបូងរបស់អ្នកគឺសំខាន់ណាស់។"
+
+#: ../view/application/partial/_home.phtml:37
+msgid "The goals of your site introduction are:"
+msgstr "គោលដៅនៃសេចក្តីណែនាំតំបន់បណ្ដាញរបស់អ្នកគឺ:"
+
+#: ../view/application/partial/_home.phtml:39
+msgid ""
+"To let the visitor know, as quickly as possible, what the website is about."
+msgstr "ដើម្បីអនុញ្ញាតឱ្យអ្នកទស្សនាដឹងឱ្យបានឆាប់តាមដែលអាចធ្វើបានអ្វីដែលវេបសាយនេះគឺអំពីការ។"
+
+#: ../view/application/partial/_home.phtml:40
+msgid ""
+"To give hints as to what action (or actions) they can take immediately (call "
+"to action)."
+msgstr "ដើម្បីផ្តល់ដំបូន្មានថាអ្វីដែលសកម្មភាព (ឬសកម្មភាព) ពួកគេអាចយកភ្លាម (ហៅសកម្មភាព) ។"
+
+#: ../view/application/partial/_home.phtml:41
+msgid ""
+"To provide contextual information regarding what to expect should the "
+"visitor decide to spend more time on the site."
+msgstr "ដើម្បីផ្តល់នូវពត៌មានទាក់ទងនឹងបរិបទអ្វីដែលត្រូវរំពឹងថានឹងមានអ្នកទស្សនាគួរតែបានសម្រេចចិត្តចំណាយពេលវេលាបន្ថែមទៀតនៅលើតំបន់បណ្ដាញនេះ។"
+
+#: ../view/application/partial/_home.phtml:43
+msgid ""
+"What follows are some design considerations congruent to the three goals "
+"above."
+msgstr "អ្វីដែលខាងក្រោមការពិចារណាការរចនាមួយចំនួនមិនល្អៀងទៅខាងលើគឺមានគោលដៅបី។"
+
+#: ../view/application/beyondliving/index.phtml:5
+msgid "Home"
+msgstr "ទំព័រដើម"
+
+#: ../view/application/beyondliving/index.phtml:6
+#: ../view/layout/_sub_menu.phtml:11
+msgid "Bayond Living"
+msgstr "ផលិតផលសំរេច"
+
+#: ../view/application/beyondliving/index.phtml:9
+msgid "Structural Plan Samples of Sothyka Shera"
+msgstr "គំរោងប្លង់របស់ សុធីកា ឈើរ៉ា"
+
+#: ../view/application/showcase/index.phtml:5
+msgid "SOTHYKA SHOWCASE"
+msgstr "បង្ហាញលក្ខណៈ"
+
+#: ../view/layout/_menu.phtml:11
+msgid "Residential"
+msgstr "គេហដ្ឋានឯកជន"
+
+#: ../view/layout/_menu.phtml:14
+msgid "Commercial"
+msgstr "ពាណិជ្ជកម្ម"
+
+#: ../view/layout/_menu.phtml:17
+msgid "Industrial"
+msgstr "សហគ្រាស"
+
+#: ../view/layout/_menu.phtml:20
+msgid "Professional"
+msgstr "សំរាប់អ្នកអាជីព"
+
+#: ../view/layout/_sub_menu.phtml:15
+msgid "Products"
+msgstr "ផលិតផល"
+
+#: ../view/layout/_sub_menu.phtml:19
+msgid "Show Case"
+msgstr "បង្ហាញពីលក្ខណៈ"
+
+#: ../view/layout/_sub_menu.phtml:26
+msgid "What's new?"
+msgstr "ថ្មីៗ"
+
+#: ../view/layout/_sub_menu.phtml:29
+msgid "About us"
+msgstr "អំពីក្រុមហ៊ុន"
+
+#: ../view/layout/_sub_menu.phtml:32
+msgid "Contact us"
+msgstr "ទំនាក់ទំនង"
+
+#: ../view/layout/_sub_menu.phtml:35
+msgid "Support us"
+msgstr "ជំនួយ"
+
+#: ../view/layout/_slide.phtml:47
+#, fuzzy
+msgid "Description Residential"
+msgstr "គេហដ្ឋានឯកជន"
+
+#: ../view/layout/layout.phtml:6
+#, fuzzy
+msgid "Sothyka - Shera Application Solution"
+msgstr "Sothy - Shera Application Solution"
+
+#: ../view/layout/layout.phtml:52
+msgid " by Sothyka"
+msgstr " ដោយសុធីកា ឈើរ៉ា"
+
+#: ../view/layout/layout.phtml:52
+msgid "All rights reserved."
+msgstr "រក្សាសិទ្ធិគ្រប់បែបយ៉ាង"
+
+#: ../view/layout/_nav_category.phtml:36
+msgid "Tool &amp; Accessories"
+msgstr "ឧបករណ៏ និងគ្រឿងបន្លាស់"
+
+#~ msgid "Hello"
+#~ msgstr "សូស្តី"
+
+#~ msgid "Skeleton Application"
+#~ msgstr "TEst"
+
+#~ msgid "Exception"
+#~ msgstr "Exception"
+
+#, fuzzy
+#~ msgid "Beyond Living"
+#~ msgstr "ផលិតផលសំរេច"
+
+#~ msgid "Interior"
+#~ msgstr "ផ្នែកខាងក្នុង"
+
+#~ msgid "Exterior"
+#~ msgstr "ផ្នែកខាងក្រៅ"
+
+#~ msgid "Beyond Living Collection of Luck Sothy"
+#~ msgstr "កំរងប្លង់គំរូរបស់ឡាក់​ សុធី"
+
+#~ msgid "Our dealer"
+#~ msgstr "អ្នកចែកចាយ"
+
+#~ msgid "Production of Luck Sothy"
+#~ msgstr "ផលិតផលរបស់ឡាក់ សុធី"

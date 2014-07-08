@@ -1,0 +1,102 @@
+@CHARSET "UTF-8";
+
+/* panel left block */
+.sothyka-panel .panel-title a			{ font-size: 14px; color: #333; font-weight: normal; }
+.sothyka-panel .panel-title a:hover,
+.sothyka-panel .panel-title a:focus,
+.sothyka-panel .panel-title a:active	{ text-decoration: none; }
+.sothyka-panel .panel-body a			{ font-size: 13px; color: #333;}
+.sothyka-panel .panel-body a:hover,
+.sothyka-panel .panel-body a:focus,
+.sothyka-panel .panel-body a:active		{ text-decoration: none; color: rgba(0, 178, 92, 0.8); font-weight: bolder}
+.sothyka-panel a.active	{ text-decoration: none; color: rgba(0, 178, 92, 0.8); font-weight: bolder }
+
+
+/* products content block */
+.sothyka-product-modal	{ margin-bottom: 35px;}
+.sothyka-heading 		{ border: 1px solid #ddd; margin: 0px 0px 10px 0px; padding:4px;}
+.sothyka-app-title h4	{ font-size: 16px; color: rgba(0, 178, 92, 0.8) }
+.sothyka-viewmore 		{ margin-top:5px; }
+.sothyka-thumbnail 		{ border: none; margin:0; padding:0; }
+.sothyka-thumbnail:hover	{ text-decoration: none }
+.sothyka-thumbnail a img 	{ border: 1px solid #ddd }
+.sothyka-product-caption h3	{ font-size: 13px; color: #0072BC; line-height: 16px; font-weight: bolder }
+.sothyka-product-caption p 	{ font-size: 13px; color: #666; }
+.sothyka-list-group p		{ font-size: 14px; font-weight: bolder; color: rgba(0, 178, 92, 0.8); border:none }
+
+
+/* tools block */
+.sothyka-tool			{ border: 1px solid #ddd; margin: 0px 0px 10px 0px; }
+.sothyka-tool h4		{ font-size: 16px; color: rgba(0, 178, 92, 0.8); }
+.sothyka-thumbnail img 	{ border: 1px solid #ddd; width: 165px; height: 115px;}
+
+
+/* reference block */
+.sothyka-reference 	h3	{ font-size: 16px; color: rgba(0, 178, 92, 0.8);}
+
+
+/* information block */
+.sothyka-box {
+	border: none;
+	padding: 20px 20px 10px 20px;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.26);
+-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.26);
+box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.26);
+}
+.sothyka-info h3			{ font-size: 16px; color: rgba(0, 178, 92, 0.8);margin-bottom: 20px;}
+.sothyka-specification li	{ color: #267915; font-weight: bolder }
+.sothyka-standard img		{ width:60px; height: 60px; border:1px solid #ddd; }
+.sothyka-technical table tr td	{ font-size: 12px; }
+.sothyka-technical .table-striped > tbody > tr:nth-child(2n+1) > td,
+.sothyka-technical .table-striped > tbody > tr:nth-child(2n+1) > th { background-color: #dff3c0; }
+.sothyka-remark p		{ color: #ff0000; font-size: 13px; margin-top:15px }
+.sothyka-remark button { margin-top:-10px; font-size: 13px;}	
+
+
+/* support block */
+.sothyka-catalog-title { padding-top: 10px;padding-bottom:10px;margin-bottom:20px}
+.sothyka-catalog-title h3 { font-size: 24px;  color: rgba(0, 178, 92, 0.8);}
+.sothyka-catalog .thumbnail	{ border: none;}
+.sothyka-catalog .thumbnail	img { border: 1px solid #ddd;padding: 10px; box-shadow: 1px 1px 2px #eee}
+.catalog-box, .sothyka-about-box  {
+	padding-top:10px;
+	padding-bottom: 10px;
+	-webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.44);
+	-moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.44);
+	box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.44);
+}
+.sothyka-catalog .thumbnail h3 {line-height: 35px }
+.catalog-nav li { background: none ; line-height: 13px}
+.catalog-nav li:hover, .catalog-nav li a:hover { background: none; }
+
+
+
+/* contact form block */
+.sothyka-contact-address h3,
+.sothyka-contact h3 {margin-bottom: 20px;padding-top:10px;padding-bottom:10px; font-size: 20px; color: rgba(0, 178, 92, 0.8)}
+
+
+
+/* about us block*/
+.sothyka-about-box { margin-bottom: 57px;padding: 20px;}
+.sothyka-about h3 { font-size: 24px;line-height: 35px; font-style: italic;  color: rgba(0, 178, 92, 0.8);margin-bottom: 20px;}
+.sothyka-about p { line-height: 22px;}
+.sothyka-about img { margin-top: 30px; margin-bottom: -30px;}
+
+
+/* promotin or what new */
+.sothyka-promotion {margin-bottom: 57px}
+.sothyka-promotion h3 { padding-top: 20px;padding-bottom: 20px;margin-bottom: 1px;font-size: 20px;color:rgba(0, 178, 92, 0.8);}
+.sothyka-promotion .tab li{background: none;}
+.sothyka-promotion .tab li a{background: none; text-transform: uppercase;}
+.sothyka-promotion .tab ul>.active a {  color:#FFF; font-weight: bolder;background: none repeat scroll 0 0 rgba(0, 178, 92, 0.8);
+   }
+.sothyka-promotion .tab-content {margin-top: 0px;}
+.sothyka-promotion  img {vertical-align: middle; width: 100%; height: 410px}
+.sothyka-promotion .tab-content .tab-pane{ 
+		webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+		box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+		
+}
+

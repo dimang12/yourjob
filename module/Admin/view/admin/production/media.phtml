@@ -1,0 +1,104 @@
+<div class='container-fluid'>
+	<?php echo $this->partial('admin/partial/_nav_menu')?>
+	<?php $form = $this->form; echo $this->form()->openTag($form)?>
+	<div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+		<div class='page-header'>
+			<div class='row'>
+				<div class='col-md-8'><h1 class='text-warning'>Media Library</h1></div>
+				<div class='col-md-4 text-right'><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-cloud-upload'></span> Upload <?php echo $this->formbutton()->closeTag()?></div>
+			</div>
+		</div>
+		
+		<div class='row'>
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('imag_name'))?>
+				<?php echo $this->forminput($form->get('imag_name')->setAttributes(array('class'=>'form-control col-md-12')))?>
+				<p class='alert-warning'><?php echo $this->message?></p>
+			</div>
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('imag_size'))?>
+				<?php echo $this->forminput($form->get('imag_size')->setAttributes(array('class'=>'form-input-text form-control form-input-text col-md-12  size')))?>
+			</div>
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('imag_status'))?>
+				<?php echo $this->forminput($form->get('imag_status')->setAttributes(array('class'=>'form-input-text form-control col-md-12  status')))?>
+			</div>
+		</div><?php echo $this->form()->closeTag()?>
+		
+		<br><br>
+		<?php 
+				$path = $this->basepath(). '/img/products/m/';
+				$count = count($this->image);
+				$row = "<div class='row' style='margin-bottom: 15px;'>";
+				$col = $allRow = "";
+				$i = 1;
+				
+				foreach ($this->image as $key => $img)
+				{
+					$loop = "
+						<div class='col-md-3 image'>
+							<span class='placeholder col-md-12 '>
+								<div class='text-right icon-delete' data-remove='".$img['image_id']."'><i class='icon-remove glyphicon glyphicon-remove-circle'></i></div>
+									<div data-edit='".$img['image_id']."' class='edit-media' style='margin:0 auto;background: url(".$path . $img['imag_name'].") no-repeat center;background-size:cover; height:111px; width: 200px;'>
+								</div>
+												
+							</span>
+							
+								<div class='input-group'>
+								  <span class='input-group-addon input-sm'>Size</span>
+								  <input  type='text' class='form-control col-md-12 input-sm size' value= '".$img['imag_size']."'>
+								</div>
+								<br>
+								<div class='input-group'>
+								  <span class='input-group-addon input-sm'>Status</span>
+								  <input type='text' class='form-control col-md-12 input-sm status' value='".$img['imag_status']."'>
+								</div>
+						
+								<div class='row'><br>
+									<div class='col-md-6'>
+										<a data-update=".$img['image_id']." class='btn btn-success btn-sm btn-update'><span class='glyphicon glyphicon-repeat'></span> Update</a>
+									</div>
+								</div>
+							
+						</div>
+					";
+					$col .= $loop;
+					
+					if($i%4 == 0 || $i == $count){
+						$allRow .= $row.$col. "</div>";
+						$col = "";
+					}
+					$i++;
+					}
+					echo $allRow;			
+			?>		
+	</div>
+</div>
+
+<script>
+	$(function(){
+		$('.icon-delete').on('click', function(){
+			Id = $(this).parents('.image').find('.icon-delete').attr('data-remove');
+			url = '<?php echo $this->url('dashboard-product-media-remove')?>?Id='+Id;
+			if(confirm('Are you sure to delete?'))
+			{
+				$.ajax({					
+						url: url,
+						success: function(){
+							window.location.href='';
+						}
+				});
+			}
+		});
+
+		//update
+		$('.btn-update').on('click', function(){
+			Id = $(this).parents('.image').find('.btn-update').attr('data-update');
+			Size = $(this).parents('.image').find('.size').val();
+			Status = $(this).parents('.image').find('.status').val();
+
+			url = '<?php echo $this->url('dashboard-product-media-update')?>?id='+ Id +'&size='+Size+ '&status='+Status;
+			$.ajax({url: url, success: function(){window.location.href='';}});
+		});
+	});
+</script>

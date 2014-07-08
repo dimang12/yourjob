@@ -1,0 +1,93 @@
+<ol class="breadcrumb">
+  <li><a href="<?php echo $this->url("home");?>"><?php echo $this->translate("Home")?></a></li>
+  <li class="active"><?php echo $this->translate("Products")?></li>
+</ol>
+<br>
+<div class="whole-body clearfix">
+	<div class="col-md-3">
+		<?php echo $this->partial("layout/_nav_category")?>
+	</div><?php if(count($this->paginator) == 0) {?>
+	<div class='col-md-6 sothyka-box'>
+	
+		<?php foreach ($this->getCate as $key => $li)
+		{
+			if($li['cate_parent'] == 0)
+			{
+				?><div class='col-md-12 sothyka-heading'>
+					<div class='col-md-8 sothyka-app-title'><h4><?php echo $this->language($li , 'cate_name'); ?></h4></div>
+					<div class='col-md-4 text-right sothyka-viewmore'><a class='btn btn-success btn-sm' href='<?php echo $this->basepath()?>/products/application/<?php echo $li['cate_alias']?>?cateId=<?php echo $li['category_id']?>'><?php echo $this->translate("View More")?><span class="glyphicon glyphicon-chevron-right"></span>
+					</a></div>
+				</div>
+				<div class='row sothyka-product-modal'>
+				<?php
+					foreach ($this->getCate as $subkey => $subli)
+					{if($subli['cate_parent'] == $li['category_id'])
+						{
+							$path = $this->basepath(). '/img/products/m/';
+							foreach ($this->getProduct as $p=>$pro)
+							{								
+								if($pro['category_id'] == $subli['category_id'])
+								{?>
+									<div class="col-md-4">
+									    <div class="thumbnail sothyka-thumbnail">
+									      <a href='<?php echo $this->basepath()?>/products/<?php echo $pro['prod_alias'];?>'>
+									      <img src="<?php echo $path . $pro['imag_name']?>"></a>
+									    	<div class="caption sothyka-product-caption">
+										        <h3><?php echo $this->language($pro, 'prod_name')?></h3>
+										        <p><?php echo $this->language($pro, 'prod_size')?></p>
+									      	</div>
+									    </div>
+									  </div>									  
+								<?php ;
+								}
+							}							
+						 }			
+					}
+				?></div><?php 
+			}		
+		}?>
+	
+	</div>
+	
+	<div class='col-md-3'>
+		<div class="list-group sothyka-list-group">
+		  <p class="list-group-item">    A Touch of Experience	  </p>
+		  	<video width='100%' controls>
+				<source src="<?php echo $this->basepath()?>/movie/sothyka.webm" type='video/webm; codecs="vp8, vorbis"'></source>
+			</video>
+		<span>Post New Media</span>
+		</div>		
+		<hr />
+		<div class="list-group sothyka-list-group">
+		  <p class="list-group-item">Project Reference</p>
+		 	<img src='<?php echo $this->basepath()?>/images/myplace2-thm.jpg' width='100%'>
+			<span>Post New Place</span>
+		</div>		
+		<hr />
+		<div class="list-group sothyka-list-group">
+		  <p class="list-group-item">
+		    Product Information Download
+		  </p>
+		 	<a href='#'><img src='<?php echo $this->basepath()?>/images/download-product.png'></a>
+		</div>			
+	</div>
+	<?php }else{
+		
+		echo $this->partial('production/index/cateIdValidate');
+		
+	}?>	
+</div>
+	
+<br>
+<br>
+
+<script>
+	$(function(){
+		//get id if click from homepage 
+		id = '<?php echo $this->getParams('cateId')?>';
+		if(id !='')
+		{
+			$('#accordion .panel-heading h4 .cate-name[data-cate="'+id+'"]').trigger('click');
+		}
+	});
+</script>

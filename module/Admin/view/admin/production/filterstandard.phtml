@@ -1,0 +1,76 @@
+<?php 
+	if(count($this->standards)!=0){
+		$path = $this->basepath(). '/img/standard/';
+		$count = count($this->standards);
+		$row = "<div class='row' style='margin-bottom: 15px;'>";
+		$col = $allRow = "";
+		$i = 1;
+		
+		foreach ($this->standards as $key => $img)
+		{
+			$loop = "
+						<div class='col-md-3 image'>
+							<span class='placeholder col-md-12 '>
+								<div class='text-right icon-delete' data-remove=".$img['standard_id']."><i class='icon-remove glyphicon glyphicon-remove-circle'></i></div>
+									<div data-edit='".$img['standard_id']."' class='edit-media' style='margin:0 auto;background: url(".$path . $img['stan_image'].") no-repeat center;background-size:cover; height:100px; width: 100px;'>
+								</div>
+							</span>
+							<div class='input-group col-md-12 '>
+								 
+								  <input type='text' class='form-control col-md-12 input-sm title' value='".$img['stan_title']."'>
+								</div>
+							<div class='row text-left'><br>
+								<div class='col-md-12'>
+									<a data-add=".$img['standard_id']." class='col-md-6 btn btn-danger btn-sm btn-add'><span class='glyphicon glyphicon-plus-sign'></span> Add To</a>
+									<a data-update=".$img['standard_id']." class='col-md-6 btn btn-success btn-sm btn-update'><span class='glyphicon glyphicon-repeat'></span> Update</a>
+								</div>
+							</div>
+						</div>
+					";
+					$col .= $loop;
+			
+			if($i%4 == 0 || $i == $count){
+				$allRow .= $row.$col. "</div>";
+				$col = "";
+			}
+			$i++;
+			}
+			echo $allRow;
+	}else{?>
+	<div class="alert alert-info"><strong>Sorry ,</strong> Record not found!</div>
+	<?php }?>	
+<script>
+	$(function(){
+		$('.icon-remove').on('click', function(){
+			id = $(this).parents('.image').find('.icon-delete').attr('data-remove');
+			url ='<?php echo $this->url('dashboard-product-standard-remove')?>?id='+id;
+			if(confirm('Are you sure to delete?')){
+				$.ajax({url: url, success: function(){window.location.href='';}});
+			}
+		});
+	
+		$('.btn-update').on('click', function(){
+			id =$(this).parents('.image').find('.btn-update').attr('data-update');
+			title = $(this).parents('.image').find('.title').val();
+			url = '<?php echo $this->url('dashboard-product-standard-update')?>?id='+id +'&title='+title;
+			if(confirm('Are you sure to update?')){
+				$.ajax({url: url, success: function(){window.location.href='';}});
+			}
+		});
+
+		//add to other category
+		$('.btn-add').on('click', function(){
+			id =$(this).parents('.image').find('.btn-add').attr('data-add');
+			$('.input-hidden').val(id);
+			$('.my-model').trigger('click');
+		});
+
+		$('.btn-add-ok').on('click', function(){
+			id = $('.input-hidden').val();
+			standard = $('.add-standard').val();
+
+			url = '<?php echo $this->url('dashboard-standard-addtocate')?>?id='+standard +'&standard='+id;
+			$.ajax({url: url, success: function(){window.location.href='';}});
+		});
+	});
+</script>

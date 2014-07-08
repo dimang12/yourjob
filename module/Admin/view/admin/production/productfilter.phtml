@@ -1,0 +1,49 @@
+<?php if(count($this->product) != 0){?>
+	<div class='table-responsive'>
+		<table class='table table-bordered'>
+			<tr class='warning'>
+				<th>No.</th>
+				<th>Title</th>
+				<th>Title(kh)</th>
+				<th>Meterial Code</th>
+				<th>Size</th>
+				<th>Action</th>
+			</tr><?php $i=1?>
+			<?php foreach ($this->product as $k => $col): ?>
+			<tr>
+				<td><?php echo $i++?></td>
+				<td title='<?php echo $col['prod_name']?>'><?php echo strlen($col['prod_name']) > 28 ? substr($col['prod_name'], 0, 25).'...': $col['prod_name']?></td>
+				<td title='<?php echo $col['kh_prod_name']?>'><?php echo strlen($col['kh_prod_name']) > 28 ? substr($col['kh_prod_name'], 0, 25).'...': $col['kh_prod_name']?></td>
+				<td><?php echo $col['prod_mate_code']?></td>
+				<td title='<?php echo $col['prod_size']?>'><?php echo strlen($col['prod_size']) > 13 ? substr($col['prod_size'], 0,10).'...': $col['prod_size']?></td>
+				<td>
+					<div class='pull-left'><a href='<?php echo $this->url('dashboard-product-edit')?>?prodId=<?php echo $col['product_id']?>' title='Edit'><span class='icon-edit glyphicon glyphicon-pencil'></span></a></div>
+					<div class='pull-right'><a href='#' title='Remove'><span data-remove='<?php echo $col['product_id']?>'class='icon-remove glyphicon glyphicon-remove'></span></a></div>
+				</td>
+			</tr>
+			<?php endforeach ?>
+		</table>
+	</div>
+			
+<?php } else{?>
+
+	<div class="alert alert-info alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>Sorry, </strong> Record not found, you're not looking too good.
+	</div>
+
+<?php }?>
+<script>
+	$(function(){
+		$('.icon-remove').on('click', function(){
+			Id = $(this).parents('td').find('.icon-remove').attr('data-remove');
+			url = '<?php echo $this->url('dashboard-product-delete')?>?Id='+Id;
+			
+			if(confirm('Are you sure to delete?'))
+			{
+				$.ajax({url: url, success: function(){window.location.href='';}});
+			}
+			
+		});
+	});
+</script>

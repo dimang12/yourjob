@@ -1,0 +1,94 @@
+<div class='container-fluid'>
+<?php 
+	echo $this->partial('admin/partial/_nav_menu');
+	$form = $this->byondform;
+	$data = $this->data;
+	
+	$live_parent = $data[0]['live_parent'];
+	$live_title = $data[0]['live_title'];
+	$kh_live_title = $data[0]['kh_live_title'];
+	$live_desc = $data[0]['live_desc'];
+	$kh_live_desc = $data[0]['kh_live_desc'];
+
+	// get parent title
+	$parentData = $this->parent;
+	$groups = array ();
+	foreach ( $parentData as $value ) {
+		$groups [$value ['living_id']] = $value ['live_title'];
+	}
+	
+	echo $this->form()->openTag($form);
+?>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="page-header">
+			<div class='row'>
+				<div class="col-md-8"><h1 class='text-warning'>Byond Living Editing</h1></div>
+				<div class="col-md-4 text-right">
+					<a href="<?php echo $this->url('dashboard-beyondliving')?>" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</a>
+					<?php echo $this->formbutton()->openTag($form->get('saveChange')->setAttributes(array('class'=>'btn btn-success btn-save-chanage')));?><span class='glyphicon glyphicon-floppy-save'></span> Update<?php echo $this->formbutton()->closeTag()?>
+				
+				</div>
+			</div>
+		</div>
+		<div class="row">		
+			<div class="col-md-6">
+				<?php //echo $this->formlabel($form->get('show_image'));?>
+				<?php //echo $this->forminput($form->get('show_image'));?>
+			</div>
+			<div class="col-md-6 text-right">
+				<?php echo $this->formlabel($form->get('live_parent'));?>
+			<br>
+				<?php echo $this->formselect($form->get('live_parent')->setAttributes(array('class'=>'col-md-12 form-control','options'=>$groups,'value'=>$live_parent,'selected'=>true,'disabled'=>true)));?>
+			</div>			
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-md-3">
+				<?php echo $this->formlabel($form->get('live_title'));?>
+			<br />
+				<?php echo $this->forminput($form->get('live_title')->setAttributes(array('class'=>'form-control','value'=>$live_title)));?>
+			</div>
+			<div class="col-md-3">
+				<?php echo $this->formlabel($form->get('kh_live_title'));?>
+			<br />
+				<?php echo $this->forminput($form->get('kh_live_title')->setAttributes(array('class'=>'form-control','value'=>$kh_live_title)));?>
+			</div>
+			<div class="col-md-3">
+				<?php echo $this->formlabel($form->get('live_desc'))?>
+			<br>
+				<?php echo $this->forminput($form->get('live_desc')->setAttributes(array('class'=>'form-control','value'=>$live_desc)))?>
+			</div>
+			<div class="col-md-3">
+				<?php echo $this->formlabel($form->get('kh_live_desc'))?>
+			<br />
+				<?php echo $this->forminput($form->get('kh_live_desc')->setAttributes(array('class'=>'form-control','value'=>$kh_live_desc)))?>
+			</div>
+		</div>
+		<?php echo $this->form()->closeTag($form);?>
+		<br />
+		<div class='row'>
+			<div class='col-md-12'>
+				<div class='image-large' style="background: url('<?php echo $this->basepath()?>/img/beyond/original/<?php echo $this->largeImage?>') no-repeat center;background-size:cover; ">
+					
+				</div>
+			</div>
+		</div>
+		<?php //echo $this->basepath()."/img/beyond/original/". $this->largeImage; ?>		
+	</div>
+
+</div>
+<script>
+$(function(){
+	$('.icon-delete').on('click', function(){
+		livingId = $(this).parents('.showcase-image').find('.icon-delete').attr('living-id');
+		url = '<?php echo $this->url('deletebeyond')?>?livingId='+ livingId;
+		$.ajax({
+			async: false,
+			url: url,
+			success: function(){
+				window.location.href= '';
+			}
+		});
+	});	
+});
+</script>

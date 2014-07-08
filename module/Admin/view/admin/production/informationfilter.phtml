@@ -1,0 +1,50 @@
+<?php if(count($this->info) !=0){?>
+			<div class='table-responsive'>
+				<table class='table table-bordered'>
+					<tr class='warning'>
+						<th>No.</th>
+						<th>Description</th>
+						<th>Description(kh)</th>
+						<th>General</th>
+						<th>General(kh)</th>
+						<th>Color</th>
+						<th>Color(kh)</th>
+						<th>Actions</th>
+					</tr><?php $i=1?>
+					<?php foreach ($this->info as $k => $col): ?>
+						<tr>
+							<td><?php echo $i++?></td>
+							<td title='<?php echo $col['info_desc']?>'><?php echo strlen($col['info_desc']) > 28 ? substr($col['info_desc'], 0, 25).'...': $col['info_desc']?></td>
+							<td title='<?php echo $col['kh_info_desc']?>'><?php echo strlen($col['kh_info_desc']) > 28 ? substr($col['kh_info_desc'], 0, 25).'...': $col['kh_info_desc']?></td>
+							<td title='<?php echo $col['info_gene']?>'><?php echo strlen($col['info_gene']) > 28 ? substr($col['info_gene'], 0, 25).'...': $col['info_gene']?></td>
+							<td title='<?php echo $col['kh_info_gene']?>'><?php echo strlen($col['kh_info_gene']) > 28 ? substr($col['kh_info_gene'], 0, 25).'...': $col['kh_info_gene']?></td>
+							<td title='<?php echo $col['info_color']?>'><?php echo strlen($col['info_color']) > 28 ? substr($col['info_color'], 0, 25).'...': $col['info_color']?></td>
+							<td title='<?php echo $col['kh_info_color']?>'><?php echo strlen($col['kh_info_color']) > 28 ? substr($col['kh_info_color'], 0, 25).'...': $col['kh_info_color']?></td>
+							
+							<td>
+								<div class='pull-left'><a href='<?php echo $this->url('dashboard-product-info-edit')?>?Id=<?php echo $col['information_id']?>' title='Edit'><span class='icon-edit glyphicon glyphicon-pencil'></span></a></div>
+								<div class='pull-right'><a href='#' title='Remove'><span data-remove='<?php echo $col['information_id']?>'class='icon-remove glyphicon glyphicon-remove'></span></a></div>
+							</td>
+						</tr>
+					<?php endforeach ?>
+				</table>
+			</div>
+<?php }else{?>
+	<div class="alert alert-info alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>Sorry, </strong> Record not found, you're not looking too good.
+	</div>
+<?php }?>
+
+<script>
+	$(function(){
+		$('.icon-remove').on('click', function(){
+			id = $(this).parents('td').find('.icon-remove').attr('data-remove');
+			url ='<?php echo $this->url('dashboard-product-info-remove')?>?id='+id;
+			if(confirm('Are you sure to delete?')){
+				$.ajax({url: url, success: function(){window.location.href='';}});
+			}
+		});
+
+	});
+</script>

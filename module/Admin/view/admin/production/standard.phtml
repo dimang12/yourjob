@@ -1,0 +1,202 @@
+<div class='container-fluid'>
+	<?php echo $this->partial('admin/partial/_nav_menu')?>
+	
+	<div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+		<?php $form = $this->form; echo $this->form()->openTag($form)?>
+		<div class='page-header'>
+			<div class='row'>
+				<div class='col-md-8'><h1 class='text-warning'>Standard</h1></div>
+				<div class='col-md-4 text-right'><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?> <span class='glyphicon glyphicon-upload'></span> Upload <?php echo $this->formbutton()->closeTag()?></div>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-md-4'>
+			<?php 
+				$tmp = array();
+				$parentCate = array();
+				$count = 0;
+				$tempOption = $this->option;
+				foreach ($tempOption as $k=>$v)
+				{
+					if($v['cate_parent'] ==0)
+					{
+						$parentCate[$v['category_id']] = $v['cate_name'];
+						unset($tempOption[$k]);
+					}
+					
+				}
+				
+				foreach($parentCate as $k=>$v){
+					$subCate = array();
+					foreach ($tempOption as $subK =>$subV){
+						if($k == $subV["cate_parent"]){
+							$subCate[$subV["category_id"]] = $subV["cate_name"];
+							unset($tempOption[$subK]);
+						}
+						
+					}
+					$parentCate[$k] = array("label"=>$v, "options"=>$subCate);
+				}?>
+				<?php echo $this->formlabel($form->get('category_id'))?>
+				<?php echo $this->formselect($form->get('category_id')->setAttributes(array('options'=>$parentCate,'class'=>'form-control col-md-12 filter-standard')))?>
+			</div>
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('stan_image'))?>
+				<?php echo $this->forminput($form->get('stan_image')->setAttributes(array('class'=>'form-control  col-md-12')))?>
+				<?php echo $this->message?>
+			</div>
+			
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('stan_title'))?>
+				<?php echo $this->forminput($form->get('stan_title')->setAttributes(array('class'=>'form-control col-md-12 ')))?>
+		
+			</div>
+		</div>
+		
+		<?php echo $this->form()->closeTag()?>
+		<br><br>
+		<div class='row-fluid addons'>
+			<?php 
+				$path = $this->basepath(). '/img/standard/';
+				$count = count($this->standards);
+				$row = "<div class='row' style='margin-bottom: 15px;'>";
+				$col = $allRow = "";
+				$i = 1;
+				
+				foreach ($this->standards as $key => $img)
+				{
+					$loop = "
+						<div class='col-md-3 image'>
+							<span class='placeholder col-md-12 '>
+								<div class='text-right icon-delete' data-remove=".$img['standard_id']."><i class='icon-remove glyphicon glyphicon-remove-circle'></i></div>
+									<div data-edit='".$img['standard_id']."' class='edit-media' style='margin:0 auto;background: url(".$path . $img['stan_image'].") no-repeat center;background-size:cover; height:100px; width: 100px;'>
+								</div>
+							</span>
+							<div class='input-group col-md-12 '>
+								 
+								  <input type='text' class='form-control col-md-12 input-sm title' value='".$img['stan_title']."'>
+								</div>
+							<div class='row text-left'><br>
+								<div class='col-md-12'>
+									<a data-add=".$img['standard_id']." class='col-md-6 btn btn-danger btn-sm btn-add'><span class='glyphicon glyphicon-plus-sign'></span> Add To</a>
+									<a data-update=".$img['standard_id']." class='col-md-6 btn btn-success btn-sm btn-update'><span class='glyphicon glyphicon-repeat'></span> Update</a>
+								</div>
+							</div>
+						</div>
+					";
+					$col .= $loop;
+					
+					if($i%4 == 0 || $i == $count){
+						$allRow .= $row.$col. "</div>";
+						$col = "";
+					}
+					$i++;
+					}
+					echo $allRow;			
+			?>	
+		</div>
+	</div>
+</div>
+
+<!-- Button trigger modal -->
+	<button class="my-model hidden" data-toggle="modal" data-target="#myModal">
+		Launch demo modal
+	</button>
+			
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content" style="border-radius:0;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title" id="myModalLabel">Add To Category</h4>
+			</div>
+			<div class="modal-body">
+				
+					<?php 
+					$tmp = array();
+						$parentCate = array();
+						$count = 0;
+						$tempOption = $this->option;
+						foreach ($tempOption as $k=>$v)
+						{
+							if($v['cate_parent'] ==0)
+							{
+								$parentCate[$v['category_id']] = $v['cate_name'];
+								unset($tempOption[$k]);
+							}
+							
+						}
+						
+						foreach($parentCate as $k=>$v){
+							$subCate = array();
+							foreach ($tempOption as $subK =>$subV){
+								if($k == $subV["cate_parent"]){
+									$subCate[$subV["category_id"]] = $subV["cate_name"];
+									unset($tempOption[$subK]);
+								}
+								
+							}
+							$parentCate[$k] = array("label"=>$v, "options"=>$subCate);
+						}?>
+						<?php echo $this->formlabel($form->get('category_id'))?>
+						<?php echo $this->formselect($form->get('category_id')->setAttributes(array('options'=>$parentCate,'class'=>'form-control col-md-12 add-standard')))?>
+			<input type='hidden' class='input-hidden' value=''>
+			<br><br><br><br>
+			
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-success btn-add-ok">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+			
+<script>
+	$(function(){
+		$('.icon-remove').on('click', function(){
+			id = $(this).parents('.image').find('.icon-delete').attr('data-remove');
+			url ='<?php echo $this->url('dashboard-product-standard-remove')?>?id='+id;
+			if(confirm('Are you sure to delete?')){
+				$.ajax({url: url, success: function(){window.location.href='';}});
+			}
+		});
+
+		$('.btn-update').on('click', function(){
+			id =$(this).parents('.image').find('.btn-update').attr('data-update');
+			title = $(this).parents('.image').find('.title').val();
+			url = '<?php echo $this->url('dashboard-product-standard-update')?>?id='+id +'&title='+title;
+			if(confirm('Are you sure to update?')){
+				$.ajax({url: url, success: function(){window.location.href='';}});
+			}
+		});
+
+		//Filter Standard
+		$('.filter-standard').change(function(){
+			catId = $('.filter-standard').val();
+			url = '<?php echo $this->url('dashboard-product-standard-filter')?>?catId='+catId;
+			$.ajax({
+				url:url,
+				success:function(filter){
+					$('.addons').html(filter);
+				}
+			});
+		});
+
+		//add to other category
+		$('.btn-add').on('click', function(){
+			id =$(this).parents('.image').find('.btn-add').attr('data-add');
+			$('.input-hidden').val(id);
+			$('.my-model').trigger('click');
+		});
+
+		$('.btn-add-ok').on('click', function(){
+			id = $('.input-hidden').val();
+			standard = $('.add-standard').val();
+
+			url = '<?php echo $this->url('dashboard-standard-addtocate')?>?id='+standard +'&standard='+id;
+			$.ajax({url: url, success: function(){window.location.href='';}});
+		});
+	});
+</script>
+

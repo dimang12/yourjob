@@ -1,0 +1,58 @@
+<?php
+$resultSet = new \Zend\Db\ResultSet\ResultSet();
+$categories = $resultSet->initialize($this->categories);
+?>
+<div class="box-white clearfix border-radius-5 margin-10-0 font-13">
+    <aside class="col-md-9 border-right-gray  ">
+        <menu class="menu-invers no-padding border-bottom-blue full-w">
+            <a class="bg-white actived" href="#"><?php echo $this->translate("Job Categories"); ?></a>
+            <a class="bg-white" href="#"><?php echo $this->translate("Location"); ?></a>
+            <a class="bg-white" href="#"><?php echo $this->translate("Industry");?></a>
+            <a class="bg-white" href="#"><?php echo $this->translate("Salary");?></a>
+        </menu>
+        <div>
+            <?php
+                $cateList = '';
+                $asideList = '';
+                $perColumn = round($categories->count() / 3);
+                if($categories % 3 <> 0) $perColumn++;
+
+                for($i=1; $i<=3; $i++){
+                    if($i==1){
+                        $asideList = '<aside class="col-md-4 no-padding-left border-right-gray"><ul>';
+                    }elseif($i == 2){
+                        $asideList = '<aside class="col-md-4 border-right-gray"><ul>';
+                    }else{
+                        $asideList = '<aside class="col-md-4 no-padding-right"><ul>';
+                    }
+                    $j = 1;
+                    foreach($categories as $k=>$v){
+                        if($j > (($i-1) * $perColumn)  &&  $j <= ($i * $perColumn)){
+                           $asideList .='<li class="full-w clearfix"><a href="'.$v["category_id"].'" class="pull-left">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
+                        }
+                        $j++;
+                    }
+                    $cateList .= $asideList .'</ul></aside>';
+                }
+                echo $cateList;
+            ?>
+        </div>
+    </aside>
+    <aside class="col-md-3">
+        <menu class="no-padding border-bottom-gray font-16 padding-5-0">
+            Job Announcement
+        </menu>
+        <ul>
+            <li class=""><a class="pull-left">Branch Director</a> <label class="text-overflow pull-left"> - This is a place to display</label></li>
+            <li><a>Maintenance Technician </a><label>- This is a place to display company name.</label></li>
+            <li><a>Sale indoor 2 position </a><label>- This is a place to display company name.</label></li>
+            <li><a>Assistance account </a><label>- This is a place to display company name.</label></li>
+            <li><a>Cashier </a><label>- This is a place to display company name.</label></li>
+            <li><a>Public Relation Manager </a><label>- This is a place to display company name.</label></li>
+            <li><a>Branch Director </a><label>- This is a place to display company name.</label></li>
+            <li><a>Branch Director </a><label>- This is a place to display company name.</label></li>
+            <li><a>Branch Director </a><label>- This is a place to display company name.</label></li>
+            <li><a>Branch Director </a><label>- This is a place to display company name.</label></li>
+        </ul>
+    </aside>
+</div>

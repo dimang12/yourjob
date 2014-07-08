@@ -1,0 +1,73 @@
+<?php 
+	if(count($this->dataspec)!=0){
+		
+	
+				$path = $this->basepath(). '/img/specification/';
+				$count = count($this->dataspec);
+				$row = "<div class='row' style='margin-bottom: 15px;'>";
+				$col = $allRow = "";
+				$i = 1;
+				
+				foreach ($this->dataspec as $key => $img)
+				{
+					$loop = "
+						<div class='col-md-3 image'>
+							<span class='placeholder col-md-12 '>
+								<div class='text-right icon-delete' data-remove='".$img['specification_id']."'><i class='icon-remove glyphicon glyphicon-remove-circle'></i></div>
+									<div data-edit='".$img['specification_id']."' class='edit-media' style='margin:0 auto;background: url(".$path . $img['spec_image'].") no-repeat center;background-size:cover; height:45px; width: 45px;'>
+								</div>
+												
+							</span>
+							
+								<div class='input-group'>
+								  <span class='input-group-addon input-sm'>En</span>
+								  <input  type='text' class='form-control col-md-12 input-sm size spec_title' value= '".$img['spec_title']."'>
+								</div>
+								<br>
+								<div class='input-group'>
+								  <span class='input-group-addon input-sm'>Kh</span>
+								  <input type='text' class='form-control col-md-12 input-sm kh_spec_title' value='".$img['kh_spec_title']."'>
+								</div>
+						
+								<div class='row'><br>
+									<div class='col-md-12'>
+								  		<a data-add=".$img['specification_id']." class='col-md-6 btn btn-danger btn-sm btn-add'><span class='glyphicon glyphicon-plus-sign'></span> Add To</a>
+										<a data-update=".$img['specification_id']." class='col-md-6 btn btn-success btn-sm btn-update'> <span class='glyphicon glyphicon-repeat'></span>  Update</a>
+									</div>
+								</div>
+							
+						</div>
+					";
+					$col .= $loop;
+					
+					if($i%4 == 0 || $i == $count){
+						$allRow .= $row.$col. "</div>";
+						$col = "";
+					}
+					$i++;
+					}
+					echo $allRow;
+	}else{?>
+	<div class="alert alert-info"><strong>Sorry,</strong> Record not found!</div>
+	<?php }?>	
+<script>
+	$(function(){
+		$('.icon-remove').on('click', function(){
+			id = $(this).parents('.image').find('.icon-delete').attr('data-remove');
+			url ='<?php echo $this->url('dashboard-product-specification-remove')?>?id='+id;
+			if(confirm('Are you sure to delete?')){
+				$.ajax({url: url, success: function(){window.location.href='';}});
+			}
+		});
+
+		$('.btn-update').on('click', function(){
+			id =$(this).parents('.image').find('.btn-update').attr('data-update');
+			spec_title = $(this).parents('.image').find('.spec_title').val();
+			kh_spec_title = $(this).parents('.image').find('.kh_spec_title').val();
+			url = '<?php echo $this->url('dashboard-product-specification-update')?>?id='+id +'&spec_title='+spec_title+'&kh_spec_title='+kh_spec_title;
+			if(confirm('Are you sure to update?')){
+				$.ajax({url: url, success: function(){window.location.href='';}});
+			}
+		});
+	});
+</script>

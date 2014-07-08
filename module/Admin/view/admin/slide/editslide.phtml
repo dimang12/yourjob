@@ -1,0 +1,52 @@
+<div class='container-fluid'>
+	<?php echo $this->partial('admin/partial/_nav_menu')?>
+	
+	<?php $form = $this->form; echo $this->form()->openTag($form)?>
+	<div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+		<div class='page-header'>
+			<div class='row'>
+				<div class='col-md-8'><h1 class='text-warning'>Edit Slide</h1></div>
+				<div class='col-md-4 text-right'>
+				<a href='<?php echo $this->url('admin-slide')?>' class='btn btn-default'><span class='glyphicon glyphicon-circle-arrow-left'></span> Back</a> &nbsp;&nbsp;
+				<?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-repeat'></span> Update<?php echo $this->formbutton()->closeTag()?></div>
+			</div>
+		</div>		
+		<div class='row'>
+			<div class='container-fluid'>
+				
+				<div class='col-md-3'>
+					<?php echo $this->formlabel($form->get('slid_control'))?>
+					<?php echo $this->formselect($form->get('slid_control')->setAttribute('class','form-control col-md-12'))?>
+				</div>
+				<div class='col-md-3'>
+					<?php echo $this->formlabel($form->get('slid_title'))?>
+					<?php echo $this->forminput($form->get('slid_title')->setAttribute('class','form-control col-md-12'))?>			
+				</div>
+				<div class='col-md-3'>
+					<?php echo $this->formlabel($form->get('kh_slid_title'))?>
+					<?php echo $this->forminput($form->get('kh_slid_title')->setAttribute('class','form-control col-md-12'))?>			
+				</div>
+				<div class='col-md-3'>
+					<?php echo $this->formlabel($form->get('slid_order'))?>
+					<?php echo $this->forminput($form->get('slid_order')->setAttribute('class','form-control col-md-12'))?>			
+				</div>
+			
+			</div>
+			<div class='container-fluid'>
+				<div class='col-md-3'><br>
+					<?php echo $this->formlabel($form->get('slid_desc'))?>
+					<?php echo $this->forminput($form->get('slid_desc')->setAttribute('class','form-control col-md-12'))?>			
+				</div>				
+				<div class='col-md-3'><br>
+					<?php echo $this->formlabel($form->get('kh_slid_desc'))?>
+					<?php echo $this->forminput($form->get('kh_slid_desc')->setAttribute('class','form-control col-md-12'))?>			
+				</div>
+			</div>
+			
+		<?php echo $this->form()->closeTag($form)?>
+		</div>
+			
+			<br>
+					
+	</div>
+</div>

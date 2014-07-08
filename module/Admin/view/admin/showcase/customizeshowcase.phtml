@@ -1,0 +1,215 @@
+<div class='container-fluid'>
+	<?php echo $this->partial('admin/partial/_nav_menu')?>
+	
+	<?php $customForm = $this->customForm; echo $this->form()->openTag($customForm)?>
+	<div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+		<div class='page-header'>
+			<div class='row'>
+				<div class='col-md-8'>
+					<h1 class='text-warning'>Customize</h1>
+				</div>
+				<div class='col-md-4 text-right'>
+					<a href='<?php echo $this->url('dashboard-showcase')?>' class='btn btn-default'><span class='glyphicon glyphicon-circle-arrow-left'></span> Back</a>
+				</div>
+			</div>
+		</div>
+		
+			<div class='row'>
+				<div class='col-md-4'>
+					<br>
+					<?php echo $this->formlabel($customForm->get('scen_left'))?>
+					<?php echo $this->forminput($customForm->get('scen_left')->setAttributes(array('class'=>'form-control col-md-12 scen_left','disabled'=>'disabled')))?>
+				</div>
+				
+				<div class='col-md-4'>
+					<br />
+					<?php echo $this->formlabel($customForm->get('scen_top'))?>
+					<?php echo $this->forminput($customForm->get('scen_top')->setAttributes(array('class'=>'form-control col-md-12 scen_top','disabled'=>'disabled')))?>
+				</div>
+				
+				<div class='col-md-2'>
+					<br /><br />
+					<div class='btn btn-success btn-new-link' style="color: #fff">
+						<span class='glyphicon glyphicon-plus-sign'></span> New
+					</div>
+				</div>
+			</div>
+			
+			<!-- Button trigger modal -->
+			<button class="my-model hidden" data-toggle="modal" data-target="#myModal">
+			  Launch demo modal
+			</button>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content" style="border-radius:0;">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			        <h4 class="modal-title" id="myModalLabel">Edit Custom</h4>
+			      </div>
+			      <div class="modal-body">
+			        <div class='row'>
+			        	<div class='col-md-6'>
+			        		<?php echo $this->formlabel($customForm->get('scen_desc'))?>
+							<?php echo $this->forminput($customForm->get('scen_desc')->setAttributes(array('class'=>'form-control col-md-12 scen_desc')))?>
+						</div>
+						
+						<input type='hidden' value='' class='id-hidden' name='id-hidden'>
+						
+						<div class='col-md-6'>
+							<?php echo $this->formlabel($customForm->get('scen_placement'))?>
+							<?php echo $this->formselect($customForm->get('scen_placement')->setAttributes(array('class'=>'form-control col-md-12 scen_placement')))?>
+						</div>
+			        </div>
+			        
+			        <div class='row'>
+			        	<div class='col-md-6'>
+			       			<?php echo $this->formlabel($customForm->get('scen_skewx'))?>
+							<?php echo $this->forminput($customForm->get('scen_skewx')
+											->setAttributes(array('class'=>'form-control col-md-12 scen_skewx')))?>
+						</div>
+						<div class='col-md-6'>
+							<?php echo $this->formlabel($customForm->get('scen_skewy'))?>
+							<?php echo $this->forminput($customForm->get('scen_skewy')
+									->setAttributes(array('class'=>'form-control col-md-12 scen_skewy')))?>
+						</div>
+			        </div>
+			        
+			        <div class='row'>
+						<div class='col-md-12'>
+																	
+							<?php echo $this->formlabel($customForm->get('prod_alias'))?>
+							<?php echo $this->forminput($customForm->get('prod_alias')->setAttributes(array('class'=>'col-md-12 form-control')))?>	
+						</div>
+			      	</div>  	
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default btn-no-radius btn-remove">Remove</button>
+			        <?php echo $this->formbutton()->openTag($customForm->get('submit')->setAttributes(array('class'=>'btn btn-success btn-no-radius btn-save-chanage')))?>Save change<?php echo $this->formbutton()->closeTag()?>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+						
+		<?php echo $this->form()->closeTag($customForm)?>
+		<br />
+		<br />
+		<div class='row'>
+			<div class='col-md-12'>
+				<div class='image-large' style="background: url('<?php echo $this->basepath()?>/img/showcase/large/<?php echo $this->largeImage?>') no-repeat center;background-size:cover;">
+					<div class='moveable'>
+					
+						<?php foreach ($this->getScene as $k=>$scene): ?>
+							
+								<span data-id='<?php echo $scene['scene_id']?>'
+								class="icon-drag glyphicon glyphicon-plus-sign ui-draggable"
+								style='z-index:2; position:absolute; left:<?php echo $scene['scen_left'].'px'?>;top:<?php echo $scene['scen_top'].'px';?>;-webkit-transform:skewx(<?php echo $scene['scen_skewx']?>deg) translatex(0px);-webkit-transform:skewy(<?php echo $scene['scen_skewy']?>deg) translatex(0px);'
+								data-toggle="tooltip"
+								data-placement="<?php echo $scene['scen_placement']?>"
+								title="<?php echo $scene['scen_desc']?>"
+								data-title="<?php echo $scene['scen_desc']?>"
+								data-x="<?php echo $scene['scen_skewx']?>"
+								data-y="<?php echo $scene['scen_skewy']?>">	</span>  
+							
+						<?php endforeach;?>
+											
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		
+		$('.icon-drag').tooltip();
+		$('.icon-drag').draggable({ containment: "parent"});
+		$('.moveable').droppable( {
+		     drop: function(event, ui){
+		        // GET POSITION
+		        ui_left =ui.position.left; 
+				ui_top = ui.position.top;
+				$('.scen_left').val(ui_left);
+				$('.scen_top').val(ui_top);	
+				sceneId = ui.draggable.attr('data-id');
+				//save on drop to database
+				url = "<?php echo $this->url('dashboard-showcase-customize-update-drop')?>" +'?top='+ui_top+'&left='+ui_left+'&id='+sceneId;
+				$.ajax({
+					url: url,
+					success: function(){
+						
+					}
+				});							
+		      }
+		});	
+		
+	
+		$('.icon-drag').dblclick(function(){
+			id = $(this).attr('data-id');
+			$('.id-hidden').val(id);
+			placement = $(this).attr('data-placement');
+			title = $(this).attr('data-title');
+			x = $(this).attr('data-x');
+			y = $(this).attr('data-y');
+
+			//add text to modal
+			$('.scen_desc').val(title);
+			$('.scen_placement').val(placement);
+			$('.scen_skewx').val(x);
+			$('.scen_skewy').val(y);
+
+			//after add text let trigger my-modal click
+			$('.my-model').trigger('click');			
+		});			
+
+		$('.btn-remove').click(function(){
+			//get id from hidden input
+			id = $('.id-hidden').val();
+			url = '<?php echo $this->url('dashboard-showcase-customize-remove');?>?id='+id;
+			$.ajax({
+				url: url,
+				success: function(){
+					window.location.href='';
+				}
+			});
+		});
+			     
+		$('.btn-new-link').on('click', function(){			
+			var scene = $('<span class="icon-drag glyphicon glyphicon-plus-sign ui-draggable"></span>');
+			$(scene).draggable({ containment: "parent"});	
+			$('.icon-drag').css({position: 'absolute', zIndex: 2});
+			url = '<?php echo $this->url('dashboard-showcase-customize-create-scene')?>?scene_id='+'<?php echo $this->scene_id;?>';
+			$.ajax({
+				url: url,
+				success: function(){
+					window.location.href='';
+				}
+			});			
+			$('.moveable').append(scene);	
+			$('.moveable').droppable( {
+			     drop: function(event, ui){
+			    	// GET POSITION
+				        ui_left =ui.position.left; 
+						ui_top = ui.position.top;
+						$('.scen_left').val(ui_left);
+						$('.scen_top').val(ui_top);	
+						sceneId = ui.draggable.attr('data-id');
+						//save on drop to database
+						url = "<?php echo $this->url('dashboard-showcase-customize-update-drop')?>" +'?top='+ui_top+'&left='+ui_left+'&id='+sceneId;
+						$.ajax({
+							url: url,
+							success: function(){
+								
+							}
+						});							
+				      }
+			   });	
+		});
+
+		
+		
+	});
+</script>
+

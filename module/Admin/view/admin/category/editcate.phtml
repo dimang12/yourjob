@@ -1,0 +1,61 @@
+<div class='container-fluid'>
+	<?php echo $this->partial('admin/partial/_nav_menu')?>
+	<?php $form = $this->form; echo $this->form()->openTag($form)?>
+	<div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+		<div class='page-header'>
+			<div class='row'>
+				<div class='col-md-8'><h1 class='text-warning'>Edit categories</h1></div>
+				<div class='col-md-4 text-right'>
+				<a href='<?php echo $this->url('dashboard-category')?>' class='btn btn-default'><span class='glyphicon glyphicon-circle-arrow-left'></span> Back</a> &nbsp;&nbsp;
+				<?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-repeat'></span> Update<?php echo $this->formbutton()->closeTag()?>
+				</div>
+			</div>
+		</div>
+		
+		<div class='row'>
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('cate_name'))?>
+				<?php echo $this->forminput($form->get('cate_name')->setAttributes(array('class'=>'form-control col-md-12 form-input-text')))?>
+			</div>			
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('kh_cate_name'))?>
+				<?php echo $this->forminput($form->get('kh_cate_name')->setAttributes(array('class'=>'form-control col-md-12 form-input-text')))?>
+			</div>
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('cate_order'))?>
+				<?php echo $this->forminput($form->get('cate_order')->setAttributes(array('class'=>'form-control col-md-12 form-input-text')))?>
+			</div>
+		</div>
+		
+		<div class='row'><br>
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('cate_details'))?>
+				<?php echo $this->formtextarea($form->get('cate_details')->setAttributes(array('class'=>'form-control col-md-12 form-textarea','rows'=>5)))?>
+			</div>
+			<div class='col-md-4'>
+				<?php echo $this->formlabel($form->get('kh_cate_details'))?>
+				<?php echo $this->formtextarea($form->get('kh_cate_details')->setAttributes(array('class'=>'form-control col-md-12 form-input-text','rows'=>5)))?>
+			</div>
+			
+			<div class='col-md-4 text-center'>
+			<b>Preview</b>
+			<div class='change-image' title = 'Click change' style="border: 1px solid #eee;cursor: pointer;margin:0 auto;border-radius: 50%;margin-top:5px;background: url('<?php echo $this->basepath()?>/img/uploads/<?php echo $this->getImage?>') no-repeat center;background-size:cover; height: 150px; width: 155px;"></div>
+			</div>			
+			<div class='hidden'>
+				<?php echo $this->formlabel($form->get('cate_image'))?>
+				<?php echo $this->forminput($form->get('cate_image')->setAttributes(array('class'=>'form-control col-md-12 browse-file')))?>
+				<?php echo $this->message?>
+			</div>
+		</div>
+		
+	<?php echo $this->form()->closeTag()?>
+	</div>
+</div>
+
+<script>
+	$(function(){
+		$('.change-image').click(function(){
+			$('.browse-file').trigger('click');
+		});
+	});
+</script>

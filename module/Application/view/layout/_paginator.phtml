@@ -1,0 +1,68 @@
+
+<?php if ($this->pageCount): ?>
+        <ul class='pagination pagination-sm'>
+        	<!-- First page link -->
+            <?php if (isset($this->first)): ?>
+                <li>
+                    <a href="<?php echo $this->url($this->route). $this->cateAlias;?>?page=<?php echo $this->first; ?> ">
+                       &laquo;
+                    </a>
+                </li>
+             <?php else: ?>
+                <li class="disabled">
+                    <a href="#">
+                       &laquo;  
+                    </a>
+                </li>
+            <?php endif; ?>
+            <!-- Previous page link -->
+            <?php if (isset($this->previous)): ?>
+                <li>
+                    <a href="<?php echo $this->url($this->route). $this->cateAlias; ?>?page=<?php echo $this->previous; ?> ">
+                       &#60;
+                    </a>
+                </li>
+           
+            <?php endif; ?>
+            <!-- Numbered page links -->
+            <?php foreach ($this->pagesInRange as $page): ?>
+                <?php if ($page != $this->current): ?>
+                    <li>
+                        <a href="<?php echo $this->url($this->route). $this->cateAlias;?>?page=<?php echo $page; ?> ">
+                            <?php echo $page; ?>
+                        </a>
+                    </li>
+                <?php else: ?>
+                    <li class="active">
+                        <a href="#"><?php echo $page; ?></a>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <!-- Next page link -->
+            <?php if (isset($this->next)):?>
+                <li>
+                    <a href="<?php echo $this->url($this->route) .$this->cateAlias;?>?page=<?php echo $this->next;?>">
+                       &#62; 
+                    </a>
+                </li>
+            
+            <?php endif; ?>
+            
+            <!-- Last page link -->
+            <?php if (isset($this->last)): ?>
+                <li>
+                    <a href="<?php echo $this->url($this->route) .$this->cateAlias; ?>?page=<?php echo $this->last; ?> ">
+                        &raquo;
+                    </a>
+                </li>
+            <?php else: ?>
+                <li class="disabled">
+                    <a href="#">
+                       &raquo;
+                    </a>
+                </li>
+            <?php endif; ?>
+        </ul>
+
+<?php endif; ?>

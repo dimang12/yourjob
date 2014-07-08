@@ -1,0 +1,87 @@
+<?php $this->headlink()->prependStylesheet($this->basePath() . '/css/beyondliving.css')?>
+<div class="whole-body clearfix" style="position:relative; top:-134px;">
+	<div class="col-md-4">
+		<img alt="" src="<?php echo $this->basepath()?>/img/body-app.png">
+		<div>
+			<div class="box04">
+				<?php echo $this->getProduct($this->basepath())?>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8" style="margin-top:134px;">
+		<div class="box03">
+			<div class="border-top b-green-light" style="height: 20px;"></div>
+			<div class="b-green clearfix">
+				<ul class="brief pull-left white">
+					<?php echo $this->getBeyond($this->basepath())?>
+				</ul>
+				<div class="more pull-right white text-right">			
+					<small>More</small><br>
+					<label class="green bigger">Beyond Living</label><br>
+					<span class="bigger">Collection</span><br>
+					<a href='<?php echo $this->basepath()?>/beyond-living'>
+						<img alt="" src="<?php echo $this->basepath()?>/img/more.png" style="position:relative; right:-15px; margin-top:10px;">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="cBox" style="word-wrap: break-word;">
+					<h3><?php echo $this->translate("Welcome to Sothyka Shera")?></h3>
+					<article class="clearfix bottom-25" id="bl-01">
+						<?php echo $this->translate('There needs to be a purpose for every component of a website. They each have to support the goals and purpose of the site.')?>
+						<br>
+						<?php echo $this->translate('In this way, a thoughtful approach to the design and the copy of your website introductory text is important.')?>
+						<br>
+						<?php echo $this->translate("The goals of your site introduction are:")?>
+						<br><br>
+						    <b class="orange">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.</b> <?php echo $this->translate('To let the visitor know, as quickly as possible, what the website is about.')?><br>
+						    <b class="orange">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.</b> <?php echo $this->translate('To give hints as to what action (or actions) they can take immediately (call to action).')?><br>
+						    <b class="orange">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.</b> <?php echo $this->translate('To provide contextual information regarding what to expect should the visitor decide to spend more time on the site.')?><br>
+						<br>
+						<?php echo $this->translate('What follows are some design considerations congruent to the three goals above.')?>
+					</article>
+				</div>
+			</div>
+			<div class="col-md-4" style="margin-top:25px;">
+				<div class="text-center box-contact">
+					<!-- <i class="glyphicon glyphicon-earphone" style="font-size: 20px; "></i> -->
+					<p><img src='<?php echo $this->basepath()?>/img/logo.png'></p>
+					<p><span class ='glyphicon glyphicon-earphone' style="font-size: 20px; color: green; margin-right: 10px;"></span> <i>Call Center</i><br>
+					<button class='btn btn-success btn-contact'>Click contact</button>
+					<label class="bigger hidden show-tel">012 66 33 92</label>
+					<br>
+				</div>
+				<div class="text-center b-cyan white" style="padding:15px 0; margin-bottom:20px;">
+					<i class="glyphicon glyphicon-question-sign" style="font-size: 25px;"></i>
+					<br><br>
+					<small>Question</small><br>
+					<label class="bigger">Answer</label>
+					<br>
+				</div>
+				<div class="text-left b-orange white" style="padding:15px 5px 10px 5px;">
+					<label>Subscribe:</label>
+					<div class="input-group col-md-12">
+				      
+				      <input type="text" class="form-control" placeholder="Input your email">
+				      <span class="input-group-btn">
+				        <button class="btn btn-default" type="button">Send</button>
+				      </span>
+				    </div>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+$(function(){
+	$('.btn-contact').live('click', function(){
+		$(this).hide(400);
+		$('.show-tel').removeClass('hidden');
+	});
+
+});
+</script>

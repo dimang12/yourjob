@@ -1,0 +1,67 @@
+<?php
+	if(count($this->slide) != 0)
+	{
+		$path = $this->basepath(). '/img/slide/';
+				$count = count($this->slide);
+				$row = "<div class='row' style='margin-bottom: 15px;'>";
+				$col = $allRow = "";
+				$i = 1;
+				
+				foreach ($this->slide as $key => $slide)
+				{
+					$loop = "
+						<div class='col-md-3 image text-center'>
+							<span class='placeholder col-md-12 '>
+								<div class='text-right icon-delete' data-remove='".$slide['slide_id']."'><i class='icon-remove glyphicon glyphicon-remove-circle'></i></div>
+									<a href=".$this->url('dashboard-slide-edit').'?sid='.$slide['slide_id']."><div data-edit='".$slide['slide_id']."' class='edit-slide' style='cursor:pointer;margin:0 auto;background: url(".$path . $slide['slid_image'].") no-repeat center;background-size:cover; height:111px; width: 200px;'>
+								</div></a>
+							</span>
+							<label>".$slide['slid_control']."</label>
+				
+						</div>
+					";
+					$col .= $loop;
+					
+					if($i%4 == 0 || $i == $count){
+						$allRow .= $row.$col. "</div>";
+						$col = "";
+					}
+					$i++;
+					}
+					echo $allRow;	
+	}else {
+		echo "<p class='text-info'>Your filter does not exist. Please try new upload.</p>";
+	}
+	?>	
+<script>
+	$(function(){
+		$('.icon-delete').on('click', function(){
+			Id = $(this).parents('.image').find('.icon-delete').attr('data-remove');
+			url = '<?php echo $this->url('dashboard-slide-remove')?>?Id='+Id;
+			
+			if(confirm('Are you sure to delete?'))
+			{
+				$.ajax({	
+						async:false,				
+						url: url,
+						success: function(r){
+							window.location.href='';
+						}
+				});
+			}
+		});
+
+		// filter by select option control
+		$('.slide-control').change(function(){
+			text = $('.slide-control').val();
+			url = '<?php echo $this->url('dashboard-slide-filter')?>?filter='+text;
+			$.ajax({
+				async:false,
+				url: url,
+				success: function(filter){
+					$('.slide').html(filter);
+			}});
+		});
+		
+	});
+</script>

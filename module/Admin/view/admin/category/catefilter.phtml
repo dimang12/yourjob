@@ -1,0 +1,47 @@
+<?php if(count($this->getCate)!=0){?>
+<div class='table-responsive'>
+	<table class='table table-bordered'>
+		<tr class='warning'>
+			<th>No.</th>
+			<th>Category</th>
+			<th>Cate (kh)</th>
+			<th>Order</th>
+			<th>Action</th>
+		</tr><?php $n=1?>
+		<?php foreach ($this->getCate as $key => $sub): if($sub['cate_parent'] != 0): ?>
+		<tr>
+			<td><?php echo ($n++)?></td>
+			<td><?php echo $sub['cate_name']?></td>
+			<td><?php echo $sub['kh_cate_name']?></td>
+			<td><?php echo $sub['cate_order']?></td>
+			<td>
+				<div class='pull-left'><a href='<?php echo $this->url('dashboard-category-sub-edit')?>?cateId=<?php echo $sub['category_id']?>' title='Edit' ><span  class='icon-edit glyphicon glyphicon-pencil'></span></a></div>
+				<div class='pull-right'><a href='#' title='Remove'><span data-remove='<?php echo $sub['category_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></div>
+			</td>
+		</tr>
+		<?php endif; endforeach ?>
+	</table>
+</div>
+<?php }else {?>
+	<div class="alert alert-info alert-dismissable">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>Sorry, </strong> Record not found, you're not looking too good.
+	</div>
+<?php }?>
+
+<script type="text/javascript">
+	$(function(){
+		$('.icon-remove').on('click', function(){
+			id = $(this).parents('td').find('.icon-remove').attr('data-remove');
+			if(id != '')
+			{
+				if(confirm('Are you sure to delete?'))
+				{
+					url ='<?php echo $this->url('dashboard-category-delete')?>?id='+id;
+					$.ajax({url: url, success:function(){window.location.href='';}});
+				}
+				return false;
+			}
+		});
+	});
+</script>

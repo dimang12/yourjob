@@ -1,0 +1,67 @@
+<ol class="breadcrumb">
+  <li><a href="<?php echo $this->url("home");?>"><?php echo $this->translate("Home")?></a></li>
+  <li><a href="<?php echo $this->url("production");?>"><?php echo $this->translate("Products")?></a></li>
+  <li class="active"><?php echo $this->cateTitle?></li>
+</ol>
+<br>
+
+<div class="whole-body clearfix" style="">
+	<div class="col-md-3"><!-- col 3 -->
+		<?php echo $this->partial("layout/_nav_category")?>
+	</div>
+	
+	<div class='col-md-9'>
+		<div class='col-md-12 sothyka-tool'>
+			<h4><?php echo $this->translate("New Products")?></h4>
+		</div>
+		<div class='row' style="padding:4px">
+		<?php 
+				$path = $this->basepath(). '/img/products/m/';
+				$count = $this->count;
+				$row = "<div class='row' style='margin-bottom: 15px'>";
+				$col = $allRow = "";
+				$i=1;		
+				foreach ($this->paginator as $key => $new)
+				{
+					$loop = "
+						<div class='col-md-3'>
+							<a href='".$this->basepath().'/products/'.$new['prod_alias']."'class='thumbnail sothyka-thumbnail'>
+								<img src='".$path . $new['imag_name']."'>
+								<div class='caption sothyka-product-caption'>
+									<h3>".$this->language($new, 'prod_name')."</h3>
+									<p>".$this->language($new, 'prod_size')."</p>
+								</div>
+							</a>
+						</div>
+					";
+					$col .= $loop;
+
+					if($i%4 == 0 || $i == $count){
+						$allRow .= $row.$col. "</div>";
+						$col = "";
+					}
+					$i++;
+					
+				}
+				echo $allRow;
+			?>
+			</div>		
+	</div>
+	<div class='col-md-12'>
+	<div class='col-md-6'></div><?php //$cateAlias = $this->cateAlias?>
+	<div class='col-md-6 text-right'><?php //echo $this->paginationControl($this->paginator,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Index','cateAlias'=>$cateAlias));?> </div>
+	</div>
+</div>
+<br />
+<br />
+
+<script>
+	$(function(){
+		//get id if click from homepage 
+		id = '<?php echo $this->getParams('cateId')?>';
+		if(id !='')
+		{
+			$('#accordion .panel-heading h4 .cate-name[data-cate="'+id+'"]').trigger('click');
+		}
+	});
+</script>

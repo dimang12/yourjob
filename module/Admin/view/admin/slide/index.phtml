@@ -1,0 +1,117 @@
+<div class='container-fluid'>
+	<?php echo $this->partial('admin/partial/_nav_menu')?>
+
+	<?php $form = $this->form; echo $this->form()->openTag($form)?>
+	<div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+		<div class='page-header'>
+			<div class='row'>
+				<div class='col-md-8'><h1 class='text-warning'>Slide Control</h1></div>
+				<div class='col-md-4 text-right'><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-upload'></span> Upload<?php echo $this->formbutton()->closeTag()?></div>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='container-fluid'>
+				<div class='col-md-3'>
+					<?php echo $this->formlabel($form->get('slid_image'))?>
+					<?php echo $this->forminput($form->get('slid_image')->setAttributes(array('class'=>'form-control col-md-12','required'=>true)))?>
+				</div>
+				<div class='col-md-3'>
+					<?php echo $this->formlabel($form->get('slid_control'))?>
+					<?php echo $this->formselect($form->get('slid_control')->setAttribute('class','form-control col-md-12 slide-control'))?>
+				</div>
+				<div class='col-md-3'>
+					<?php echo $this->formlabel($form->get('slid_title'))?>
+					<?php echo $this->forminput($form->get('slid_title')->setAttribute('class','form-control col-md-12'))?>
+				</div>
+				<div class='col-md-3'>
+					<?php echo $this->formlabel($form->get('kh_slid_title'))?>
+					<?php echo $this->forminput($form->get('kh_slid_title')->setAttribute('class','form-control col-md-12'))?>
+				</div>
+			</div>
+
+			<div class='container-fluid'>
+				<div class='col-md-3'><br>
+					<?php echo $this->formlabel($form->get('slid_order'))?>
+					<?php echo $this->forminput($form->get('slid_order')->setAttribute('class','form-control col-md-12'))?>
+				</div>
+				<div class='col-md-3'><br>
+					<?php echo $this->formlabel($form->get('slid_desc'))?>
+					<?php echo $this->forminput($form->get('slid_desc')->setAttribute('class','form-control col-md-12'))?>
+				</div>
+				<div class='col-md-3'><br>
+					<?php echo $this->formlabel($form->get('kh_slid_desc'))?>
+					<?php echo $this->forminput($form->get('kh_slid_desc')->setAttribute('class','form-control col-md-12'))?>
+				</div>
+			</div>
+
+			<?php echo $this->form()->closeTag($form)?>
+			<div class='col-md-6 text-right'></div>
+			</div>
+
+			<br>
+			<div class='slide'>
+				<?php
+				$path = $this->basepath(). '/img/slide/';
+				$count = count($this->slide);
+				$row = "<div class='row' style='margin-bottom: 15px;'>";
+				$col = $allRow = "";
+				$i = 1;
+
+				foreach ($this->slide as $key => $slide)
+				{
+					$loop = "
+						<div class='col-md-3 image text-center'>
+							<span class='placeholder col-md-12 '>
+								<div class='text-right icon-delete' data-remove='".$slide['slide_id']."'><i class='icon-remove glyphicon glyphicon-remove-circle'></i></div>
+									<a href=".$this->url('dashboard-slide-edit').'?sid='.$slide['slide_id']."><div data-edit='".$slide['slide_id']."' class='edit-slide' style='cursor:pointer;margin:0 auto;background: url(".$path . $slide['slid_image'].") no-repeat center;background-size:cover; height:111px; width: 200px;'>
+								</div></a>
+							</span>
+							<label>".$slide['slid_control']."</label>
+
+						</div>
+					";
+					$col .= $loop;
+
+					if($i%4 == 0 || $i == $count){
+						$allRow .= $row.$col. "</div>";
+						$col = "";
+					}
+					$i++;
+					}
+					echo $allRow;
+			?>
+			</div><!-------------------- end slide class -------------------->
+	</div>
+</div>
+<script>
+	$(function(){
+		$('.icon-delete').on('click', function(){
+			Id = $(this).parents('.image').find('.icon-delete').attr('data-remove');
+			url = '<?php echo $this->url('dashboard-slide-remove')?>?Id='+Id;
+
+			if(confirm('Are you sure to delete?'))
+			{
+				$.ajax({
+						async:false,
+						url: url,
+						success: function(r){
+							window.location.href='';
+						}
+				});
+			}
+		});
+
+		// filter by select option control
+		$('.slide-control').change(function(){
+			text = $('.slide-control').val();
+			url = '<?php echo $this->url('dashboard-slide-filter')?>?filter='+text;
+			$.ajax({
+				async:false,
+				url: url,
+				success: function(filter){
+					$('.slide').html(filter);
+			}});
+		});
+
+	});
+</script>

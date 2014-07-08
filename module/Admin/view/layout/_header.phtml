@@ -1,0 +1,28 @@
+	<?php 
+	$sm = $this->getHelperPluginManager ()->getServiceLocator ();
+	$routeMatch = $sm->get ( 'Application' )->getMvcEvent ()->getRouteMatch ();
+	$router = $routeMatch->getMatchedRouteName();
+	if($router != 'login'):
+	?>
+	<div class="navbar navbar-inverse navbar-fixed-top" style="height: 1px;border:none;background: #111">
+		<div class="container-fluid">
+			<div class="navbar-header" style="border:none">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="<?php echo $this->url('dashboard')?>"></a>
+				
+			</div>
+			<div class="navbar-collapse collapse" style="margin-right: 40px;height: 48px;">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href='<?php echo $this->basepath()?>' target=_blank><span class='glyphicon glyphicon-globe'></span> View Site</a></li>
+					<li class='i1' data-toggle="tooltip" data-placement="bottom" title="LOGOUT"><a href="<?php echo $this->basepath()?>/logout"><span class='glyphicon glyphicon-user'></span></a></li>
+				</ul>
+				<form class="navbar-form navbar-right"></form>
+			</div>
+		</div>
+	</div>
+	<?php endif ?>

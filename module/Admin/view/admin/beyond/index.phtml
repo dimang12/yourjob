@@ -1,0 +1,268 @@
+<div class='container-fluid'>
+<?php
+echo $this->partial('admin/partial/_nav_menu');
+$form = $this->byondform;
+echo $this->form ()->openTag ( $form );
+
+// get parent title
+$parentData = $this->parent;
+$groups = array ();
+foreach ( $parentData as $value ) {
+	$groups [$value ['living_id']] = $value ['live_title'];
+}
+?>
+<!-- Modal -->
+	<!-- New Parent -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="border-radius: 0;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Beyond Living</h4>
+				</div>
+				<div class="modal-body">
+					<div class='row'>
+						<div class="col-md-6">
+		        		<?php echo $this->formlabel($form->get('parent_title'));?>
+		        		<?php echo $this->forminput($form->get('parent_title')->setAttribute('class','col-md-12 form-control'));?>
+		        		</div>
+						<div class="col-md-6">
+		        		<?php echo $this->formlabel($form->get('kh_parent_title'));?>
+		        		<?php echo $this->forminput($form->get('kh_parent_title')->setAttribute('class','col-md-12 form-control'));?>
+		        		</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default"
+							data-dismiss="modal">Close</button>
+			        <?php echo $this->formbutton()->openTag($form->get('newParent')->setAttributes(array('class'=>'btn btn-success btn-save-chanage')))?>
+			        	<span	class='glyphicon glyphicon-floppy-save'></span> Save <?php echo $this->formbutton()->closeTag()?>
+			      </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Update Parent -->
+	<div class="modal fade" id="updateParent" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="border-radius: 0;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Update Parent</h4>
+				</div>
+				<div class="modal-body">
+					<div class='row'>
+						<div class="col-md-6">
+		        		<?php echo $this->formlabel($form->get('update_parent_title'));?>
+		        		<?php echo $this->forminput($form->get('update_parent_title')->setAttribute('class','col-md-12 form-control'));?>
+		        		</div>
+						<div class="col-md-6">
+		        		<?php echo $this->formlabel($form->get('update_kh_parent_title'));?>
+		        		<?php echo $this->forminput($form->get('update_kh_parent_title')->setAttribute('class','col-md-12 form-control'));?>
+		        		</div>
+					</div>
+					<input type="hidden" value="" name="parentId">
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default "
+							data-dismiss="modal">Close</button>
+						<a href="" class="btn btn-success  btn-update"><span class='glyphicon glyphicon-floppy-save'></span> Update</a>
+			      </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<button type="button" class="btn btn-default btnModal hidden"
+		data-toggle="modal" data-target="#updateParent">
+		update Parent
+	</button>
+<!-- End Modal -->
+	
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="page-header">
+			<div class='row'>
+				<div class="col-md-8">
+					<h1 class='text-warning'>Byond Living</h1>
+				</div>
+				<div class="col-md-4 text-right">
+					<?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')));?>
+					<span class='glyphicon glyphicon-upload'></span> Upload<?php echo $this->formbutton()->closeTag()?>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<?php echo $this->formlabel($form->get('show_image'));?>
+				<?php echo $this->forminput($form->get('show_image')->setAttributes(array('class'=>'form-control col-md-12')));?>
+				<?php echo $this->error ?>
+			</div>
+			<div class="col-md-6 text-right">
+				<div class='row'>
+					<div class='col-md-8'>
+						<?php echo $this->formlabel($form->get("live_parent"))?>
+						<?php echo $this->formselect($form->get('live_parent')->setAttributes(array('class'=>'col-md-12 form-control','options'=>$groups)));?>
+					</div>
+					<div class='col-md-4'>
+						<!-- Button trigger modal -->
+						<button style="margin-top: 25px" type="button" class="btn btn-default"data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span> New Class</button>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-md-3">
+				<?php echo $this->formlabel($form->get('live_title'));?>
+			<br />
+				<?php echo $this->forminput($form->get('live_title')->setAttribute('class','form-control col-md-12'));?>
+			</div>
+			<div class="col-md-3">
+				<?php echo $this->formlabel($form->get('kh_live_title'));?>
+			<br />
+				<?php echo $this->forminput($form->get('kh_live_title')->setattribute('class','form-control col-md-12'));?>
+			</div>
+			<div class="col-md-3">
+				<?php echo $this->formlabel($form->get('live_desc'))?>
+			<br>
+				<?php echo $this->forminput($form->get('live_desc')->setattribute('class','form-control col-md-12'))?>
+			</div>
+			<div class="col-md-3">
+				<?php echo $this->formlabel($form->get('kh_live_desc'))?>
+			<br />
+				<?php echo $this->forminput($form->get('kh_live_desc')->setattribute('class','form-control col-md-12'))?>
+			</div>
+		</div>
+		<?php echo $this->form()->closeTag($form);?>
+		<br />
+		<?php
+		foreach ( $this->getBeyondLivingImage as $keys => $beyon ) :
+		if($beyon['live_parent'] == 0)
+		{
+			$header = $beyon['live_title'];
+			?>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<?php echo $header?>
+								<?php echo "<div class='text-right' style='margin-top:-20px;'>
+												<i class='glyphicon glyphicon-pencil update-parent' parent-id=".$beyon['living_id']." style='cursor:pointer;color:green;'></i>&nbsp;&nbsp;&nbsp;
+												<i class='icon-remove glyphicon glyphicon-remove-circle remove-parent' parent-id=".$beyon['living_id']." style='cursor:pointer;'> </i>
+											</div>";?>
+								<input type="hidden" value="<?php echo $beyon['kh_live_title'];?>"  name="u_kh_live_title[<?php echo $beyon['living_id'];?>]">
+								<input type="hidden" value="<?php echo $beyon['live_title'];?>"  name="u_live_title[<?php echo $beyon['living_id'];?>]">
+							</div>
+							<div class="panel-body">
+								<?php  
+									$path = $this->basepath(). '/img/beyond/small/';
+									$row = "<div class='row' style='margin-bottom: 15px;'>";
+									$i = 1;
+									// open row
+									echo $row;
+									
+									// get number of item for each parent
+									$numItem=0;
+									foreach ($this->getBeyondLivingImage as $k=>$img){
+										if($img['live_parent']==$beyon['living_id']){
+											$numItem+=1;
+										}
+									}
+									
+									// if no item close row
+									if($numItem==0){
+										echo "</div>";
+									}
+								?>
+								<?php foreach ($this->getBeyondLivingImage as $k=>$img):?>
+									<?php 
+										if($img['live_parent'] !=0 && $img['live_parent'] == $beyon['living_id'])
+										{
+											$loop = "
+											<div class='col-md-3 showcase-image'>
+												<span href=".$this->url('customizebeyond').'?customId='.$img['living_id']." class='placeholder col-md-12 '>
+													<div living-id = ".$img['living_id']." class='text-right icon-delete'><i class='icon-remove glyphicon glyphicon-remove-circle'></i></div>
+													<a href='".$this->url('customizebeyond').'?customId='.$img['living_id']."' title='Click to Customize'><img src='".$path . $img['live_image']."'>
+														<div class='caption c'>
+															<p>".$img['live_title']."</p>
+														</div>
+													</a>
+												</span>
+											</div>
+											";
+											echo $loop;
+											if ($i==$numItem){
+												echo "</div>";
+											}
+											$i++;
+										}
+									?>
+								<?php endforeach;?>
+							</div>
+						</div>
+					<?php		
+						}
+					?>
+				<?php endforeach;?>
+			
+	</div>
+</div>
+
+<script>
+$(function(){
+	$('.icon-delete').on('click', function(){
+		livingId = $(this).parents('.showcase-image').find('.icon-delete').attr('living-id');
+		url = '<?php echo $this->url('deletebeyond')?>?livingId='+ livingId;
+		$.ajax({
+			async: false,
+			url: url,
+			success: function(){
+				window.location.href= '';
+			}
+		});
+	});	
+
+	// remove parent
+	$('.remove-parent').click(function(){
+		parent_id = $(this).attr('parent-id');
+		url='<?php echo $this->url('beyondliving-parent-remove')?>?parent-id='+parent_id;
+		cf = confirm("Are you sure to delete this parent?");
+		if (cf==true){
+			$.ajax({
+				async: false,
+				url:url,
+				success:function(){
+					window.location.href='';
+				}
+			});
+		}else{
+			return false;
+		}
+	});
+	//Show Modal update parent 
+	$('.update-parent').click(function(){
+		parent_id = $(this).attr('parent-id');
+		kh_live_title=$('input[name="u_kh_live_title['+parent_id+']"]').val();
+		live_title = $('input[name="u_live_title['+parent_id+']"]').val();
+		$("input[name='update_parent_title']").val(live_title);
+		$("input[name='update_kh_parent_title']").val(kh_live_title);
+		$("input[name='parentId']").val(parent_id);
+		$('.btnModal').click();
+	});
+
+	// update parent in database
+	$('.btn-update').click(function(){
+		parent_id = $("input[name='parentId']").val();
+		kh_live_title=$("input[name='update_kh_parent_title']").val();
+		live_title = $("input[name='update_parent_title']").val();
+		url='<?php echo $this->url('beyondliving-parent-update')?>?parent-id='+parent_id+'&live_title='+live_title+'&kh_live_title='+kh_live_title;
+		$.ajax({
+			async: false,
+			url:url,
+			success:function(){
+				window.location.href='';
+			}
+		});
+	});
+			
+});
+</script>

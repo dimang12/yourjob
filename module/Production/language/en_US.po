@@ -1,0 +1,103 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ZendSkeletonApplication\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-29 14:38+0700\n"
+"PO-Revision-Date: 2014-04-29 14:38+0700\n"
+"Last-Translator: Pin Vuthy <pinvuthy.info@gmail.com>\n"
+"Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../view/production/index/info.phtml:2
+#: ../view/production/index/tools.phtml:2
+#: ../view/production/index/viewmore.phtml:2
+#: ../view/production/index/series.phtml:2
+#: ../view/production/index/index.phtml:2
+msgid "Home"
+msgstr "Home"
+
+#: ../view/production/index/info.phtml:3
+#: ../view/production/index/viewmore.phtml:3
+#: ../view/production/index/series.phtml:3
+#: ../view/production/index/index.phtml:3
+msgid "Products"
+msgstr "Products"
+
+#: ../view/production/index/info.phtml:20
+msgid "Material Code"
+msgstr "Material Code"
+
+#: ../view/production/index/info.phtml:24
+msgid "Specification"
+msgstr "Specification"
+
+#: ../view/production/index/info.phtml:44
+msgid "Standard"
+msgstr "Standard"
+
+#: ../view/production/index/info.phtml:54
+msgid "General Information"
+msgstr "General Information"
+
+#: ../view/production/index/info.phtml:62
+msgid "Size"
+msgstr "Technical Information"
+
+#: ../view/production/index/info.phtml:88
+msgid "Technical Information"
+msgstr "Technical Information"
+
+#: ../view/production/index/tools.phtml:3
+#: ../view/production/index/tools.phtml:12
+msgid "Tools & Accessories"
+msgstr "Tools & Accessories"
+
+#: ../view/production/index/viewmore.phtml:15
+#: ../view/production/index/series.phtml:16
+msgid "New Products"
+msgstr "New Products"
+
+#: ../view/production/index/index.phtml:17
+msgid "View More"
+msgstr "View More"
+
+#~ msgid "Structural Plan Samples of Sothyka Shera"
+#~ msgstr "Structural Plan Samples of Sothyka Shera"
+
+#~ msgid "SOTHYKA SHOWCASE"
+#~ msgstr "SOTHYKA SHOWCASE"
+
+#~ msgid "Controller"
+#~ msgstr "Controller"
+
+#~ msgid "Residential"
+#~ msgstr "Residential"
+
+#~ msgid "Industrial"
+#~ msgstr "Industrial"
+
+#, fuzzy
+#~ msgid "Description Residential"
+#~ msgstr "Residential"
+
+#~ msgid "Sothyka - Shera Application Solution"
+#~ msgstr "Sothy - Shera Application Solution"
+
+#~ msgid " by Sothyka"
+#~ msgstr " by Sothyka"
+
+#~ msgid "Hello"
+#~ msgstr "gfdgsfdsgfsgfsgfdgf"
+
+#~ msgid "Skeleton Application"
+#~ msgstr "TEst"
+
+#~ msgid "Exception"
+#~ msgstr "Exception"

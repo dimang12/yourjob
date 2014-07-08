@@ -1,0 +1,56 @@
+<ol class="breadcrumb">
+  <li><a href="<?php echo $this->url("home");?>"><?php echo $this->translate("Home")?></a></li>
+  <li><a href="<?php echo $this->url("production");?>"><?php echo $this->translate("Products")?></a></li>
+  <li class="active"><?php $this->cateTitle?></li>
+</ol>
+<br>
+
+<div class="whole-body clearfix" style="">
+	<div class="col-md-3"><!-- col 3 -->
+		<?php echo $this->partial("layout/_nav_category")?>
+	</div>
+	
+	<div class='col-md-9'>
+		<div class='row  sothyka-tool' style="padding-left: 10px">
+			<h4><?php echo $this->translate("New Products")?></h4>
+		</div>
+		<div class='row' style="padding:4px">
+		<?php 
+				$path = $this->basepath(). '/img/products/m/';
+				$count = count($this->getProdByCateId);
+				$row = "<div class='row' style='margin-bottom: 15px;'>";
+				$col = $allRow = "";
+				$i = 1;
+				
+				foreach ($this->getProdByCateId as $key => $series)
+				{
+					$loop = "
+						<div class='col-md-3'>
+							<a class='thumbnail sothyka-thumbnail' href='".$this->basepath().'/products/'.$series['prod_alias']."'><img src='".$path . $series['imag_name']."'>
+								<div class='caption sothyka-product-caption'>
+									<h3>".$series['prod_name']."</h3>
+									<p>".$series['prod_size']."</p>
+								</div>
+							</a>
+						</div>
+					";
+					$col .= $loop;
+					
+					if($i%4 == 0 || $i == $count){
+						$allRow .= $row.$col. "</div>";
+						$col = "";
+					}
+					$i++;
+					}
+					echo $allRow;			
+			?>
+		</div>
+	</div>
+	<div class='col-md-12'>
+	<div class='col-md-6'></div><?php $cateAlias=$this->cateAlias?>
+	<div class='col-md-6 text-right'><?php //echo $this->paginationControl($this->getProdByCateId,'sliding',array('layout/_paginator.phtml', 'series'),array('controller' => 'Index','cateAlias'=> $cateAlias));?> </div>
+	</div>
+</div>
+
+<br />
+<br />

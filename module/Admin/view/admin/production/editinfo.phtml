@@ -1,0 +1,85 @@
+<div class='container-fluid'>
+	<?php echo $this->partial('admin/partial/_nav_menu')?>
+	<?php $form = $this->form; echo $this->form()->openTag($form)?>
+	<div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+		<div class='page-header'>
+			<div class='row'>
+				<div class='col-md-8'><h1 class='text-warning'>Add information</h1></div>
+				<div class='col-md-4 text-right'>
+					<a href='<?php echo $this->url('dashboard-product-information')?>' class='btn btn-default'><span class='glyphicon glyphicon-circle-arrow-left'></span> Back</a> &nbsp;&nbsp;
+					<?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-repeat'></span> Update<?php echo $this->formbutton()->closeTag()?>
+			</div>
+			</div>
+		</div>	
+		
+		<div class='row'>
+			<div class='col-md-6'>
+			<?php 
+				$tmp = array();
+				$parentCate = array();
+				$count = 0;
+				$tempOption = $this->option;
+				foreach ($tempOption as $k=>$v)
+				{
+					if($v['cate_parent'] ==0)
+					{
+						$parentCate[$v['category_id']] = $v['cate_name'];
+						unset($tempOption[$k]);
+					}
+					
+				}
+				
+				foreach($parentCate as $k=>$v){
+					$subCate = array();
+					foreach ($tempOption as $subK =>$subV){
+						if($k == $subV["cate_parent"]){
+							$subCate[$subV["category_id"]] = $subV["cate_name"];
+							unset($tempOption[$subK]);
+						}
+						
+					}
+					$parentCate[$k] = array("label"=>$v, "options"=>$subCate);
+				}?>
+				<?php echo $this->formlabel($form->get('category_id'))?>
+				<?php echo $this->formselect($form->get('category_id')->setAttributes(array('options'=>$parentCate,'class'=>'form-control col-md-12')))?>
+			</div>
+		</div>
+		
+		<div class='row'><br>
+			<div class='col-md-6'>
+				<?php echo $this->formlabel($form->get('info_desc'))?><br>
+				<?php echo $this->formtextarea($form->get('info_desc')->setAttributes(array('class'=>'form-control  col-md-12', 'rows'=>8)))?>
+			</div>
+			
+			<div class='col-md-6'>
+				<?php echo $this->formlabel($form->get('kh_info_desc'))?><br>
+				<?php echo $this->formtextarea($form->get('kh_info_desc')->setAttributes(array('class'=>'form-control col-md-12', 'rows'=>8)))?>
+			</div>
+		</div>
+		
+		<div class='row'><br>
+			<div class='col-md-6'>
+				<?php echo $this->formlabel($form->get('info_gene'))?><br>
+				<?php echo $this->formtextarea($form->get('info_gene')->setAttributes(array('class'=>'form-control col-md-12', 'rows'=>8)))?>
+			</div>
+			
+			<div class='col-md-6'>
+				<?php echo $this->formlabel($form->get('kh_info_gene'))?><br>
+				<?php echo $this->formtextarea($form->get('kh_info_gene')->setAttributes(array('class'=>'col-md-12', 'rows'=>8)))?>
+			</div>
+		</div>
+		
+		<div class='row'><br>
+			<div class='col-md-6'>
+				<?php echo $this->formlabel($form->get('info_color'))?><br>
+				<?php echo $this->formtextarea($form->get('info_color')->setAttributes(array('class'=>'col-md-12', 'rows'=>4)))?>
+			</div>
+			
+			<div class='col-md-6'>
+				<?php echo $this->formlabel($form->get('kh_info_color'))?><br>
+				<?php echo $this->formtextarea($form->get('kh_info_color')->setAttributes(array('class'=>'col-md-12', 'rows'=>4)))?>
+			</div>
+		</div>
+	</div>
+	<?php echo $this->form()->closeTag()?>
+</div>

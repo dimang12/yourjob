@@ -1,0 +1,236 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ZendSkeletonApplication\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-25 22:49+0700\n"
+"PO-Revision-Date: 2014-05-25 22:49+0700\n"
+"Last-Translator: \n"
+"Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../view/application/beyondliving/index.phtml:5
+#: ../view/layout/_top_header.phtml:17
+msgid "Home"
+msgstr "Home"
+
+#: ../view/application/beyondliving/index.phtml:6
+#: ../view/layout/_sub_menu.phtml:11
+msgid "Bayond Living"
+msgstr "Bayond Living"
+
+#: ../view/application/beyondliving/index.phtml:9
+msgid "Structural Plan Samples of Sothyka Shera"
+msgstr "Structural Plan Samples of Sothyka Shera"
+
+#: ../view/application/partial/_home.phtml:31
+msgid "Welcome to Sothyka Shera"
+msgstr ""
+
+#: ../view/application/partial/_home.phtml:33
+msgid ""
+"There needs to be a purpose for every component of a website. They each have "
+"to support the goals and purpose of the site."
+msgstr ""
+
+#: ../view/application/partial/_home.phtml:35
+msgid ""
+"In this way, a thoughtful approach to the design and the copy of your "
+"website introductory text is important."
+msgstr ""
+
+#: ../view/application/partial/_home.phtml:37
+msgid "The goals of your site introduction are:"
+msgstr ""
+
+#: ../view/application/partial/_home.phtml:39
+msgid ""
+"To let the visitor know, as quickly as possible, what the website is about."
+msgstr ""
+
+#: ../view/application/partial/_home.phtml:40
+msgid ""
+"To give hints as to what action (or actions) they can take immediately (call "
+"to action)."
+msgstr ""
+
+#: ../view/application/partial/_home.phtml:41
+msgid ""
+"To provide contextual information regarding what to expect should the "
+"visitor decide to spend more time on the site."
+msgstr ""
+
+#: ../view/application/partial/_home.phtml:43
+msgid ""
+"What follows are some design considerations congruent to the three goals "
+"above."
+msgstr ""
+
+#: ../view/application/showcase/index.phtml:5
+msgid "SOTHYKA SHOWCASE"
+msgstr "SOTHYKA SHOWCASE"
+
+#: ../view/error/404.phtml:1
+msgid "A 404 error occurred"
+msgstr ""
+
+#: ../view/error/404.phtml:10
+msgid "The requested controller was unable to dispatch the request."
+msgstr ""
+
+#: ../view/error/404.phtml:13
+msgid ""
+"The requested controller could not be mapped to an existing controller class."
+msgstr ""
+
+#: ../view/error/404.phtml:16
+msgid "The requested controller was not dispatchable."
+msgstr ""
+
+#: ../view/error/404.phtml:19
+msgid "The requested URL could not be matched by routing."
+msgstr ""
+
+#: ../view/error/404.phtml:22
+msgid "We cannot determine at this time why a 404 was generated."
+msgstr ""
+
+#: ../view/error/404.phtml:34
+msgid "Controller"
+msgstr "Controller"
+
+#: ../view/error/404.phtml:41
+#, php-format
+msgid "resolves to %s"
+msgstr ""
+
+#: ../view/error/404.phtml:53 ../view/error/index.phtml:8
+msgid "Additional information"
+msgstr ""
+
+#: ../view/error/404.phtml:56 ../view/error/404.phtml:80
+#: ../view/error/index.phtml:11 ../view/error/index.phtml:35
+msgid "File"
+msgstr ""
+
+#: ../view/error/404.phtml:60 ../view/error/404.phtml:84
+#: ../view/error/index.phtml:15 ../view/error/index.phtml:39
+msgid "Message"
+msgstr ""
+
+#: ../view/error/404.phtml:64 ../view/error/404.phtml:88
+#: ../view/error/index.phtml:19 ../view/error/index.phtml:43
+msgid "Stack trace"
+msgstr ""
+
+#: ../view/error/404.phtml:74 ../view/error/index.phtml:29
+msgid "Previous exceptions"
+msgstr ""
+
+#: ../view/error/404.phtml:103 ../view/error/index.phtml:58
+msgid "No Exception available"
+msgstr ""
+
+#: ../view/error/index.phtml:1
+msgid "An error occurred"
+msgstr ""
+
+#: ../view/layout/_bottom_header.phtml:16
+msgid "FIND JOB NOW!"
+msgstr ""
+
+#: ../view/layout/_menu.phtml:11
+msgid "Residential"
+msgstr "Residential"
+
+#: ../view/layout/_menu.phtml:14
+msgid "Commercial"
+msgstr ""
+
+#: ../view/layout/_menu.phtml:17
+msgid "Industrial"
+msgstr "Industrial"
+
+#: ../view/layout/_menu.phtml:20
+msgid "Professional"
+msgstr ""
+
+#: ../view/layout/_slide.phtml:47
+#, fuzzy
+msgid "Description here ..."
+msgstr "Residential"
+
+#: ../view/layout/_sub_menu.phtml:15
+msgid "Products"
+msgstr ""
+
+#: ../view/layout/_sub_menu.phtml:19
+msgid "Show Case"
+msgstr ""
+
+#: ../view/layout/_sub_menu.phtml:26
+msgid "What's new?"
+msgstr ""
+
+#: ../view/layout/_sub_menu.phtml:29
+msgid "About us"
+msgstr ""
+
+#: ../view/layout/_sub_menu.phtml:32
+msgid "Contact us"
+msgstr ""
+
+#: ../view/layout/_sub_menu.phtml:35
+msgid "Support us"
+msgstr ""
+
+#: ../view/layout/_top_header.phtml:8
+msgid "Help Center"
+msgstr ""
+
+#: ../view/layout/_top_header.phtml:10
+msgid "Feedback"
+msgstr ""
+
+#: ../view/layout/_top_header.phtml:12
+msgid "Share"
+msgstr ""
+
+#: ../view/layout/_top_header.phtml:14
+msgid "Register"
+msgstr ""
+
+#: ../view/layout/_top_header.phtml:18
+msgid "Job Seeker"
+msgstr ""
+
+#: ../view/layout/_top_header.phtml:19
+msgid "Resumes"
+msgstr ""
+
+#: ../view/layout/_top_header.phtml:20
+#, fuzzy
+msgid "Education"
+msgstr "Exception"
+
+#: ../view/layout/layout.phtml:6
+msgid "Sothyka - Shera Application Solution"
+msgstr "Sothy - Shera Application Solution"
+
+#~ msgid " by Sothyka"
+#~ msgstr "by Sothyka"
+
+#~ msgid "Tool &amp; Accessories"
+#~ msgstr "Tool &amp; Accessories"
+
+#~ msgid "Hello"
+#~ msgstr "gfdgsfdsgfsgfsgfdgf"
+
+#~ msgid "Skeleton Application"
+#~ msgstr "TEst"

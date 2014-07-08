@@ -1,0 +1,20 @@
+<?php 
+$sm = $this->getHelperPluginManager ()->getServiceLocator ();
+$routeMatch = $sm->get ( 'Application' )->getMvcEvent ()->getRouteMatch ();
+$router = $routeMatch->getMatchedRouteName();
+?>
+<div class='col-sm-2 sidebar' style="background: #28353B">
+		<ul class="nav nav-sidebar">
+			<li class="<?php if($router == 'dashboard-beyondliving'  || $router=='customizebeyond') echo 'active'?>"><a href='<?php echo $this->url('dashboard-beyondliving')?>'><span class='glyphicon glyphicon-home' ></span> &nbsp;Beyond Livings</a></li>
+			<li class="<?php if($router == 'dashboard-showcase' || $router =='dashboard-showcase-customize') echo 'active'?>"><a href="<?php echo $this->url('dashboard-showcase')?>"><span class='glyphicon glyphicon-map-marker'></span> &nbsp;Showcases</a></li>
+			<li class="<?php if($router == 'dashboard-slide' || $router == 'dashboard-slide-edit') echo 'active'?>"><a href="<?php echo $this->url('admin-slide')?>"><span class='glyphicon glyphicon-sound-stereo'></span> &nbsp;Slides</a></li>
+			<li class="<?php if($router == 'dashboard-category' || $router=='dashboard-category-add' || $router=='dashboard-category-edit' || $router=='dashboard-category-sub-add' || $router=='dashboard-category-sub-edit') echo 'active'?>"><a href="<?php echo $this->url('dashboard-category')?>"><span class='glyphicon glyphicon-th-large'></span> &nbsp;Application</a></li>
+			<li class="<?php if($router == 'dashboard-production' || $router=='dashboard-product-add' || $router=='dashboard-product-edit') echo 'active'?>"><a href="<?php echo $this->url('dashboard-production')?>"><span class='glyphicon glyphicon-shopping-cart'></span> &nbsp;Production</a></li>
+			<?php if(isset($this->media)):?><li class="<?php if($router == 'dashboard-product-media') echo 'active'?>"><a href='<?php echo $this->url('dashboard-product-media')?>?prodId=<?php echo $this->getParams('prodId')?>'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='glyphicon glyphicon-picture'></span>&nbsp; Media</a></li><?php endif?>
+			<li class="<?php if($router == 'dashboard-product-information' || $router == 'dashboard-product-info-add' ||$router == 'dashboard-product-info-edit') echo 'active'?>"><a href='<?php echo $this->url('dashboard-product-information')?>'><span class='glyphicon glyphicon-exclamation-sign'></span>&nbsp; Information</a></li>
+			<li class="<?php if($router == 'dashboard-product-technical' || $router == 'dashboard-product-technical-add' || $router == 'dashboard-product-technical-edit')echo 'active'?>"><a href='<?php echo $this->url('dashboard-product-technical')?>'><span class='glyphicon glyphicon-leaf'></span>&nbsp; Technical</a></li>
+			<li class="<?php if($router == 'dashboard-product-standard') echo 'active'?>"><a href='<?php echo $this->url('dashboard-product-standard')?>'><span class='glyphicon glyphicon-link'></span>&nbsp; Standard</a></li>
+            '><span class='glyphicon glyphicon-tree-conifer'></span>&nbsp; Specification</a></li>
+        </ul>
+
+</div>	<li class="<?php if($router == 'dashboard-product-specification') echo 'active'?>"><a href='<?php echo $this->url('dashboard-product-specification')?>

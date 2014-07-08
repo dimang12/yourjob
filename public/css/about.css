@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+.nivoSlider .col					{ text-align:center; color:#fff; float:left; font-size:1.7em; height:405px;}
+.col i								{ margin-top:25px;}
+.col label							{ display:block;}
+.col article						{ opacity:0.9; border-radius: 15px;}
+.nivoSlider .col01					{ background:#fff; border-radius: 15px; color:#000; margin-right:15px; width:380px; }
+.col02 .row	article					{ width:345px;}
+.col02 .row01 article				{ float:left; height:150px;}
+.col02 .row01 article:first-child,
+.col02 .row02 article:first-child	{ margin-right:15px;}
+.col02 .row02 						{ margin-top:15px;}
+.col02 .row02 article				{ float:left; height:240px;}
+
+.col article:hover					{ opacity:1;}
+
+.cBox1							{ color:#333; background:#EAEAEA; border:#C5C5C5 solid 1px;}
+.cBox1 h2						{ border-bottom:#c5c5c5 solid 1px; font-weight:lighter; color:#333; margin-bottom:25px; padding-bottom:25px;}
+.cBox1 .inner					{ padding:25px;}
+.cBox1 article 					{ }
+.cBox1 article aside			{ float:left; min-width:500px;}
+.cBox1 article aside + aside	{ border-left:#c5c5c5 solid 1px; padding-left:20px;}
+.cBox1 .dt ul li				{ display:block; margin-bottom:10px; width:100%;}
+.dt ul li label					{ color:#666; display:inline-table; width:100px;}
+.dt ul li span					{ display:inline-table;}

@@ -1,0 +1,35 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('OurJob - Jobs in Cambodia'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        				->prependStylesheet($this->basePath() . '/css/product.css')
+        				->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                       ; ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+        							  ->prependFile($this->basePath() . '/js/global.js')
+        							  ->prependFile($this->basePath() . '/js/jquery.carousel.fullscreen.js')
+                                      ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                                      ->prependFile($this->basePath() . '/js/jquery-1.7.2.min.js') ?>
+
+    </head>
+    <body>
+	    <header class="whole-body clearfix">
+	    	<?php echo $this->partial("layout/_top_header")?>
+	    	<?php echo $this->partial("layout/_bottom_header");?>
+	    </header>
+        <div class="w-center">
+            <?php echo $this->content; ?>
+        </div>
+    </body>
+</html>

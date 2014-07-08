@@ -1,0 +1,77 @@
+<div class='container-fluid'>
+	<?php echo $this->partial('admin/partial/_nav_menu')?>
+	
+	<?php $showcaseForm = $this->showcaseForm; echo $this->form()->openTag($showcaseForm)?>
+	<div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+		<div class='page-header'>
+			<div class='row'>
+				<div class='col-md-8'><h1 class='text-warning'>Showcases</h1></div>
+				<div class='col-md-4 text-right'><?php echo $this->formbutton()->openTag($showcaseForm->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-upload'></span> Upload<?php echo $this->formbutton()->closeTag()?></div>
+			</div>
+		</div>		
+		<div class='row'>
+			<div class='container-fluid'>
+				<div class='col-md-6'>
+					<?php echo $this->formlabel($showcaseForm->get('show_image'))?>
+					<?php echo $this->forminput($showcaseForm->get('show_image')->setAttribute('class','form-control col-md-12'))?>
+				<p class='alert-warning'><?php echo $this->error ?></p>
+				</div>
+				<div class='col-md-6'>
+					<?php echo $this->formlabel($showcaseForm->get('show_title'))?>
+					<?php echo $this->forminput($showcaseForm->get('show_title')->setAttributes(array('class'=> 'form-control col-md-12')))?>
+				</div>
+				<?php echo $this->form()->closeTag($showcaseForm)?>
+			</div>
+			<div class='col-md-6 text-right'></div>
+			</div>
+		<br />
+		
+		<?php 
+				$path = $this->basepath(). '/img/showcase/small/';
+				$count = count($this->getShowcaseImage);
+				$row = "<div class='row' style='margin-bottom: 15px;'>";
+				$col = $allRow = "";
+				$i = 1;
+				
+				foreach ($this->getShowcaseImage as $key => $img)
+				{
+					$loop = "
+						<div class='col-md-3 showcase-image'>
+							<span href=".$this->url('dashboard-showcase-customize').'?customId='.$img['showcase_id']." class='placeholder col-md-12 '>
+								<div showcase-id = ".$img['showcase_id']." class='text-right icon-delete'><i class='icon-remove glyphicon glyphicon-remove-circle'></i></div>
+								<a href=".$this->url('dashboard-showcase-customize').'?customId='.$img['showcase_id']." title='Click to Customize'><img src='".$path . $img['show_image']."' style='width:190px;height:100px;'>
+									<div class='caption'>
+										<p>".$img['show_title']."</p>
+									</div>
+								</a>
+							</span>
+						</div>
+					";
+					$col .= $loop;
+					
+					if($i%4 == 0 || $i == $count){
+						$allRow .= $row.$col. "</div>";
+						$col = "";
+					}
+					$i++;
+					}
+					echo $allRow;			
+			?>
+	</div>
+</div>
+
+<script>
+	$(function(){
+		$('.icon-delete').on('click', function(){
+			showcaseId = $(this).parents('.placeholder').find('.icon-delete').attr('showcase-id');
+			url = '<?php echo $this->url('dashboard-showcase-delete')?>?showcaseId='+ showcaseId;
+			$.ajax({
+				async: false,
+				url: url,
+				success: function(){
+					window.location.href= '';
+				}
+			});
+		});
+	});
+</script>

@@ -1,0 +1,37 @@
+<?php $loginForm = $this->loginForm; $loginForm->prepare();	echo $this->form()->openTag($loginForm); ?>
+<div class='col-sm-4 col-sm-offset-4' style="margin-top: 125px">	
+	<div class='panel panel-success'>
+		<div class="panel-heading">
+		    <h3 class="panel-title">SOTHYKA LOGIN</h3>
+		</div>
+		<div class='panel-body'>
+				<br />
+				<div class='form-group'>
+					<div class='col-sm-12'>
+						<div class='input-group'>
+							<?php echo $this->formText($loginForm->get('username')->setAttributes(array('required'=>true))); ?>
+							<span class='input-group-addon'><span class='glyphicon glyphicon-user'></span></span>
+						</div>
+					</div>
+				</div>
+				<div class='form-group'>
+					<div class='col-sm-12'>
+						<div class='input-group'>
+							<?php echo $this->formpassword($loginForm->get('password')->setAttributes(array('required'=>true))); ?>
+							<span class='input-group-addon'><span class='glyphicon glyphicon-record'></span></span>
+						</div>
+					</div>
+				</div>					
+		</div>
+		<div class='panel-footer text-right' style="padding-bottom: 1px">
+			<div class='form-group'>
+				<div class='col-sm-12'>
+					<?php echo $this->formButton()->openTag($loginForm->get('btnlogin')); ?>Log In<?php echo $this->formButton()->closeTag();?>
+				</div>
+				<?php echo $this->formElement($loginForm->get('csrf')) ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php echo $this->form()->closeTag($loginForm); ?>
