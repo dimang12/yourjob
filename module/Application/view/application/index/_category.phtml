@@ -15,7 +15,7 @@ $categories = $resultSet->initialize($this->categories);
                 $cateList = '';
                 $asideList = '';
                 $perColumn = round($categories->count() / 3);
-                if($categories % 3 <> 0) $perColumn++;
+                if($categories->count() % 3 <> 0) $perColumn++;
 
                 for($i=1; $i<=3; $i++){
                     if($i==1){
