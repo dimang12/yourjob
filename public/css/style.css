@@ -10,15 +10,20 @@ label                       { font-weight:normal;}
 .no-padding-left            { padding-left:0;}
 .no-padding-right           { padding-right:0;}
 .no-margin					{ margin:0;}
+
 .padding-5					{ padding:5px;}
 .padding-5-0				{ padding:5px 0;}
 .padding-10-0				{ padding:10px 0;}
 .padding-0-5				{ padding:0 5px;}
 .padding-5-10				{ padding:5px 10px;}
 .padding-8-5                { padding:8px 5px;}
+
 .margin-5					{ margin:5px;}
 .margin-10					{ margin:10px;}
-.margin-10-0				{ margin:10px 0;}	
+.margin-10-0				{ margin:10px 0;}
+
+.pos-relative               { position: relative;}
+
 
 
 .fixed-bottom				{ position:fixed; bottom:0;}
@@ -27,7 +32,7 @@ label                       { font-weight:normal;}
 
 /*~~~~~~~~~~Text Shadow~~~~~~~~~~~~~*/
 .text-shadow				{ text-shadow:1px 1px 0 #144568;}
-.text-overflow              { text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
+.text-overflow              { text-overflow:ellipsis; overflow:hidden; white-space:nowrap; height:30px;}
 .shadow-white				{ text-shadow:1px 1px 0 #fff;}
 .shadow-red					{ text-shadow:1px 1px 0 #8a1515;}
 
@@ -115,6 +120,7 @@ label                       { font-weight:normal;}
 .border-left-gray           { border-left:#ccc solid 1px;}
 .border-right-gray          { border-right:#ccc solid 1px;}
 .border-radius-5			{ border-radius: 5px;}
+.border-radius-0            { border-radius:0;}
 
 
 
