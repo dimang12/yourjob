@@ -1,4 +1,5 @@
 @CHARSET "ISO-8859-1";
+
 .nivoSlider .col					{ text-align:center; color:#fff; float:left; font-size:1.7em; height:405px;}
 .col i								{ margin-top:25px;}
 .col label							{ display:block;}
