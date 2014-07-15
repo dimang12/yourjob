@@ -605,6 +605,16 @@ return array (
                                 )
                             )
                         ),
+                       'job-posting' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/job-posting',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Job',
+                                    'action' => 'jobposting'
+                                )
+                            )
+                        ),
                         'admin-feature' => array ('type' => 'Literal',
                             'options' => array (
                                 'route' => '/admin-feature',
