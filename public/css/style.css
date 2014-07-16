@@ -114,6 +114,8 @@ label                       { font-weight:normal;}
 .border-light-gray			{ border:#AAA solid 1px;}
 .border-gray				{ border:#999 solid 1px;}
 .no-border					{ border:0;}
+.no-border-left             { border-left:0;}
+.no-border-right            { border-right:0;}
 .border-top-blue			{ border-top:#106cad solid 3px;}
 .border-bottom-blue			{ border-bottom:#106cad solid 2px;}
 .border-bottom-gray			{ border-bottom:#CCC solid 1px;}

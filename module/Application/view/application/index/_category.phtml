@@ -2,10 +2,10 @@
 $resultSet = new \Zend\Db\ResultSet\ResultSet();
 $categories = $resultSet->initialize($this->categories);
 ?>
-<div class="box-white clearfix border-radius-5 margin-10-0 font-13">
-    <aside class="col-md-9 border-right-gray  ">
+<div class="box-white clearfix border-radius-5 margin-10-0 font-13 nav nav-tabs" role="tablist">
+    <aside class="col-lg-9 border-right-gray  ">
         <menu class="menu-invers no-padding border-bottom-blue full-w">
-            <a class="bg-white actived" href="#"><?php echo $this->translate("Job Categories"); ?></a>
+            <a class="bg-white active actived" href="#" role="tab"><?php echo $this->translate("Job Categories"); ?></a>
             <a class="bg-white" href="#"><?php echo $this->translate("Location"); ?></a>
             <a class="bg-white" href="#"><?php echo $this->translate("Industry");?></a>
             <a class="bg-white" href="#"><?php echo $this->translate("Salary");?></a>
@@ -37,8 +37,12 @@ $categories = $resultSet->initialize($this->categories);
                 echo $cateList;
             ?>
         </div>
+
+        <ul class="nav nav-tabs" role="tablist">
+
+        </ul>
     </aside>
-    <aside class="col-md-3">
+    <aside class="col-lg-3">
         <menu class="no-padding border-bottom-gray font-16 padding-5-0">
             Job Announcement
         </menu>
@@ -56,8 +60,8 @@ $categories = $resultSet->initialize($this->categories);
             <li class="text-overflow"><a>Assistance account </a>- This is a place to display company name.</li>
         </ul>
         <div class="row pos-relative">
-            <button class="btn btn-default col-lg-12 border-radius-0" style="position:relative; top:7px;">
-                <i class="glyphicon glyphicon-chevron-down"></i>
+            <button class="btn btn-default col-lg-12 border-radius-0 no-border-left no-border-right" style="position:relative; top:7px;">
+                <i class="glyphicon glyphicon-chevron-down color-pink"></i>
             </button>
         </div>
     </aside>
