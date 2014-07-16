@@ -1,2 +1,42 @@
-Job page
-Hello
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="col-md-3">
+            <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+        </div>
+        <div class="col-md-9">
+            <div class="row bg-title"><h3 class="text-warning"> &ensp;Job Viewing</h3></div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr class="bg-title">
+                            <th>No</th>
+                            <th>Position</th>
+                            <th>Hiring No</th>
+                            <th>Posting Date</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                        <?php
+                        $i=1;
+                        foreach ( $jobData as $key => $row ) {?>
+                            <tr>
+                                <td><?php echo $i?></td>
+                                <td><?php echo $row['job_name']?></td>
+                                <td><?php echo $row['job_hiring_number']?></td>
+                                <td><?php echo $row['job_published_date']?></td>
+                                <td><?php echo $row['city_name']?></td>
+                                <td><?php echo $row['job_status']?></td>
+                                <td>View | Edit</td>
+                            </tr>
+                            <?php $i++; }?>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

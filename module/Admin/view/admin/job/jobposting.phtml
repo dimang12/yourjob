@@ -1,0 +1,42 @@
+<?php $form = $this->form;?>
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="col-md-3">
+          <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+        </div>
+        <div class="col-md-9">
+            <div class="row bg-title text-warning"><h4 class="text-warning">&ensp;Job Posting</h4></div>
+            <div class="row bg-title text-warning"><h4>&ensp;Basic Information</h4></div>
+            <?php echo $this->form()->openTag($form)?>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Position / Title : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Company : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Hiring Number : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Experience ( Year ) : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Term : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Salary From : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Salary To : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Qualification : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Gender : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Age From : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Age To : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Language : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Location : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Publishing Date : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Closing Date : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Job Description : </label></div><div class="col-md-8 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+            <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Job Requirement : </label></div><div class="col-md-8 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+        <br>
+            <div class="row bg-title text-warning"><h4>&ensp;Job Posting Option</h4></div>
+            <div class="row">
+                <div class="col-md-3"><input type="checkbox" name=""><label class="margin-top-10">&ensp;Urgent </label></div>
+                <div class="col-md-3"><input type="checkbox" name=""><label class="margin-top-10">&ensp;Auto-Submit(10 mn) </label></div>
+                <div class="col-md-3"><input type="checkbox" name=""><label class="margin-top-10">&ensp;New Sign </label></div>
+                <div class="col-md-3"><input type="checkbox" name=""><label class="margin-top-10">&ensp;Normal </label></div>
+            </div>
+            <div class="row">
+                <?php echo $this->formbutton();?>
+            </div>
+            <?php echo $this->form()->closeTag()?>
+        </div>
+    </div>
+</div>
