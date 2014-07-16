@@ -1167,4 +1167,56 @@ class GlobalModel extends AbstractTableGateway {
 		$rs = new ResultSet();
 		return $rs->initialize($statement)->buffer()->toArray();
 	}
+    public function ZF2_Query($sqlString)
+    {
+        /*~~~~~~~ Create Proceduter in db: query_data(IN myquery varchar(500) ~~~
+            BEGIN
+                #Routine body goes here...
+                SET @mysql = myquery;
+                PREPARE stm from @mysql;
+                EXECUTE stm;
+            END
+        /~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+        $driver = $this->adapter->getDriver();
+        $connection = $driver->getConnection();
+
+        $result = $connection->execute("CALL query_data('$sqlString')");
+        $statement = $result->getResource();
+        $data =  $statement->fetchAll();
+        return $data;
+    }
+    // Function Name : ZF2_Update($table,$values,$conditions) -> user to update data table
+    // Developer Name : PON NIMOL
+    // Date : 03/ July / 2014
+    // param 1: $table is the name of table
+    // param 2: $values  is data array to update
+    // param 3: $conditons is data array to update by condition
+    public function ZF2_Update($table,$values,$conditions)
+    {
+        $sql = new Sql($this->adapter);
+        $update = $sql->update($table)->set($values)->where($conditions);
+        return $sql->prepareStatementForSqlObject($update)->execute();
+    }
+    // Function Name : ZF2_Insert($table,$values) -> use to insert data to table
+    // Developer Name : PON NIMOL
+    // Date : 03/ July / 2014
+    // param 1: $table is the name of table
+    // param 2: $values  is data array that will insert to table
+    public function ZF2_Insert($table,$values)
+    {
+        $sql = new Sql($this->adapter);
+        $insert = $sql->insert($table)->values($values);
+        return $sql->prepareStatementForSqlObject($insert)->execute();
+    }
+    // Function Name : ZF2_Delete($table,$values) -> use to delete data from table
+    // Developer Name : PON NIMOL
+    // Date : 08/ July / 2014
+    // param 1: $table is the name of table
+    // param 2: $condition  is data array that will input to WHERE statement
+    public function ZF2_Delete($table,$conditions)
+    {
+        $sql = new Sql($this->adapter);
+        $delete = $sql->delete($table)->where($conditions);
+        return $sql->prepareStatementForSqlObject($delete)->execute();
+    }
 }
