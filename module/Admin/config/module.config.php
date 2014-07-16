@@ -627,6 +627,16 @@ return array (
                                 'defaults' => array ('controller' => 'Admin\Controller\Employer','action' => 'index')
                             )
                         ),
+                        'job-posting' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/job-posting',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Job',
+                                    'action' => 'jobposting'
+                                )
+                            )
+                        ),
                 ),
 				
 		),
