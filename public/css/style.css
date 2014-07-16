@@ -1,4 +1,5 @@
 /* ~~~~~~~~~~General~~~~~~~~~~~~ */
+
 @font-face 					{ font-family:'Helvetica Neue Normal'; src: url('HelveticaNeue.otf');}
 body						{ background:url("../img/whole-back.png"); padding:0; margin:0; font-family: 'Helvetica Neue Normal','helvetica Neue',helvetica,arial,sans-serif; font-size:13px;}
 ul					        { margin:0; padding:0}
