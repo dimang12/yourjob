@@ -3,9 +3,11 @@ namespace Admin\Form;
 
 
 use Zend\Form\Form;
+use Zend\InputFilter\InputFilter;
 
 class JobForm extends Form
 {
+    protected $inputFilter;
     public function __construct($name=null)
     {
         parent::__construct('job');
@@ -22,6 +24,13 @@ class JobForm extends Form
             )
         ));
         $this->add(array(
+            'name'=>'city_id',
+            'type' => 'Select',
+            'attributes'=>array(
+                'class'=>'form-control'
+            )
+        ));
+        $this->add(array(
             'name'=>'job_name',
             'type' => 'Text',
             'attributes'=>array(
@@ -29,8 +38,18 @@ class JobForm extends Form
             )
         ));
         $this->add(array(
+            'name'=>'gender',
+            'type' => 'Text',
+            'attributes'=>array(
+                'class'=>'form-control'
+            )
+        ));
+        $this->add(array(
             'name'=>'job_schedule',
-            'type' => 'Text'
+            'type' => 'Text',
+            'attributes'=>array(
+                'class'=>'form-control'
+            )
         ));
         $this->add(array(
             'name'=>'job_salary_type',
@@ -90,7 +109,7 @@ class JobForm extends Form
         ));
         $this->add(array(
             'name'=>'job_description',
-            'type' => 'Text',
+            'type' => 'Textarea',
             'attributes'=>array(
                 'class'=>'form-control'
             )
@@ -104,7 +123,7 @@ class JobForm extends Form
         ));
         $this->add(array(
             'name'=>'job_requirement',
-            'type' => 'Text',
+            'type' => 'Textarea',
             'attributes'=>array(
                 'class'=>'form-control'
             )
@@ -144,5 +163,130 @@ class JobForm extends Form
                 'class'=>'form-control'
             )
         ));
+    }
+    public function getInputFilter()
+    {
+        $inputFilter = new InputFilter();
+        $inputFilter->add(array(
+            'name'=>'job_name',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_schedule',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_salary_from',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_salary_to',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_year_experience',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_language',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_hiring_number',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_description',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_duty',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_requirement',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_published_date',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_close_date',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_age_from',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'job_age_to',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'gender',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        return $this->inputFilter = $inputFilter;
     }
 }

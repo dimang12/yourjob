@@ -1219,4 +1219,17 @@ class GlobalModel extends AbstractTableGateway {
         $delete = $sql->delete($table)->where($conditions);
         return $sql->prepareStatementForSqlObject($delete)->execute();
     }
+    // Function Name : ZF2_Select_AllColumn($table) -> use to all column from table
+    // Developer Name : PON NIMOL
+    // Date : 17/ July / 2014
+    // param 1: $table is the name of table
+    // param 2: $condition  is data array that will input to WHERE statement
+    public function ZF2_Select_AllColumn($table,$conditions)
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select($table)->where($conditions);
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
 }
