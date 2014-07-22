@@ -26,11 +26,11 @@
                                 <td><?php echo $row['job_hiring_number']?></td>
                                 <td><?php echo $row['job_published_date']?></td>
                                 <td><?php echo $row['city_name']?></td>
-                                <td><?php echo $row['job_status']?></td>
-                                <td>View | Edit</td>
+                                <td><?php if($row['job_status']==1)echo 'Active'; else echo 'Expire';?></td>
+                                <td><a href="<?php echo $this->url('job-editing')?>?job_id=<?php echo $row['job_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
+                                    <a href='#' title='Remove'><span data-remove='<?php echo $row['job_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
                             </tr>
                             <?php $i++; }?>
-
                     </table>
                 </div>
             </div>
@@ -38,5 +38,21 @@
 
     </div>
 </div>
+<script>
+    $(function(){
+        $('.icon-remove').on('click',function(){
+           var jobId = $(this).attr('data-remove');
+            if(jobId != '')
+            {
+                if(confirm('Are you sure to delete?'))
+                {
+                    var url ='<?php echo $this->url('job-delete')?>?jobId='+jobId;
+                    $.ajax({url: url, success:function(){window.location.href='';}});
+                }
+                return false;
+            }
+        });
+    });
 
+</script>
 

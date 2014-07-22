@@ -637,6 +637,26 @@ return array (
                                 )
                             )
                         ),
+                        'job-editing' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/job-editing',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Job',
+                                    'action' => 'jobediting'
+                                )
+                            )
+                        ),
+                        'job-delete' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/job-delete',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Job',
+                                    'action' => 'jobdelete'
+                                )
+                            )
+                        ),
                 ),
 				
 		),
