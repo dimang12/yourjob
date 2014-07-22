@@ -149,4 +149,18 @@ class JobController extends AbstractActionController{
         $sm->ZF2_Delete('job',array('job_id'=>$job_id));
         return false;
     }
+    public function resumesearchAction()
+    {
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+
+        $resumeData = $sm->ZF2_Select_AllColumn('resume',array());
+
+        return array(
+            'resumeData' => $resumeData
+        );
+    }
+    public function resumepurchaseAction()
+    {
+
+    }
 }

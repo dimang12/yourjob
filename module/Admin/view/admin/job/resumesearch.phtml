@@ -1,0 +1,57 @@
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="col-md-3">
+            <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+        </div>
+        <div class="col-md-9">
+            <div class="row bg-title"><h3 class="text-warning"> &ensp;Resume Search</h3></div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr class="bg-title">
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Current Position</th>
+                            <th>Apply For</th>
+                            <th>Salary</th>
+                            <th>Resume</th>
+                            <th>Status</th>
+                        </tr>
+                        <?php
+                        $i=1;
+                        foreach ( $resumeData as $key => $row ) {?>
+                            <tr>
+                                <td><?php echo $i?></td>
+                                <td><?php echo $row['user_id']?></td>
+                                <td><?php echo $row['resu_current_position']?></td>
+                                <td><?php echo $row['resu_position']?></td>
+                                <td><?php echo $row['resu_salary']?></td>
+                                <td>View</td>
+                                <td>Download</td>
+                            </tr>
+                            <?php $i++; }?>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.icon-remove').on('click',function(){
+            var jobId = $(this).attr('data-remove');
+            if(jobId != '')
+            {
+                if(confirm('Are you sure to delete?'))
+                {
+                    var url ='<?php echo $this->url('job-delete')?>?jobId='+jobId;
+                    $.ajax({url: url, success:function(){window.location.href='';}});
+                }
+                return false;
+            }
+        });
+    });
+
+</script>
+

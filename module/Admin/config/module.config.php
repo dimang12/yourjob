@@ -657,6 +657,26 @@ return array (
                                 )
                             )
                         ),
+                        'resume-search' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/resume-search',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Job',
+                                    'action' => 'resumesearch'
+                                )
+                            )
+                        ),
+                        'resume-purchase' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/resume-purchase',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Job',
+                                    'action' => 'resumepurchase'
+                                )
+                            )
+                        ),
                 ),
 				
 		),
