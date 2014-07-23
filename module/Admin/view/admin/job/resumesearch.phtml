@@ -4,7 +4,13 @@
             <?php echo $this->partial('admin/partial/_left.phtml'); ?>
         </div>
         <div class="col-md-9">
-            <div class="row bg-title"><h3 class="text-warning"> &ensp;Resume Search</h3></div>
+            <form method="get">
+            <div class="row bg-title">
+                <div class="col-md-3"><h3 class="text-warning"> &ensp;Resume Search</h3></div>
+                <div class="col-md-7"><input type="text" name="search" class="form-control margin-top-10" placeholder="Search here..."></div>
+                <div class="col-md-2"><button type="submit" class="btn btn-default margin-top-10">Search</button></div>
+            </div>
+            </form>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">
@@ -15,7 +21,7 @@
                             <th>Apply For</th>
                             <th>Salary</th>
                             <th>Resume</th>
-                            <th>Status</th>
+                            <th>Purchase</th>
                         </tr>
                         <?php
                         $i=1;
@@ -26,8 +32,8 @@
                                 <td><?php echo $row['resu_current_position']?></td>
                                 <td><?php echo $row['resu_position']?></td>
                                 <td><?php echo $row['resu_salary']?></td>
-                                <td>View</td>
-                                <td>Download</td>
+                                <td><a href="<?php echo $this->url('resume-view')?>?resumeId=<?php echo $row['resume_id']?>"> View</a></td>
+                                <td><a href="#"><span class="glyphicon glyphicon-shopping-cart purchase"></span></a></td>
                             </tr>
                             <?php $i++; }?>
                     </table>
@@ -51,7 +57,9 @@
                 return false;
             }
         });
+        $('.purchase').on('click',function(){
+            alert(0);
+        });
     });
-
 </script>
 

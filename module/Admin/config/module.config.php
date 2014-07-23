@@ -677,6 +677,16 @@ return array (
                                 )
                             )
                         ),
+                        'resume-view' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/resume-view',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Job',
+                                    'action' => 'resumeview'
+                                )
+                            )
+                        ),
                 ),
 				
 		),

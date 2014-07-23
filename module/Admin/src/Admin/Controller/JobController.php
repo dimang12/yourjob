@@ -152,9 +152,11 @@ class JobController extends AbstractActionController{
     public function resumesearchAction()
     {
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-
         $resumeData = $sm->ZF2_Select_AllColumn('resume',array());
-
+        if($this->getRequest()->isGet()){
+            $search = $this->params()->fromQuery('search');
+            $resumeData = $sm->ZF2_Query("SELECT * FROM resume WHERE resu_current_position LIKE \'%".$search."%\' OR resu_position LIKE \'%".$search."%\'");
+        }
         return array(
             'resumeData' => $resumeData
         );
@@ -162,5 +164,12 @@ class JobController extends AbstractActionController{
     public function resumepurchaseAction()
     {
 
+    }
+    public function resumeviewAction()
+    {
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+        $resume_id = $this->params()->fromQuery('resumeId');
+        $resumeData = $sm->ZF2_Query("SELECT * FROM resume r INNER JOIN users u ON r.user_id = u.user_id WHERE r.resume_id = $resume_id");
+        return array('resumeData'=>$resumeData);
     }
 }
