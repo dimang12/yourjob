@@ -9,131 +9,52 @@ use Production\Model\ProductTable;
 class CategoryController extends AbstractActionController {
 	public function indexAction() {
 		$sm = $this->serviceLocator->get ( 'Admin\Model\GlobalModel' );
-		$getCate = $sm->getCate ();
-		$form = new CateForm();
-		$sm = $this->serviceLocator->get ('Production\Model\ProductTable' );
-		$option = $sm->getCateZeroCount();
+		$catData = $sm->ZF2_Select('categories');
 		return array (
-				'getCate' => $getCate, 'form'=>$form,'option'=>$option
+				'catData' => $catData
 		);
 	}
 	public function newcateAction() {
-		$message = ''; // defaule error message
 		$form = new CateForm ();
 		$cateName = $this->params ()->fromPost ( 'cate_name' );
-		$cateAlias = strtolower ( preg_replace ( "![^a-z0-9]+!i", "-", $cateName ) );
-		$khCateName = $this->params ()->fromPost ( 'kh_cate_name' );
+		//$cateAlias = strtolower ( preg_replace ( "![^a-z0-9]+!i", "-", $cateName ) );
 		$cateOrder = $this->params ()->fromPost ( 'cate_order' );
 		$cateDetails = $this->params ()->fromPost ( 'cate_details' );
-		$khCateDetails = $this->params ()->fromPost ( 'kh_cate_details' );
-		$cateImage = $this->params ()->fromFiles ( 'cate_image' );
-		
 		$sm = $this->serviceLocator->get ( 'Admin\Model\GlobalModel' );
-		$image = $cateImage['name'];
-		
 		if ($this->getRequest ()->isPost ()) {
-				$ext = pathinfo ( $image, PATHINFO_EXTENSION );
-				$image = uniqid(). '.' . $ext;
-				
-				//set new values into database
-				$data = array (
-						'cate_parent' => 0, // parent value
+				$values = array (
 						'cate_name' => $cateName,
-						'cate_alias' => $cateAlias,
-						'kh_cate_name' => $khCateName,
 						'cate_order' => $cateOrder,
 						'cate_details' => $cateDetails,
-						'kh_cate_details' => $khCateDetails,
-						'cate_image' => $image
 				);
-				$size = new Size ( array ('max' => 1048576) ); // 1mb
-				$adapter = new \Zend\File\Transfer\Adapter\Http ();
-				$adapter->setValidators ( array ($size), $image );
-				$sm->saveCate($data );
-				
-				// save to folders upload
-				$dir = 'public/img/uploads';
-				if (file_exists ( $dir )) {
-					move_uploaded_file ( $cateImage ['tmp_name'], $dir . '/' . $image );
-				}
+				$sm->ZF2_Insert('categories',$values);
 				return $this->redirect()->toUrl('dashboard-category');
-			
 		}
 		return array (
 				'form' => $form,
-				'message' => $message 
 		);
 	}
 	
 	// edit cate
 	public function editcateAction() {
 		$form = new CateForm ();
-		$cateId = $this->params ()->fromQuery ( 'cateId' );
+		$cateId = $this->params ()->fromQuery ( 'catId' );
 		$sm = $this->serviceLocator->get ( 'Admin\Model\GlobalModel' );
-		$getCateById = $sm->getCateById ( $cateId )->current ();
-		$getImage = $getCateById ['cate_image'];
-		$form->bind ( $getCateById );
-		
-		$cateName = $this->params ()->fromPost ( 'cate_name' );
-		$cateAlias = strtolower ( preg_replace ( "![^a-z0-9]+!i", "-", $cateName ) );
-		$khCateName = $this->params ()->fromPost ( 'kh_cate_name' );
-		$cateOrder = $this->params ()->fromPost ( 'cate_order' );
-		$cateDetails = $this->params ()->fromPost ( 'cate_details' );
-		$khCateDetails = $this->params ()->fromPost ( 'kh_cate_details' );
-		$cateImage = $this->params ()->fromFiles ( 'cate_image' );
-		
-		$image = $cateImage ['name']; $local = ''; //default loca
 		if($this->getRequest()->isPost())
 		{
-			if(!empty($image))
-			{
-				$local = "public/img/uploads/$getImage";
-				if(file_exists($local)) 
-				{
-					unlink($local);
-				}
-				
-				$ext = pathinfo ( $image, PATHINFO_EXTENSION );
-				$image = uniqid(). '.' . $ext;
-				
-				//set new values into database
-				$data = array (
-						'cate_parent' => 0, // parent value
-						'cate_name' => $cateName,
-						'cate_alias' => $cateAlias,
-						'kh_cate_name' => $khCateName,
-						'cate_order' => $cateOrder,
-						'cate_details' => $cateDetails,
-						'kh_cate_details' => $khCateDetails,
-						'cate_image' => $image
-				);
-				$size = new Size ( array ('max' => 1048576) ); // 1mb
-				$adapter = new \Zend\File\Transfer\Adapter\Http ();
-				$adapter->setValidators ( array ($size), $image );
-				$sm->updateCate ( $cateId, $data );
-				
-				// save to folders upload
-				$dir = 'public/img/uploads';
-				if (file_exists ( $dir )) {
-					move_uploaded_file ( $cateImage ['tmp_name'], $dir . '/' . $image );
-				}
-				return $this->redirect()->toUrl('dashboard-category');
-			
-			}else{
-				$data = array (
-					'cate_parent' => 0, // parent value
-					'cate_name' => $cateName,
-					'cate_alias' => $cateAlias,
-					'kh_cate_name' => $khCateName,
-					'cate_order' => $cateOrder,
-					'cate_details' => $cateDetails,
-					'kh_cate_details' => $khCateDetails,
-				);
-				$sm->updateCateNoImage($cateId, $data);
-				return $this->redirect()->toUrl('dashboard-category');
-			}
+            $cateName = $this->params ()->fromPost ( 'cate_name' );
+            $cateOrder = $this->params ()->fromPost ( 'cate_order' );
+            $cateDetails = $this->params ()->fromPost ( 'cate_details' );
+            $values = array (
+                'cate_name' => $cateName,
+                'cate_order' => $cateOrder,
+                'cate_details' => $cateDetails,
+            );
+            $sm->ZF2_Update('categories',$values,array('category_id'=>$cateId));
+            return $this->redirect()->toUrl('dashboard-category');
 		}
-		return array('form'=>$form, 'getImage'=>$getImage);
+        $catData = $sm->ZF2_Select_AllColumn('categories',array('category_id'=>$cateId));
+		return array('form'=>$form,'catData'=>$catData);
 	}	
 
 	//delete cate

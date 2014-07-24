@@ -1224,10 +1224,22 @@ class GlobalModel extends AbstractTableGateway {
     // Date : 17/ July / 2014
     // param 1: $table is the name of table
     // param 2: $condition  is data array that will input to WHERE statement
-    public function ZF2_Select_AllColumn($table,$conditions)
+    public function ZF2_Select_AllColumn($table,$conditions=array())
     {
         $sql = new Sql($this->adapter);
         $select = $sql->select($table)->where($conditions);
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+    // Function Name : ZF2_Select($table) -> use to get data table
+    // Developer Name : PON NIMOL
+    // Date : 24/ July / 2014
+    // param 1: $table is the name of table
+    public function ZF2_Select($table)
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select($table);
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();

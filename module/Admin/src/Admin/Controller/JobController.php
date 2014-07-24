@@ -135,7 +135,7 @@ class JobController extends AbstractActionController{
             }
         }
         $jobData = $sm->ZF2_Query("SELECT * FROM  job INNER JOIN city ON job.city_id = city.city_id WHERE job_id =$job_id");
-        $cityData = $sm->ZF2_Select_AllColumn('city',array());
+        $cityData = $sm->ZF2_Select_AllColumn('city');
         return array(
             'jobData' => $jobData,
             'form' => $form,

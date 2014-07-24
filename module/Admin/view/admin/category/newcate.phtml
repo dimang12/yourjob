@@ -1,10 +1,10 @@
 <div class='container-fluid'>
-	<?php echo $this->partial('admin/partial/_nav_menu')?>
+	<?php //echo $this->partial('admin/partial/_nav_menu')?>
 	<?php $form = $this->form; echo $this->form()->openTag($form)?>
 	<div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
 		<div class='page-header'>
 			<div class='row'>
-				<div class='col-md-8'><h1 class='text-warning'>New Application</h1></div>
+				<div class='col-md-8'><h1 class='text-warning'>New Category</h1></div>
 				<div class='col-md-4 text-right'>
 					<a href='<?php echo $this->url('dashboard-category')?>' class='btn btn-default'><span class='glyphicon glyphicon-circle-arrow-left'></span> Back</a> &nbsp;&nbsp;
 					<?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-floppy-disk'></span> Save<?php echo $this->formbutton()->closeTag()?>
@@ -13,34 +13,24 @@
 		</div>
 		
 		<div class='row'>
-			<div class='col-md-3'>
+			<div class='col-md-8'>
 				<?php echo $this->formlabel($form->get('cate_name'))?>
 				<?php echo $this->forminput($form->get('cate_name')->setAttributes(array('class'=>'form-control col-md-12 ','required'=>true)))?>
 			</div>			
-			<div class='col-md-3'>
-				<?php echo $this->formlabel($form->get('kh_cate_name'))?>
-				<?php echo $this->forminput($form->get('kh_cate_name')->setAttributes(array('class'=>'form-control col-md-12 ')))?>
-			</div>
-			<div class='col-md-3'>
+
+			<div class='col-md-4'>
 				<?php echo $this->formlabel($form->get('cate_order'))?>
 				<?php echo $this->forminput($form->get('cate_order')->setAttributes(array('class'=>'form-control col-md-12 ')))?>
 			</div>
-			<div class='col-md-3'>
-				<?php echo $this->formlabel($form->get('cate_image'))?>
-				<?php echo $this->forminput($form->get('cate_image')->setAttributes(array('class'=>'form-control col-md-12 ')))?>
-				<?php echo $this->message?>
-			</div>
+
 		</div>
 		
 		<div class='row'>
-			<div class='col-md-6'><br>
+			<div class='col-md-12'><br>
 				<?php echo $this->formlabel($form->get('cate_details'))?>
 				<?php echo $this->formtextarea($form->get('cate_details')->setAttributes(array('class'=>'form-control col-md-12','rows'=>5)))?>
 			</div>
-			<div class='col-md-6'><br>
-				<?php echo $this->formlabel($form->get('kh_cate_details'))?>
-				<?php echo $this->formtextarea($form->get('kh_cate_details')->setAttributes(array('class'=>'form-control col-md-12','rows'=>5)))?>
-			</div>
+
 		</div>
 		
 	<?php echo $this->form()->closeTag()?>

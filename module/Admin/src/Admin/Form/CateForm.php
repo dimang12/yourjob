@@ -6,7 +6,7 @@ class CateForm extends Form
 	public function __construct($name = null)
 	{
 		parent::__construct('cateform');
-		$this->setAttributes(array('method'=> 'post','enctype'=>'multipart/form-data'));
+		$this->setAttributes(array('method'=> 'post'));
 		$this->setAttribute('class', 'form-inline');
 		$this->add(array(
 			'name' => 'cate_parent',
@@ -25,7 +25,7 @@ class CateForm extends Form
 						'type'		=>'Zend\Form\Element\Text',
 				),
 				'options'	=>array(
-						'label'	=>'Category(en)'	
+						'label'	=>'Category Name'
 				),
 		));
 		$this->add(array(
@@ -43,7 +43,7 @@ class CateForm extends Form
 						'type'		=>'Zend\Form\Element\Text',
 				),
 				'options'	=>array(
-						'label'	=>'Order'
+						'label'	=>'Ordering'
 				),
 		));
 		
@@ -63,7 +63,7 @@ class CateForm extends Form
 						'placeholder'=>'here...'
 				),
 				'options'	=>array(
-						'label'	=>'Description(en) '
+						'label'	=>'Category Detail '
 				),
 		));
 		$this->add(array(
