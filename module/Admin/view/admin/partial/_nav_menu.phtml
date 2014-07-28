@@ -3,7 +3,7 @@ $sm = $this->getHelperPluginManager ()->getServiceLocator ();
 $routeMatch = $sm->get ( 'Application' )->getMvcEvent ()->getRouteMatch ();
 $router = $routeMatch->getMatchedRouteName();
 ?>
-<div class='col-sm-2 sidebar' style="background: #28353B">
+<div class='col-md-2 sidebar' style="background: #28353B">
 		<ul class="nav nav-sidebar">
 			<li class="<?php if($router == 'dashboard-beyondliving'  || $router=='customizebeyond') echo 'active'?>"><a href='<?php echo $this->url('dashboard-beyondliving')?>'><span class='glyphicon glyphicon-home' ></span> &nbsp;Beyond Livings</a></li>
 			<li class="<?php if($router == 'dashboard-showcase' || $router =='dashboard-showcase-customize') echo 'active'?>"><a href="<?php echo $this->url('dashboard-showcase')?>"><span class='glyphicon glyphicon-map-marker'></span> &nbsp;Showcases</a></li>

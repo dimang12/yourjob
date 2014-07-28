@@ -52,25 +52,5 @@
 				return false;
 			}
 		});
-
-		//click on filter 
-		$('.btn-filter').on('click', function(){
-			filterId = $('.text-filter').val();
-			url = '<?php echo $this->url('dashboard-category-filter')?>?id='+filterId;
-			
-			$.ajax({url: url, success: function(result){
-				$('.addons').html(result);
-			}});
-		});
-
-// 		//text-filter on change val
-// 		$('.text-filter').change(function(){
-// 			filterId = $('.text-filter').val();
-			//url = '<?php //echo $this->url('dashboard-dashboard-filter')?>?id='+filterId;
-			
-// 			$.ajax({url: url, success: function(result){
-// 				$('.addons').html(result);
-// 			}});
-// 		});
 	});
 </script>

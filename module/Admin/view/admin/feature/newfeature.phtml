@@ -1,0 +1,102 @@
+<?php $form = $this->form?>
+<div class='container-fluid'>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="page-header">
+        <div class='row'>
+            <div class="col-md-8">
+                <h1 class='text-warning'>New Feature</h1>
+            </div>
+            <div class="col-md-4 text-right">
+                <?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')));?>
+                <span class='glyphicon glyphicon-upload'></span> Upload<?php echo $this->formbutton()->closeTag()?>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <?php echo $this->formlabel($form->get('feat_image'));?>
+            <?php echo $this->forminput($form->get('feat_image')->setAttributes(array('class'=>'form-control col-md-12')));?>
+            <?php echo $this->error ?>
+        </div>
+        <div class="col-md-4">
+            <?php echo $this->formlabel($form->get("feat_started_date"))?>
+            <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <?php echo $this->formlabel($form->get("feat_started_date"))?>
+            <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+        </div>
+        <div class="col-md-4">
+            <?php echo $this->formlabel($form->get("feat_started_date"))?>
+            <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+        </div>
+        <div class="col-md-4">
+            <?php echo $this->formlabel($form->get("feat_started_date"))?>
+            <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    $(function(){
+        $('.icon-delete').on('click', function(){
+            livingId = $(this).parents('.showcase-image').find('.icon-delete').attr('living-id');
+            url = '<?php echo $this->url('deletebeyond')?>?livingId='+ livingId;
+            $.ajax({
+                async: false,
+                url: url,
+                success: function(){
+                    window.location.href= '';
+                }
+            });
+        });
+
+        // remove parent
+        $('.remove-parent').click(function(){
+            parent_id = $(this).attr('parent-id');
+            url='<?php echo $this->url('beyondliving-parent-remove')?>?parent-id='+parent_id;
+            cf = confirm("Are you sure to delete this parent?");
+            if (cf==true){
+                $.ajax({
+                    async: false,
+                    url:url,
+                    success:function(){
+                        window.location.href='';
+                    }
+                });
+            }else{
+                return false;
+            }
+        });
+        //Show Modal update parent
+        $('.update-parent').click(function(){
+            parent_id = $(this).attr('parent-id');
+            kh_live_title=$('input[name="u_kh_live_title['+parent_id+']"]').val();
+            live_title = $('input[name="u_live_title['+parent_id+']"]').val();
+            $("input[name='update_parent_title']").val(live_title);
+            $("input[name='update_kh_parent_title']").val(kh_live_title);
+            $("input[name='parentId']").val(parent_id);
+            $('.btnModal').click();
+        });
+
+        // update parent in database
+        $('.btn-update').click(function(){
+            parent_id = $("input[name='parentId']").val();
+            kh_live_title=$("input[name='update_kh_parent_title']").val();
+            live_title = $("input[name='update_parent_title']").val();
+            url='<?php echo $this->url('beyondliving-parent-update')?>?parent-id='+parent_id+'&live_title='+live_title+'&kh_live_title='+kh_live_title;
+            $.ajax({
+                async: false,
+                url:url,
+                success:function(){
+                    window.location.href='';
+                }
+            });
+        });
+
+    });
+</script>

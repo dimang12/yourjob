@@ -687,6 +687,36 @@ return array (
                                 )
                             )
                         ),
+                        'admin-feature-new' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-feature-new',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Feature',
+                                    'action' => 'newfeature'
+                                )
+                            )
+                        ),
+                        'admin-feature-edit' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-feature-edit',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Feature',
+                                    'action' => 'editfeature'
+                                )
+                            )
+                        ),
+                        'admin-feature-delete' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-feature-delete',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Feature',
+                                    'action' => 'deletefeature'
+                                )
+                            )
+                        ),
                 ),
 				
 		),
