@@ -1236,10 +1236,10 @@ class GlobalModel extends AbstractTableGateway {
     // Developer Name : PON NIMOL
     // Date : 24/ July / 2014
     // param 1: $table is the name of table
-    public function ZF2_Select($table)
+    public function ZF2_Select($table,$conditions=array())
     {
         $sql = new Sql($this->adapter);
-        $select = $sql->select($table);
+        $select = $sql->select($table)->where($conditions);;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();

@@ -43,6 +43,22 @@ class FeatureForm extends Form
                 'label' => 'Feature End Date',
             ),
         ));
+        $this->add(array(
+            'name' => 'company_id',
+            'type' => 'Zend\Form\Element\Select',
+            'options' =>array(
+                'label' => 'Company',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'feat_ordering',
+            'attributes' => array(
+                'type' => 'Zend\Form\Element\Text'
+            ),
+            'options' =>array(
+                'label' => 'Ordering',
+            ),
+        ));
     }
 
 }

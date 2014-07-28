@@ -40,12 +40,12 @@
 <script>
     $(function(){
         $('.icon-remove').on('click', function(){
-            id = $(this).parents('td').find('.icon-remove').attr('data-remove');
+            id = $(this).attr('data-remove');
             if(id != '')
             {
                 if(confirm('Are you sure to delete?'))
                 {
-                    url ='<?php echo $this->url('admin-feature-delete')?>?id='+id;
+                    url ='<?php echo $this->url('admin-feature-delete')?>?featid='+id;
                     $.ajax({url: url, success:function(){window.location.href='';}});
                 }
                 return false;
