@@ -25,6 +25,7 @@ class FeatureController extends AbstractActionController {
     }
     public function newfeatureAction()
     {
+
         $form = new FeatureForm();
         $request = $this->getRequest();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');

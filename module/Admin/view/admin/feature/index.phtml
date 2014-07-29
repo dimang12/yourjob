@@ -45,7 +45,7 @@
             {
                 if(confirm('Are you sure to delete?'))
                 {
-                    url ='<?php echo $this->url('admin-feature-delete')?>?featid='+id;
+                    url ='<?php echo $this->url('admin-feature-delete')?>?featId='+id;
                     $.ajax({url: url, success:function(){window.location.href='';}});
                 }
                 return false;

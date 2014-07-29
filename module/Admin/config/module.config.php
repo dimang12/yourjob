@@ -12,6 +12,7 @@ return array (
                         'Admin\Controller\Job' => 'Admin\Controller\JobController',
                         'Admin\Controller\Feature' => 'Admin\Controller\FeatureController',
                         'Admin\Controller\Employer' => 'Admin\Controller\EmployerController',
+                        'Admin\Controller\Jobseeker' => 'Admin\Controller\JobseekerController',
 				) 
 		),
 		'router' => array (
@@ -717,12 +718,22 @@ return array (
                                 )
                             )
                         ),
+                    'admin-job-seeker' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/admin-job-seeker',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Jobseeker',
+                                'action' => 'index'
+                            )
+                        )
+                    ),
                 ),
-				
+
 		),
 		'view_manager' => array (
 				'template_path_stack' => array (
-						'Admin' => __DIR__ . '/../view' 
-				) 
+						'Admin' => __DIR__ . '/../view'
+				)
 		) 
 );
