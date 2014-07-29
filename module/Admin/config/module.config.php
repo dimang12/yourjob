@@ -12,7 +12,7 @@ return array (
                         'Admin\Controller\Job' => 'Admin\Controller\JobController',
                         'Admin\Controller\Feature' => 'Admin\Controller\FeatureController',
                         'Admin\Controller\Employer' => 'Admin\Controller\EmployerController',
-                        'Admin\Controller\Jobseeker' => 'Admin\Controller\JobseekerController',
+                        'Admin\Controller\Seeker' => 'Admin\Controller\SeekerController',
 				) 
 		),
 		'router' => array (
@@ -723,7 +723,7 @@ return array (
                         'options' => array (
                             'route' => '/admin-job-seeker',
                             'defaults' => array (
-                                'controller' => 'Admin\Controller\Jobseeker',
+                                'controller' => 'Admin\Controller\Seeker',
                                 'action' => 'index'
                             )
                         )
