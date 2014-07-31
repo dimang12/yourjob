@@ -1,5 +1,6 @@
 <?php
 namespace Admin\Controller;
+use Admin\Form\ResumeForm;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class SeekerController extends AbstractActionController
@@ -14,7 +15,10 @@ class SeekerController extends AbstractActionController
     }
     public function newresumeAction()
     {
-
+        $form = new ResumeForm();
+        return array(
+            'form' => $form
+        );
     }
     public function editresumeAction()
     {

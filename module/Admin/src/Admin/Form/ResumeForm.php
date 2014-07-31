@@ -12,6 +12,17 @@ class ResumeForm extends Form
     {
         parent::__construct('resume');
         $this->setAttributes(array('method'=>'post','enctype'=>'multipart/form-data'));
+
+        $this->add(array(
+            'name'=>'resu_image',
+            'type' => 'File',
+            'attributes'=>array(
+                'class'=>'form-control',
+            ),
+            'options'=>array(
+                'label' => 'Choose Image'
+            )
+        ));
         $this->add(array(
             'name'=>'job_id',
             'type' => 'hidden'
@@ -28,13 +39,19 @@ class ResumeForm extends Form
             'type' => 'Select',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Province / City'
             )
         ));
         $this->add(array(
             'name'=>'category_id',
-            'type' => 'Text',
+            'type' => 'Select',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Category'
             )
         ));
         $this->add(array(
@@ -42,6 +59,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Current Position'
             )
         ));
         $this->add(array(
@@ -49,6 +69,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Apply For'
             )
         ));
 
@@ -57,6 +80,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Schedule'
             )
         ));
         $this->add(array(
@@ -64,6 +90,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Age'
             )
         ));
         $this->add(array(
@@ -71,6 +100,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Gender'
             )
         ));
         $this->add(array(
@@ -78,6 +110,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Salary'
             )
         ));
         $this->add(array(
@@ -85,13 +120,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
-            )
-        ));
-        $this->add(array(
-            'name'=>'job_year_experience',
-            'type' => 'Text',
-            'attributes'=>array(
-                'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Year of Experience'
             )
         ));
         $this->add(array(
@@ -99,6 +130,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Language'
             )
         ));
         $this->add(array(
@@ -106,6 +140,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Interesting'
             )
         ));
         $this->add(array(
@@ -113,6 +150,9 @@ class ResumeForm extends Form
             'type' => 'Textarea',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Skill'
             )
         ));
         $this->add(array(
@@ -120,6 +160,9 @@ class ResumeForm extends Form
             'type' => 'Text',
             'attributes'=>array(
                 'class'=>'form-control'
+            ),
+            'options'=>array(
+                'label' => 'Posting Date'
             )
         ));
     }

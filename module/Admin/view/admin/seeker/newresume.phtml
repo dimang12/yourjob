@@ -1,3 +1,7 @@
+<?php
+    $form = $this->form;
+    echo $this->form()->openTag($form);
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -8,11 +12,21 @@
                 <div class="col-md-3"><h3 class="text-warning"> &ensp;New Resume</h3></div>
                 <div class="col-md-9"><button type="button" class="btn btn-success pull-right" style="margin-top: 10px;"> Save</button></div></div>
             <div class="row">
-
+                <div class="col-md-4">
+                    <?php echo $this->formrow($form->get('resu_image'))?>
+                </div>
+                <div class="col-md-4">
+                    <?php echo $this->formlabel($form->get('category_id'))?>
+                    <?php echo $this->formselect($form->get('category_id'))?>
+                </div>
+                <div class="col-md-4">
+                    <?php echo $this->formlabel($form->get('city_id'))?>
+                    <?php echo $this->formselect($form->get('city_id'))?>
+                </div>
             </div>
         </div>
 
     </div>
 </div>
-
+<?php $this->form()->closeTag();?>
 
