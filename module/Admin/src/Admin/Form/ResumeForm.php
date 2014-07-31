@@ -51,6 +51,7 @@ class ResumeForm extends Form
                 'class'=>'form-control'
             )
         ));
+
         $this->add(array(
             'name'=>'resu_schedule',
             'type' => 'Text',
