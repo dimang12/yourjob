@@ -718,16 +718,36 @@ return array (
                                 )
                             )
                         ),
-                    'admin-job-seeker' => array (
-                        'type' => 'Literal',
-                        'options' => array (
-                            'route' => '/admin-job-seeker',
-                            'defaults' => array (
-                                'controller' => 'Admin\Controller\Seeker',
-                                'action' => 'index'
+                        'admin-job-seeker' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-job-seeker',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'index'
+                                )
                             )
-                        )
-                    ),
+                        ),
+                        'admin-resume-new' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-new',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'newresume'
+                                )
+                            )
+                        ),
+                        'admin-resume-editing' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-editing',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'editresume'
+                                )
+                            )
+                        ),
                 ),
 
 		),

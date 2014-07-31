@@ -1,36 +1,40 @@
-<div class="container-fluid bg">
+<div class="container">
     <div class="row">
         <div class="col-md-3">
             <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
         </div>
         <div class="col-md-9">
-            <div class="row bg-title"><h3 class="text-warning"> &ensp;Cover Letter</h3></div>
+            <div class="row bg-title">
+                <div class="col-md-3"><h3 class="text-warning"> &ensp;Resume</h3></div>
+                <div class="col-md-9"><a href="<?php echo $this->url('admin-resume-new')?>" class="btn btn-success pull-right" style="margin-top: 10px;">New Resume</a></div></div>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">
                         <tr class="bg-title">
                             <th>No</th>
-                            <th>Position</th>
-                            <th>Hiring No</th>
+                            <th>Name</th>
+                            <th>Current Position</th>
+                            <th>Apply For</th>
+                            <th>Salary</th>
                             <th>Posting Date</th>
-                            <th>Location</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
-                        <?php /*
+                        <?php
                         $i=1;
-                        foreach ( $jobData as $key => $row ) {?>
+                        foreach ( $resumeData as $key => $row ) {?>
                             <tr>
                                 <td><?php echo $i?></td>
-                                <td><?php echo $row['job_name']?></td>
-                                <td><?php echo $row['job_hiring_number']?></td>
-                                <td><?php echo $row['job_published_date']?></td>
-                                <td><?php echo $row['city_name']?></td>
-                                <td><?php if($row['job_status']==1)echo 'Active'; else echo 'Expire';?></td>
-                                <td><a href="<?php echo $this->url('job-editing')?>?job_id=<?php echo $row['job_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
-                                    <a href='#' title='Remove'><span data-remove='<?php echo $row['job_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
+                                <td><?php echo $row['user_id']?></td>
+                                <td><?php echo $row['resu_current_position']?></td>
+                                <td><?php echo $row['resu_position']?></td>
+                                <td><?php echo $row['resu_salary']?></td>
+                                <td><?php echo $row['resu_posting_date']?></td>
+                                <td><?php echo $row['resu_status']?></td>
+                                <td><a href="<?php echo $this->url('admin-resume-editing')?>?resumeId=<?php echo $row['resume_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
+                                    <a href='#' title='Remove'><span data-remove='<?php echo $row['resume_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
                             </tr>
-                            <?php $i++; } */?>
+                            <?php $i++; } ?>
                     </table>
                 </div>
             </div>
