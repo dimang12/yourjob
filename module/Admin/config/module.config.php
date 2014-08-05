@@ -748,6 +748,97 @@ return array (
                                 )
                             )
                         ),
+                        'admin-resume-delete' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-delete',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'deleteresume'
+                                )
+                            )
+                        ),
+                        'admin-resume-year' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-year',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'yearexperience'
+                                )
+                            )
+                        ),
+                        'admin-resume-education' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-education',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'education'
+                                )
+                            )
+                         ),
+                        'admin-resume-neweducation' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-neweducation',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'neweducation'
+                                )
+                            )
+                        ),
+                        'admin-resume-editeducation' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-editeducation',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'editeducation'
+                                )
+                            )
+                        ),
+                        'admin-resume-deleteeducation' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-deleteeducation',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'deleteeducation'
+                                )
+                            )
+                        ),
+                        'admin-resume-newyear' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-newyear',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'newyear'
+                                )
+                            )
+                        ),
+                        'admin-resume-edityear' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-edityear',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'edityear'
+                                )
+                            )
+                        ),
+                        'admin-resume-deleteyear' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-deleteyear',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'deleteyear'
+                                )
+                            )
+                        ),
+
                 ),
 
 		),

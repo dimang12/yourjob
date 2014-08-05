@@ -1,6 +1,14 @@
 <?php
     $form = $this->form;
     echo $this->form()->openTag($form);
+    $groupCat = array ();
+    foreach ( $this->catData as $value ) {
+        $groupCat [$value ['category_id']] = $value ['cate_name'];
+    }
+    $groupCity = array ();
+    foreach ( $this->cityData as $value ) {
+        $groupCity [$value ['city_id']] = $value ['city_name'];
+    }
 ?>
 <div class="container">
     <div class="row">
@@ -10,22 +18,67 @@
         <div class="col-md-9">
             <div class="row bg-title">
                 <div class="col-md-3"><h3 class="text-warning"> &ensp;New Resume</h3></div>
-                <div class="col-md-9"><button type="button" class="btn btn-success pull-right" style="margin-top: 10px;"> Save</button></div></div>
+                <div class="col-md-9">
+                    <a href="<?php echo $this->url('admin-job-seeker')?>" class="btn btn-default pull-right" style="margin-top: 10px;"> Back</a>
+                    <button type="submit" class="btn btn-success pull-right" style="margin-top: 10px;margin-right: 5px;"> Save</button>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-4">
-                    <?php echo $this->formrow($form->get('resu_image'))?>
+                    <?php echo $this->formrow($form->get('resu_image')->setAttributes(array('required'=>true)))?>
                 </div>
                 <div class="col-md-4">
-                    <?php echo $this->formlabel($form->get('category_id'))?>
-                    <?php echo $this->formselect($form->get('category_id'))?>
+                    <label>Category</label>
+                    <?php echo $this->formselect($form->get('category_id')->setAttributes(array('options'=>$groupCat)))?>
                 </div>
                 <div class="col-md-4">
-                    <?php echo $this->formlabel($form->get('city_id'))?>
-                    <?php echo $this->formselect($form->get('city_id'))?>
+                    <label>Province / City</label>
+                    <?php echo $this->formselect($form->get('city_id')->setAttributes(array('options'=> $groupCity)))?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Current Position</label>
+                    <?php echo $this->forminput($form->get('resu_current_position'))?>
+                </div>
+                <div class="col-md-4">
+                    <label>Apply For</label>
+                    <?php echo $this->formrow($form->get('resu_position'))?>
+                </div>
+                <div class="col-md-4">
+                    <label>Schedule</label>
+                    <?php echo $this->formrow($form->get('resu_schedule'))?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Age</label>
+                    <?php echo $this->formrow($form->get('resu_age')->setAttributes(array('class'=>'form-control col-md-12')))?>
+                </div>
+                <div class="col-md-4">
+                    <label>Gender</label>
+                    <?php echo $this->formrow($form->get('resu_gender'))?>
+                </div>
+                <div class="col-md-4">
+                    <label>Salary</label>
+                    <?php echo $this->formrow($form->get('resu_salary'))?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Language</label>
+                    <?php echo $this->formrow($form->get('resu_language'))?>
+                </div>
+                <div class="col-md-4">
+                    <label>Interesting</label>
+                    <?php echo $this->formrow($form->get('resu_interesting'))?>
+                </div>
+                <div class="col-md-4">
+                    <label>Skill</label>
+                    <?php echo $this->formrow($form->get('resu_skill'))?>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <?php $this->form()->closeTag();?>

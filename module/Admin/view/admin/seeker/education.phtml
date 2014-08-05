@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+        </div>
+        <div class="col-md-9">
+            <div class="row bg-title">
+                <div class="col-md-6"><h3 class="text-warning"> &ensp;Education</h3></div>
+                <div class="col-md-6">
+                    <a href="<?php echo $this->url('admin-job-seeker')?>" class="btn btn-default pull-right" style="margin-top: 10px;"> Back</a>
+                    <a href="<?php echo $this->url('admin-resume-neweducation')?>?resumeId=<?php echo $this->resumeId;?>" class="btn btn-success pull-right" style="margin-top: 10px;margin-right: 5px;">New Education</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr class="bg-title">
+                            <th>Education Title</th>
+                            <th>Education Description</th>
+                            <th>Action</th>
+                        </tr>
+                        <?php
+                        foreach ( $this->eduData as $key => $row ) {?>
+                            <tr>
+                                <td><?php echo $row['edu_title']?></td>
+                                <td><?php echo $row['edu_detail']?></td>
+                                <td><a href="<?php echo $this->url('admin-resume-editeducation')?>?eduId=<?php echo $row['edu_id']?>&resumeId=<?php echo $this->resumeId;?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
+                                    <a href='#' title='Remove'><span data-remove='<?php echo $row['edu_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.icon-remove').on('click',function(){
+            var eduId = $(this).attr('data-remove');
+            if(eduId != '')
+            {
+                if(confirm('Are you sure to delete?'))
+                {
+                    var url ='<?php echo $this->url('admin-resume-deleteeducation')?>?eduId='+eduId;
+                    $.ajax({url: url, success:function(){window.location.href='';}});
+                }
+                return false;
+            }
+        });
+    });
+
+</script>
+
