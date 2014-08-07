@@ -1,6 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Admin\Form\ResumeForm;
+use Admin\Form\UserForm;
 use Zend\Db\Sql\Expression;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -181,17 +182,17 @@ class SeekerController extends AbstractActionController
         $form = new ResumeForm();
         $request = $this->getRequest();
         $exp_id = $this->params()->fromQuery('expId');
-
+        $resumeId = $this->params()->fromQuery('resumeId');
         if($request->isPost()){
             $values = array(
                 'exp_title' => $this->params()->fromPost('exp_title'),
                 'exp_detail' => $this->params()->fromPost('exp_detail')
             );
             $sm->ZF2_Update('resume_experience',$values,array('exp_id'=>$exp_id));
-            return $this->redirect()->toUrl('admin-resume-year');
+            return $this->redirect()->toUrl('admin-resume-year?resumeId='.$resumeId.'');
         }
-        $expData = $sm->ZF2_Select('resume_experience');
-        $resumeId = $this->params()->fromQuery('resumeId');
+        $expData = $sm->ZF2_Select('resume_experience',array('exp_id'=>$exp_id));
+
         return array(
             'form'=>$form,
             'expData' => $expData,
@@ -267,5 +268,44 @@ class SeekerController extends AbstractActionController
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $sm->ZF2_Delete('resume_education',array('edu_id'=>$edu_id));
         return false;
+    }
+    public function userinfoAction()
+    {
+        echo $user_id = $this->checkAuthornicationService();
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+        $form = new UserForm();
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $form->setInputFilter($form->getInputFilter());
+            $form->setData($request->getPost());
+            if($form->isValid()){
+                $username = $this->params()->fromPost('username');
+                $pwd = $this->params()->fromPost('password');
+                $gender = $this->params()->fromPost('gender');
+                $phone = $this->params()->fromPost('phone');
+                $email = $this->params()->fromPost('email');
+                $website = $this->params()->fromPost('website');
+                $address = $this->params()->fromPost('address');
+                $info = $this->params()->fromPost('info');
+                $values = array(
+                    'username' => $username,
+                    'password' => new Expression("MD5('$pwd')"),
+                    'user_gender' => $gender,
+                    'user_address'=> $address,
+                    'user_email' => $email,
+                    'user_website' => $website,
+                    'user_info'=> $info,
+                    'user_phone' => $phone
+                );
+                $sm->ZF2_Update('users',$values,array('user_id'=>$user_id));
+                return $this->redirect()->toUrl('admin-job-seeker');
+            }
+        }
+        $userData = $sm->ZF2_Select('users',array('user_id'=>$user_id));
+        return array(
+            'form'=>$form,
+            'userData' => $userData
+        );
     }
 }

@@ -838,6 +838,16 @@ return array (
                                 )
                             )
                         ),
+                    'admin-userinfo' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/admin-userinfo',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Seeker',
+                                'action' => 'userinfo'
+                            )
+                        )
+                    ),
 
                 ),
 
