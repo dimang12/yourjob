@@ -848,6 +848,27 @@ return array (
                             )
                         )
                     ),
+                    'admin-resume-sample' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/admin-resume-sample',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Seeker',
+                                'action' => 'resumesample'
+                            )
+                        )
+                    ),
+                    'admin-seeker-jobsearch' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/admin-seeker-jobsearch',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Seeker',
+                                'action' => 'jobsearch'
+                            )
+                        )
+                    ),
+
 
                 ),
 

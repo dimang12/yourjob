@@ -271,7 +271,7 @@ class SeekerController extends AbstractActionController
     }
     public function userinfoAction()
     {
-        echo $user_id = $this->checkAuthornicationService();
+        $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $form = new UserForm();
         $request = $this->getRequest();
@@ -306,6 +306,24 @@ class SeekerController extends AbstractActionController
         return array(
             'form'=>$form,
             'userData' => $userData
+        );
+    }
+    public function resumesampleAction()
+    {
+
+        return array(
+
+        );
+    }
+    public function jobsearchAction()
+    {
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+        $jobData = $sm->getJob();
+        if($this->getRequest()->isPOst()){
+
+        }
+        return array(
+            'jobData' => $jobData
         );
     }
 }

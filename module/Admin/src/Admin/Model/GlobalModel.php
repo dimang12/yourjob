@@ -1256,4 +1256,16 @@ class GlobalModel extends AbstractTableGateway {
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();
     }
+    // get job
+    public function getJob()
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('j'=>'job'))
+            ->join(array('c'=>'company'),'j.user_id=c.user_id')
+            ->join(array('ct'=>'city'),'j.city_id=ct.city_id')
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
 }
