@@ -12,6 +12,7 @@ return array (
                         'Admin\Controller\Job' => 'Admin\Controller\JobController',
                         'Admin\Controller\Feature' => 'Admin\Controller\FeatureController',
                         'Admin\Controller\Employer' => 'Admin\Controller\EmployerController',
+                        'Admin\Controller\Seeker' => 'Admin\Controller\SeekerController',
 				) 
 		),
 		'router' => array (
@@ -717,12 +718,164 @@ return array (
                                 )
                             )
                         ),
+                        'admin-job-seeker' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-job-seeker',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'index'
+                                )
+                            )
+                        ),
+                        'admin-resume-new' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-new',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'newresume'
+                                )
+                            )
+                        ),
+                        'admin-resume-editing' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-editing',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'editresume'
+                                )
+                            )
+                        ),
+                        'admin-resume-delete' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-delete',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'deleteresume'
+                                )
+                            )
+                        ),
+                        'admin-resume-year' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-year',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'yearexperience'
+                                )
+                            )
+                        ),
+                        'admin-resume-education' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-education',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'education'
+                                )
+                            )
+                         ),
+                        'admin-resume-neweducation' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-neweducation',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'neweducation'
+                                )
+                            )
+                        ),
+                        'admin-resume-editeducation' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-editeducation',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'editeducation'
+                                )
+                            )
+                        ),
+                        'admin-resume-deleteeducation' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-deleteeducation',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'deleteeducation'
+                                )
+                            )
+                        ),
+                        'admin-resume-newyear' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-newyear',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'newyear'
+                                )
+                            )
+                        ),
+                        'admin-resume-edityear' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-edityear',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'edityear'
+                                )
+                            )
+                        ),
+                        'admin-resume-deleteyear' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/admin-resume-deleteyear',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Seeker',
+                                    'action' => 'deleteyear'
+                                )
+                            )
+                        ),
+                    'admin-userinfo' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/admin-userinfo',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Seeker',
+                                'action' => 'userinfo'
+                            )
+                        )
+                    ),
+                    'admin-resume-sample' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/admin-resume-sample',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Seeker',
+                                'action' => 'resumesample'
+                            )
+                        )
+                    ),
+                    'admin-seeker-jobsearch' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/admin-seeker-jobsearch',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Seeker',
+                                'action' => 'jobsearch'
+                            )
+                        )
+                    ),
+
+
                 ),
-				
+
 		),
 		'view_manager' => array (
 				'template_path_stack' => array (
-						'Admin' => __DIR__ . '/../view' 
-				) 
+						'Admin' => __DIR__ . '/../view'
+				)
 		) 
 );

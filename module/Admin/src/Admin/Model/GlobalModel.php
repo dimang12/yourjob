@@ -2,6 +2,7 @@
 
 namespace Admin\Model;
 
+use Zend\Db\Sql\Expression;
 use Zend\Db\TableGateway\AbstractTableGateway;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Sql;
@@ -1236,10 +1237,33 @@ class GlobalModel extends AbstractTableGateway {
     // Developer Name : PON NIMOL
     // Date : 24/ July / 2014
     // param 1: $table is the name of table
-    public function ZF2_Select($table)
+    public function ZF2_Select($table,$conditions=array())
     {
         $sql = new Sql($this->adapter);
-        $select = $sql->select($table);
+        $select = $sql->select($table)->where($conditions);;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+    // get resume Data
+    public function getResume()
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('r'=>'resume'))
+            ->join(array('u'=>'users'),'r.user_id=u.user_id')
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+    // get job
+    public function getJob()
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('j'=>'job'))
+            ->join(array('c'=>'company'),'j.user_id=c.user_id')
+            ->join(array('ct'=>'city'),'j.city_id=ct.city_id')
+        ;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();

@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+        </div>
+        <div class="col-md-9">
+            <div class="row bg-title">
+                <div class="col-md-3"><h3 class="text-warning"> &ensp;Resume</h3></div>
+                <div class="col-md-9"><a href="<?php echo $this->url('admin-resume-new')?>" class="btn btn-success pull-right" style="margin-top: 10px;">New Resume</a></div></div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr class="bg-title">
+                            <th>No</th>
+                            <th>Position</th>
+                            <th>Company</th>
+                            <th>Location</th>
+                            <th>Close Date</th>
+                        </tr>
+                        <?php
+                        $i=1;
+                        foreach ( $this->jobData as $key => $row ) {?>
+                            <tr>
+                                <td><?php echo $i?></td>
+                                <td><?php echo $row['job_name']?></td>
+                                <td><?php echo $row['com_name']?></td>
+                                <td><?php echo $row['city_name']?></td>
+                                <td><?php echo $row['job_close_date']?></td>
+                            </tr>
+                            <?php $i++; } ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

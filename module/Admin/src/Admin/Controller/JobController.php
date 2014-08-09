@@ -14,7 +14,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 class JobController extends AbstractActionController{
     public function checkAuthornicationService(){
         // check authornication service
-        $authService = $this->serviceLocator->get('auth_service');
+        $authService = $this->serviceLocator->get('auth_login');
         if($authService->hasIdentity()){
             return $user_id= $authService->getStorage()->read();
         }else {
@@ -22,7 +22,7 @@ class JobController extends AbstractActionController{
         }
     }
     public function indexAction(){
-//        $user_id = $this->checkAuthornicationService();
+        $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $jobData = $sm->ZF2_Query("SELECT * FROM  job INNER JOIN city ON job.city_id = city.city_id");
         return array(
@@ -31,6 +31,7 @@ class JobController extends AbstractActionController{
     }
     public function jobpostingAction()
     {
+        $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $form = new JobForm();
         $request = $this->getRequest();
@@ -56,7 +57,7 @@ class JobController extends AbstractActionController{
                 $job_age_from = $this->params()->fromPost('job_age_from');
                 $job_age_to = $this->params()->fromPost('job_age_to');
                 $values = array(
-                    'user_id' =>1,
+                    'user_id' =>$user_id,
                     'city_id' =>$city_id,
                     'job_name' => $job_name,
                     'job_schedule'=>$job_schedule,

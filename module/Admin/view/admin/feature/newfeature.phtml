@@ -1,4 +1,8 @@
+<?php echo $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.css')?>
+<?php echo $this->headScript ()->prependFile ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.js')?>
+
 <?php $form = $this->form?>
+<?php echo $this->form()->openTag($form)?>
 <div class='container-fluid'>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="page-header">
@@ -15,34 +19,48 @@
     <div class="row">
         <div class="col-md-4">
             <?php echo $this->formlabel($form->get('feat_image'));?>
-            <?php echo $this->forminput($form->get('feat_image')->setAttributes(array('class'=>'form-control col-md-12')));?>
+            <?php echo $this->forminput($form->get('feat_image')->setAttributes(array('class'=>'form-control col-md-12','required'=>true)));?>
             <?php echo $this->error ?>
         </div>
         <div class="col-md-4">
-            <?php echo $this->formlabel($form->get("feat_started_date"))?>
-            <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+            <?php
+            $groups = array ();
+            foreach ( $companyData as $value ) {
+                $groups [$value ['company_id']] = $value ['com_name'];
+            }
+            ?>
+            <?php echo $this->formlabel($form->get('company_id'))?>
+            <?php echo $this->formSelect($form->get('company_id')->setAttributes(array('class'=>'col-md-12 form-control','options'=>$groups)));?>
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col-md-4">
             <?php echo $this->formlabel($form->get("feat_started_date"))?>
-            <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+            <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control','id'=>'datetimepicker1','required'=>true)));?>
         </div>
         <div class="col-md-4">
-            <?php echo $this->formlabel($form->get("feat_started_date"))?>
-            <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+            <?php echo $this->formlabel($form->get("feat_end_date"))?>
+            <?php echo $this->forminput($form->get('feat_end_date')->setAttributes(array('class'=>'col-md-12 form-control','id'=>'datetimepicker2','required'=>true)));?>
         </div>
         <div class="col-md-4">
-            <?php echo $this->formlabel($form->get("feat_started_date"))?>
-            <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+            <?php echo $this->formlabel($form->get("feat_ordering"))?>
+            <?php echo $this->forminput($form->get('feat_ordering')->setAttributes(array('class'=>'col-md-12 form-control')));?>
         </div>
     </div>
 </div>
 </div>
-
+<?php echo $this->form()->closeTag()?>
 <script>
     $(function(){
+        $('#datetimepicker1').datetimepicker({
+            timepicker:false,
+            format:'Y-m-d'
+        });
+        $('#datetimepicker2').datetimepicker({
+            timepicker:false,
+            format:'Y-m-d'
+        });
         $('.icon-delete').on('click', function(){
             livingId = $(this).parents('.showcase-image').find('.icon-delete').attr('living-id');
             url = '<?php echo $this->url('deletebeyond')?>?livingId='+ livingId;
@@ -51,49 +69,6 @@
                 url: url,
                 success: function(){
                     window.location.href= '';
-                }
-            });
-        });
-
-        // remove parent
-        $('.remove-parent').click(function(){
-            parent_id = $(this).attr('parent-id');
-            url='<?php echo $this->url('beyondliving-parent-remove')?>?parent-id='+parent_id;
-            cf = confirm("Are you sure to delete this parent?");
-            if (cf==true){
-                $.ajax({
-                    async: false,
-                    url:url,
-                    success:function(){
-                        window.location.href='';
-                    }
-                });
-            }else{
-                return false;
-            }
-        });
-        //Show Modal update parent
-        $('.update-parent').click(function(){
-            parent_id = $(this).attr('parent-id');
-            kh_live_title=$('input[name="u_kh_live_title['+parent_id+']"]').val();
-            live_title = $('input[name="u_live_title['+parent_id+']"]').val();
-            $("input[name='update_parent_title']").val(live_title);
-            $("input[name='update_kh_parent_title']").val(kh_live_title);
-            $("input[name='parentId']").val(parent_id);
-            $('.btnModal').click();
-        });
-
-        // update parent in database
-        $('.btn-update').click(function(){
-            parent_id = $("input[name='parentId']").val();
-            kh_live_title=$("input[name='update_kh_parent_title']").val();
-            live_title = $("input[name='update_parent_title']").val();
-            url='<?php echo $this->url('beyondliving-parent-update')?>?parent-id='+parent_id+'&live_title='+live_title+'&kh_live_title='+kh_live_title;
-            $.ajax({
-                async: false,
-                url:url,
-                success:function(){
-                    window.location.href='';
                 }
             });
         });

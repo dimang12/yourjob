@@ -1,0 +1,37 @@
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+foreach($this->expData as $value){
+    $exp_title = $value['exp_title'];
+    $exp_detail = $value['exp_detail'];
+}
+?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+        </div>
+        <div class="col-md-9">
+            <div class="row bg-title">
+                <div class="col-md-3"><h3 class="text-warning"> &ensp;Edit Year</h3></div>
+                <div class="col-md-9">
+                    <a href="<?php echo $this->url('admin-resume-year')?>?resumeId=<?php echo $this->resumeId;?>" class="btn btn-default pull-right" style="margin-top: 10px;"> Back</a>
+                    <button type="submit" class="btn btn-success pull-right" style="margin-top: 10px;margin-right: 5px;"> Update</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Year </label>
+                    <?php echo $this->formrow($form->get('exp_title')->setAttributes(array('value'=>$exp_title)))?>
+                </div>
+                <div class="col-md-6">
+                    <label>Description </label>
+                    <?php echo $this->formrow($form->get('exp_detail')->setAttributes(array('value'=>$exp_detail)))?>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<?php echo $this->form()->closeTag()?>
+
