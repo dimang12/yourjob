@@ -28,7 +28,7 @@ $categories = $resultSet->initialize($this->categories);
                     $j = 1;
                     foreach($categories as $k=>$v){
                         if($j > (($i-1) * $perColumn)  &&  $j <= ($i * $perColumn)){
-                           $asideList .='<li class="full-w clearfix"><a href="'.$v["category_id"].'" class="pull-left">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
+                           $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/".$v["category_id"].'" class="pull-left">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
                         }
                         $j++;
                     }

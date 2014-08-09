@@ -130,7 +130,19 @@ return array (
 										) 
 								) 
 						),
-						
+
+                        'category' => array (
+                            'type' => 'Zend\Mvc\Router\Http\Literal',
+                            'options' => array (
+                                'route' => '/category/',
+                                'defaults' => array (
+                                    'controller' => 'Application\Controller\Index',
+                                    'action' => 'category',
+                                    'alias' => '[a-zA-Z0-9]+'
+                                )
+                            )
+                        ),
+
 						'scene' => array (
 								'type' => 'Zend\Mvc\Router\Http\Literal',
 								'options' => array (

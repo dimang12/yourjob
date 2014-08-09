@@ -22,7 +22,12 @@ class IndexController extends AbstractActionController
         return new ViewModel(array(
             "categories" => $cateDb->getAllCate()
         ));
-    }   
+    }
+
+
+    public function categoryAction(){
+
+    }
     
 
 
