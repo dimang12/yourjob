@@ -6,10 +6,21 @@
 			</div>
 			
 			<div class="col-md-5">
-				<div class="dropdown-gray padding-8-5 bold text-shadow border-radius-5 full-w">
-					All Categories
-					<i class="pull-right">more</i>
-				</div>
+
+                <div class="btn-group col-md-12 no-padding custom-dropdown">
+                    <button type="button" class="btn btn-danger dropdown-gray col-md-11 no-border padding-8-5">All Categories</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle bg-gradient-dark-gray no-border padding-8-5" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Categories</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" style="width:540px">
+                        <li><a href="#">All Categories</a></li>
+                        <li class="divider"></li>
+                        <li class="font-11 padding-5-10" style="max-height:220px; overflow-y:scroll;">
+                            <?php echo $this->partial("layout/_category"); ?>
+                        </li>
+                    </ul>
+                </div>
 			</div>
 			
 			<div class="col-md-2 no-padding">

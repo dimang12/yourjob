@@ -10,16 +10,32 @@ $categories = $resultSet->initialize($this->categories);
             <a class="bg-white" href="#"><?php echo $this->translate("Industry");?></a>
             <a class="bg-white" href="#"><?php echo $this->translate("Salary");?></a>
         </menu>
-        <div>
-            <?php
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs clearfix" role="tablist">
+            <li class="active"><a href="#home" role="tab" data-toggle="tab"><?php echo $this->translate("Job Categories"); ?></a></li>
+            <li><a href="#profile" role="tab" data-toggle="tab"><?php echo $this->translate("Location"); ?></a></li>
+            <li><a href="#messages" role="tab" data-toggle="tab"><?php echo $this->translate("Industry");?></a></li>
+            <li><a href="#settings" role="tab" data-toggle="tab"><?php echo $this->translate("Salary");?></a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="home">
+                <?php
                 $cateList = '';
                 $asideList = '';
                 $perColumn = round($categories->count() / 3);
-                if($categories->count() % 3 <> 0) $perColumn++;
+                $add=1;
 
                 for($i=1; $i<=3; $i++){
+                    if(($categories->count() % 3) <> 0){
+                        if($i > ($categories->count() % 3) ){
+                            $add=0;
+                        }
+                    }
                     if($i==1){
-                        $asideList = '<aside class="col-md-4 no-padding-left border-right-gray"><ul>';
+                        $asideList = '<aside class="col-md-4 no-padding-left border-right-gray "><ul>';
                     }elseif($i == 2){
                         $asideList = '<aside class="col-md-4 border-right-gray"><ul>';
                     }else{
@@ -27,20 +43,20 @@ $categories = $resultSet->initialize($this->categories);
                     }
                     $j = 1;
                     foreach($categories as $k=>$v){
-                        if($j > (($i-1) * $perColumn)  &&  $j <= ($i * $perColumn)){
-                           $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/".$v["category_id"].'" class="pull-left">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
+                        if($j > (($i-1) * ($perColumn+$add))  &&  $j <= ($i * ($perColumn+$add))){
+                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
                         }
                         $j++;
                     }
                     $cateList .= $asideList .'</ul></aside>';
                 }
                 echo $cateList;
-            ?>
+                ?>
+            </div>
+            <div class="tab-pane fade" id="profile">b</div>
+            <div class="tab-pane fade" id="messages">c</div>
+            <div class="tab-pane fade" id="settings">d</div>
         </div>
-
-        <ul class="nav nav-tabs" role="tablist">
-
-        </ul>
     </aside>
     <aside class="col-lg-3">
         <menu class="no-padding border-bottom-gray font-16 padding-5-0">
@@ -65,7 +81,7 @@ $categories = $resultSet->initialize($this->categories);
             </button>
         </div>
     </aside>
-
-
 </div>
+
+
 

@@ -94,11 +94,6 @@ label                       { font-weight:normal;}
 .bg-red						{ background:#106cad;}
 .bg-green					{ background:#52B000;}
 .bg-pink					{ background:#FF0AF2;}
-.bg-gradient-light-gray		{ 
-							  background-image: -moz-linear-gradient(top, #efefef, #e0e0e0);
-							  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#efefef), to(#e0e0e0));
-							  background-image: linear-gradient(to bottom, #efefef, #e0e0e0);
-}
 
 
 .color-black				{ color:#000;}
@@ -128,3 +123,17 @@ label                       { font-weight:normal;}
 
 
 /*~~~~~~~~~~gradient background~~~~~~~~~*/
+.bg-gradient-light-gray		{
+    background-image: -moz-linear-gradient(top, #efefef, #e0e0e0);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#efefef), to(#e0e0e0));
+    background-image: linear-gradient(to bottom, #efefef, #e0e0e0);
+}
+.bg-gradient-dark-gray		{
+    background-image: -moz-linear-gradient(top, #8d989c, #818a8f);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8d989c), to(#818a8f));
+    background-image: linear-gradient(to bottom, #8d989c, #818a8f);
+}
+
+
+/*~~~~~~~~~~General~~~~~~~~~*/
+.tail-cat                   { margin-top:-8px; margin-right:-5px; border-radius: 0 5px 5px 0; padding:10px; cursor:pointer;}
