@@ -42,42 +42,42 @@ return array(
             				),
             		),
             	),
-        		
-        		'products' => array(
-        				'type' => 'Zend\Mvc\Router\Http\Regex',
-        				'options' => array(
-        						'regex' => '/(?<alias>[a-zA-Z0-9_-]+)/(?<products>[a-zA-Z0-9_-]+)',
-        						'spec' => '/products/',
-        						'defaults' => array(
-        								'controller' => 'Production\Controller\Index',
-        								'action' => 'info',
-        						),
-        				),
-        		),        		
-        	
-        		'viewmore' => array(
-        				'type' => 'Zend\Mvc\Router\Http\Regex',
-        				'options' => array(
-        						'regex' => '/(?<alias>[a-zA-Z0-9_-]+)/(?<products>[a-zA-Z0-9_-]+)/(?<application>[a-zA-Z0-9_-]+)',
-        						'spec' => '/products/application/',
-        						'defaults' => array(
-        								'controller' => 'Production\Controller\Index',
-        								'action' => 'viewmore',
-        						),
-        				),
-        		),
-
-        		'series' => array(
-        				'type' => 'Zend\Mvc\Router\Http\Regex',
-        				'options' => array(
-        						'regex' => '/(?<alias>[a-zA-Z0-9_-]+)/(?<products>[a-zA-Z0-9_-]+)/(?<application>[a-zA-Z0-9_-]+)/(?<series>[a-zA-Z0-9_-]+)',
-        						'spec' => '/products/application/series/',
-        						'defaults' => array(
-        								'controller' => 'Production\Controller\Index',
-        								'action' => 'series',
-        						),
-        				),
-        		),
+//
+//        		'products' => array(
+//        				'type' => 'Zend\Mvc\Router\Http\Regex',
+//        				'options' => array(
+//        						'regex' => '/(?<alias>[a-zA-Z0-9_-]+)/(?<products>[a-zA-Z0-9_-]+)',
+//        						'spec' => '/products/',
+//        						'defaults' => array(
+//        								'controller' => 'Production\Controller\Index',
+//        								'action' => 'info',
+//        						),
+//        				),
+//        		),
+//
+//        		'viewmore' => array(
+//        				'type' => 'Zend\Mvc\Router\Http\Regex',
+//        				'options' => array(
+//        						'regex' => '/(?<alias>[a-zA-Z0-9_-]+)/(?<products>[a-zA-Z0-9_-]+)/(?<application>[a-zA-Z0-9_-]+)',
+//        						'spec' => '/products/application/',
+//        						'defaults' => array(
+//        								'controller' => 'Production\Controller\Index',
+//        								'action' => 'viewmore',
+//        						),
+//        				),
+//        		),
+//
+//        		'series' => array(
+//        				'type' => 'Zend\Mvc\Router\Http\Regex',
+//        				'options' => array(
+//        						'regex' => '/(?<alias>[a-zA-Z0-9_-]+)/(?<products>[a-zA-Z0-9_-]+)/(?<application>[a-zA-Z0-9_-]+)/(?<series>[a-zA-Z0-9_-]+)',
+//        						'spec' => '/products/application/series/',
+//        						'defaults' => array(
+//        								'controller' => 'Production\Controller\Index',
+//        								'action' => 'series',
+//        						),
+//        				),
+//        		),
         	),
         ),
 		'service_manager' => array (

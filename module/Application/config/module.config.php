@@ -132,7 +132,7 @@ return array (
 						),
 
                         'category' => array (
-                            'type' => 'Zend\Mvc\Router\Http\Literal',
+                            'type' => 'Zend\Mvc\Router\Http\Segment',
                             'options' => array (
                                 'route' => '/category/',
                                 'defaults' => array (
