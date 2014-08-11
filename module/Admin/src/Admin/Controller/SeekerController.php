@@ -319,8 +319,9 @@ class SeekerController extends AbstractActionController
     {
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $jobData = $sm->getJob();
-        if($this->getRequest()->isPOst()){
-
+        if($this->getRequest()->isGet()){
+            $search = $this->params()->fromQuery('search');
+            $jobData = $sm->searchJob($search);
         }
         return array(
             'jobData' => $jobData

@@ -17,7 +17,7 @@ class FeatureController extends AbstractActionController {
     public function indexAction(){
 
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $featureData = $sm->ZF2_Query("SELECT * FROM feature f INNER  JOIN company c ON f.company_id = c.company_id");
+        $featureData = $sm->getFeature();
         return array(
             'featureData'=>$featureData,
 
@@ -74,16 +74,16 @@ class FeatureController extends AbstractActionController {
         $feature_id = $this->params()->fromQuery('featId');
         if($request->isPost()){
             //try{
-                $feat_started_date= $this->params()->fromPost('feat_started_date');
-                $feat_end_date = $this->params()->fromPost('feat_end_date');
-                $feat_ordering = $this->params()->fromPost('feat_ordering');
-                $values = array(
-                    'feat_started_date' => $feat_started_date,
-                    'feat_end_date' => $feat_end_date,
-                    'feat_ordering' => $feat_ordering
-                );
-                $sm->ZF2_Update('feature',$values,array('feature_id'=>$feature_id));
-               // return $this->redirect()->toUrl('admin-feature');
+            $feat_started_date= $this->params()->fromPost('feat_started_date');
+            $feat_end_date = $this->params()->fromPost('feat_end_date');
+            $feat_ordering = $this->params()->fromPost('feat_ordering');
+            $values = array(
+                'feat_started_date' => $feat_started_date,
+                'feat_end_date' => $feat_end_date,
+                'feat_ordering' => $feat_ordering
+            );
+            $sm->ZF2_Update('feature',$values,array('feature_id'=>$feature_id));
+            // return $this->redirect()->toUrl('admin-feature');
 //            }catch (\Exception $ext){
 //                echo 'hello';
 //            }
