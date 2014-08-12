@@ -83,7 +83,7 @@ class FeatureController extends AbstractActionController {
                 'feat_ordering' => $feat_ordering
             );
             $sm->ZF2_Update('feature',$values,array('feature_id'=>$feature_id));
-            // return $this->redirect()->toUrl('admin-feature');
+             return $this->redirect()->toUrl('admin-feature');
 //            }catch (\Exception $ext){
 //                echo 'hello';
 //            }
@@ -99,7 +99,10 @@ class FeatureController extends AbstractActionController {
         $this->layout('layout/ajax_layout');
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $feature_id = $this->params()->fromQuery('featId');
+        $featureData = $sm->ZF2_Select("feature",array("feature_id"=>$feature_id));
+        unlink("public/img/feature/".$featureData[0]["feat_image"]);
         $sm->ZF2_Delete('feature',array('feature_id'=>$feature_id));
+
         return false;
     }
 } 
