@@ -1,14 +1,17 @@
 <div class="container-fluid bg">
-    <div class="row">
-        <div class="col-md-3">
-            <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    <div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+        <div class='page-header'>
+            <div class='row'>
+                <div class='col-md-8'><h1 class='text-warning'>Job Viewing</h1></div>
+                <div class='col-md-4 text-right'></div>
+            </div>
         </div>
-        <div class="col-md-9">
-            <div class="row bg-title"><h3 class="text-warning"> &ensp;Job Viewing</h3></div>
-            <div class="row">
+        <div class='row'>
+            <div class='container-fluid'>
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">
-                        <tr class="bg-title">
+                        <tr>
                             <th>No</th>
                             <th>Position</th>
                             <th>Hiring No</th>
@@ -35,7 +38,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <script>

@@ -10,72 +10,74 @@
         $groupCity [$value ['city_id']] = $value ['city_name'];
     }
 ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+<div class="container-flue-id">
+    <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+    <div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+        <div class='page-header'>
+            <div class='row'>
+                <div class='col-md-3'><h1 class='text-warning'>New Resume</h1></div>
+                <div class="col-md-9 text-right">
+                    <button type="submit" class="btn btn-success"> Save</button>&nbsp;&nbsp;
+                    <a href="<?php echo $this->url('admin-job-seeker')?>" class="btn btn-default"> Back</a>
+                </div>
+            </div>
         </div>
-        <div class="col-md-9">
-            <div class="row bg-title">
-                <div class="col-md-3"><h3 class="text-warning"> &ensp;New Resume</h3></div>
-                <div class="col-md-9">
-                    <a href="<?php echo $this->url('admin-job-seeker')?>" class="btn btn-default pull-right" style="margin-top: 10px;"> Back</a>
-                    <button type="submit" class="btn btn-success pull-right" style="margin-top: 10px;margin-right: 5px;"> Save</button>
+        <div class='row'>
+            <div class='container-fluid'>
+                <div class="row">
+                    <div class="col-md-4">
+                        <?php echo $this->formrow($form->get('resu_image')->setAttributes(array('required'=>true)))?>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Category</label>
+                        <?php echo $this->formselect($form->get('category_id')->setAttributes(array('options'=>$groupCat)))?>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Province / City</label>
+                        <?php echo $this->formselect($form->get('city_id')->setAttributes(array('options'=> $groupCity)))?>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <?php echo $this->formrow($form->get('resu_image')->setAttributes(array('required'=>true)))?>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Current Position</label>
+                        <?php echo $this->forminput($form->get('resu_current_position'))?>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Apply For</label>
+                        <?php echo $this->formrow($form->get('resu_position'))?>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Schedule</label>
+                        <?php echo $this->formrow($form->get('resu_schedule'))?>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <label>Category</label>
-                    <?php echo $this->formselect($form->get('category_id')->setAttributes(array('options'=>$groupCat)))?>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Age</label>
+                        <?php echo $this->formrow($form->get('resu_age')->setAttributes(array('class'=>'form-control col-md-12')))?>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Gender</label>
+                        <?php echo $this->formrow($form->get('resu_gender'))?>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Salary</label>
+                        <?php echo $this->formrow($form->get('resu_salary'))?>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <label>Province / City</label>
-                    <?php echo $this->formselect($form->get('city_id')->setAttributes(array('options'=> $groupCity)))?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <label>Current Position</label>
-                    <?php echo $this->forminput($form->get('resu_current_position'))?>
-                </div>
-                <div class="col-md-4">
-                    <label>Apply For</label>
-                    <?php echo $this->formrow($form->get('resu_position'))?>
-                </div>
-                <div class="col-md-4">
-                    <label>Schedule</label>
-                    <?php echo $this->formrow($form->get('resu_schedule'))?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <label>Age</label>
-                    <?php echo $this->formrow($form->get('resu_age')->setAttributes(array('class'=>'form-control col-md-12')))?>
-                </div>
-                <div class="col-md-4">
-                    <label>Gender</label>
-                    <?php echo $this->formrow($form->get('resu_gender'))?>
-                </div>
-                <div class="col-md-4">
-                    <label>Salary</label>
-                    <?php echo $this->formrow($form->get('resu_salary'))?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <label>Language</label>
-                    <?php echo $this->formrow($form->get('resu_language'))?>
-                </div>
-                <div class="col-md-4">
-                    <label>Interesting</label>
-                    <?php echo $this->formrow($form->get('resu_interesting'))?>
-                </div>
-                <div class="col-md-4">
-                    <label>Skill</label>
-                    <?php echo $this->formrow($form->get('resu_skill'))?>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Language</label>
+                        <?php echo $this->formrow($form->get('resu_language'))?>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Interesting</label>
+                        <?php echo $this->formrow($form->get('resu_interesting'))?>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Skill</label>
+                        <?php echo $this->formrow($form->get('resu_skill'))?>
+                    </div>
                 </div>
             </div>
         </div>
