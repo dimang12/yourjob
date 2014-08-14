@@ -1268,4 +1268,69 @@ class GlobalModel extends AbstractTableGateway {
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();
     }
+    // get job by id
+    public function getJobByUserId($user_id)
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('j'=>'job'))
+            ->columns(array(
+                '*',
+                'status' => new Expression("IF(job_close_date <= NOW(),'Expire','Active')")
+            ))
+            ->join(array('c'=>'company'),'j.user_id=c.user_id')
+            ->join(array('ct'=>'city'),'j.city_id=ct.city_id')
+            ->where("user_id=$user_id")
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+    // search job
+    public function searchJob($search)
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('j'=>'job'))
+            ->join(array('c'=>'company'),'j.user_id=c.user_id')
+            ->join(array('ct'=>'city'),'j.city_id=ct.city_id')
+            ->where("job_name LIKE '%$search%' OR com_name LIKE '%$search%' OR city_name LIKE '%$search%'")
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+    // search resume Data
+    public function searchResume($search)
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('r'=>'resume'))
+            ->join(array('u'=>'users'),'r.user_id=u.user_id')
+            ->where("u.username LIKE '%$search%' OR resu_current_position LIKE '%$search%' OR resu_position LIKE '%$search%' OR resu_salary LIKE '%$search%'")
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+    // get resume by id
+    public function getResumeById($resume_id)
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('r'=>'resume'))
+            ->join(array('u'=>'users'),'r.user_id=u.user_id')
+            ->where("resume_id=$resume_id")
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+    // get feature
+    public function getFeature(){
+        //ZF2_Query("SELECT * FROM feature f INNER  JOIN company c ON f.company_id = c.company_id");
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('f'=>'feature'))
+            ->join(array('c'=>'company'),'f.company_id=c.company_id')
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
 }

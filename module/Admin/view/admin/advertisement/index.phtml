@@ -1,0 +1,20 @@
+<div class='container-fluid'>
+    <?php echo $this->partial('admin/partial/_nav_menu')?>
+
+    <?php $form = $this->form; echo $this->form()->openTag($form)?>
+    <div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+        <div class='page-header'>
+            <div class='row'>
+                <div class='col-md-8'><h1 class='text-warning'>Advertisement</h1></div>
+                <div class='col-md-4 text-right'><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-upload'></span> Upload<?php echo $this->formbutton()->closeTag()?></div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='container-fluid'>
+
+            </div>
+        </div>
+    </div>
+    <?php echo $this->form()->closeTag($form)?>
+</div>
+

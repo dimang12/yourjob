@@ -14,23 +14,28 @@
     }
 ?>
 <div class="container-fluid bg">
-    <div class="row">
-        <div class="col-md-3">
-            <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    <div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+        <div class='page-header'>
+            <div class='row'>
+                <div class='col-md-8'><h1 class='text-warning'>Resume Detail</h1></div>
+                <div class='col-md-4 text-right'></div>
+            </div>
         </div>
-        <div class="col-md-9">
-            <div class="row bg-title"><h3 class="text-warning"> Resume Detail</h3></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Name:</label></div><div class="col-md-9">: <?php echo $name?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Current Position</label></div><div class="col-md-9">: <?php echo $current_position?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Apply For</label></div><div class="col-md-9">: <?php echo $position_apply?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Salary</label></div><div class="col-md-9">: <?php echo $salary?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Schedule</label></div><div class="col-md-9">: <?php echo $schedule?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Age</label></div><div class="col-md-9">: <?php echo $age?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Gender</label></div><div class="col-md-9">: <?php echo $gender?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Experience</label></div><div class="col-md-9">: <?php echo $experience?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Language</label></div><div class="col-md-9">: <?php echo $language?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Interesting</label></div><div class="col-md-9">: <?php echo $interest?></div></div>
-            <div class="row"><div class="col-md-3 text-right"><label>Skill</label></div><div class="col-md-9">: <?php echo $skill?></div></div>
+        <div class='row'>
+            <div class='container-fluid'>
+                <div class="row"><div class="col-md-3 text-right"><label>Name:</label></div><div class="col-md-9">: <?php echo $name?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Current Position</label></div><div class="col-md-9">: <?php echo $current_position?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Apply For</label></div><div class="col-md-9">: <?php echo $position_apply?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Salary</label></div><div class="col-md-9">: <?php echo $salary?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Schedule</label></div><div class="col-md-9">: <?php echo $schedule?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Age</label></div><div class="col-md-9">: <?php echo $age?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Gender</label></div><div class="col-md-9">: <?php echo $gender?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Experience</label></div><div class="col-md-9">: <?php echo $experience?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Language</label></div><div class="col-md-9">: <?php echo $language?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Interesting</label></div><div class="col-md-9">: <?php echo $interest?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Skill</label></div><div class="col-md-9">: <?php echo $skill?></div></div>
+            </div>
         </div>
     </div>
 </div>

@@ -13,6 +13,7 @@ return array (
                         'Admin\Controller\Feature' => 'Admin\Controller\FeatureController',
                         'Admin\Controller\Employer' => 'Admin\Controller\EmployerController',
                         'Admin\Controller\Seeker' => 'Admin\Controller\SeekerController',
+                        'Admin\Controller\Advertisement' => 'Admin\Controller\AdvertisementController',
 				) 
 		),
 		'router' => array (
@@ -865,6 +866,16 @@ return array (
                             'defaults' => array (
                                 'controller' => 'Admin\Controller\Seeker',
                                 'action' => 'jobsearch'
+                            )
+                        )
+                    ),
+                    'admin-advertisement' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/admin-advertisement',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Advertisement',
+                                'action' => 'index'
                             )
                         )
                     ),

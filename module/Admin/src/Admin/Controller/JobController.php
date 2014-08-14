@@ -22,9 +22,9 @@ class JobController extends AbstractActionController{
         }
     }
     public function indexAction(){
-        $this->checkAuthornicationService();
+        $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $jobData = $sm->ZF2_Query("SELECT * FROM  job INNER JOIN city ON job.city_id = city.city_id");
+        $jobData = $sm->getJob($user_id);
         return array(
             'jobData'=>$jobData,
         );
@@ -153,10 +153,10 @@ class JobController extends AbstractActionController{
     public function resumesearchAction()
     {
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $resumeData = $sm->ZF2_Select_AllColumn('resume',array());
+        $resumeData = $sm->getResume();
         if($this->getRequest()->isGet()){
             $search = $this->params()->fromQuery('search');
-            $resumeData = $sm->ZF2_Query("SELECT * FROM resume WHERE resu_current_position LIKE \'%".$search."%\' OR resu_position LIKE \'%".$search."%\'");
+            $resumeData = $sm->searchResume($search);
         }
         return array(
             'resumeData' => $resumeData
@@ -170,7 +170,7 @@ class JobController extends AbstractActionController{
     {
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $resume_id = $this->params()->fromQuery('resumeId');
-        $resumeData = $sm->ZF2_Query("SELECT * FROM resume r INNER JOIN users u ON r.user_id = u.user_id WHERE r.resume_id = $resume_id");
+        $resumeData = $sm->getResumeById($resume_id);
         return array('resumeData'=>$resumeData);
     }
 }

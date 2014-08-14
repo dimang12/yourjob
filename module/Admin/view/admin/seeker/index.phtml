@@ -1,16 +1,17 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+<div class="container-flue-id">
+    <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+    <div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+        <div class='page-header'>
+            <div class='row'>
+                <div class='col-md-3'><h1 class='text-warning'>Resume</h1></div>
+                <div class="col-md-9"><a href="<?php echo $this->url('admin-resume-new')?>" class="btn btn-success pull-right">New Resume</a></div>
+            </div>
         </div>
-        <div class="col-md-9">
-            <div class="row bg-title">
-                <div class="col-md-3"><h3 class="text-warning"> &ensp;Resume</h3></div>
-                <div class="col-md-9"><a href="<?php echo $this->url('admin-resume-new')?>" class="btn btn-success pull-right" style="margin-top: 10px;">New Resume</a></div></div>
-            <div class="row">
+        <div class='row'>
+            <div class='container-fluid'>
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
-                        <tr class="bg-title">
+                    <table class="table table-bordered">
+                        <tr>
                             <th>No</th>
                             <th>Name</th>
                             <th>Current Position</th>
@@ -43,7 +44,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <script>
