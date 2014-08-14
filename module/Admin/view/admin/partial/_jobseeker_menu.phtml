@@ -5,7 +5,7 @@ $router = $routeMatch->getMatchedRouteName();
 ?>
 <div class='col-md-2 sidebar' style="background: #28353B">
     <ul class="nav nav-sidebar">
-        <li class="<?php if($router == 'admin-job-seeker') echo 'active'?>"><a href='<?php echo $this->url('admin-job-seeker')?>'><span class='glyphicon glyphicon-home' ></span> &nbsp;Resume / CV</a></li>
+        <li class="<?php if($router == 'admin-job-seeker' || $router == 'admin-resume-education' || $router == 'admin-resume-education' || $router == 'admin-resume-neweducation' || $router == 'admin-resume-editeducation' || $router == 'admin-resume-education' || $router == 'admin-resume-neweducation' || $router == 'admin-resume-editeducation' || $router == 'admin-resume-education' || $router == 'admin-resume-neweducation' || $router == 'admin-resume-editeducation' || $router == 'admin-resume-year' || $router == 'admin-resume-newyear' || $router == 'admin-resume-edityear' || $router == 'admin-resume-new' || $router == 'admin-resume-editing') echo 'active'?>"><a href='<?php echo $this->url('admin-job-seeker')?>'><span class='glyphicon glyphicon-home' ></span> &nbsp;Resume / CV</a></li>
         <li class="<?php if($router == 'admin-resume-sample') echo 'active'?>"><a href="<?php echo $this->url('admin-resume-sample')?>"><span class='glyphicon glyphicon-map-marker'></span> &nbsp;Resume / CV Sample</a></li>
         <li class="<?php if($router == '') echo 'active'?>"><a href="#"><span class='glyphicon glyphicon-map-marker'></span> &nbsp;Job Alert</a></li>
         <li class="<?php if($router == '') echo 'active'?>"><a href="#"><span class='glyphicon glyphicon-map-marker'></span> &nbsp;Job Recommendation</a></li>

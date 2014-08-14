@@ -1,25 +1,21 @@
 <?php $search = $this->getParams('search');?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+<div class="container-flue-id">
+    <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+    <div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+        <div class='page-header'>
+            <form method="get">
+                <div class='row'>
+                    <div class="col-md-3"><h3 class="text-warning" style="margin-top:0px;">Job Search </h3></div>
+                    <div class="col-md-7"><input type="text" name="search" class="form-control" placeholder="Keyword here..." value="<?php echo $search?>"></div>
+                    <div class="col-md-2"><button type="submit" class="btn btn-default">Search</button></div>
+                </div>
+            </form>
         </div>
-        <div class="col-md-9">
-            <div class="row bg-title">
-                <div class="col-md-3"><h3 class="text-warning"> &ensp; Job Search </h3></div>
-            </div>
-            <br>
-            <div class="row">
-                <form method="get">
-                    <div class="col-md-10"><input type="text" name="search" class="form-control" placeholder="Keyword here..." value="<?php echo $search?>"></div>
-                    <div class="col-md-2"><button type="submit" class="btn btn-default">Search</button></button> </div>
-                </form>
-            </div>
-            <br>
-            <div class="row">
+        <div class='row'>
+            <div class='container-fluid'>
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
-                        <tr class="bg-title">
+                    <table class="table table-bordered">
+                        <tr>
                             <th>No</th>
                             <th>Position</th>
                             <th>Company</th>
@@ -41,7 +37,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 

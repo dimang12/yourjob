@@ -2,30 +2,34 @@
 $form = $this->form;
 echo $this->form()->openTag($form);
 ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
+<div class="container-flue-id">
+
             <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
-        </div>
-        <div class="col-md-9">
-            <div class="row bg-title">
+    <div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+        <div class='page-header'>
+            <div class='row'>
                 <div class="col-md-3"><h3 class="text-warning"> &ensp;New Education</h3></div>
                 <div class="col-md-9">
                     <a href="<?php echo $this->url('admin-resume-education')?>?resumeId=<?php echo $this->resumeId?>" class="btn btn-default pull-right" style="margin-top: 10px;"> Back</a>
                     <button type="submit" class="btn btn-success pull-right" style="margin-top: 10px;margin-right: 5px;"> Save</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <label>Education Title </label>
-                    <?php echo $this->formrow($form->get('exp_title'))?>
+        </div>
+        <div class='row'>
+            <div class='container-fluid'>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Education Title </label>
+                        <?php echo $this->formrow($form->get('exp_title'))?>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label>Education Description </label>
-                    <?php echo $this->formrow($form->get('exp_detail'))?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Education Description </label>
+                        <?php echo $this->formrow($form->get('exp_detail'))?>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
