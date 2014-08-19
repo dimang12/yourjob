@@ -869,17 +869,20 @@ return array (
                             )
                         )
                     ),
-                    'admin-advertisement' => array (
-                        'type' => 'Literal',
-                        'options' => array (
-                            'route' => '/admin-advertisement',
-                            'defaults' => array (
+                    'advertisement' => array(
+                        'type'    => 'segment',
+                        'options' => array(
+                            'route'    => '/advertisement[/][:action][/:id]',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'     => '[0-9]+',
+                            ),
+                            'defaults' => array(
                                 'controller' => 'Admin\Controller\Advertisement',
-                                'action' => 'index'
-                            )
-                        )
+                                'action'     => 'index',
+                            ),
+                        ),
                     ),
-
 
                 ),
 

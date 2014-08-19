@@ -1,20 +1,57 @@
 <div class='container-fluid'>
-    <?php echo $this->partial('admin/partial/_nav_menu')?>
-
-    <?php $form = $this->form; echo $this->form()->openTag($form)?>
-    <div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+    <?php /*echo $this->partial('admin/partial/_nav_menu')*/?>
+    <div class='col-md-12 main'>
         <div class='page-header'>
             <div class='row'>
-                <div class='col-md-8'><h1 class='text-warning'>Advertisement</h1></div>
-                <div class='col-md-4 text-right'><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-upload'></span> Upload<?php echo $this->formbutton()->closeTag()?></div>
+                <div class='col-md-3'><h1 class='text-warning'>Advertisement</h1></div>
+                <div class="col-md-9 text-right">
+                    <a href="<?php echo $this->url()."new"?>" class="btn btn-success">New Advertisement</a>
+                </div>
             </div>
         </div>
         <div class='row'>
             <div class='container-fluid'>
-
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>No</th>
+                            <th>Advertisement Name</th>
+                            <th>Advertisement Description</th>
+                            <th>Ordering</th>
+                            <th>Action</th>
+                        </tr>
+                        <?php
+                        $i=1;
+                        foreach ( $this->advData as $key => $row ) {?>
+                            <tr>
+                                <td><?php echo $i?></td>
+                                <td><?php echo $row['adv_title']?></td>
+                                <td><?php echo $row['adv_desc']?></td>
+                                <td><?php echo $row['adv_ordering']?></td>
+                                <td><a href="<?php echo $this->url()."edit/".$row['adv_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
+                                    <a href='#' title='Remove'><span data-remove='<?php echo $row['adv_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
+                            </tr>
+                            <?php $i++; }?>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    <?php echo $this->form()->closeTag($form)?>
 </div>
+<script>
+    $(function(){
+        $('.icon-remove').on('click',function(){
+            var advId = $(this).attr('data-remove');
+            if(advId != '')
+            {
+                if(confirm('Are you sure to delete?'))
+                {
+                    var url ='<?php echo $this->url()."delete/"?>'+advId;
+                    $.ajax({url: url, success:function(){window.location.href='';}});
+                }
+                return false;
+            }
+        });
+    });
 
+</script>

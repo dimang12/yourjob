@@ -1,0 +1,32 @@
+<?php
+    $adv_title = $adv_desc = $adv_ordering = "";
+    foreach ($this->advData as $row){
+        $adv_title = $row["adv_title"];
+        $adv_desc = $row["adv_desc"];
+        $adv_ordering = $row["adv_ordering"];
+    }
+?>
+<div class='container-fluid'>
+    <?php $form = $this->form; echo $this->form()->openTag($form)?>
+    <div class='col-md-12 main'>
+        <div class='page-header'>
+            <div class='row'>
+                <div class='col-md-6'><h1 class='text-warning'>Edit Advertisement</h1></div>
+                <div class="col-md-6 text-right">
+                    <button type="submit" class="btn btn-success"> Save</button>&nbsp;&nbsp;
+                    <a href="<?php echo $this->url()?>" class="btn btn-default">Back</a>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-md-4"><label>Advertisement Name</label><?php echo $this->formrow($form->get("adv_title")->setAttributes(array("value"=>$adv_title)))?></div>
+            <div class="col-md-4"><label>Ordering</label><?php echo $this->formrow($form->get("adv_ordering")->setAttributes(array("value"=>$adv_ordering)))?></div>
+        </div>
+        <br>
+        <div class='row'>
+            <div class="col-md-12"><label>Advertisement Description</label><?php echo $this->formtextarea($form->get("adv_desc")->setAttributes(array("value"=>$adv_desc)))?></div>
+        </div>
+    </div>
+    <?php echo $this->form()->closeTag($form)?>
+</div>
+

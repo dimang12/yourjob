@@ -27,19 +27,20 @@ foreach ($this->resumeData as $value){
     }
 }
 ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
-        </div>
-        <div class="col-md-9">
-            <div class="row bg-title">
-                <div class="col-md-3"><h3 class="text-warning"> &ensp;Edit Resume</h3></div>
-                <div class="col-md-9">
+<div class="container-flue-id">
+    <?php echo $this->partial('admin/partial/_jobseeker_menu.phtml'); ?>
+    <div class='col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main'>
+        <div class='page-header'>
+            <div class='row'>
+                <div class='col-md-4'><h1 class='text-warning'>Edit Resume</h1></div>
+                <div class="col-md-8">
                     <a href="<?php echo $this->url('admin-job-seeker')?>" class="btn btn-default pull-right" style="margin-top: 10px;"> Back</a>
                     <button type="submit" class="btn btn-success pull-right" style="margin-top: 10px;margin-right: 5px;"> Update </button>
                 </div>
             </div>
+        </div>
+        <div class='row'>
+            <div class='container-fluid'>
             <div class="row">
                 <div class="col-md-4">
                     <label>Category</label>
