@@ -22,6 +22,7 @@ label                       { font-weight:normal;}
 .margin-5					{ margin:5px;}
 .margin-10					{ margin:10px;}
 .margin-10-0				{ margin:10px 0;}
+.margin-15-0                { margin:15px 0;}
 
 .pos-relative               { position: relative;}
 
@@ -137,3 +138,16 @@ label                       { font-weight:normal;}
 
 /*~~~~~~~~~~General~~~~~~~~~*/
 .tail-cat                   { margin-top:-8px; margin-right:-5px; border-radius: 0 5px 5px 0; padding:10px; cursor:pointer;}
+
+
+/*~~~~~~~~~~General~~~~~~~~~*/
+.tr-job                     { cursor:pointer;}
+/*~~~~~~~~Override~~~~~~~~~*/
+.nav > li > a               { padding: 5px 10px; font-weight:bold;}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+    border-color: #106cad; border-bottom: none; font-weight:bold; background:#106cad; color:#fff;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    border-color: #106cad; border-bottom: none; font-weight:bold; background:#106cad; color:#fff;
+}
+.nav-tabs                   { border-bottom:#106cad solid 2px;}

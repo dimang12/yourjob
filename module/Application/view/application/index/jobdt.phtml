@@ -1,0 +1,87 @@
+<?php if(isset($this->jobDetail)):
+$job = $this->jobDetail;
+    ?>
+<div class="box-white border-radius-5 margin-10-0 clearfix">
+    <div class="bg-gray padding-10-0 clearfix border-bottom-gray">
+        <div class="col-md-12">
+            <div>
+                <a href="<?php echo $this->basePath() ?>">Home </a> <i class="glyphicon glyphicon-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+
+            <header class="full-w bg-gray padding-5-10 margin-10-0 border-bottom-blue border-radius-5 clearfix">
+                <h4 class="bold clearfix"><?php echo $job["job_name"]; ?></h4>
+                <div class="col-md-6 padding-5-0">
+                    <span class="col-md-12"><b>LOCATION:</b> <?php echo $job["city_name"];?></span>
+                    <span class="col-md-12"><b>JOB TYPE:</b> Full-Time</span>
+                    <span class="col-md-12"><b># OF HIRING:</b> <?php echo $job["job_hiring_number"]; ?> position(s)</span>
+                    <span class="col-md-12"><b>SALARY:</b> $350 - $500</span>
+                </div>
+                <div class="col-md-6">
+                    <h4>The Company name</h4>
+                </div>
+            </header>
+
+            <div>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray">ABOUT COMPANY</h4>
+                <div>
+                    Skyrivers International is a Japanese Company Multinational Corporation Opens New Branch in Siem Reap Province.
+                </div>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray">RESPONSIBILITIES</h4>
+                <div>
+                    <ul>
+                        <li>• To tag the products uploaded on the website and to make sure that all products are placed in the correct categories</li>
+                        <li>• To implement marketing strategies as adverts, newsletters, search redirection, etc.</li>
+                        <li>• Monitor website analytics to shape company policy</li>
+                        <li>• Recommend new IT strategies, policies and procedures</li>
+                        <li>• Further development of website functionality (Optional)</li>
+                        <li>• Excellent analytical and problem solving skills</li>
+                        <li>• To continuously inform and train the sales and support departments</li>
+                        <li>• Enforcing system policies and procedures for both clients and staff</li>
+                        <li>• Managing company emails and data synchronisation</li>
+                        <li>• Office hardware set up and periodical upgrading and maintenance</li>
+                        <li>• Regularly backing up all company data and systems</li>
+                    </ul>
+                </div>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray">REQUIREMENTS</h4>
+                <div>
+                    <ul>
+                        <li>• Must be able to read/write HTML + CSS (Basic understanding)</li>
+                        <li>• PHP programming experience is a plus</li>
+                        <li>• Must be experienced in using back-end systems as Wordpress, Joomla, etc.</li>
+                        <li>• Previous experience with SaaS (Software-as-a-Service) is preferable</li>
+                        <li>• Must be comfortable using a variety of web applications as CRMs, Analytics, etc.</li>
+                        <li>• Excellent analytical and problem solving skills</li>
+                        <li>• Very good English and Khmer</li>
+                        <li>• Previous experience in the position of IT Manager is a must</li>
+                        <li>• Good team player</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="job_title">
+                <div class="label">HOW TO APPLY</div>
+            </div>
+            <p class="more-text-area">Phone: Call between 9:00 ~ 16:00 <br>
+                Monday through Friday<br>
+                Contact Person: Kakvei<br>
+                Phone: 063-964-206, 088-592-0392<br>
+                Email: recruit@skyrivers.net<br>
+                Address: T40 Borey Prem Prey, Sang kat Kouk chork, Siem Reap<br>
+                http://www.skyrivers.net/</p>
+
+            <div style="margin-bottom: 20px;" class="job_title_2">
+                <div class="label">Email</div>
+                <div class="desc">recruit@skyrivers.net</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+
+        ss
+    </div>
+</div>
+<?php endif;?>

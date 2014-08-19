@@ -4,24 +4,17 @@ $categories = $resultSet->initialize($this->categories);
 ?>
 <div class="box-white clearfix border-radius-5 margin-10-0 font-13 nav nav-tabs" role="tablist">
     <aside class="col-lg-9 border-right-gray  ">
-        <menu class="menu-invers no-padding border-bottom-blue full-w">
-            <a class="bg-white active actived" href="#" role="tab"><?php echo $this->translate("Job Categories"); ?></a>
-            <a class="bg-white" href="#"><?php echo $this->translate("Location"); ?></a>
-            <a class="bg-white" href="#"><?php echo $this->translate("Industry");?></a>
-            <a class="bg-white" href="#"><?php echo $this->translate("Salary");?></a>
-        </menu>
-
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs clearfix" role="tablist">
-            <li class="active"><a href="#home" role="tab" data-toggle="tab"><?php echo $this->translate("Job Categories"); ?></a></li>
+        <ul class="nav nav-tabs clearfix margin-15-0" role="tablist">
+            <li class="active"><a href="#category" role="tab" data-toggle="tab"><?php echo $this->translate("Job Categories"); ?></a></li>
             <li><a href="#profile" role="tab" data-toggle="tab"><?php echo $this->translate("Location"); ?></a></li>
             <li><a href="#messages" role="tab" data-toggle="tab"><?php echo $this->translate("Industry");?></a></li>
             <li><a href="#settings" role="tab" data-toggle="tab"><?php echo $this->translate("Salary");?></a></li>
         </ul>
 
         <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane fade in active" id="home">
+        <div class="tab-content" >
+            <div class="tab-pane fade in active" id="category">
                 <?php
                 $cateList = '';
                 $asideList = '';
@@ -44,7 +37,7 @@ $categories = $resultSet->initialize($this->categories);
                     $j = 1;
                     foreach($categories as $k=>$v){
                         if($j > (($i-1) * ($perColumn+$add))  &&  $j <= ($i * ($perColumn+$add))){
-                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
+                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
                         }
                         $j++;
                     }
@@ -53,8 +46,42 @@ $categories = $resultSet->initialize($this->categories);
                 echo $cateList;
                 ?>
             </div>
-            <div class="tab-pane fade" id="profile">b</div>
-            <div class="tab-pane fade" id="messages">c</div>
+            <div class="tab-pane fade" id="profile">
+
+            </div>
+            <div class="tab-pane fade" id="messages">
+
+                <?php
+                $cateList = '';
+                $asideList = '';
+                $perColumn = round($categories->count() / 3);
+                $add=1;
+
+                for($i=1; $i<=3; $i++){
+                    if(($categories->count() % 3) <> 0){
+                        if($i > ($categories->count() % 3) ){
+                            $add=0;
+                        }
+                    }
+                    if($i==1){
+                        $asideList = '<aside class="col-md-4 no-padding-left border-right-gray "><ul>';
+                    }elseif($i == 2){
+                        $asideList = '<aside class="col-md-4 border-right-gray"><ul>';
+                    }else{
+                        $asideList = '<aside class="col-md-4 no-padding-right"><ul>';
+                    }
+                    $j = 1;
+                    foreach($categories as $k=>$v){
+                        if($j > (($i-1) * ($perColumn+$add))  &&  $j <= ($i * ($perColumn+$add))){
+                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
+                        }
+                        $j++;
+                    }
+                    $cateList .= $asideList .'</ul></aside>';
+                }
+                echo $cateList;
+                ?>
+            </div>
             <div class="tab-pane fade" id="settings">d</div>
         </div>
     </aside>

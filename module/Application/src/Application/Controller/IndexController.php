@@ -25,7 +25,41 @@ class IndexController extends AbstractActionController
     }
 
 
+
     public function categoryAction(){
+        //declare params
+        $cateId =  $this->params()->fromQuery("c");
+        $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
+        $jobs = array();
+
+        //it is won't works if category id is empty
+        if(!empty($cateId)){
+            $jobs = $cateDb->getJobByCate($cateId);
+        }
+
+        //pass params to view
+        return new ViewModel(array(
+            "jobs" => $jobs
+        ));
+    }
+
+    public function jobdtAction(){
+
+        //declare params
+        $jobId = $this->params()->fromQuery("job");
+        $db = new CategoriesTable($this->getCategoiesTableGateway());
+        $jobDetail = null;
+
+        if(!empty($jobId)){
+            $jobDetail = $db->getJobDetail($jobId);
+        }
+
+
+        return new ViewModel(
+            array(
+                "jobDetail"=>current($jobDetail)
+            )
+        );
 
     }
     
