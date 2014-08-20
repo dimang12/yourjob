@@ -75,4 +75,84 @@ class LoginController extends AbstractActionController
     	$viewModel = new ViewModel(array('loginForm'=> $loginForm));
     	return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/logout');
     }
+    public function employerloginAction()
+    {
+        $authService = $this->serviceLocator->get('auth_login');
+        if ($authService->hasIdentity()) {
+            // if not log in, redirect to login page
+            return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/admin-member');
+        }
+
+        $loginForm = new LoginForm();
+
+        if ($this->getRequest()->isPost()) {
+            $loginForm->setData($this->getRequest()->getPost());
+            if (! $loginForm->isValid()) {
+
+                // not valid form
+                return new ViewModel(array(
+                    'loginForm'  => $loginForm
+                ));
+
+            }
+
+            $dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
+            $loginData = $loginForm->getData();
+            $authAdapter = new DbTable($dbAdapter, 'users', 'username', 'password', 'MD5(?)');
+            $authAdapter->setIdentity($loginData['username'])->setCredential($loginData['password']);
+
+            $authService = $this->serviceLocator->get('auth_login');
+            $authService->setAdapter($authAdapter);
+            $result = $authService->authenticate();
+
+
+            if ($result->isValid()) {
+                $userId = $authAdapter->getResultRowObject('user_id')->user_id;
+                $authService->getStorage()
+                    ->write($userId);
+                return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/admin-member');
+            }
+        }
+        return new ViewModel(array( 'loginForm'  => $loginForm	));
+    }
+    public function seekerloginAction()
+    {
+        $authService = $this->serviceLocator->get('auth_login');
+        if ($authService->hasIdentity()) {
+            // if not log in, redirect to login page
+            return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/admin-seeker');
+        }
+
+        $loginForm = new LoginForm();
+
+        if ($this->getRequest()->isPost()) {
+            $loginForm->setData($this->getRequest()->getPost());
+            if (! $loginForm->isValid()) {
+
+                // not valid form
+                return new ViewModel(array(
+                    'loginForm'  => $loginForm
+                ));
+
+            }
+
+            $dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
+            $loginData = $loginForm->getData();
+            $authAdapter = new DbTable($dbAdapter, 'users', 'username', 'password', 'MD5(?)');
+            $authAdapter->setIdentity($loginData['username'])->setCredential($loginData['password']);
+
+            $authService = $this->serviceLocator->get('auth_login');
+            $authService->setAdapter($authAdapter);
+            $result = $authService->authenticate();
+
+
+            if ($result->isValid()) {
+                $userId = $authAdapter->getResultRowObject('user_id')->user_id;
+                $authService->getStorage()
+                    ->write($userId);
+                return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/admin-seeker');
+            }
+        }
+        return new ViewModel(array( 'loginForm'  => $loginForm	));
+    }
 }

@@ -883,7 +883,46 @@ return array (
                             ),
                         ),
                     ),
-
+                    'member' => array (
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => array (
+                            'route' => '/member',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Login',
+                                'action' => 'employerlogin'
+                            )
+                        )
+                    ),
+                    'admin-member' => array (
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => array (
+                            'route' => '/admin-member',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Admin',
+                                'action' => 'member'
+                            )
+                        )
+                    ),
+                    'seeker' => array (
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => array (
+                            'route' => '/seeker',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Login',
+                                'action' => 'seekerlogin'
+                            )
+                        )
+                    ),
+                    'admin-seeker' => array (
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => array (
+                            'route' => '/admin-seeker',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Admin',
+                                'action' => 'seeker'
+                            )
+                        )
+                    ),
                 ),
 
 		),

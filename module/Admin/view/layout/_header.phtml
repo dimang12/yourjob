@@ -2,7 +2,7 @@
 	$sm = $this->getHelperPluginManager ()->getServiceLocator ();
 	$routeMatch = $sm->get ( 'Application' )->getMvcEvent ()->getRouteMatch ();
 	$router = $routeMatch->getMatchedRouteName();
-	if($router != 'login'):
+	if($router != 'login' && $router != 'member' && $router != 'seeker'):
 	?>
 	<div class="navbar navbar-inverse navbar-fixed-top" style="height: 1px;border:none;background: #111">
 		<div class="container-fluid">
