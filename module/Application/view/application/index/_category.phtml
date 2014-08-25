@@ -37,7 +37,7 @@ $categories = $resultSet->initialize($this->categories);
                     $j = 1;
                     foreach($categories as $k=>$v){
                         if($j > (($i-1) * ($perColumn+$add))  &&  $j <= ($i * ($perColumn+$add))){
-                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
+                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["num"].')</label></li>';
                         }
                         $j++;
                     }
@@ -73,7 +73,7 @@ $categories = $resultSet->initialize($this->categories);
                     $j = 1;
                     foreach($categories as $k=>$v){
                         if($j > (($i-1) * ($perColumn+$add))  &&  $j <= ($i * ($perColumn+$add))){
-                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["category_id"].')</label></li>';
+                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["num"].')</label></li>';
                         }
                         $j++;
                     }
@@ -89,7 +89,7 @@ $categories = $resultSet->initialize($this->categories);
         <menu class="no-padding border-bottom-gray font-16 padding-5-0">
             Job Announcement
         </menu>
-        <ul>
+        <ul class="newest-panel">
             <li class="text-overflow"><a class="pull-left">Branch Director </a>  - This is a place to display</li>
             <li class="text-overflow"><a>Maintenance Technician </a> - This is a place to display company name.</li>
             <li class="text-overflow"><a>Sale indoor 2 position </a> - This is a place to display company name.</li>
