@@ -1,6 +1,7 @@
-<div class='container-fluid'>
-    <?php $form = $this->form; echo $this->form()->openTag($form)?>
-    <div class='col-md-12'>
+<?php $form = $this->form; echo $this->form()->openTag($form)?>
+<div class="container-fluid bg">
+    <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    <div class='col-md-10 main'>
         <div class='page-header'>
             <div class='row'>
                 <div class='col-md-6'><h1 class='text-warning'>New Advertisement</h1></div>
