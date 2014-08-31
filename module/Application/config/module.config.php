@@ -144,32 +144,19 @@ return array (
                         ),
 
 
-                        'jobdt' => array (
-                            'type' => 'Zend\Mvc\Router\Http\Segment',
-                            'options' => array (
-                                'route' => '/jobdt/',
-                                'defaults' => array (
-                                    'controller' => 'Application\Controller\Index',
-                                    'action' => 'jobdt',
-                                    'alias' => '[a-zA-Z0-9]+'
-                                )
+                    'jobdt' => array (
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array (
+                            'route' => '/jobdt/',
+                            'defaults' => array (
+                                'controller' => 'Application\Controller\Index',
+                                'action' => 'jobdt',
+                                'alias' => '[a-zA-Z0-9]+'
                             )
-                        ),
+                        )
+                    ),
 
-                        'search' => array (
-                            'type' => 'Zend\Mvc\Router\Http\Segment',
-                            'options' => array (
-                                'route' => '/search/',
-                                'defaults' => array (
-                                    'controller' => 'Application\Controller\Index',
-                                    'action' => 'search',
-                                    'alias' => '[a-zA-Z0-9]+'
-                                )
-                            )
-                        ),
-
-
-                    'scene' => array (
+						'scene' => array (
 								'type' => 'Zend\Mvc\Router\Http\Literal',
 								'options' => array (
 										'route' => '/scene',
@@ -234,8 +221,7 @@ return array (
 						'Application\Controller\Seeker' => 'Application\Controller\SeekerController',
                         'Application\Controller\Resume' => 'Application\Controller\ResumeController',
                         'Application\Controller\Education' => 'Application\Controller\EducationController',
-                        'Application\Controller\Ajax' => 'Application\Controller\AjaxController',
-				)
+				) 
 		),
 		'view_manager' => array (
 				'display_not_found_reason' => true,
