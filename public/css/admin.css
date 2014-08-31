@@ -6,3 +6,13 @@
 .bg-title{background: #F2F2F2;margin-bottom: 5px; border: 1px solid #f2dede;}
 .margin-top-5{margin-top: 5px;}
 .margin-top-10{margin-top: 10px;}
+
+.padding-0{padding: 0px;}
+.panel-heading{border: 1px solid #F5F5F5;}
+.active{background: #0064bf;}
+.panel-heading > .panel-title a{
+    text-decoration: none;
+}
+.panel-heading > .panel-title a:hover{
+    text-decoration: none;
+}

@@ -64,7 +64,7 @@
                     </div>
                 </div>
 
-                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Age To : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_age_to'))?></div></div>
+
                 <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Language : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_language'))?></div></div>
                 <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Location : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formselect($form->get('city_id')->setAttributes(array('options'=>$groups)))?></div></div>
                 <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Category : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formselect($form->get('category_id')->setAttributes(array('options'=>$categories)))?></div></div>
