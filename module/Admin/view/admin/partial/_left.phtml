@@ -1,7 +1,13 @@
 <?php
 $sm = $this->getHelperPluginManager ()->getServiceLocator ();
 $routeMatch = $sm->get ( 'Application' )->getMvcEvent ()->getRouteMatch ();
-echo $router = $routeMatch->getMatchedRouteName();
+$router = $routeMatch->getMatchedRouteName();
+
+//if ($routeMatch) {
+//    $controller = $routeMatch->getParam('controller');
+//    $action     = $routeMatch->getParam('action');
+//}
+
 ?>
 <!--<div class='col-md-2 sidebar' style="background: #28353B">
     <ul class="nav nav-sidebar">

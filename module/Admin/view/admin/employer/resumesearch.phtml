@@ -1,0 +1,64 @@
+<div class="container-fluid bg">
+    <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    <div class='col-md-10 main'>
+        <div class='page-header'>
+            <div class='row'>
+                <form method="get">
+                <div class='col-md-3'><h1 class='text-warning' style="margin-top: 10px;">Resume Search</h1></div>
+                <div class="col-md-7"><input type="text" name="search" class="form-control margin-top-10" placeholder="Search here..."></div>
+                <div class="col-md-2"><button type="submit" class="btn btn-success margin-top-10">Search</button></div>
+                </form>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='container-fluid'>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Current Position</th>
+                            <th>Apply For</th>
+                            <th>Salary</th>
+                            <th>Resume</th>
+                            <th>Purchase</th>
+                        </tr>
+                        <?php
+                        $i=1;
+                        foreach ( $resumeData as $key => $row ) {?>
+                            <tr>
+                                <td><?php echo $i?></td>
+                                <td><?php echo $row['user_id']?></td>
+                                <td><?php echo $row['resu_current_position']?></td>
+                                <td><?php echo $row['resu_position']?></td>
+                                <td><?php echo $row['resu_salary']?></td>
+                                <td><a href="<?php echo $this->url('resume-view')?>?resumeId=<?php echo $row['resume_id']?>"> View</a></td>
+                                <td><a href="#"><span class="glyphicon glyphicon-shopping-cart purchase"></span></a></td>
+                            </tr>
+                            <?php $i++; }?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.icon-remove').on('click',function(){
+            var jobId = $(this).attr('data-remove');
+            if(jobId != '')
+            {
+                if(confirm('Are you sure to delete?'))
+                {
+                    var url ='<?php echo $this->url('job-delete')?>?jobId='+jobId;
+                    $.ajax({url: url, success:function(){window.location.href='';}});
+                }
+                return false;
+            }
+        });
+        $('.purchase').on('click',function(){
+            alert(0);
+        });
+    });
+</script>
+
