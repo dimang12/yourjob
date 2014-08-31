@@ -1,3 +1,4 @@
+
 <?php echo $this->doctype(); ?>
 
 <html lang="en">
@@ -11,6 +12,7 @@
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
         				->prependStylesheet($this->basePath() . '/css/product.css')
         				->prependStylesheet($this->basePath() . '/css/style.css')
+        				->prependStylesheet($this->basePath() . '/css/jquery-ui.min.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
                        ; ?>
@@ -20,6 +22,7 @@
         							  ->prependFile($this->basePath() . '/js/global.js')
         							  ->prependFile($this->basePath() . '/js/jquery.carousel.fullscreen.js')
                                       ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                                      ->prependFile($this->basePath() . '/js/jquery-ui.min.js')
                                       ->prependFile($this->basePath() . '/js/jquery-1.7.2.min.js') ?>
 
     </head>
@@ -39,5 +42,8 @@
         <div class="margin-10-0">
             <?php echo $this->partial("layout/_bottom_footer"); ?>
         </div>
+        <script>
+            var baseUrl = '<?php echo $this->basePath();?>';
+        </script>
     </body>
 </html>

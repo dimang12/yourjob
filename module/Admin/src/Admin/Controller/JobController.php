@@ -80,9 +80,12 @@ class JobController extends AbstractActionController{
             }
         }
         $cityData = $sm->ZF2_Select_AllColumn('city',array());
+        $categories = $sm->ZF2_Select_AllColumn('categories',array());
+
         return array(
             'form' => $form,
             'cityData'=>$cityData,
+            'categories' =>$categories
         );
     }
     public function jobeditingAction()

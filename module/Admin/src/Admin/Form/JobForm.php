@@ -31,6 +31,14 @@ class JobForm extends Form
             )
         ));
         $this->add(array(
+            'name'=>'category_id',
+            'type' => 'Select',
+            'attributes'=>array(
+                'class'=>'form-control'
+            )
+        ));
+
+        $this->add(array(
             'name'=>'job_name',
             'type' => 'Text',
             'attributes'=>array(
@@ -39,7 +47,7 @@ class JobForm extends Form
         ));
         $this->add(array(
             'name'=>'gender',
-            'type' => 'Text',
+            'type' => 'Select',
             'attributes'=>array(
                 'class'=>'form-control'
             )
@@ -111,7 +119,8 @@ class JobForm extends Form
             'name'=>'job_description',
             'type' => 'Textarea',
             'attributes'=>array(
-                'class'=>'form-control'
+                'class'=>'form-control',
+                'style'=>'height:300px'
             )
         ));
         $this->add(array(
@@ -125,7 +134,8 @@ class JobForm extends Form
             'name'=>'job_requirement',
             'type' => 'Textarea',
             'attributes'=>array(
-                'class'=>'form-control'
+                'class'=>'form-control',
+                'style'=>'height:300px'
             )
         ));
         $this->add(array(

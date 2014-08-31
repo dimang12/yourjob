@@ -44,7 +44,6 @@ class IndexController extends AbstractActionController
     }
 
     public function jobdtAction(){
-
         //declare params
         $jobId = $this->params()->fromQuery("job");
         $db = new CategoriesTable($this->getCategoiesTableGateway());
@@ -54,16 +53,19 @@ class IndexController extends AbstractActionController
             $jobDetail = $db->getJobDetail($jobId);
         }
 
-
         return new ViewModel(
             array(
                 "jobDetail"=>current($jobDetail)
             )
         );
+    }
 
+    public function searchAction(){
+        //get and declare params
+        $txtSearch = $this->params()->fromQuery("s");
+        
     }
     
-
 
     private function getCategoiesTableGateway(){
         return new TableGateway("categories",$this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
