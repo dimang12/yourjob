@@ -144,32 +144,19 @@ return array (
                         ),
 
 
-                        'jobdt' => array (
-                            'type' => 'Zend\Mvc\Router\Http\Segment',
-                            'options' => array (
-                                'route' => '/jobdt/',
-                                'defaults' => array (
-                                    'controller' => 'Application\Controller\Index',
-                                    'action' => 'jobdt',
-                                    'alias' => '[a-zA-Z0-9]+'
-                                )
+                    'jobdt' => array (
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array (
+                            'route' => '/jobdt/',
+                            'defaults' => array (
+                                'controller' => 'Application\Controller\Index',
+                                'action' => 'jobdt',
+                                'alias' => '[a-zA-Z0-9]+'
                             )
-                        ),
+                        )
+                    ),
 
-                        'search' => array (
-                            'type' => 'Zend\Mvc\Router\Http\Segment',
-                            'options' => array (
-                                'route' => '/search/',
-                                'defaults' => array (
-                                    'controller' => 'Application\Controller\Index',
-                                    'action' => 'search',
-                                    'alias' => '[a-zA-Z0-9]+'
-                                )
-                            )
-                        ),
-
-
-                    'scene' => array (
+						'scene' => array (
 								'type' => 'Zend\Mvc\Router\Http\Literal',
 								'options' => array (
 										'route' => '/scene',

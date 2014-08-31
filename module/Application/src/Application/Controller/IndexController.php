@@ -67,7 +67,6 @@ class IndexController extends AbstractActionController
     }
     
 
-
     private function getCategoiesTableGateway(){
         return new TableGateway("categories",$this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
     }
