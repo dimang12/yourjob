@@ -56,6 +56,7 @@ class JobController extends AbstractActionController{
                 $city_id = $this->params()->fromPost('city_id');
                 $job_age_from = $this->params()->fromPost('job_age_from');
                 $job_age_to = $this->params()->fromPost('job_age_to');
+                $cate_id = $this->params()->fromPost('category_id');
                 $values = array(
                     'user_id' =>$user_id,
                     'city_id' =>$city_id,
@@ -74,15 +75,18 @@ class JobController extends AbstractActionController{
                     'job_status'=>1,
                     'Gender'=>$gender,
                     'job_age_from' => $job_age_from,
-                    'job_age_to' => $job_age_to
+                    'job_age_to' => $job_age_to,
+                    'category_id'=> $cate_id
                 );
                 $sm->ZF2_Insert('job',$values);
             }
         }
         $cityData = $sm->ZF2_Select_AllColumn('city',array());
+        $cateData = $sm->ZF2_Select_AllColumn('categories',array());
         return array(
             'form' => $form,
             'cityData'=>$cityData,
+            'cateData' => $cateData
         );
     }
     public function jobeditingAction()
