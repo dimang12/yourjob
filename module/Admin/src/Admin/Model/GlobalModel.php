@@ -1279,7 +1279,7 @@ class GlobalModel extends AbstractTableGateway {
             ))
             ->join(array('c'=>'company'),'j.user_id=c.user_id')
             ->join(array('ct'=>'city'),'j.city_id=ct.city_id')
-            ->where("user_id=$user_id")
+            ->where("j.user_id=$user_id")
         ;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
