@@ -923,6 +923,46 @@ return array (
                             )
                         )
                     ),
+                    'member-admin-job' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/member-admin-job',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Employer',
+                                'action' => 'index'
+                            )
+                        )
+                    ),
+                    'member-job-posting' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/member-job-posting',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Employer',
+                                'action' => 'jobposting'
+                            )
+                        )
+                    ),
+                    'member-job-editing' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/member-job-editing',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Employer',
+                                'action' => 'jobediting'
+                            )
+                        )
+                    ),
+                    'member-job-delete' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/member-job-delete',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Employer',
+                                'action' => 'jobdelete'
+                            )
+                        )
+                    ),
                 ),
 
 		),

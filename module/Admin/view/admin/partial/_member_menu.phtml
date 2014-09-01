@@ -1,0 +1,71 @@
+<?php
+$sm = $this->getHelperPluginManager ()->getServiceLocator ();
+$routeMatch = $sm->get ( 'Application' )->getMvcEvent ()->getRouteMatch ();
+$router = $routeMatch->getMatchedRouteName();
+?>
+<div class="col-md-2" style="padding: 0px;">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="<?php echo $this->url("admin-member")?>">
+                        Home
+                    </a>
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#jobmanagement">
+                        Job Management
+                    </a>
+                </h4>
+            </div>
+            <div id="jobmanagement" class="panel-collapse collapse <?php if($router == 'member-admin-job' || $router == 'member-job-posting' || $router == 'member-job-editing') echo 'in'?>">
+                <div class="panel-heading <?php if($router == 'member-admin-job' || $router == 'member-job-editing') echo 'active';?>">
+                    <h4 class="panel-title">
+                        <a href="<?php echo $this->url('member-admin-job')?>">
+                            Job Viewing
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-heading <?php if($router == 'member-job-posting') echo 'active'?>">
+                    <h4 class="panel-title">
+                        <a href="<?php echo $this->url('member-job-posting')?>">
+                            Job Posting
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-heading <?php if($router == '#') echo 'active'?>">
+                    <h4 class="panel-title">
+                        <a href="#">
+                            Composing Sample
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#account">
+                        Account Management
+                    </a>
+                </h4>
+            </div>
+            <div id="account" class="panel-collapse collapse <?php if($router == 'admin-job' || $router == 'job-posting' || $router == 'job-editing') echo 'in'?>">
+                <div class="panel-heading <?php if($router == 'admin-job' || $router == 'job-editing') echo 'active';?>">
+                    <h4 class="panel-title">
+                        <a href="#">
+                            Account setting
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

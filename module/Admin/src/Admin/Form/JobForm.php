@@ -24,6 +24,13 @@ class JobForm extends Form
             )
         ));
         $this->add(array(
+            'name'=>'category_id',
+            'type' => 'Select',
+            'attributes'=>array(
+                'class'=>'form-control'
+            )
+        ));
+        $this->add(array(
             'name'=>'city_id',
             'type' => 'Select',
             'attributes'=>array(

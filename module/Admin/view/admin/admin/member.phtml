@@ -1,61 +1,16 @@
-<div class='container-fluid'>
-    <?php //echo $this->partial('admin/partial/_nav_dashboard')?>
-
-    <div class='col-sm-9 col-md-12 main'>
+<div class="container-fluid bg">
+    <?php echo $this->partial('admin/partial/_member_menu.phtml'); ?>
+    <div class='col-md-10 main'>
         <div class='row'>
             <div class='col-md-3'>
-                <a href='<?php echo $this->url('admin-job')?>'>
+                <a href='<?php echo $this->url('member-admin-job')?>'>
                     <div class="placeholder col-md-12">
                         <span class='glyphicon glyphicon-home'></span>
-                        <h4>Members</h4>
-                    </div>
-                </a>
-            </div>
-
-            <div class='col-md-3'>
-                <a href='<?php echo $this->url('dashboard-category')?>'>
-                    <div class="placeholder col-md-12">
-                        <span class='glyphicon glyphicon-th-large'></span>
-                        <h4>Category</h4>
-                    </div>
-                </a>
-            </div>
-            <div class='col-md-3'>
-                <a href='<?php echo $this->url('admin-feature')?>'>
-                    <div class="placeholder col-md-12">
-                        <span class='glyphicon glyphicon-shopping-cart'></span>
-                        <h4>Feature</h4>
-                    </div>
-                </a>
-            </div>
-            <div class='col-md-3'>
-                <a href='<?php echo $this->url('admin-employer')?>'>
-                    <div class="placeholder col-md-12">
-                        <span class='glyphicon glyphicon-map-marker'></span>
-                        <h4>Employers</h4>
+                        <h4>Job Management</h4>
                     </div>
                 </a>
             </div>
 
         </div>
-        <div class='row'>
-            <div class='col-md-3'>
-                <a href='<?php echo $this->url('advertisement')?>'>
-                    <div class="placeholder col-md-12">
-                        <span class='glyphicon glyphicon-sound-stereo'></span>
-                        <h4>Advertisement</h4>
-                    </div>
-                </a>
-            </div>
-            <div class='col-md-3'>
-                <a href='<?php echo $this->url('admin-job-seeker')?>'>
-                    <div class="placeholder col-md-12">
-                        <span class='glyphicon glyphicon-user'></span>
-                        <h4>Job Seeker</h4>
-                    </div>
-                </a>
-            </div>
-        </div>
-
     </div>
 </div>
