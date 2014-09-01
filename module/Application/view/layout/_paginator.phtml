@@ -1,10 +1,16 @@
-
+<?php
+    if(isset($this->category)) {
+        $cate = "c=" . $this->category ."&";
+    }else{
+        $cate= "";
+    }
+?>
 <?php if ($this->pageCount): ?>
         <ul class='pagination pagination-sm'>
         	<!-- First page link -->
             <?php if (isset($this->first)): ?>
                 <li>
-                    <a href="<?php echo $this->url($this->route). $this->cateAlias;?>?page=<?php echo $this->first; ?> ">
+                    <a href="<?php echo $this->url($this->route). $this->cateAlias;?>?<?php echo $cate?>page=<?php echo $this->first; ?> ">
                        &laquo;
                     </a>
                 </li>
@@ -18,7 +24,7 @@
             <!-- Previous page link -->
             <?php if (isset($this->previous)): ?>
                 <li>
-                    <a href="<?php echo $this->url($this->route). $this->cateAlias; ?>?page=<?php echo $this->previous; ?> ">
+                    <a href="<?php echo $this->url($this->route). $this->cateAlias; ?>?<?php echo $cate?>page=<?php echo $this->previous; ?> ">
                        &#60;
                     </a>
                 </li>
@@ -28,7 +34,7 @@
             <?php foreach ($this->pagesInRange as $page): ?>
                 <?php if ($page != $this->current): ?>
                     <li>
-                        <a href="<?php echo $this->url($this->route). $this->cateAlias;?>?page=<?php echo $page; ?> ">
+                        <a href="<?php echo $this->url($this->route). $this->cateAlias;?>?<?php echo $cate?>page=<?php echo $page; ?> ">
                             <?php echo $page; ?>
                         </a>
                     </li>
@@ -42,7 +48,7 @@
             <!-- Next page link -->
             <?php if (isset($this->next)):?>
                 <li>
-                    <a href="<?php echo $this->url($this->route) .$this->cateAlias;?>?page=<?php echo $this->next;?>">
+                    <a href="<?php echo $this->url($this->route) .$this->cateAlias;?>?<?php echo $cate?>page=<?php echo $this->next;?>">
                        &#62; 
                     </a>
                 </li>
@@ -52,7 +58,7 @@
             <!-- Last page link -->
             <?php if (isset($this->last)): ?>
                 <li>
-                    <a href="<?php echo $this->url($this->route) .$this->cateAlias; ?>?page=<?php echo $this->last; ?> ">
+                    <a href="<?php echo $this->url($this->route) .$this->cateAlias; ?>?<?php echo $cate?>page=<?php echo $this->last; ?> ">
                         &raquo;
                     </a>
                 </li>

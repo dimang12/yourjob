@@ -56,9 +56,12 @@ class JobController extends AbstractActionController{
                 $city_id = $this->params()->fromPost('city_id');
                 $job_age_from = $this->params()->fromPost('job_age_from');
                 $job_age_to = $this->params()->fromPost('job_age_to');
+                $jobCategory = $this->params()->fromPost("category_id");
+
                 $values = array(
                     'user_id' =>$user_id,
                     'city_id' =>$city_id,
+                    'category_id' => $jobCategory,
                     'job_name' => $job_name,
                     'job_schedule'=>$job_schedule,
                     'job_salary_from'=>$job_salary_from,
@@ -72,7 +75,7 @@ class JobController extends AbstractActionController{
                     'job_published_date'=>$job_published_date,
                     'job_close_date'=>$job_close_date,
                     'job_status'=>1,
-                    'Gender'=>$gender,
+                    'job_gender'=>$gender,
                     'job_age_from' => $job_age_from,
                     'job_age_to' => $job_age_to
                 );

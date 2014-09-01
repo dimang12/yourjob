@@ -14,4 +14,15 @@ class SeekerController extends AbstractActionController{
     public function indexAction(){
 
     }
+
+    public function loginAction(){
+
+    }
+
+    public function _isLogin(){
+
+        return false;
+    }
+
+
 }

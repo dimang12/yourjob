@@ -16,7 +16,7 @@
                     </tr>
                     <?php
                     $i=1;
-                    foreach ( $jobs as $key => $row ) {?>
+                    foreach ( $this->paginator as $key => $row ) {?>
                         <tr class="tr-job" href="<?php echo $this->basePath() ."/jobdt/?job=" .$row["job_id"]; ?>">
                             <td class="text-center"><?php echo $i?></td>
                             <td><?php echo $row['job_name']?></td>
@@ -28,8 +28,8 @@
                         <?php $i++; }?>
                 </table>
             </div>
+            <div class="text-center"> <?php echo $this->paginationControl($this->paginator,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Index','category'=>$this->category));?> </div>
         </div>
-
 
     </aside>
     <aside class="col-md-3">
