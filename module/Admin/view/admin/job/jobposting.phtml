@@ -1,10 +1,8 @@
 <?php echo $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.css')?>
 <?php echo $this->headScript ()->prependFile ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.js')?>
 <?php
-    $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.css');
     $this->headLink ()->prependStylesheet ( $this->basePath () . '/src/bootstrap-wysihtml5.css');
 
-    $this->headScript ()->prependFile ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.js');
     $this->headScript ()->prependFile ( $this->basePath () . '/src/bootstrap-wysihtml5.js');
     $this->headScript ()->prependFile ( $this->basePath () . '/lib/js/wysihtml5-0.3.0.js');
 
@@ -21,7 +19,7 @@
     }
     $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
 ?>
-<?php //echo $this->form()->openTag($form)?>
+<?php echo $this->form()->openTag($form)?>
 <div class="container-fluid bg">
     <?php echo $this->partial('admin/partial/_left.phtml'); ?>
     <div class='col-md-10 main'>
@@ -33,7 +31,7 @@
         </div>
         <div class='row'>
             <div class='container-fluid'>
-                <?php echo $this->form()->openTag($form)?>
+                <?php //echo $this->form()->openTag($form)?>
                 <div class="row"><div class="col-md-12 text-warning bg-title"> <h4>&ensp;Basic Information</h4></div></div>
                 <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Position / Title : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
                 <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Hiring Number : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_hiring_number'))?></div></div>
@@ -85,11 +83,11 @@
                     <div class="col-md-3"><input type="checkbox" name="chx_newsign"><label class="margin-top-10">&ensp;New Sign </label></div>
                     <div class="col-md-3"><input type="checkbox" name="chx_normal"><label class="margin-top-10">&ensp;Normal </label></div>
                 </div>
-                <?php echo $this->form()->closeTag()?>
             </div>
         </div>
     </div>
 </div>
+<?php echo $this->form()->closeTag()?>
 <script>
     $(function(){
         $('#datetimepicker1').datetimepicker({

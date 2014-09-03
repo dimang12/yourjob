@@ -166,6 +166,20 @@ return array (
 										) 
 								) 
 						),
+                        'register'=>array(
+                            'type' => 'segment',
+                            'options' =>array(
+                                'route' => '/register[/][:action][/:id]',
+                                'constraints' => array(
+                                    'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                    'id' => '[0-9]+',
+                                ),
+                                'defaults'=>array(
+                                    'controller' => 'Application\Controller\Register',
+                                    'action' => 'index',
+                                ),
+                            ) ,
+                        ),
 						// The following is a route to simplify getting started creating
 						// new controllers and actions without needing to create a new
 						// module. Simply drop new controllers in, and you can access them
@@ -221,6 +235,7 @@ return array (
 						'Application\Controller\Seeker' => 'Application\Controller\SeekerController',
                         'Application\Controller\Resume' => 'Application\Controller\ResumeController',
                         'Application\Controller\Education' => 'Application\Controller\EducationController',
+                        'Application\Controller\Register' => 'Application\Controller\RegisterController',
 				) 
 		),
 		'view_manager' => array (
