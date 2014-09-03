@@ -221,7 +221,8 @@ return array (
 						'Application\Controller\Seeker' => 'Application\Controller\SeekerController',
                         'Application\Controller\Resume' => 'Application\Controller\ResumeController',
                         'Application\Controller\Education' => 'Application\Controller\EducationController',
-				) 
+                        'Application\Controller\Ajax' => 'Application\Controller\AjaxController',
+				)
 		),
 		'view_manager' => array (
 				'display_not_found_reason' => true,
