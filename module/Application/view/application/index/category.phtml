@@ -22,7 +22,7 @@
                             <td><?php echo $row['job_name']?></td>
                             <td><?php echo $row['com_name']?></td>
                             <td><?php echo $row['city_name']?></td>
-                            <td><?php echo date("d-M-Y", strtotime($row["job_close_date"])); ?></td>
+                            <td class="color-red"><?php echo date("d-M-Y", strtotime($row["job_close_date"])); ?></td>
 
                         </tr>
                         <?php $i++; }?>

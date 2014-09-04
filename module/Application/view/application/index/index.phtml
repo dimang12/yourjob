@@ -7,7 +7,7 @@ echo $this->partial("application/index/_feature");
 
     $(document).ready(function(){
         setInterval(function() {
-            $('.newest-panel li:first').slideUp(1000, function(){
+            $('.newest-panel li:first').slideUp(200, function(){
                 $(this).remove();
             });
         }, 5000);

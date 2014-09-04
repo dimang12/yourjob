@@ -20,8 +20,10 @@ class IndexController extends AbstractActionController
 	public function indexAction()
     {
         $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
+        $newest = $cateDb->getNewestJob();
         return new ViewModel(array(
-            "categories" => $cateDb->getAllCate()
+            "categories" => $cateDb->getAllCate(),
+            "newestJob" => $newest
         ));
     }
 

@@ -44,6 +44,13 @@
         </div>
         <script>
             var baseUrl = '<?php echo $this->basePath();?>';
+            $(document).ready(function(){
+                $('.top-cate a').click(function(){
+                    text = $(this).text();
+                    $('.dropdown-gray').text(text);
+                    return false;
+                });
+            });
         </script>
     </body>
 </html>

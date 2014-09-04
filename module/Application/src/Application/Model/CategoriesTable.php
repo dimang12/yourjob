@@ -82,4 +82,17 @@ class CategoriesTable extends AbstractTableGateway {
         $res = new ResultSet();
         return $res->initialize($statement->execute())->buffer()->toArray();
     }
+
+    /*
+     * get newest jobs
+     */
+    public function getNewestJob(){
+        $db = new Sql($this->adapter);
+        $sql = $db->select()->from("job")
+            ->join("company","job.user_id = company.user_id")
+        ;
+        $statement = $db->prepareStatementForSqlObject($sql);
+        $res = new ResultSet();
+        return $res->initialize($statement->execute())->buffer()->toArray();
+    }
 } 
