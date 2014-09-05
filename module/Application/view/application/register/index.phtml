@@ -1,3 +1,9 @@
+<?php
+    $form = $this->form;
+    echo $this->form()->openTag($form);
+    $gender = ["Male"=>"Male","Female"=>"Female"];
+    $optionRegister = [1=>"Seeker",2=>"Employer"];
+?>
 <div class="box-white clearfix border-radius-5 margin-10-0 font-13">
 
    <div class="col-md-12">
@@ -8,31 +14,35 @@
            </div>
        </div>
        <div class="row">
-           <div class="col-md-3"><label>First Name</label> <input type="text" class="form-control"> </div>
-           <div class="col-md-3"><label>Last Name</label><input type="text" class="form-control"></div></div>
-       <div class="row">
-           <div class="col-md-3"><label>Gender</label><select class="form-control"><option>Male</option><option>Female</option></select></div>
-           <div class="col-md-3"><label>Email</label><input type="text" class="form-control"></div>
+           <div class="col-md-3"><label>First Name</label> <?php echo $this->formrow($form->get('first_name')->setAttributes(array('class'=>'form-control')))?></div>
+           <div class="col-md-3"><label>Last Name</label><?php echo $this->formrow($form->get('last_name')->setAttributes(array('class'=>'form-control')))?></div>
+           <div class="col-md-3"><label>Phone</label><?php echo $this->formrow($form->get('user_phone')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
        <div class="row">
-           <div class="col-md-3"><label>User Name</label><input type="text" class="form-control"></div>
-           <div class="col-md-3"><label>Password </label><input type="text" class="form-control"></div>
-           <div class="col-md-3"><label>Re-Password </label><input type="text" class="form-control"></div>
+           <div class="col-md-3"><label>Gender</label><?php echo $this->formselect($form->get('gender')->setAttributes(array('class'=>'form-control','options'=>$gender)))?></div>
+           <div class="col-md-3"><label>Email</label><?php echo $this->formrow($form->get('user_email')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
-
        <div class="row">
-           <div class="col-md-9"><label>Information</label><textarea class="form-control"></textarea></div>
+           <div class="col-md-3"><label>User Name</label><?php echo $this->formrow($form->get('user_name')->setAttributes(array('class'=>'form-control')))?></div>
+           <div class="col-md-3"><label>Password </label><?php echo $this->formrow($form->get('password')->setAttributes(array('class'=>'form-control')))?></div>
+           <div class="col-md-3"><label>Re-Password </label><?php echo $this->formrow($form->get('repassword')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
 
+       <div class="row">
+           <div class="col-md-9"><label>User Information</label><?php echo $this->formtextarea($form->get('user_info')->setAttributes(array('class'=>'form-control')))?></div>
+       </div>
+       <div class="row">
+           <div class="col-md-9"><label>User Address</label><?php echo $this->formtextarea($form->get('user_address')->setAttributes(array('class'=>'form-control')))?></div>
+       </div>
        <div class="row">
            <div class="col-md-6">
                 <h4>How do you intend in employer or seeker?</h4>
-                <select class="form-control"><option>Select</option><option>Employer</option><option>Seeker</option></select>
+               <?php echo $this->formselect($form->get('option_register')->setAttributes(array('class'=>'form-control opt-register','options'=>$optionRegister)))?>
 
            </div>
 
        </div>
-       <div class="company-info">
+       <div class="company-info hidden">
            <div class="row">
                <div class="col-md-12">
                    <h4 class="">Company Information</h4>
@@ -41,29 +51,43 @@
            </div>
 
            <div class="row">
-               <div class="col-md-3"><label>Company Name</label><input type="text" class="form-control"></div>
-               <div class="col-md-3"><label>Contact Name</label><input type="text" class="form-control"></div>
-               <div class="col-md-3"> <label>Phone</label><input type="text" class="form-control"></div>
+               <div class="col-md-3"><label>Company Name</label><?php echo $this->formrow($form->get('com_name')->setAttributes(array('class'=>'form-control')))?></div>
+               <div class="col-md-3"><label>Contact Name</label><?php echo $this->formrow($form->get('contact_name')->setAttributes(array('class'=>'form-control')))?></div>
+               <div class="col-md-3"> <label>Phone</label><?php echo $this->formrow($form->get('com_phone')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
            <div class="row">
-               <div class="col-md-3"><label>Email</label><input type="text" class="form-control"></div>
-               <div class="col-md-3"><label>Website</label><input type="text" class="form-control"></div>
-               <div class="col-md-3"><label>Service Phone</label><input type="text" class="form-control"></div>
+               <div class="col-md-3"><label>Email</label><?php echo $this->formrow($form->get('com_email')->setAttributes(array('class'=>'form-control')))?></div>
+               <div class="col-md-3"><label>Website</label><?php echo $this->formrow($form->get('com_website')->setAttributes(array('class'=>'form-control')))?></div>
+               <div class="col-md-3"><label>Service Phone</label><?php echo $this->formrow($form->get('com_service_phone')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
            <div class="row">
-               <div class="col-md-9"><label>Address</label><textarea class="form-control"></textarea></div>
+               <div class="col-md-9"><label>Company Information</label><?php echo $this->formtextarea($form->get('com_info')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
            <div class="row">
-               <div class="col-md-9"><label>Company Information</label><textarea class="form-control"></textarea></div>
+               <div class="col-md-9"><label>Company Address</label><?php echo $this->formtextarea($form->get('com_address')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
        </div>
        <br>
         <div class="row">
            <div class="col-md-12">
-               <button class="btn btn-success col-md-2">Submit</button>
+               <button type="submit" class="btn btn-success col-md-2">Submit</button>
            </div>
        </div>
        <br>
    </div>
     <br><br>
 </div>
+<?php echo $this->form()->closeTag();?>
+<script>
+    $(function(){
+        $('.opt-register').change(function(){
+            opt = $(this).val();
+            if(opt==1){
+                $('.company-info').addClass('hidden');
+            }else{
+                $('.company-info').removeClass('hidden');
+            }
+        });
+    });
+
+</script>
