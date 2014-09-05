@@ -1333,4 +1333,19 @@ class GlobalModel extends AbstractTableGateway {
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();
     }
+    // save user with company
+    public function saveUserWithCompany($valueUser,$valueCom)
+    {
+        // insert to users
+        $sql = new Sql($this->adapter);
+        $insert = $sql->insert("users")->values($valueUser);
+        $sql->prepareStatementForSqlObject($insert)->execute();
+
+        // insert to company
+        $newId = $this->adapter->driver->getLastGeneratedValue();
+        $valueCom['user_id']= $newId;
+        $insert = $sql->insert("company")->values($valueCom);
+        $sql->prepareStatementForSqlObject($insert)->execute();
+        return true;
+    }
 }
