@@ -1,4 +1,5 @@
 <?php
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/home.css');
 echo $this->partial("application/index/_category");
 echo $this->partial("application/index/_feature");
 ?>
@@ -6,9 +7,13 @@ echo $this->partial("application/index/_feature");
 
     $(document).ready(function(){
         setInterval(function() {
-            $('.newest-panel li:first').slideUp(1000, function(){
+            $('.newest-panel li:first').slideUp(200, function(){
                 $(this).remove();
             });
         }, 5000);
+
+
+        h = $('.all-cate').height();
+        $('.newest-job').height(h);
     });
 </script>

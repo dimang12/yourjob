@@ -1,5 +1,5 @@
 <div class="box-white border-radius-5 margin-10-0 clearfix">
-    <aside class="col-md-9">
+    <aside class="col-md-9 ">
         <header class="font-16 color-light-black padding-10-0 border-bottom-gray">
             Job :: Accounting/Audit/Tax Service
         </header>
@@ -16,20 +16,20 @@
                     </tr>
                     <?php
                     $i=1;
-                    foreach ( $jobs as $key => $row ) {?>
+                    foreach ( $this->paginator as $key => $row ) {?>
                         <tr class="tr-job" href="<?php echo $this->basePath() ."/jobdt/?job=" .$row["job_id"]; ?>">
                             <td class="text-center"><?php echo $i?></td>
                             <td><?php echo $row['job_name']?></td>
                             <td><?php echo $row['com_name']?></td>
                             <td><?php echo $row['city_name']?></td>
-                            <td><?php echo date("d-M-Y", strtotime($row["job_close_date"])); ?></td>
+                            <td class="color-red"><?php echo date("d-M-Y", strtotime($row["job_close_date"])); ?></td>
 
                         </tr>
                         <?php $i++; }?>
                 </table>
             </div>
+            <div class="text-center"> <?php echo $this->paginationControl($this->paginator,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Index','category'=>$this->category));?> </div>
         </div>
-
 
     </aside>
     <aside class="col-md-3">
@@ -45,4 +45,5 @@
         href =  $(this).attr('href');
         window.location = href;
     });
+
 </script>

@@ -7,6 +7,7 @@ use Application\Model\CategoriesTable;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Paginator\Paginator;
 use Zend\Permissions\Acl\Acl;
 use Zend\View\Model\ViewModel;
 use Zend\I18n\Translator\Translator;
@@ -19,8 +20,10 @@ class IndexController extends AbstractActionController
 	public function indexAction()
     {
         $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
+        $newest = $cateDb->getNewestJob();
         return new ViewModel(array(
-            "categories" => $cateDb->getAllCate()
+            "categories" => $cateDb->getAllCate(),
+            "newestJob" => $newest
         ));
     }
 
@@ -29,6 +32,7 @@ class IndexController extends AbstractActionController
     public function categoryAction(){
         //declare params
         $cateId =  $this->params()->fromQuery("c");
+        $page = $this->params()->fromQuery("page",1);
         $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
         $jobs = array();
 
@@ -37,9 +41,16 @@ class IndexController extends AbstractActionController
             $jobs = $cateDb->getJobByCate($cateId);
         }
 
+        $paginator = new Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobs));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+
+
         //pass params to view
         return new ViewModel(array(
-            "jobs" => $jobs
+            "jobs" => $jobs,
+            'paginator'=>$paginator,
+            "category"=>$cateId
         ));
     }
 

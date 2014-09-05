@@ -3,7 +3,7 @@ $resultSet = new \Zend\Db\ResultSet\ResultSet();
 $categories = $resultSet->initialize($this->categories);
 ?>
 <div class="box-white clearfix border-radius-5 margin-10-0 font-13 nav nav-tabs" role="tablist">
-    <aside class="col-lg-9 border-right-gray  ">
+    <aside class="col-lg-9 border-right-gray all-cate ">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs clearfix margin-15-0" role="tablist">
             <li class="active"><a href="#category" role="tab" data-toggle="tab"><?php echo $this->translate("Job Categories"); ?></a></li>
@@ -85,14 +85,18 @@ $categories = $resultSet->initialize($this->categories);
             <div class="tab-pane fade" id="settings">d</div>
         </div>
     </aside>
-    <aside class="col-lg-3">
+    <aside class="col-lg-3 newest-job">
         <menu class="no-padding border-bottom-gray font-16 padding-5-0">
             Job Announcement
         </menu>
         <ul class="newest-panel">
-            <li class="text-overflow"><a class="pull-left">Branch Director </a>  - This is a place to display</li>
-            <li class="text-overflow"><a>Maintenance Technician </a> - This is a place to display company name.</li>
-            <li class="text-overflow"><a>Sale indoor 2 position </a> - This is a place to display company name.</li>
+            <?php foreach($this->newestJob as $k=>$v):?>
+                <li class="text-overflow pos-relative"><a class="pull-left"><?php echo $v["job_name"]?> </a>  - <?php echo $v["com_info"];?></li>
+            <?php endforeach;?>
+
+            <li class="pos-relative"><div class="text-overflow text-alert-width"><a class="pull-left">Branch Director </a>  - This is a place to display</div> <span class="label label-info alert-label">New</span></li>
+            <li class="text-overflow pos-relative"><a>Maintenance Technician </a> - This is a place to display company name. <span class="label label-warning alert-label">Urgent</span></li>
+            <li class="text-overflow pos-relative"><a>Sale indoor 2 position </a> - This is a place to display company name. <span class="label label-danger alert-label">Free</span></li>
             <li class="text-overflow"><a>Assistance account </a>- This is a place to display company name.</li>
             <li class="text-overflow"><a>Cashier </a> - This is a place to display company name.</li>
             <li class="text-overflow"><a>Public Relation Manager </a> - This is a place to display company name.</li>
@@ -102,13 +106,14 @@ $categories = $resultSet->initialize($this->categories);
             <li class="text-overflow"><a>Branch Director </a>- This is a place to display company name.</li>
             <li class="text-overflow"><a>Assistance account </a>- This is a place to display company name.</li>
         </ul>
-        <div class="row pos-relative">
+        <div class="row more full-w">
             <button class="btn btn-default col-lg-12 border-radius-0 no-border-left no-border-right" style="position:relative; top:7px;">
                 <i class="glyphicon glyphicon-chevron-down color-pink"></i>
             </button>
         </div>
     </aside>
 </div>
+
 
 
 

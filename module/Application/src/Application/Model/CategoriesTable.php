@@ -43,6 +43,13 @@ class CategoriesTable extends AbstractTableGateway {
 
     }
 
+    public function getCategoryById($cateId){
+        $db = new Sql($this->adapter);
+        $sql = $db->select()
+                    ->from("categories")
+            ;
+    }
+
 
     /*
      *
@@ -56,7 +63,7 @@ class CategoriesTable extends AbstractTableGateway {
         ;
         $statement = $db->prepareStatementForSqlObject($sql);
         $res = new ResultSet();
-        return $res->initialize($statement->execute())->buffer();
+        return $res->initialize($statement->execute())->buffer()->toArray();
     }
 
     /*
@@ -70,6 +77,19 @@ class CategoriesTable extends AbstractTableGateway {
                 ->join("city", "city.city_id = job.city_id")
                 ->join("company","job.user_id = company.user_id")
                 ->where("job.job_id = $jobId")
+        ;
+        $statement = $db->prepareStatementForSqlObject($sql);
+        $res = new ResultSet();
+        return $res->initialize($statement->execute())->buffer()->toArray();
+    }
+
+    /*
+     * get newest jobs
+     */
+    public function getNewestJob(){
+        $db = new Sql($this->adapter);
+        $sql = $db->select()->from("job")
+            ->join("company","job.user_id = company.user_id")
         ;
         $statement = $db->prepareStatementForSqlObject($sql);
         $res = new ResultSet();
