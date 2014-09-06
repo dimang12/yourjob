@@ -42,6 +42,10 @@ class RegisterController extends AbstractActionController{
                 $form->setData($request->getPost());
                 if($form->isValid()){
                    $sm->ZF2_Insert("users",$valueUser);
+                    return $this->redirect()->toRoute('job-seeker', array(
+                        'controller' => 'Seeker',
+                        'action' =>  'index'
+                    ));
                 }
             }else{
                 $form->optRegister=$optionRegister;
@@ -60,6 +64,10 @@ class RegisterController extends AbstractActionController{
                         'com_address'=>$this->params()->fromPost("com_address")
                     );
                     $sm->saveUserWithCompany($valueUser,$valueCom);
+                    return $this->redirect()->toRoute('job-seeker', array(
+                        'controller' => 'Seeker',
+                        'action' =>  'index'
+                    ));
                 }
             }
         }
