@@ -1,3 +1,49 @@
 <div class="box-white border-radius-5 margin-10-0 clearfix">
-    Seeker page
+    <div class="row">
+        <div class="col-md-3">
+            <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
+        </div>
+
+        <div class="col-md-9">
+            <div class="container-fluid margin-top-10">
+                <div class='col-md-12'>
+                    <div class='row'>
+                        <div class='col-md-3'>
+                            <a href='<?php echo $this->url("job-seeker")."joblisting";?>'>
+                                <div class="placeholder col-md-12">
+                                    <span class='glyphicon glyphicon-list-alt'></span>
+                                    <h4>All Job</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class='col-md-3'>
+                            <a href='<?php echo $this->url("job-seeker")."newjob";?>'>
+                                <div class="placeholder col-md-12">
+                                    <span class='glyphicon glyphicon-tags'></span>
+                                    <h4>New Job</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class='col-md-3'>
+                            <a href='<?php echo $this->url("job-seeker")."accountinfo";?>'>
+                                <div class="placeholder col-md-12">
+                                    <span class='glyphicon glyphicon-user'></span>
+                                    <h4>Account Info</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class='col-md-3'>
+                            <a href='<?php echo $this->url("job-seeker")."companyinfo";?>'>
+                                <div class="placeholder col-md-12">
+                                    <span class='glyphicon glyphicon-map-marker'></span>
+                                    <h4>Company</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
