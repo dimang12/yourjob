@@ -1,11 +1,103 @@
+<?php
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.css');
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/src/bootstrap-wysihtml5.css');
+
+$this->headScript ()->prependFile ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.js');
+$this->headScript ()->prependFile ( $this->basePath () . '/src/bootstrap-wysihtml5.js');
+$this->headScript ()->prependFile ( $this->basePath () . '/lib/js/wysihtml5-0.3.0.js');
+
+?>
+<?php
+$form = $this->form;
+$groups = array ();
+$categories = array();
+foreach ( $this->cityData as $value ) {
+    $groups [$value ['city_id']] = $value ['city_name'];
+}
+foreach ( $this->cateData as $value ) {
+    $categories [$value ['category_id']] = $value ['cate_name'];
+}
+$gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
+?>
 <div class="box-white border-radius-5 margin-10-0 clearfix">
+    <?php echo $this->form()->openTag($form)?>
     <div class="row">
         <div class="col-md-3">
             <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
         </div>
 
         <div class="col-md-9">
-            job new
+            <div class='container-fluid'>
+
+                <div class="row"><div class="col-md-12 text-warning bg-title"> <h4>&ensp;Basic Information</h4></div></div>
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Position / Title : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Hiring Number : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_hiring_number'))?></div></div>
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Experience ( Year ) : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_year_experience'))?></div></div>
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Term : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_schedule'))?></div></div>
+                <div class="row">
+                    <div class="col-md-4 text-right">
+                        <label class="margin-top-10">Salary: </label>
+                    </div>
+
+                    <div class="col-md-6 margin-top-5">
+                        <label class="pull-left padding-5-0">From:</label>
+                        <div class="col-md-3"><?php echo $this->formrow($form->get('job_salary_from'))?></div>
+                        <label class="pull-left padding-5-0">To:</label>
+                        <div class="col-md-3"><?php echo $this->formrow($form->get('job_salary_to'))?></div>
+                    </div>
+                </div>
+
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Qualification : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_duty'))?></div></div>
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Gender : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formselect($form->get('gender')->setAttributes(array("options"=>$gender)));?></div></div>
+
+                <div class="row">
+                    <div class="col-md-4 text-right">
+                        <label class="margin-top-10">Age : </label>
+                    </div>
+                    <div class="col-md-6 margin-top-5">
+                        <label class="pull-left padding-5-0">From:</label>
+                        <div class="col-md-3"><?php echo $this->formrow($form->get('job_age_from'))?></div>
+                        <label class="pull-left padding-5-0">To:</label>
+                        <div class="col-md-3"><?php echo $this->formrow($form->get('job_age_to'))?></div>
+                    </div>
+                </div>
+
+
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Language : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_language'))?></div></div>
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Location : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formselect($form->get('city_id')->setAttributes(array('options'=>$groups)))?></div></div>
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Category : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formselect($form->get('category_id')->setAttributes(array('options'=>$categories)))?></div></div>
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Publishing Date : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_published_date')->setAttributes(array('id'=>'datetimepicker1')))?></div></div>
+                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Closing Date : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_close_date')->setAttributes(array('id'=>'datetimepicker2')))?></div></div>
+                <br><br>
+                <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Description : </label></div><div class="col-md-8 margin-top-5"><?php echo $this->formtextarea($form->get('job_description'))?></div></div>
+                <br><br>
+                <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Requirement : </label></div><div class="col-md-8 margin-top-5"><?php echo $this->formtextarea($form->get('job_requirement'))?></div></div>
+                <br>
+                <div class="row bg-title text-warning"><h4>&ensp;Job Posting Option</h4></div>
+                <div class="row">
+                    <div class="col-md-3"><input type="checkbox" name="chx_urgent"><label class="margin-top-10">&ensp;Urgent </label></div>
+                    <div class="col-md-3"><input type="checkbox" name="chx_auto"><label class="margin-top-10">&ensp;Auto-Submit(10 mn) </label></div>
+                    <div class="col-md-3"><input type="checkbox" name="chx_newsign"><label class="margin-top-10">&ensp;New Sign </label></div>
+                    <div class="col-md-3"><input type="checkbox" name="chx_normal"><label class="margin-top-10">&ensp;Normal </label></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4"><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array("class"=>"btn btn-info")));?>Save<?php echo $this->formbutton()->closeTag();?></div>
+                </div>
+                <br>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        $('#datetimepicker1').datetimepicker({
+            timepicker:true,
+            format:'Y-m-d H:i:s'
+        });
+        $('#datetimepicker2').datetimepicker({
+            timepicker:true,
+            format:'Y-m-d H:i:s'
+        });
+        $('textarea').wysihtml5();
+    });
+</script>
