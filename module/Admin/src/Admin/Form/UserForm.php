@@ -21,7 +21,7 @@ class UserForm extends Form
         ));
         $this->add(array(
             'name'=>'password',
-            'type' => 'Text',
+            'type' => 'Password',
             'attributes'=>array(
                 'class'=>'form-control',
             )

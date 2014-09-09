@@ -40,8 +40,10 @@ class RegisterForm extends Form
     {
         if($this->optRegister==1){
             return $this->getInputFilterUser();
-        }else{
+        }elseif($this->optRegister==2){
             return $this->getInputFilterUserWithCompany();
+        }elseif($this->optRegister==3){
+            return $this->getInputFilterUpdateCompany();
         }
     }
     public function getInputFilterUser()
@@ -226,6 +228,79 @@ class RegisterForm extends Form
                 array('name'=>'StringTrim')
             ),
         ));
+        $inputFilter->add(array(
+            'name'=>'com_name',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'contact_name',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'com_phone',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'com_email',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+            'validators' => array(
+                new \Zend\Validator\EmailAddress()
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'com_website',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'com_service_phone',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'com_address',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        $inputFilter->add(array(
+            'name'=>'com_info',
+            'required'=>true,
+            'filters'=>array(
+                array('name'=>'StripTags'),
+                array('name'=>'StringTrim')
+            ),
+        ));
+        return $this->inputFilter = $inputFilter;
+    }
+    public function getInputFilterUpdateCompany()
+    {
+        $inputFilter = new InputFilter();
+
         $inputFilter->add(array(
             'name'=>'com_name',
             'required'=>true,

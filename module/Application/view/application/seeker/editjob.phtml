@@ -27,13 +27,13 @@ foreach($this->jobData as $row){
 $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
 ?>
 <div class="box-white border-radius-5 margin-10-0 clearfix">
-    <div class="row">
+    <div class="row-fluid">
         <div class="col-md-3">
             <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
         </div>
 
         <div class="col-md-9">
-            <div class="row text-warning"><h4 class="text-warning">&ensp;Job Editing</h4></div>
+            <div class="row"><h4>&ensp;Job Editing</h4></div>
             <hr>
             <?php echo $this->form()->openTag($form)?>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Position / Title : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name')->setAttributes(array('value'=>$job_name)))?></div></div>

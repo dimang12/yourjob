@@ -8,6 +8,9 @@
 namespace Application\Controller;
 
 use Admin\Form\JobForm;
+use Admin\Form\UserForm;
+use Application\Form\RegisterForm;
+use Zend\Db\Sql\Expression;
 use Zend\Mvc\Controller\AbstractActionController;
 use Admin\Form\LoginForm;
 use Zend\Authentication\Adapter\DbTable;
@@ -244,10 +247,79 @@ class SeekerController extends AbstractActionController{
     }
     public function accountinfoAction()
     {
-        return array();
+        $user_id = $this->checkAuthornicationService();
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+        $form = new UserForm();
+        $request = $this->getRequest();
+        if($request->isPost())
+        {
+            $form->setInputFilter($form->getInputFilter());
+            $form->setData($request->getPost());
+            if($form->isValid()){
+                $username = $this->params()->fromPost('username');
+                $pwd = $this->params()->fromPost('password');
+                $gender = $this->params()->fromPost('gender');
+                $phone = $this->params()->fromPost('phone');
+                $email = $this->params()->fromPost('email');
+                $website = $this->params()->fromPost('website');
+                $address = $this->params()->fromPost('address');
+                $info = $this->params()->fromPost('info');
+                $values = array(
+                    'username' => $username,
+                    'password' => new Expression("MD5('$pwd')"),
+                    'user_gender' => $gender,
+                    'user_address'=> $address,
+                    'user_email' => $email,
+                    'user_website' => $website,
+                    'user_info'=> $info,
+                    'user_phone' => $phone
+                );
+                $sm->ZF2_Update('users',$values,array('user_id'=>$user_id));
+                return $this->redirect()->toRoute('job-seeker', array(
+                    'controller' => 'Seeker',
+                    'action' =>  'accountinfo'
+                ));
+            }
+        }
+        $userData = $sm->ZF2_Select('users',array('user_id'=>$user_id));
+        return array(
+            'form'=>$form,
+            'userData' => $userData
+        );
     }
     public function companyinfoAction()
     {
-        return array();
+        $user_id = $this->checkAuthornicationService();
+        $sm= $this->serviceLocator->get('admin\Model\GlobalModel');
+        $form = new RegisterForm();
+        $request = $this->getRequest();
+        if($request->isPost()){
+            $optionRegister =3;  // 3 mean update company
+            $form->optRegister=$optionRegister;
+            $form->setInputFilter($form->getInputFilter());
+            $form->setData($request->getPost());
+            if($form->isValid()){
+                $valueCom = array(
+                    'com_name'=>$this->params()->fromPost("com_name"),
+                    'com_contact_person'=>$this->params()->fromPost("contact_name"),
+                    'com_phone'=>$this->params()->fromPost("com_phone"),
+                    'com_email'=>$this->params()->fromPost("com_email"),
+                    'com_website'=>$this->params()->fromPost("com_website"),
+                    'com_phone_schedule'=>$this->params()->fromPost("com_service_phone"),
+                    'com_info'=>$this->params()->fromPost("com_info"),
+                    'com_address'=>$this->params()->fromPost("com_address")
+                );
+                $sm->ZF2_Update("company",$valueCom,array("user_id"=>$user_id));
+                return $this->redirect()->toRoute('job-seeker', array(
+                    'controller' => 'Seeker',
+                    'action' =>  'index'
+                ));
+            }
+        }
+        $comData = $sm->ZF2_Select("company",array("user_id"=>$user_id));
+        return array(
+            'form'=>$form,
+            'comData' => $comData
+        );
     }
 }

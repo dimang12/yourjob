@@ -19,7 +19,7 @@ $('#cssmenu > ul > li > a').click(function() {
   }		
 });
 $('#cssmenu > ul > li > ul > li').click(function() {
-  $('#cssmenu > ul > li > ul > li').removeClass('active'); 
+    $('#cssmenu > ul > li > ul > li').removeClass('actived');
   $(this).addClass('active'); 
 });
 

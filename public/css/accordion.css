@@ -92,10 +92,12 @@
 #cssmenu ul ul li:last-child {
 
 }
-#cssmenu > ul > li > ul > li.active > a{
+#cssmenu > ul > li > ul > li.actived > a{
   color: red;
 }
-
+.collaspin{
+    display: block;
+}
 .placeholder {
     background-color: #fff;
     border: 1px solid #f1f1f1;
