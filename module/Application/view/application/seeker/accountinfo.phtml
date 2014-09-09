@@ -1,11 +1,81 @@
+<?php
+$form = $this->form;
+echo $this->form()->openTag($form);
+$gGender = array ('Male'=>'Male','Female'=>'Female');
+foreach ($this->userData as $value){
+    $username = $value['username'];
+    $address = $value['user_address'];
+    $gender = $value['user_gender'];
+    $phone = $value['user_phone'];
+    $email = $value['user_email'];
+    $websit = $value['user_website'];
+    $info = $value['user_info'];
+}
+?>
 <div class="box-white border-radius-5 margin-10-0 clearfix">
-    <div class="row">
+    <div class="row-fluid">
         <div class="col-md-3">
             <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
         </div>
-
         <div class="col-md-9">
-            account info
+            <div class='row'>
+                <div class="col-md-6"><h4> &ensp;Account Information</h4></div>
+                <div class="col-md-6">
+
+                </div>
+            </div> <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>User Name</label>
+                    <?php echo $this->formrow($form->get('username')->setAttributes(array('value'=>$username)))?>
+                </div>
+                <div class="col-md-4">
+                    <label>Password</label>
+                    <?php echo $this->formrow($form->get('password'))?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Gender</label>
+                    <?php echo $this->formselect($form->get('gender')->setAttributes(array('options'=>$gGender,'value'=>$gender)))?>
+                </div>
+                <div class="col-md-4">
+                    <label>Phone</label>
+                    <?php echo $this->formrow($form->get('phone')->setAttributes(array('value'=>$phone)))?>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Email</label>
+                    <?php echo $this->formrow($form->get('email')->setAttributes(array('value'=>$email)))?>
+                </div>
+                <div class="col-md-4">
+                    <label>Website</label>
+                    <?php echo $this->formrow($form->get('website')->setAttributes(array('value'=>$websit)))?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>Address</label>
+                    <?php echo $this->formtextarea($form->get('address')->setAttributes(array('value'=>$address)))?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>User Information</label>
+                    <?php echo $this->formtextarea($form->get('info')->setAttributes(array('value'=>$info )))?>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success col-md-12"> Update </button>
+                </div>
+            </div>
+
+            <br>
         </div>
     </div>
 </div>
+<?php $this->form()->closeTag();?>
