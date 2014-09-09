@@ -16,10 +16,17 @@
                     </tr>
                     <?php
                     $i=1;
-                    foreach ( $this->paginator as $key => $row ) {?>
+                    foreach ( $this->paginator as $key => $row ) {
+                        $jobStatus = "";
+                        if($row["job_status"] == 1){
+                            $jobStatus = ' <span class="label label-warning">Urgent</span>';
+                        }elseif($row["job_status"] == 2){
+                            $jobStatus = ' <span class="label label-success">New</span>';
+                        }
+                        ?>
                         <tr class="tr-job" href="<?php echo $this->basePath() ."/jobdt/?job=" .$row["job_id"]; ?>">
                             <td class="text-center"><?php echo $i?></td>
-                            <td><?php echo $row['job_name']?></td>
+                            <td><?php echo $row['job_name'] . $jobStatus ?></td>
                             <td><?php echo $row['com_name']?></td>
                             <td><?php echo $row['city_name']?></td>
                             <td class="color-red"><?php echo date("d-M-Y", strtotime($row["job_close_date"])); ?></td>

@@ -59,7 +59,9 @@ class CategoriesTable extends AbstractTableGateway {
         $sql = $db->select()->from("job")
                     ->join("city", "city.city_id = job.city_id")
                     ->join("company","job.user_id = company.user_id")
-                    ->where("job.category_id = $cateId");
+                    ->where("job.category_id = $cateId")
+                    ->order("job_status ASC")
+                    ;
         ;
         $statement = $db->prepareStatementForSqlObject($sql);
         $res = new ResultSet();

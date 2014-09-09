@@ -1,13 +1,13 @@
 <div class="bg-white border-bottom-gray">
-	<div class="w-center padding-10-0 border-bottom-gray ">
+	<div class="w-center padding-10-0 ">
 		<form action="<?php echo $this->basePath()?>/search/" method="get" class="clearfix padding-5-0">
-			<div class="col-md-5 no-padding">
+			<div class="col-md-4 no-padding">
 				<input type="text" name="txtSearch" class="text border-radius-5 padding-8-5 full-w" id="txtSearch" placeholder="Search, Keywords" >
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-4">
 
                 <div class="btn-group col-md-12 no-padding custom-dropdown">
-                    <button type="button" class="btn btn-danger dropdown-gray col-md-11 no-border padding-8-5">All Categories</button>
+                    <button type="button" class="btn btn-danger dropdown-gray dropdown-categories col-md-11 no-border padding-8-5">All Categories</button>
                     <button type="button" class="btn btn-danger dropdown-toggle bg-gradient-dark-gray no-border padding-8-5" data-toggle="dropdown">
                         <span class="caret"></span>
                         <span class="sr-only">Categories</span>
@@ -21,15 +21,26 @@
                     </ul>
                 </div>
 			</div>
+            <div class="btn-group col-md-2 no-padding">
+                <button type="button" class="btn btn-danger dropdown-gray dropdown-location col-md-9 no-border padding-8-5">Locations</button>
+                <button type="button" class="btn btn-danger dropdown-toggle bg-gradient-dark-gray no-border padding-8-5" data-toggle="dropdown">
+                    <span class="caret"></span>
+
+                </button>
+                <ul class="dropdown-menu" role="menu" style="width:320px">
+                    <li><a href="#">Locations</a></li>
+                    <li class="divider"></li>
+                    <li class="font-13 padding-5-10" style="max-height:220px; overflow-y:scroll;">
+                        <?php echo $this->partial("layout/_location"); ?>
+                    </li>
+                </ul>
+            </div>
 			
 			<div class="col-md-2 no-padding">
 				<button class="padding-8-5 btn-find-job no-border bold color-white shadow-red border-radius-5 full-w"><?php echo $this->translate("FIND JOB NOW!");?></button>
 			</div>	
 		</form>
 	</div>
-	<div class="w-center padding-10-0 text-right">
-		<?php echo $this->translate("Welcome");?>
-		<a >John Doe | Logout</a>
-	</div>
+
 	
 </div>

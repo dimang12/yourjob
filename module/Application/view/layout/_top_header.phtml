@@ -1,10 +1,13 @@
 <div class="bg-gradient-light-gray border-top-blue">
 	<div class="w-center clearfix top-header">
 		<aside class="col-md-5 no-padding">
-			<img alt="Your Job" src="<?php echo $this->basepath();?>/img/logo.png">
+			<img class="logo" alt="Your Job" src="<?php echo $this->basepath();?>/img/logo.png">
 		</aside>
 		<aside class="col-md-7 no-padding text-right clearfix">
 			<div class="clearfix font-13">
+                <?php echo $this->translate("Welcome to, ");?> <b>John Doe</b>
+
+                <span> | </span>
 				<a class="color-ultra-light-black shadow-white" href="#"><?php echo $this->translate("Help Center");?></a>
 				<span> | </span>
 				<a class="color-ultra-light-black" href="#"><?php echo  $this->translate("Feedback");?></a>
@@ -12,7 +15,10 @@
 				<a class="color-ultra-light-black" href="#"><?php echo $this->translate("Share");?></a>
 				<span> | </span>
 				<a class="color-ultra-light-black" href="<?php echo $this->url("register")?>"><?php echo $this->translate("Register");?></a>
-			</div>
+                <span> | </span>
+                <a class="color-ultra-light-black" href="<?php echo $this->url("logout")?>"><?php echo $this->translate("Logout");?></a>
+
+            </div>
             <?php echo $this->partial("layout/_menu"); ?>
 		</aside>
 	</div>

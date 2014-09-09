@@ -47,7 +47,14 @@
             $(document).ready(function(){
                 $('.top-cate a').click(function(){
                     text = $(this).text();
-                    $('.dropdown-gray').text(text);
+
+                    $('.dropdown-categories').text(text);
+                    return false;
+                });
+
+                $('.top-location a').click(function(){
+                    text = $(this).text();
+                    $('.dropdown-location').text(text);
                     return false;
                 });
             });

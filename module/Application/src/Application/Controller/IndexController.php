@@ -44,7 +44,7 @@ class IndexController extends AbstractActionController
 
         $paginator = new Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobs));
         $paginator->setCurrentPageNumber($page);
-        $paginator->setItemCountPerPage(10);
+        $paginator->setItemCountPerPage(20);
 
 
         //pass params to view
