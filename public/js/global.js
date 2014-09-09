@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('.carousel').carousel();
 
-    $( "#txtSearch" ).autocomplete({
+/*    $( "#txtSearch" ).autocomplete({
         source: function( request, response ) {
             $.ajax({
                 url: baseUrl + "/application/ajax/search",
@@ -26,6 +26,6 @@ $(document).ready(function(){
 //        close: function() {
 //            $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
 //        }
-    });
+    });*/
 
 });
