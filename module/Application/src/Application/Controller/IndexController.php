@@ -9,6 +9,7 @@ use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Paginator;
 use Zend\Permissions\Acl\Acl;
+use Zend\View\Helper\Json;
 use Zend\View\Model\ViewModel;
 use Zend\I18n\Translator\Translator;
 use Zend\Session\Container;;
@@ -20,10 +21,10 @@ class IndexController extends AbstractActionController
 	public function indexAction()
     {
         $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
-        $newest = $cateDb->getNewestJob();
+        $urgentJob = $cateDb->getNewestJob();
         return new ViewModel(array(
             "categories" => $cateDb->getAllCate(),
-            "newestJob" => $newest
+            "urgentJob" => json_encode($urgentJob)
         ));
     }
 

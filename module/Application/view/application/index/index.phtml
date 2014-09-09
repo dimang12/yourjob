@@ -4,16 +4,27 @@ echo $this->partial("application/index/_category");
 echo $this->partial("application/index/_feature");
 ?>
 <script>
+    var urgentJob = <?php echo $this->urgentJob;?>;
+    var currentUrgentId = null;
 
     $(document).ready(function(){
+
         setInterval(function() {
             $('.newest-panel li:first').slideUp(200, function(){
+                _this = this;
                 $(this).remove();
+                $('.newest-panel').append(_this);
+                $(_this).slideDown(200);
             });
-        }, 5000);
+        }, 3000);
 
 
         h = $('.all-cate').height();
         $('.newest-job').height(h);
+
+        //initialize urgent jobs
+        $.each(urgentJob, function(k,v){
+            $('.newest-panel').append('<li class="text-overflow"><a>'+ v.job_name+' </a>- '+ v.com_info+'</li>');
+        });
     });
 </script>
