@@ -27,7 +27,7 @@ class LoginForm extends Form
 		
 		$submit = new Element\Submit('btnlogin');
 		$submit->setValue('Log In');
-		$submit->setAttributes(array('class'=>'btn btn-success'));
+		$submit->setAttributes(array('class'=>'btn btn-info col-md-12'));
 		$this->add($submit);
 		
 		//validating filter element

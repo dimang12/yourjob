@@ -19,9 +19,9 @@
                     foreach ( $this->paginator as $key => $row ) {
                         $jobStatus = "";
                         if($row["job_status"] == 1){
-                            $jobStatus = ' <span class="label label-warning">Urgent</span>';
+                            $jobStatus = ' <span class="color-red font-10 up-10">Urgent</span>';
                         }elseif($row["job_status"] == 2){
-                            $jobStatus = ' <span class="label label-success">New</span>';
+                            $jobStatus = ' <span class="color-yellow font-10 up-10">New</span>';
                         }
                         ?>
                         <tr class="tr-job" href="<?php echo $this->basePath() ."/jobdt/?job=" .$row["job_id"]; ?>">
