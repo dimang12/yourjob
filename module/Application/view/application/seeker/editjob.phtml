@@ -32,30 +32,49 @@ $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
             <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
         </div>
 
-        <div class="col-md-9">
-            <div class="row"><h4>&ensp;Job Editing</h4></div>
-            <hr>
+        <div class="col-md-9 box-right margin-top-10">
+            <div class="row box-row-title"><h4>&ensp;Job Editing</h4></div>
             <?php echo $this->form()->openTag($form)?>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Position / Title : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name')->setAttributes(array('value'=>$job_name)))?></div></div>
 
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Hiring Number : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_hiring_number')->setAttributes(array('value'=>$job_hiring_number)))?></div></div>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Experience ( Year ) : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_year_experience')->setAttributes(array('value'=>$job_year_experience)))?></div></div>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Term : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_schedule')->setAttributes(array('value'=>$job_schedule)))?></div></div>
-            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Salary From : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_salary_from')->setAttributes(array('value'=>$job_salary_from)))?></div></div>
-            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Salary To : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_salary_to')->setAttributes(array('value'=>$job_salary_to)))?></div></div>
+
+            <div class="row">
+                <div class="col-md-4 text-right">
+                    <label class="margin-top-10">Salary: </label>
+                </div>
+
+                <div class="col-md-6 margin-top-5">
+                    <label class="pull-left padding-5-0">From:</label>
+                    <div class="col-md-3"><?php echo $this->formrow($form->get('job_salary_from')->setAttributes(array('value'=>$job_salary_from)))?></div>
+                    <label class="pull-left padding-5-0">To:</label>
+                    <div class="col-md-3"><?php echo $this->formrow($form->get('job_salary_to')->setAttributes(array('value'=>$job_salary_to)))?></div>
+                </div>
+            </div>
+
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Qualification : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_duty')->setAttributes(array('value'=>$job_duty)))?></div></div>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Gender : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('gender')->setAttributes(array('options'=>$gender,"value"=>$sex)))?></div></div>
-            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Age From : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_age_from')->setAttributes(array('value'=>$job_age_from)))?></div></div>
-            <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Age To : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_age_to')->setAttributes(array('value'=>$job_age_to)))?></div></div>
+            <div class="row">
+                <div class="col-md-4 text-right">
+                    <label class="margin-top-10">Age : </label>
+                </div>
+                <div class="col-md-6 margin-top-5">
+                    <label class="pull-left padding-5-0">From:</label>
+                    <div class="col-md-3"><?php echo $this->formrow($form->get('job_age_from')->setAttributes(array('value'=>$job_age_from)))?></div>
+                    <label class="pull-left padding-5-0">To:</label>
+                    <div class="col-md-3"><?php echo $this->formrow($form->get('job_age_to')->setAttributes(array('value'=>$job_age_to)))?></div>
+                </div>
+            </div>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Language : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_language')->setAttributes(array('value'=>$job_language)))?></div></div>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Location : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formselect($form->get('city_id')->setAttributes(array('options'=>$groups,'value'=>$city_id)))?></div></div>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Publishing Date : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_published_date')->setAttributes(array('id'=>'datetimepicker1','value'=> $job_published_date)))?></div></div>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Closing Date : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_close_date')->setAttributes(array('id'=>'datetimepicker2','value'=> $job_close_date)))?></div></div>
-            <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Job Description : </label></div><div class="col-md-8 margin-top-5"><?php echo $this->formtextarea($form->get('job_description')->setAttributes(array('value'=>$job_description)))?></div></div>
-            <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Job Requirement : </label></div><div class="col-md-8 margin-top-5"><?php echo $this->formtextarea($form->get('job_requirement')->setAttributes(array('value'=>$job_requirement)))?></div></div>
+            <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Description : </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_description')->setAttributes(array('value'=>$job_description)))?></div></div>
+            <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Requirement : </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_requirement')->setAttributes(array('value'=>$job_requirement)))?></div></div>
             <br>
-            <hr>
-            <div class="row text-warning"><h4>&ensp;Job Posting Option</h4></div>
+            <div class="row box-row-title"><h4>&ensp;Job Posting Option</h4></div>
             <div class="row">
                 <div class="col-md-3"><input type="checkbox" name="chx_urgent"><label class="margin-top-10">&ensp;Urgent </label></div>
                 <div class="col-md-3"><input type="checkbox" name="chx_auto"><label class="margin-top-10">&ensp;Auto-Submit(10 mn) </label></div>
@@ -64,7 +83,7 @@ $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
             </div>
             <br>
             <div class="row">
-                <div class="col-md-4 col-md-offset-4"><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array("class"=>"btn btn-info")));?>Update<?php echo $this->formbutton()->closeTag();?></div>
+                <div class="col-md-4 col-md-offset-4"><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array("class"=>"btn btn-info col-md-12")));?>Update<?php echo $this->formbutton()->closeTag();?></div>
             </div>
             <br>
             <?php echo $this->form()->closeTag()?>
