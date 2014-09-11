@@ -1,20 +1,19 @@
-<div class="container-fluid bg">
+<div class="row-fluid">
     <?php echo $this->partial('admin/partial/_left.phtml'); ?>
-    <div class='col-md-10 main'>
-        <div class='page-header'>
-            <div class='row'>
-                <form method="get">
-                <div class='col-md-3'><h1 class='text-warning' style="margin-top: 10px;">Resume Search</h1></div>
-                <div class="col-md-7"><input type="text" name="search" class="form-control margin-top-10" placeholder="Search here..."></div>
-                <div class="col-md-2"><button type="submit" class="btn btn-success margin-top-10">Search</button></div>
-                </form>
-            </div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <form method="get">
+            <div class='col-md-2'><h4 class='text-warning'>Resume Search</h4></div>
+            <div class="col-md-7"><input type="text" name="search" class="form-control margin-top-2" placeholder="Search here..."></div>
+            <div class="col-md-3 text-right"><button type="submit" class="btn btn-info margin-top-2 col-md-12"><span class="glyphicon glyphicon-search pull-left"></span>Search</button></div>
+            </form>
         </div>
+        <br>
         <div class='row'>
-            <div class='container-fluid'>
+            <div class='col-md-12'>
                 <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tr>
+                    <table class="table table-hover table-bordered">
+                        <tr class="box-row-title">
                             <th>No</th>
                             <th>Name</th>
                             <th>Current Position</th>
@@ -37,11 +36,14 @@
                             </tr>
                             <?php $i++; }?>
                     </table>
+                    <?php echo $this->paginationControl($this->resumeData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
                 </div>
             </div>
         </div>
+        <br>
     </div>
 </div>
+
 <script>
     $(function(){
         $('.icon-remove').on('click',function(){

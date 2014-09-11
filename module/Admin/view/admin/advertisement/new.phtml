@@ -1,16 +1,13 @@
 <?php $form = $this->form; echo $this->form()->openTag($form)?>
-<div class="container-fluid bg">
+<div class="row-fluid">
     <?php echo $this->partial('admin/partial/_left.phtml'); ?>
-    <div class='col-md-10 main'>
-        <div class='page-header'>
-            <div class='row'>
-                <div class='col-md-6'><h1 class='text-warning'>New Advertisement</h1></div>
-                <div class="col-md-6 text-right">
-                    <button type="submit" class="btn btn-success"> Save</button>&nbsp;&nbsp;
-                    <a href="<?php echo $this->url()?>" class="btn btn-default">Back</a>
-                </div>
-            </div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-8'><h4 class='text-warning'>New Advertisement</h4></div>
+            <div class="col-md-2 text-right"><button type="submit" class="btn btn-info margin-top-2 col-md-12">Save</button></div>
+            <div class="col-md-2 text-right"><a href="<?php echo $this->url()?>" class="btn btn-default margin-top-2 col-md-12">Back</a></div>
         </div>
+        <br>
         <div class='row'>
             <div class="col-md-4"><label>Choose Image </label><?php echo $this->formrow($form->get("adv_image")->setAttributes(array("required"=>true)))?></div>
             <div class="col-md-4"><label>Advertisement Name</label><?php echo $this->formrow($form->get("adv_title"))?></div>
@@ -20,7 +17,9 @@
         <div class='row'>
             <div class="col-md-12"><label>Advertisement Description</label><?php echo $this->formtextarea($form->get("adv_desc"))?></div>
         </div>
+        <br>
     </div>
-    <?php echo $this->form()->closeTag($form)?>
 </div>
+<?php echo $this->form()->closeTag($form)?>
+
 
