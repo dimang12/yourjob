@@ -1,11 +1,10 @@
 <?php
 $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.css');
-$this->headLink ()->prependStylesheet ( $this->basePath () . '/src/bootstrap-wysihtml5.css');
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/bootstrap-wysihtml5.css');
 
 $this->headScript ()->prependFile ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.js');
-$this->headScript ()->prependFile ( $this->basePath () . '/src/bootstrap-wysihtml5.js');
-$this->headScript ()->prependFile ( $this->basePath () . '/lib/js/wysihtml5-0.3.0.js');
-
+$this->headScript ()->prependFile ( $this->basePath () . '/js/bootstrap-wysihtml5.js');
+$this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js');
 ?>
 <?php
 $form = $this->form;
