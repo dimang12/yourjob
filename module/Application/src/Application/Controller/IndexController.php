@@ -8,13 +8,11 @@ use Application\Model\CategoriesTable;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Paginator;
-use Zend\Permissions\Acl\Acl;
-use Zend\View\Helper\Json;
 use Zend\View\Model\ViewModel;
-use Zend\I18n\Translator\Translator;
+
 use Zend\Session\Container;;
 use Zend\Session\Container as SessionContainer;
-use Zend\Http\Header\SetCookie;
+
 
 class IndexController extends AbstractActionController
 {

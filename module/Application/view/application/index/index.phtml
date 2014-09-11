@@ -2,6 +2,8 @@
 $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/home.css');
 echo $this->partial("application/index/_category");
 echo $this->partial("application/index/_feature");
+echo $this->partial("application/index/_docshare");
+
 ?>
 <script>
     var urgentJob = <?php echo $this->urgentJob;?>;
@@ -21,6 +23,8 @@ echo $this->partial("application/index/_feature");
 
         h = $('.all-cate').height();
         $('.newest-job').height(h);
+        h = $('.doc-share-panel').height();
+        $('.latest-edu').height(h);
 
         //initialize urgent jobs
         $.each(urgentJob, function(k,v){
