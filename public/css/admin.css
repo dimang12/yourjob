@@ -9,7 +9,7 @@
 
 .padding-0{padding: 0px;}
 /*.panel-heading{border: 1px solid #F5F5F5;}*/
-.active{background: #0064bf;}
+.active{background: #5BC0DE;}
 .panel-heading > .panel-title a{
     text-decoration: none;
 }
@@ -43,3 +43,7 @@
 .fixed-bottom				{ position:fixed; bottom:0;}
 .fixed-left					{ position:fixed; left:0;}
 .full-w						{ width:100%;}
+
+.box-admin-right            {border-left:1px solid #C9C9C9;border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9;margin-bottom: 10px;}
+.box-row-title              {background:#f2f2f2;}
+.margin-top-2{margin-top: 2px;}

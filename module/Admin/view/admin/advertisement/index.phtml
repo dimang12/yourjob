@@ -1,16 +1,13 @@
-<div class="container-fluid bg">
+<div class="row-fluid">
     <?php echo $this->partial('admin/partial/_left.phtml'); ?>
-    <div class='col-md-10 main'>
-        <div class='page-header'>
-            <div class='row'>
-                <div class='col-md-3'><h1 class='text-warning'>Advertisement</h1></div>
-                <div class="col-md-9 text-right">
-                    <a href="<?php echo $this->url()."new"?>" class="btn btn-success">New Advertisement</a>
-                </div>
-            </div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-9'><h4 class='text-warning'>Advertisement</h4></div>
+            <div class="col-md-3 text-right"><a href="<?php echo $this->url()."new"?>" class="btn btn-info margin-top-2 col-md-12">New Advertisement</a></div>
         </div>
+        <br>
         <div class='row'>
-            <div class='container-fluid'>
+            <div class='col-md-12'>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr>
@@ -36,6 +33,7 @@
                 </div>
             </div>
         </div>
+        <br>
     </div>
 </div>
 <script>
