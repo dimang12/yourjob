@@ -14,54 +14,19 @@
         </div>
         <div class="padding-10-0 clearfix">
             <aside class="col-md-8" style="padding-top:15px;">
-
+                <?php foreach($this->eduData as $k=>$v): ?>
                 <div class="media margin-10-0 clearfix">
-                    <h4 class="media-heading color-blue pa">Research centres in economics</h4>
+                    <a href="#"><h4 class="media-heading color-blue pa"><?php echo $v["educ_title"];?></h4></a>
                     <a class="pull-left" href="#">
                         <img src="<?php echo $this->basePath(); ?>/img/user-login.png" alt="" class="img-thumbnail" width="100">
                     </a>
                     <div class="media-body">
 
-                        <small class="color-ultra-light-black display-block margin-bottom-10 clearfix"> <b class="color-black">post by:</b> Australian National University <b class="color-black">close date: </b> January 15th, 2015</small>
-                        Over the past several decades Crawford School economists have offered research-based policy advice that has had major policy impact in improving trade...<a href="#" class="color-red"> read more</a>
+                        <small class="color-ultra-light-black display-block margin-bottom-10 clearfix"> <b class="color-black">post by:</b> <?php echo $v["educ_post_by"]?> <b class="color-black">close date: </b> <?php echo date("d M, Y",strtotime($v["educ_post_date"]));?></small>
+                        <?php echo $v["detail"];?>... <a href="#" class="color-red"> read more</a>
                     </div>
                 </div>
-
-                <div class="media margin-15-0 padding-10-0 clearfix">
-                    <h4 class="media-heading color-blue">Research centres in economics</h4>
-                    <a class="pull-left" href="#">
-                        <img src="<?php echo $this->basePath(); ?>/img/user-login.png" alt="" class="img-thumbnail" width="100">
-                    </a>
-                    <div class="media-body">
-
-                        <small class="color-ultra-light-black clearfix"> <b class="color-black">post by:</b> Australian National University <b class="color-black">close date: </b> January 15th, 2015</small>
-                        Over the past several decades Crawford School economists have offered research-based policy advice that has had major policy impact in improving trade...<a href="#" class="color-red"> read more</a>
-                    </div>
-                </div>
-
-                <div class="media margin-15-0 padding-10-0 clearfix">
-                    <h4 class="media-heading color-blue">Research centres in economics</h4>
-                    <a class="pull-left" href="#">
-                        <img src="<?php echo $this->basePath(); ?>/img/user-login.png" alt="" class="img-thumbnail" width="100">
-                    </a>
-                    <div class="media-body">
-
-                        <small class="color-ultra-light-black clearfix"> <b class="color-black">post by:</b> Australian National University <b class="color-black">close date: </b> January 15th, 2015</small>
-                        Over the past several decades Crawford School economists have offered research-based policy advice that has had major policy impact in improving trade...<a href="#" class="color-red"> read more</a>
-                    </div>
-                </div>
-
-                <div class="media margin-15-0 padding-10-0 clearfix">
-                    <h4 class="media-heading color-blue">Research centres in economics</h4>
-                    <a class="pull-left" href="#">
-                        <img src="<?php echo $this->basePath(); ?>/img/user-login.png" alt="" class="img-thumbnail" width="100">
-                    </a>
-                    <div class="media-body">
-
-                        <small class="color-ultra-light-black clearfix"> <b class="color-black">post by:</b> Australian National University <b class="color-black">close date: </b> January 15th, 2015</small>
-                        Over the past several decades Crawford School economists have offered research-based policy advice that has had major policy impact in improving trade...<a href="#" class="color-red"> read more</a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </aside>
             <aside class="col-md-4 no-padding-right">
                 <br>

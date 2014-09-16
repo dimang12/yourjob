@@ -18,6 +18,13 @@ echo $this->partial("application/index/_docshare");
                 $('.newest-panel').append(_this);
                 $(_this).slideDown(200);
             });
+
+            $('.edu-panel li:first').slideUp(200, function(){
+                _this = this;
+                $(this).remove();
+                $('.edu-panel').append(_this);
+                $(_this).slideDown(200);
+            });
         }, 1500);
 
 

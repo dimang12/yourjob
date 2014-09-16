@@ -70,7 +70,11 @@
         <menu class="no-padding border-bottom-gray font-16 padding-10-0 no-margin">
             Job Announcement
         </menu>
-        <ul class="edu-panel"></ul>
+        <ul class="edu-panel padding-10-0">
+            <?php foreach($this->education as $k=>$v): ?>
+            <li class="text-overflow"><a> <?php echo $v["educ_title"]; ?></a></li>
+            <?php endforeach; ?>
+        </ul>
         <div class="row more full-w">
             <button class="btn btn-default col-lg-12 border-radius-0 no-border border-radius-bottom-5" style="position:relative; top:7px; border-top:#ccc solid 1px;">
                 <i class="glyphicon glyphicon-chevron-down color-pink"></i>

@@ -5,6 +5,7 @@ namespace Application\Controller;
 use Application\Model\AclTable;
 use Application\Model\CategoriesTable;
 
+use Application\Model\EducationTable;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Paginator;
@@ -19,10 +20,15 @@ class IndexController extends AbstractActionController
 	public function indexAction()
     {
         $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
+        $eduDb = new EducationTable($this->getAdapter());
+
         $urgentJob = $cateDb->getNewestJob();
+        $newEducation = $eduDb->getLatestEducation()->toArray();
+
         return new ViewModel(array(
             "categories" => $cateDb->getAllCate(),
-            "urgentJob" => json_encode($urgentJob)
+            "urgentJob" => json_encode($urgentJob),
+            "education" => $newEducation
         ));
     }
 
@@ -79,5 +85,9 @@ class IndexController extends AbstractActionController
 
     private function getCategoiesTableGateway(){
         return new TableGateway("categories",$this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
+    }
+
+    private function getAdapter(){
+        return $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
     }
 }

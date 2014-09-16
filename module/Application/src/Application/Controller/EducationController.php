@@ -10,13 +10,18 @@ namespace Application\Controller;
 
 use Application\Model\EducationTable;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
 class EducationController extends  AbstractActionController{
 
     public function indexAction(){
 
         $db = new EducationTable($this->getAdapter());
-        print_r($db->getAllEducation());
+        $eduData = $db->getAllEducation();
+
+        return new ViewModel(array(
+            "eduData"=>$eduData
+        ));
     }
 
     public function getAdapter(){
