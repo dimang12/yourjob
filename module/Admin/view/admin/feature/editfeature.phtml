@@ -1,8 +1,7 @@
 <?php echo $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.css')?>
 <?php echo $this->headScript ()->prependFile ( $this->basePath () . '/css/datetimepicker/jquery.datetimepicker.js')?>
 
-<?php $form = $this->form?>
-<?php echo $this->form()->openTag($form)?>
+
 <?php
     $feat_started_date = '';
     $feat_end_date = '';
@@ -13,20 +12,14 @@
         $feat_ordering = $row['feat_ordering'];
     }
 ?>
-<div class="container-fluid bg">
+<?php $form = $this->form; echo $this->form()->openTag($form)?>
+<div class="row-fluid box-admin-main">
     <?php echo $this->partial('admin/partial/_left.phtml'); ?>
-    <div class='col-md-10 main'>
-        <div class="page-header">
-            <div class='row'>
-                <div class="col-md-8">
-                    <h1 class='text-warning'>Edit Feature</h1>
-                </div>
-                <div class="col-md-4 text-right">
-                    <?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')));?>
-                    <span class='glyphicon glyphicon-upload'></span> Update<?php echo $this->formbutton()->closeTag()?>
-                    <a href="<?php echo $this->url("admin-feature")?>" class="btn btn-default">Back</a>
-                </div>
-            </div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-8'><h4 class='text-warning'>Edit Feature</h4></div>
+            <div class="col-md-2 text-right"><button type="submit" class="btn btn-info margin-top-2 col-md-12">Update</button></div>
+            <div class="col-md-2 text-right"><a href="<?php echo $this->url("admin-feature")?>" class="btn btn-default margin-top-2 col-md-12">Back</a></div>
         </div>
         <br>
         <div class="row">
@@ -43,6 +36,7 @@
                 <?php echo $this->forminput($form->get('feat_ordering')->setAttributes(array('class'=>'col-md-12 form-control','value'=>$feat_ordering)));?>
             </div>
         </div>
+        <br>
     </div>
 </div>
 <?php echo $this->form()->closeTag()?>

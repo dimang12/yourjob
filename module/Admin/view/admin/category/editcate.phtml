@@ -6,19 +6,15 @@
     }
 ?>
 <?php $form = $this->form; echo $this->form()->openTag($form)?>
-<div class="container-fluid bg">
+<div class="row-fluid box-admin-main">
     <?php echo $this->partial('admin/partial/_left.phtml'); ?>
-    <div class='col-md-10 main'>
-        <div class='page-header'>
-            <div class='row'>
-                <div class='col-md-8'><h1 class='text-warning'>Edit Category</h1></div>
-                <div class='col-md-4 text-right'>
-                    <a href='<?php echo $this->url('dashboard-category')?>' class='btn btn-default'><span class='glyphicon glyphicon-circle-arrow-left'></span> Back</a> &nbsp;&nbsp;
-                    <?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array('class'=>'btn btn-success')))?><span class='glyphicon glyphicon-floppy-disk'></span> Update<?php echo $this->formbutton()->closeTag()?>
-                </div>
-            </div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-8'><h4 class='text-warning'>Edit Category</h4></div>
+            <div class="col-md-2 text-right"><button type="submit" class="btn btn-info margin-top-2 col-md-12">Update</button></div>
+            <div class="col-md-2 text-right"><a href="<?php echo $this->url("dashboard-category")?>" class="btn btn-default margin-top-2 col-md-12">Back</a></div>
         </div>
-
+        <br>
         <div class='row'>
             <div class='col-md-8'>
                 <?php echo $this->formlabel($form->get('cate_name'))?>
@@ -39,7 +35,7 @@
             </div>
 
         </div>
-
-        <?php echo $this->form()->closeTag()?>
+        <br>
     </div>
 </div>
+<?php echo $this->form()->closeTag($form)?>

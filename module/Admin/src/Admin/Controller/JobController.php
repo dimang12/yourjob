@@ -25,8 +25,14 @@ class JobController extends AbstractActionController{
         $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $jobData = $sm->getJob($user_id);
+
+        $page = $this->params()->fromQuery('page');
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobData));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        $paginator->setPageRange(4);
         return array(
-            'jobData'=>$jobData,
+            'jobData'=>$paginator,
         );
     }
     public function jobpostingAction()
@@ -164,8 +170,13 @@ class JobController extends AbstractActionController{
             $search = $this->params()->fromQuery('search');
             $resumeData = $sm->searchResume($search);
         }
+        $page = $this->params()->fromQuery('page');
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($resumeData));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        $paginator->setPageRange(4);
         return array(
-            'resumeData' => $resumeData
+            'resumeData' => $paginator
         );
     }
     public function resumepurchaseAction()

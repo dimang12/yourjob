@@ -44,6 +44,7 @@
 .fixed-left					{ position:fixed; left:0;}
 .full-w						{ width:100%;}
 
-.box-admin-right            {border-left:1px solid #C9C9C9;border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9;margin-bottom: 10px;}
+.box-admin-right            {border:1px solid #C9C9C9;margin-bottom: 10px;}
 .box-row-title              {background:#f2f2f2;}
-.margin-top-2{margin-top: 2px;}
+.margin-top-2               {margin-top: 2px;}
+.box-admin-main             {padding: 10px;}

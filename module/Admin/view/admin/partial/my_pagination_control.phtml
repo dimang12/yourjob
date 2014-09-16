@@ -1,0 +1,64 @@
+<!--
+See http://developer.yahoo.com/ypatterns/pattern.php?pattern=searchpagination
+-->
+<?php 
+	// $searchLink is get value from parameter 4th of paginator 
+	// code in view of parameter 4th paginator : array('search'=>$this->search)
+	$searchLink='';
+	if($this->search!=''){
+		$searchLink = '&txtsearch='.$this->search;
+	}
+?>
+<?php if ($this->pageCount>1): ?>
+<div class="paginationControl">
+<ul class="pagination">
+
+		<!-- First page link -->
+		<?php if (isset($this->previous)): ?>
+	<li><a href="<?php echo $this->url().'?page='.$this->first.$searchLink;?>">
+		    First
+		  </a> </li> 
+		<?php else: ?>
+	<li class="disabled"> <span class="disabled">First</span>  </li>
+		<?php endif; ?>
+		
+		<!-- Previous page link -->
+		<?php if (isset($this->previous)): ?>
+	<li>  <a href="<?php echo $this->url().'?page='. $this->previous.$searchLink;?>">
+		    &lt; Previous
+		  </a> </li>
+		<?php else: ?>
+	<li class="disabled">  <span class="disabled">&lt; Previous</span> </li>
+		<?php endif; ?>
+		
+		<!-- Numbered page links -->
+		<?php foreach ($this->pagesInRange as $page): ?>
+		  <?php if ($page != $this->current): ?>
+	<li>	<a href="<?php echo $this->url().'?page='.$page.$searchLink; ?>">
+		        <?php echo $page; ?>
+		    </a> </li>
+		  <?php else: ?>
+	<li class="active"><a href=''><?php echo $page; ?> </a><li> 
+		  <?php endif; ?>
+		<?php endforeach; ?>
+		
+		<!-- Next page link -->
+		<?php if (isset($this->next)): ?>
+	<li>  <a href="<?php echo $this->url().'?page='.$this->next.$searchLink;?>">
+		    Next &gt;
+		  </a> <li>
+		<?php else: ?>
+	<li class="disabled"><span class="disabled">Next &gt;</span></li>
+		<?php endif; ?>
+		
+		<!-- Last page link -->
+		<?php if (isset($this->next)): ?>
+	<li>	<a href="<?php echo $this->url().'?page='.$this->last.$searchLink;?>">
+		    Last
+		  </a> </li>
+		<?php else: ?>
+	<li class="disabled">  <span class="disabled">Last</span></li>
+		<?php endif; ?>
+</ul>
+</div>
+<?php endif; ?>

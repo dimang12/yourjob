@@ -1,40 +1,39 @@
-<div class="container-fluid bg">
+<div class="row-fluid box-admin-main">
     <?php echo $this->partial('admin/partial/_left.phtml'); ?>
-    <div class='col-md-10 main'>
-		<div class='page-header'>
-			<div class='row'>
-				<div class='col-md-8'><h1 class='text-warning'>Job category</h1></div>
-				<div class='col-md-4 text-right'><a href='<?php echo $this->url('dashboard-category-add')?>' class='btn btn-success'>New Category</a></div>
-			</div>
-		</div>
-		<div class='row-fluid'>
-			<div class='table-responsive'>
-				<table class='table table-bordered'>
-					<tr class='warning'>
-						<th>No.</th>
-						<th>Job Category Name</th>
-                        <th>Job Category Detail</th>
-                        <th>Ordering</th>
-                        <th>Action</th>
-					</tr><?php $i = 1?>
-					<?php foreach ($this->catData as $k => $col): if($col['cate_parent'] == 0): ?>
-						<tr>
-							<td><?php echo ($i++)?></td>
-							<td><?php echo $col['cate_name']?></td>
-							<td><?php echo $col['cate_details']?></td>
-							<td><?php echo $col['cate_order']?></td>
-                            <td><a href="<?php echo $this->url('dashboard-category-edit')?>?catId=<?php echo $col['category_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
-                                <a href='#' title='Remove'><span data-remove='<?php echo $col['category_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
-						</tr>
-					<?php endif; endforeach ?>
-				</table>
-			</div>
-
-
-			</div>
-
-		</div>
-	</div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-9'><h4 class='text-warning'>Job category</h4></div>
+            <div class="col-md-3 text-right"><a href="<?php echo $this->url('dashboard-category-add')?>" class="btn btn-info margin-top-2 col-md-12">New Category</a></div>
+        </div>
+        <br>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='table-responsive'>
+                    <table class='table table-hover table-bordered'>
+                        <tr class='box-row-title'>
+                            <th>No.</th>
+                            <th>Job Category Name</th>
+                            <th>Job Category Detail</th>
+                            <th>Ordering</th>
+                            <th>Action</th>
+                        </tr><?php $i = 1?>
+                        <?php foreach ($this->catData as $k => $col): if($col['cate_parent'] == 0): ?>
+                            <tr>
+                                <td><?php echo ($i++)?></td>
+                                <td><?php echo $col['cate_name']?></td>
+                                <td><?php echo $col['cate_details']?></td>
+                                <td><?php echo $col['cate_order']?></td>
+                                <td><a href="<?php echo $this->url('dashboard-category-edit')?>?catId=<?php echo $col['category_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
+                                    <a href='#' title='Remove'><span data-remove='<?php echo $col['category_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
+                            </tr>
+                        <?php endif; endforeach ?>
+                    </table>
+                    <?php echo $this->paginationControl($this->catData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
 </div>
 
 <script>

@@ -67,7 +67,7 @@ ul.wysihtml5-commands-disabled .dropdown-menu {
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
     vertical-align: middle;
 }
-.dropdown-menu{
+.wysihtml5-toolbar .dropdown-menu{
     border: 0px;
     box-shadow:none;
     background-color:transparent;

@@ -10,8 +10,14 @@ class CategoryController extends AbstractActionController {
 	public function indexAction() {
 		$sm = $this->serviceLocator->get ( 'Admin\Model\GlobalModel' );
 		$catData = $sm->ZF2_Select('categories');
+
+        $page = $this->params()->fromQuery('page');
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($catData));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        $paginator->setPageRange(4);
 		return array (
-				'catData' => $catData
+				'catData' => $paginator
 		);
 	}
 	public function newcateAction() {
