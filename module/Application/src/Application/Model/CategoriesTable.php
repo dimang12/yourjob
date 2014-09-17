@@ -31,7 +31,7 @@ class CategoriesTable extends AbstractTableGateway {
         $db = new Sql($this->adapter);
         $sql =  $db->select()
                         ->from(array("c"=>"categories"))
-                        ->columns(array("*",new Expression("count(c.category_id) AS num")))
+                        ->columns(array("*",new Expression("count(job.job_id) AS num")))
                         ->join("job", "job.category_id = c.category_id",array(), "LEFT")
                         ->group("c.category_id")
                 ;

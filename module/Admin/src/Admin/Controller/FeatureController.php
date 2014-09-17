@@ -57,7 +57,7 @@ class FeatureController extends AbstractActionController {
                 $sm->ZF2_Insert('feature',$values);
                 return $this->redirect()->toUrl('admin-feature');
             }catch (\Exception $ext){
-                echo 'hello';
+                echo "could't save to database.";
             }
         }
         $companyData = $sm->ZF2_Select('company');

@@ -2,10 +2,12 @@
 $resultSet = new \Zend\Db\ResultSet\ResultSet();
 $categories = $resultSet->initialize($this->categories);
 ?>
-<div class="box-white clearfix border-radius-5 margin-10-0 font-13 nav nav-tabs" role="tablist">
-    <aside class="col-lg-9 border-right-gray all-cate ">
+<div class="clearfix margin-10-0 font-13 nav nav-tabs" role="tablist">
+
+    <aside class="all-cate box-white border-radius-5 w70">
+        <div class="clearfix col-md-12">
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs clearfix margin-15-0" role="tablist">
+        <ul class="nav nav-tabs clearfix margin-15-0 border-bottom-blue" role="tablist">
             <li class="active"><a href="#category" role="tab" data-toggle="tab"><?php echo $this->translate("Job Categories"); ?></a></li>
             <li><a href="#location" role="tab" data-toggle="tab"><?php echo $this->translate("Location"); ?></a></li>
             <li><a href="#messages" role="tab" data-toggle="tab"><?php echo $this->translate("Industry");?></a></li>
@@ -47,7 +49,7 @@ $categories = $resultSet->initialize($this->categories);
                 ?>
             </div>
             <div class="tab-pane fade" id="location">
-
+                <?php  echo $this->partial("application/index/_location"); ?>
             </div>
             <div class="tab-pane fade" id="messages">
 
@@ -84,8 +86,9 @@ $categories = $resultSet->initialize($this->categories);
             </div>
             <div class="tab-pane fade" id="settings">d</div>
         </div>
+        </div>
     </aside>
-    <aside class="col-lg-3 newest-job">
+    <aside class="col-lg-4 newest-job box-white border-radius-5" style="width:28%;">
         <menu class="no-padding border-bottom-gray font-16 padding-5-0">
             Job Announcement
         </menu>

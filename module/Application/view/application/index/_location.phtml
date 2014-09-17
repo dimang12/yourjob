@@ -1,7 +1,33 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dimang12
- * Date: 7/14/14
- * Time: 7:46 PM
- */ 
+$resultSet = new \Zend\Db\ResultSet\ResultSet();
+$locations = $resultSet->initialize($this->locations);
+
+$cateList = '';
+$asideList = '';
+$perColumn = round($locations->count() / 3);
+$add=1;
+
+for($i=1; $i<=3; $i++){
+    if(($locations->count() % 3) <> 0){
+        if($i > ($locations->count() % 3) ){
+            $add=0;
+        }
+    }
+    if($i==1){
+        $asideList = '<aside class="col-md-4 no-padding-left border-right-gray "><ul>';
+    }elseif($i == 2){
+        $asideList = '<aside class="col-md-4 border-right-gray"><ul>';
+    }else{
+        $asideList = '<aside class="col-md-4 no-padding-right"><ul>';
+    }
+    $j = 1;
+    foreach($locations as $k=>$v){
+        if($j > (($i-1) * ($perColumn+$add))  &&  $j <= ($i * ($perColumn+$add))){
+            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/application/index/location?l=".$v["city_id"].'" class="pull-left color-black">'.$v["city_name"].'</a><label class="pull-right">('.$v["num"].')</label></li>';
+        }
+        $j++;
+    }
+    $cateList .= $asideList .'</ul></aside>';
+}
+echo $cateList;
+?>

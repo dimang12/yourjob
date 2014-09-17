@@ -68,11 +68,13 @@
     </aside>
     <aside class="col-md-3 latest-edu">
         <menu class="no-padding border-bottom-gray font-16 padding-10-0 no-margin">
-            Job Announcement
+            Education
         </menu>
         <ul class="edu-panel padding-10-0">
             <?php foreach($this->education as $k=>$v): ?>
-            <li class="text-overflow"><a> <?php echo $v["educ_title"]; ?></a></li>
+            <li class="text-overflow margin-5">
+                <img width="30" class="img-thumbnail" alt="" src="/ourjob/public/img/user-login.png">
+                <a href=""> <?php echo $v["educ_title"]; ?></a></li>
             <?php endforeach; ?>
         </ul>
         <div class="row more full-w">
