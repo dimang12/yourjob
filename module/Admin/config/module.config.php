@@ -14,6 +14,7 @@ return array (
                         'Admin\Controller\Employer' => 'Admin\Controller\EmployerController',
                         'Admin\Controller\Seeker' => 'Admin\Controller\SeekerController',
                         'Admin\Controller\Advertisement' => 'Admin\Controller\AdvertisementController',
+                        'Admin\Controller\Education' => 'Admin\Controller\EducationController',
 				) 
 		),
 		'router' => array (
@@ -960,6 +961,16 @@ return array (
                             'defaults' => array (
                                 'controller' => 'Admin\Controller\Employer',
                                 'action' => 'jobdelete'
+                            )
+                        )
+                    ),
+                    'admin-education' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/admin-education',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Education',
+                                'action' => 'index'
                             )
                         )
                     ),

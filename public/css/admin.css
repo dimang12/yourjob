@@ -46,7 +46,7 @@
 .box-row-title              {background:#f2f2f2;}
 .margin-top-2               {margin-top: 2px;}
 .box-admin-main             {padding: 10px;}
-
+.text-overflow              { text-overflow:ellipsis; overflow:hidden; white-space:nowrap; height:30px;}
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   Collapse menu ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 .panel-group .panel-body        { padding: 0px !important;}

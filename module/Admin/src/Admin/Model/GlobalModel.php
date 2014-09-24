@@ -1348,4 +1348,15 @@ class GlobalModel extends AbstractTableGateway {
         $sql->prepareStatementForSqlObject($insert)->execute();
         return true;
     }
+    // get all education
+    public function getAllEducation(){
+        $sql = new Sql($this->adapter);
+        $select = $sql->select()
+            ->from("education")
+            ->columns(array("*",new Expression("LEFT(educ_detail,200) AS detail")))
+            ->order("educ_post_date DESC");
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
 }

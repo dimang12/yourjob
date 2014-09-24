@@ -79,10 +79,17 @@ if ($routeMatch) {
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a href="#">
+                <a data-toggle="collapse" data-parent="#accordion" href="#education">
                     Education
                 </a>
             </h4>
+        </div>
+        <div id="education" class="panel-collapse collapse <?php if($router == 'admin-education') echo 'in'?>">
+            <div class="panel-body">
+                <ul>
+                    <li><a class="<?php if($router == 'admin-education') echo 'active'?>" href="<?php echo $this->url("admin-education")?>">Education Info</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="panel panel-default">
