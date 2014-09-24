@@ -105,7 +105,7 @@ class SeekerController extends AbstractActionController{
     {
         $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $jobData = $sm->getJob($user_id);
+        $jobData = $sm->getJobByUserId($user_id);
 
         $page = $this->params()->fromQuery('page');
         $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobData));

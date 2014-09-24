@@ -1,5 +1,7 @@
 <div class="row-fluid box-admin-main">
-    <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    <div class="col-md-2 padding-left-0">
+        <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    </div>
     <div class='col-md-10 box-admin-right'>
         <div class='row box-row-title'>
             <div class='col-md-8'><h4 class='text-warning'>Job Viewing</h4></div>
@@ -11,7 +13,7 @@
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">
                         <tr class="box-row-title">
-                            <th>No</th>
+                            <th>Code</th>
                             <th>Position</th>
                             <th>Hiring No</th>
                             <th>Posting Date</th>
@@ -19,11 +21,9 @@
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
-                        <?php
-                        $i=1;
-                        foreach ( $jobData as $key => $row ) {?>
+                        <?php foreach ( $jobData as $key => $row ) {?>
                             <tr>
-                                <td><?php echo $i?></td>
+                                <td><?php echo $row['job_id']?></td>
                                 <td><?php echo $row['job_name']?></td>
                                 <td><?php echo $row['job_hiring_number']?></td>
                                 <td><?php echo $row['job_published_date']?></td>
@@ -32,7 +32,7 @@
                                 <td><a href="<?php echo $this->url('job-editing')?>?job_id=<?php echo $row['job_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
                                     <a href='#' title='Remove'><span data-remove='<?php echo $row['job_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
                             </tr>
-                            <?php $i++; }?>
+                            <?php }?>
                     </table>
                     <?php echo $this->paginationControl($this->jobData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
                 </div>

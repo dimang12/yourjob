@@ -24,7 +24,7 @@ class JobController extends AbstractActionController{
     public function indexAction(){
         $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $jobData = $sm->getJob($user_id);
+        $jobData = $sm->getJob();
 
         $page = $this->params()->fromQuery('page');
         $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobData));
@@ -81,7 +81,7 @@ class JobController extends AbstractActionController{
                     'job_published_date'=>$job_published_date,
                     'job_close_date'=>$job_close_date,
                     'job_status'=>1,
-                    'job_gender'=>$gender,
+                    'gender'=>$gender,
                     'job_age_from' => $job_age_from,
                     'job_age_to' => $job_age_to
                 );

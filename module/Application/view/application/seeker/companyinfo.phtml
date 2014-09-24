@@ -1,4 +1,9 @@
 <?php
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/bootstrap-wysihtml5.css');
+$this->headScript ()->prependFile ( $this->basePath () . '/js/bootstrap-wysihtml5.js');
+$this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js');
+?>
+<?php
     $form = $this->form;
     echo $this->form()->openTag($form);
     foreach($this->comData as $row){
@@ -35,9 +40,11 @@
                 <div class="col-md-4"><label>Website</label><?php echo $this->formrow($form->get('com_website')->setAttributes(array('class'=>'form-control','value'=>$com_website)))?></div>
                 <div class="col-md-4"><label>Service Phone</label><?php echo $this->formrow($form->get('com_service_phone')->setAttributes(array('class'=>'form-control','value'=>$com_phone_schedule)))?></div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-md-12"><label>Company Information</label><?php echo $this->formtextarea($form->get('com_info')->setAttributes(array('class'=>'form-control','value'=>$com_info)))?></div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-md-12"><label>Company Address</label><?php echo $this->formtextarea($form->get('com_address')->setAttributes(array('class'=>'form-control','value'=>$com_address)))?></div>
             </div>
@@ -52,3 +59,8 @@
     </div>
 </div>
 <?php $this->form()->closeTag();?>
+<script>
+    $(function(){
+        $('textarea').wysihtml5();
+    });
+</script>

@@ -23,7 +23,7 @@ class IndexController extends AbstractActionController
         $eduDb = new EducationTable($this->getAdapter());
 
         $urgentJob = $cateDb->getNewestJob();
-        $newEducation = $eduDb->getLatestEducation()->toArray();
+        $newEducation = $eduDb->getLatestEducation();
 
         return new ViewModel(array(
             "categories" => $cateDb->getAllCate(),
