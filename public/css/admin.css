@@ -1,15 +1,13 @@
-.panel-group ul li{
-    margin-left: -20px;
-    margin-bottom: 10px;
-}
+
 .bg{ margin-left: 10px;margin-top: 10px;padding-right: 10px;}
 .bg-title{background: #F2F2F2;margin-bottom: 5px; border: 1px solid #f2dede;}
 .margin-top-5{margin-top: 5px;}
 .margin-top-10{margin-top: 10px;}
 
 .padding-0{padding: 0px;}
-/*.panel-heading{border: 1px solid #F5F5F5;}*/
-.active{background: #5BC0DE;}
+.padding-left-0 {padding-left: 0px !important;}
+
+
 .panel-heading > .panel-title a{
     text-decoration: none;
 }
@@ -44,7 +42,29 @@
 .fixed-left					{ position:fixed; left:0;}
 .full-w						{ width:100%;}
 
-.box-admin-right            {border:1px solid #C9C9C9;margin-bottom: 10px;}
+.box-admin-right            {border-top-right-radius:5px; border-top-left-radius:5px;border:1px solid #C9C9C9;margin-bottom: 10px;padding-left: 10px;}
 .box-row-title              {background:#f2f2f2;}
 .margin-top-2               {margin-top: 2px;}
 .box-admin-main             {padding: 10px;}
+.text-overflow              { text-overflow:ellipsis; overflow:hidden; white-space:nowrap; height:30px;}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   Collapse menu ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.panel-group .panel-body        { padding: 0px !important;}
+.panel-group .panel             { margin-bottom: -5px !important;border-radius: 0px !important;}
+.panel-default                  { border-bottom: 0px !important;}
+.panel-default:first-child      { border-top-right-radius:5px !important; border-top-left-radius:5px !important;}
+.panel-default:last-child       { border-bottom: 1px solid #dddddd !important;}
+.panel-body ul                  { margin-top: 0px;margin-bottom: 0px;}
+.panel-body ul li               {
+                                  border-bottom: 1px solid #f2f2f2;
+                                  line-height: 50px;
+                                  list-style: none;
+                                  margin-left: -40px;
+                                  padding-left: 20px;
+                                }
+.panel-body ul li:last-child    {border-bottom: none;}
+/*.panel-body ul li:hover         {background: #DCDCDC;cursor: pointer;}*/
+.panel-heading .panel-title a   {text-decoration: none;line-height: 25px;}
+.panel-body ul li a             {text-decoration: none;}
+.panel-body ul li a:hover       {color: #ff0000;}
+.active                         {color: #ff0000;}

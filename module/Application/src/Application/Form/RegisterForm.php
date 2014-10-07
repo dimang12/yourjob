@@ -20,8 +20,8 @@ class RegisterForm extends Form
         $this->add(array('name'=>'user_name','type' => 'Text'));
         $this->add(array('name'=>'password','type' => 'Password'));
         $this->add(array('name'=>'repassword','type' => 'Password'));
-        $this->add(array('name'=>'user_info','type' => 'Textarea'));
-        $this->add(array('name'=>'user_address','type' => 'Textarea'));
+        $this->add(array('name'=>'user_info','type' => 'Textarea','attributes'=>array('style'=>'height:200px')));
+        $this->add(array('name'=>'user_address','type' => 'Textarea','attributes'=>array('style'=>'height:200px')));
         $this->add(array('name'=>'user_phone','type' => 'Text'));
 
         $this->add(array('name'=>'option_register','type' => 'Select'));
@@ -31,8 +31,8 @@ class RegisterForm extends Form
         $this->add(array('name'=>'com_email','type' => 'Text'));
         $this->add(array('name'=>'com_website','type' => 'Text'));
         $this->add(array('name'=>'com_service_phone','type' => 'Text'));
-        $this->add(array('name'=>'com_address','type' => 'Textarea'));
-        $this->add(array('name'=>'com_info','type' => 'Textarea'));
+        $this->add(array('name'=>'com_address','type' => 'Textarea','attributes'=>array('style'=>'height:300px')));
+        $this->add(array('name'=>'com_info','type' => 'Textarea','attributes'=>array('style'=>'height:300px')));
 
         //$this->add(array('name'=>'submit','type' => 'Submit'));
     }

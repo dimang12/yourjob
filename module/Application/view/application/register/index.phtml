@@ -1,4 +1,9 @@
 <?php
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/bootstrap-wysihtml5.css');
+$this->headScript ()->prependFile ( $this->basePath () . '/js/bootstrap-wysihtml5.js');
+$this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js');
+?>
+<?php
     $form = $this->form;
     echo $this->form()->openTag($form);
     $gender = ["Male"=>"Male","Female"=>"Female"];
@@ -27,10 +32,11 @@
            <div class="col-md-3"><label>Password </label><?php echo $this->formrow($form->get('password')->setAttributes(array('class'=>'form-control')))?></div>
            <div class="col-md-3"><label>Re-Password </label><?php echo $this->formrow($form->get('repassword')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
-
+       <br>
        <div class="row">
            <div class="col-md-9"><label>User Information</label><?php echo $this->formtextarea($form->get('user_info')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
+       <br>
        <div class="row">
            <div class="col-md-9"><label>User Address</label><?php echo $this->formtextarea($form->get('user_address')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
@@ -60,9 +66,11 @@
                <div class="col-md-3"><label>Website</label><?php echo $this->formrow($form->get('com_website')->setAttributes(array('class'=>'form-control')))?></div>
                <div class="col-md-3"><label>Service Phone</label><?php echo $this->formrow($form->get('com_service_phone')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
+           <br>
            <div class="row">
                <div class="col-md-9"><label>Company Information</label><?php echo $this->formtextarea($form->get('com_info')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
+           <br>
            <div class="row">
                <div class="col-md-9"><label>Company Address</label><?php echo $this->formtextarea($form->get('com_address')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
@@ -88,6 +96,7 @@
                 $('.company-info').removeClass('hidden');
             }
         });
+        $('textarea').wysihtml5();
     });
 
 </script>
