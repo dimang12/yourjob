@@ -98,11 +98,12 @@ class IndexController extends AbstractActionController
     public function jobdtAction(){
         //declare params
         $jobId = $this->params()->fromQuery("job");
-        $db = new CategoriesTable($this->getCategoiesTableGateway());
-        $jobDetail = null;
+        $db = new CategoriesTable($this->getCategoriesTableGateway());
+        $jobDetail = $relatedJob = $recommendJob = null;
 
         if(!empty($jobId)){
             $jobDetail = $db->getJobDetail($jobId);
+
         }
 
         return new ViewModel(

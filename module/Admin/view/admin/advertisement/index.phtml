@@ -19,7 +19,7 @@
                         </tr>
                         <?php
                         $i=1;
-                        foreach ( $this->advData as $key => $row ) {?>
+                        foreach ( $this->advData as $key => $row ) { ?>
                             <tr>
                                 <td><?php echo $i?></td>
                                 <td><?php echo $row['adv_title']?></td>
@@ -28,7 +28,7 @@
                                 <td><a href="<?php echo $this->url()."edit/".$row['adv_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
                                     <a href='#' title='Remove'><span data-remove='<?php echo $row['adv_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
                             </tr>
-                            <?php $i++; }?>
+                        <?php $i++; }?>
                     </table>
                 </div>
             </div>

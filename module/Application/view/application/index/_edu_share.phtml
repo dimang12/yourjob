@@ -1,0 +1,15 @@
+<menu class="no-padding border-bottom-gray font-16 padding-10-0 no-margin">
+    Education
+</menu>
+<ul class="edu-panel padding-10-0" style="height: 215px;">
+    <?php foreach($this->education as $k=>$v): ?>
+        <li class="text-overflow margin-5">
+            <img width="30" class="img-thumbnail" alt="" src="/ourjob/public/img/user-login.png">
+            <a href=""> <?php echo $v["educ_title"]; ?></a></li>
+    <?php endforeach; ?>
+</ul>
+<div class="more full-w" style="left:0">
+    <button class="btn btn-default col-lg-12 border-radius-0 no-border border-radius-bottom-5" style="position:relative; top:7px; border-top:#ccc solid 1px;">
+        <i class="glyphicon glyphicon-chevron-down color-pink"></i>
+    </button>
+</div>

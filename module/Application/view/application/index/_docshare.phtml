@@ -1,5 +1,5 @@
 <div class="box-white border-radius-5 clearfix margin-top-10 doc-share-panel">
-    <aside class="col-md-9 border-right-gray">
+    <aside class="p-15">
         <header class="font-16 color-light-black padding-10-0 border-bottom-gray">
             Document Share
         </header>
@@ -64,23 +64,6 @@
                     </div>
                 </div>
             </aside>
-        </div>
-    </aside>
-    <aside class="col-md-3 latest-edu">
-        <menu class="no-padding border-bottom-gray font-16 padding-10-0 no-margin">
-            Education
-        </menu>
-        <ul class="edu-panel padding-10-0">
-            <?php foreach($this->education as $k=>$v): ?>
-            <li class="text-overflow margin-5">
-                <img width="30" class="img-thumbnail" alt="" src="/ourjob/public/img/user-login.png">
-                <a href=""> <?php echo $v["educ_title"]; ?></a></li>
-            <?php endforeach; ?>
-        </ul>
-        <div class="row more full-w">
-            <button class="btn btn-default col-lg-12 border-radius-0 no-border border-radius-bottom-5" style="position:relative; top:7px; border-top:#ccc solid 1px;">
-                <i class="glyphicon glyphicon-chevron-down color-pink"></i>
-            </button>
         </div>
     </aside>
 </div>

@@ -3,70 +3,47 @@ $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/application/d
 if(isset($this->jobDetail)):
 $job = $this->jobDetail;
     ?>
-<div class="box-white border-radius-5 margin-10-0 clearfix">
-    <div class="bg-gray padding-10-0 clearfix border-bottom-gray">
-        <div class="col-md-12">
-            <div>
-                <a href="<?php echo $this->basePath() ?>">Home </a> <i class="glyphicon glyphicon-chevron-right"></i>
-            </div>
-        </div>
-    </div>
-    <div class="box-body">
+<div class="clearfix">
+<!--    <div class="bg-gray padding-10-0 clearfix border-bottom-gray">-->
+<!--        <div class="col-md-12">-->
+<!--            <div>-->
+<!--                <a href="--><?php //echo $this->basePath() ?><!--">Home </a> <i class="glyphicon glyphicon-chevron-right"></i>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
-        <div class="col-md-8">
-
-            <header class="full-w  margin-10-0 padding-10-0 clearfix">
-                <h4 class="bold clearfix"><?php echo $job["job_name"]; ?></h4>
+<br>
+        <div class="w70 box-white border-radius-5 p-15">
+            <header class="full-w clearfix">
+                <h4 class="bold clearfix color-blue"><?php echo $job["job_name"]; ?></h4>
                 <div class="col-md-6 padding-5-0">
                     <span class="col-md-12 no-padding-left"><b>LOCATION:</b> <?php echo $job["city_name"];?></span>
-                    <span class="col-md-12 no-padding-left"><b>JOB TYPE:</b> Full-Time</span>
+                    <span class="col-md-12 no-padding-left"><b>JOB TYPE:</b><?php echo $job["job_schedule"]; ?></span>
                     <span class="col-md-12 no-padding-left"><b># OF HIRING:</b> <?php echo $job["job_hiring_number"]; ?> position(s)</span>
-                    <span class="col-md-12 no-padding-left"><b>SALARY:</b> $350 - $500</span>
+                    <span class="col-md-12 no-padding-left"><b>SALARY:</b> <?php echo "$".$job["job_salary_from"] ." - " ."$".$job["job_salary_to"]; ?></span>
                 </div>
-                <div class="col-md-6">
-                    <h4 class="color-yellow">The Company name</h4>
+                <div class="col-md-6 text-right">
+                    <h4 class=""><?php echo $job["com_name"]; ?></h4>
                 </div>
             </header>
 
             <div>
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray color-yellow">COMPANY PROFILE</h4>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray">COMPANY PROFILE</h4>
                 <div>
-                    Skyrivers International is a Japanese Company Multinational Corporation Opens New Branch in Siem Reap Province.
+                    <?php echo $job["com_info"]; ?>
                 </div>
-                <br><br><br>
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray color-yellow">RESPONSIBILITIES</h4>
+                <br><br>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray">RESPONSIBILITIES</h4>
                 <details>
-                    <ul>
-                        <li>• To tag the products uploaded on the website and to make sure that all products are placed in the correct categories</li>
-                        <li>• To implement marketing strategies as adverts, newsletters, search redirection, etc.</li>
-                        <li>• Monitor website analytics to shape company policy</li>
-                        <li>• Recommend new IT strategies, policies and procedures</li>
-                        <li>• Further development of website functionality (Optional)</li>
-                        <li>• Excellent analytical and problem solving skills</li>
-                        <li>• To continuously inform and train the sales and support departments</li>
-                        <li>• Enforcing system policies and procedures for both clients and staff</li>
-                        <li>• Managing company emails and data synchronisation</li>
-                        <li>• Office hardware set up and periodical upgrading and maintenance</li>
-                        <li>• Regularly backing up all company data and systems</li>
-                    </ul>
+                    <?php echo $job["job_duty"] ?>
                 </details>
-                <br><br><br>
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray color-yellow">REQUIREMENTS</h4>
+                <br><br>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray">REQUIREMENTS</h4>
                 <details>
-                    <ul>
-                        <li>• Must be able to read/write HTML + CSS (Basic understanding)</li>
-                        <li>• PHP programming experience is a plus</li>
-                        <li>• Must be experienced in using back-end systems as Wordpress, Joomla, etc.</li>
-                        <li>• Previous experience with SaaS (Software-as-a-Service) is preferable</li>
-                        <li>• Must be comfortable using a variety of web applications as CRMs, Analytics, etc.</li>
-                        <li>• Excellent analytical and problem solving skills</li>
-                        <li>• Very good English and Khmer</li>
-                        <li>• Previous experience in the position of IT Manager is a must</li>
-                        <li>• Good team player</li>
-                    </ul>
+                    <?php echo $job["job_requirement"]; ?>
                 </details>
             </div>
-            <br><br><br>
+            <br><br>
             <h4 class="padding-10-0 margin-10-0 border-bottom-gray color-yellow">HOW TO APPLY</h4>
             <p class="more-text-area">
                 <b>Phone</b>: Call between 9:00 ~ 16:00 Monday ~ Friday<br>
@@ -78,11 +55,11 @@ $job = $this->jobDetail;
             </p>
 
         </div>
-        <div class="col-md-4">
-            <menu class="no-padding border-bottom-gray font-16 padding-5-0">
+        <div class="w30 box-white border-radius-5 p-15">
+            <menu class="no-padding border-bottom-gray font-16 padding-5-0 no-margin">
                 Related Jobs
             </menu>
-            <ul>
+            <ul class="padding-10-0">
                 <li class="text-overflow"><a class="pull-left">Branch Director </a>  - This is a place to display</li>
                 <li class="text-overflow"><a>Maintenance Technician </a> - This is a place to display company name.</li>
                 <li class="text-overflow"><a>Sale indoor 2 position </a> - This is a place to display company name.</li>
@@ -101,7 +78,5 @@ $job = $this->jobDetail;
                 Recommended Jobs
             </menu>
         </div>
-    </div>
-
 </div>
 <?php endif;?>

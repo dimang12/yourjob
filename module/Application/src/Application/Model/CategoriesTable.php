@@ -75,7 +75,7 @@ class CategoriesTable extends AbstractTableGateway {
     public function getJobDetail($jobId){
         $db = new Sql($this->adapter);
         $sql = $db->select()->from("job")
-                ->join("job_category","job_category.job_id = job.job_id")
+                ->join("categories","categories.category_id = job.category_id")
                 ->join("city", "city.city_id = job.city_id")
                 ->join("company","job.user_id = company.user_id")
                 ->where("job.job_id = $jobId")
@@ -84,6 +84,23 @@ class CategoriesTable extends AbstractTableGateway {
         $res = new ResultSet();
         return $res->initialize($statement->execute())->buffer()->toArray();
     }
+
+    /*
+     *
+     */
+
+    public function getRecommendedJob($categoryId){
+        $db = new Sql($this->adapter);
+        $sql = $db->select()->from("job")
+            ->where("job.category_id = $categoryId")
+        ;
+        $statement = $db->prepareStatementForSqlObject($sql);
+        $res = new ResultSet();
+        return $res->initialize($statement->execute())->buffer()->toArray();
+
+    }
+
+
 
     /*
      * get newest jobs
