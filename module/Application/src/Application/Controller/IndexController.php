@@ -63,7 +63,7 @@ class IndexController extends AbstractActionController
         //declare params
         $jobId = $this->params()->fromQuery("job");
         $db = new CategoriesTable($this->getCategoiesTableGateway());
-        $jobDetail = null;
+        $jobDetail = $relatedJob = $recommendJob =  null;
 
         if(!empty($jobId)){
             $jobDetail = $db->getJobDetail($jobId);
