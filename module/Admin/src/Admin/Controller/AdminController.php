@@ -23,11 +23,14 @@ class AdminController extends AbstractActionController
 		$authLogin = $this->serviceLocator->get('auth_login');
 		if($authLogin->hasIdentity())
 		{
-			
-			return  array();
-			
-		}else
-		{
+            $user_type = $authLogin->getStorage()->read('user_type');
+            if($user_type==0){
+                return  array();
+            }else{
+                $authLogin->clearIdentity();
+                return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/login'); //go to login
+            }
+		}else{
 			return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/login'); //go to login
 		}
 	}

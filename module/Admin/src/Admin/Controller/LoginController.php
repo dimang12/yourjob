@@ -13,8 +13,12 @@ class LoginController extends AbstractActionController
 		$authLogin = $this->serviceLocator->get('auth_login');
 		
 		if($authLogin->hasIdentity()){
-			return $this->redirect()->toUrl($this->getRequest()->getBasePath()."/admin");
-	
+            $user_type = $authLogin->getStorage()->read('user_type');
+            if($user_type==0){
+                return $this->redirect()->toUrl($this->getRequest()->getBasePath()."/admin");
+            }else{
+                return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/login'); //go to login
+            }
 		}else{
 	
 			return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/login'); //go to login
@@ -26,8 +30,13 @@ class LoginController extends AbstractActionController
     {    	
     	$authService = $this->serviceLocator->get('auth_login');
     	if ($authService->hasIdentity()) {
-    		// if not log in, redirect to login page			
-    		return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/admin');
+    		// if not log in, redirect to login page
+            $user_type = $authService->getStorage()->read('user_type');
+            if($user_type=="0"){
+               return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/admin');
+            }else{
+                $authService->clearIdentity();
+            }
     	}   
     	 	
     	$loginForm = new LoginForm();
@@ -35,12 +44,12 @@ class LoginController extends AbstractActionController
     	if ($this->getRequest()->isPost()) {
     		$loginForm->setData($this->getRequest()->getPost());
     		if (! $loginForm->isValid()) {
-    			
+
     			// not valid form
     			return new ViewModel(array(
     					'loginForm'  => $loginForm
     			));
-    			
+
     		} 
     		
     		$dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
@@ -55,9 +64,16 @@ class LoginController extends AbstractActionController
 
     		if ($result->isValid()) {
     			$userId = $authAdapter->getResultRowObject('user_id')->user_id;
-    			$authService->getStorage()
-    			->write($userId);
-    			return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/admin');
+                $userType = $authAdapter->getResultRowObject('user_type')->user_type;
+                if($userType=="0"){
+                    $authService->getStorage()
+                        ->write($userId);
+                    $authService->getStorage()
+                        ->write($userType);
+                    return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/admin');
+                }else{
+                    $authService->clearIdentity();
+                }
     		}
     	}
     	return new ViewModel(array( 'loginForm'  => $loginForm	));

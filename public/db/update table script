@@ -1,0 +1,5 @@
+update table script :
+
+--------------------------------
+
+ALTER TABLE `company` ADD `com_image` VARCHAR( 200 ) NOT NULL AFTER `com_ordering` ;
