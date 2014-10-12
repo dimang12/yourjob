@@ -6,6 +6,8 @@ use Application\Model\AclTable;
 use Application\Model\CategoriesTable;
 
 use Application\Model\EducationTable;
+use Application\Model\FeatureTable;
+use Application\Model\LocationTable;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Paginator;
@@ -19,16 +21,24 @@ class IndexController extends AbstractActionController
 {
 	public function indexAction()
     {
+        //declare variables
         $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
         $eduDb = new EducationTable($this->getAdapter());
+        $locatDB = new LocationTable($this->getAdapter());
+        $featureDb = new FeatureTable($this->getAdapter());
 
+        $feature = $featureDb->getFeatures();
         $urgentJob = $cateDb->getNewestJob();
-        $newEducation = $eduDb->getLatestEducation()->toArray();
+        $newEducation = $eduDb->getLatestEducation();
+
+
 
         return new ViewModel(array(
-            "categories" => $cateDb->getAllCate(),
+            "categories" => $cateDb->getAllCate()->toArray(),
             "urgentJob" => json_encode($urgentJob),
-            "education" => $newEducation
+            "education" => $newEducation,
+            "location" => $locatDB->getAllLocationJobs(),
+            "feature" => $feature
         ));
     }
 
@@ -67,11 +77,15 @@ class IndexController extends AbstractActionController
 
         if(!empty($jobId)){
             $jobDetail = $db->getJobDetail($jobId);
+            $relatedJob = $db->getRelatedJob($jobDetail[0]["company_id"]);
+            $recommendJob  = $db->getRecommendedJob($jobDetail[0]["category_id"]);
         }
 
         return new ViewModel(
             array(
-                "jobDetail"=>current($jobDetail)
+                "jobDetail"=>current($jobDetail),
+                "relatedJob"=>$relatedJob,
+                "recommendedJob" =>$recommendJob
             )
         );
     }

@@ -17,10 +17,10 @@ $job = $this->jobDetail;
             <header class="full-w clearfix">
                 <h4 class="bold clearfix color-blue"><?php echo $job["job_name"]; ?></h4>
                 <div class="col-md-6 padding-5-0">
-                    <span class="col-md-12 no-padding-left"><b>LOCATION:</b> <?php echo $job["city_name"];?></span>
-                    <span class="col-md-12 no-padding-left"><b>JOB TYPE:</b><?php echo $job["job_schedule"]; ?></span>
-                    <span class="col-md-12 no-padding-left"><b># OF HIRING:</b> <?php echo $job["job_hiring_number"]; ?> position(s)</span>
-                    <span class="col-md-12 no-padding-left"><b>SALARY:</b> <?php echo "$".$job["job_salary_from"] ." - " ."$".$job["job_salary_to"]; ?></span>
+                    <span class="col-md-12 no-padding-left"><b class="col-md-5">Location</b> <span> : <?php echo $job["city_name"];?></span> </span>
+                    <span class="col-md-12 no-padding-left"><b class="col-md-5">Job Type</b> : <?php echo $job["job_schedule"]; ?></span>
+                    <span class="col-md-12 no-padding-left"><b class="col-md-5">Hiring No.</b> : <?php echo $job["job_hiring_number"]; ?> position(s)</span>
+                    <span class="col-md-12 no-padding-left"><b class="col-md-5">Salary</b> : <?php echo "$".$job["job_salary_from"] ." - " ."$".$job["job_salary_to"]; ?></span>
                 </div>
                 <div class="col-md-6 text-right">
                     <h4 class=""><?php echo $job["com_name"]; ?></h4>
@@ -28,24 +28,24 @@ $job = $this->jobDetail;
             </header>
 
             <div>
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray">COMPANY PROFILE</h4>
-                <div>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16">Company Profile</h4>
+                <div class="col-md-12">
                     <?php echo $job["com_info"]; ?>
                 </div>
                 <br><br>
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray">RESPONSIBILITIES</h4>
-                <details>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16">Responsibilities</h4>
+                <div class="col-md-12">
                     <?php echo $job["job_duty"] ?>
-                </details>
+                </div>
                 <br><br>
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray">REQUIREMENTS</h4>
-                <details>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16">Requirements</h4>
+                <div class="col-md-12 clearfix">
                     <?php echo $job["job_requirement"]; ?>
-                </details>
+                </div>
             </div>
             <br><br>
-            <h4 class="padding-10-0 margin-10-0 border-bottom-gray color-yellow">HOW TO APPLY</h4>
-            <p class="more-text-area">
+            <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16 clearfix">How To Apply</h4>
+            <p class="more-text-area col-md-12">
                 <b>Phone</b>: Call between 9:00 ~ 16:00 Monday ~ Friday<br>
                 <b>Contact Person:</b> Kakvei<br>
                 <b>Phone:</b> 063-964-206, 088-592-0392<br>

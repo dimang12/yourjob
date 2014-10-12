@@ -1,6 +1,7 @@
 <?php
 $resultSet = new \Zend\Db\ResultSet\ResultSet();
 $categories = $resultSet->initialize($this->categories);
+
 ?>
 <div class="clearfix margin-10-0 font-13 nav nav-tabs" role="tablist">
 
@@ -49,7 +50,7 @@ $categories = $resultSet->initialize($this->categories);
                 ?>
             </div>
             <div class="tab-pane fade" id="location">
-                <?php  echo $this->partial("application/index/_location"); ?>
+                <?php  //echo $this->partial("application/index/_location"); ?>
             </div>
             <div class="tab-pane fade" id="messages">
 
