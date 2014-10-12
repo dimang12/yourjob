@@ -4,7 +4,7 @@
     </div>
     <div class='col-md-10 box-admin-right'>
         <div class='row box-row-title'>
-            <div class='col-md-8'><h4 class='text-warning'>All Employer</h4></div>
+            <div class='col-md-8'><h4 class='text-warning'>All Seeker</h4></div>
             <div class='col-md-4 text-right'></div>
         </div>
         <br>
@@ -18,19 +18,20 @@
                             <th>Gender</th>
                             <th>Phone</th>
                             <th>Email</th>
-                            <!-- <th>Count Job</th>-->
+                             <th>Count Resume</th>
                         </tr>
-                        <?php foreach ( $this->userData as $key => $row ) {?>
+                        <?php foreach ( $this->seekerData as $key => $row ) {?>
                             <tr>
                                 <td><?php echo $row['user_first_name']?></td>
                                 <td><?php echo $row['user_last_name']?></td>
                                 <td><?php echo $row['user_gender']?></td>
                                 <td><?php echo $row['user_phone']?></td>
                                 <td><?php echo $row['user_email']?></td>
+                                <td><?php echo $row['count_resume']?></td>
                             </tr>
                         <?php }  ?>
                     </table>
-                    <?php //echo $this->paginationControl($this->jobData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    <?php echo $this->paginationControl($this->seekerData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
                 </div>
             </div>
         </div>

@@ -18,10 +18,17 @@ class SeekerController extends AbstractActionController
     }
     public function indexAction()
     {
+
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $employerData = $sm->ZF2_Select("users",array("user_type"=>1));
+        $seekerData = $sm->getSeeker();
+
+        $page = $this->params()->fromQuery('page');
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($seekerData));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        $paginator->setPageRange(4);
         return array(
-            'userData'=>$employerData,
+            'seekerData'=>$paginator,
         );
     }
     public function newresumeAction()

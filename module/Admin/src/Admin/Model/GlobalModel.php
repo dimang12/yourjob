@@ -1359,4 +1359,26 @@ class GlobalModel extends AbstractTableGateway {
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();
     }
+    public function getEmployer()
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array("u"=>"users"))
+                ->columns(array("*","count_job"=>new Expression("(SELECT COUNT(job_id) FROM job j WHERE j.user_id = u.user_id)")))
+                ->where(array("u.user_type"=>2))
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+    public function getSeeker()
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array("u"=>"users"))
+            ->columns(array("*","count_resume"=>new Expression("(SELECT COUNT(r.resume_id) FROM resume r WHERE r.user_id = u.user_id)")))
+            ->where(array("u.user_type"=>1))
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
 }

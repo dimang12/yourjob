@@ -26,9 +26,16 @@ class EmployerController extends AbstractActionController{
     public function indexAction(){
         $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $employerData = $sm->ZF2_Select("users",array("user_type"=>2));
+        $employerData = $sm->getEmployer();
+
+        $page = $this->params()->fromQuery('page');
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($employerData));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        $paginator->setPageRange(4);
+
         return array(
-            'empData'=>$employerData,
+            'empData'=>$paginator,
         );
     }
     public function jobpostingAction()
