@@ -32,6 +32,7 @@ label                       { font-weight:normal;}
 .margin-top-5               { margin-top:5px;}
 .margin-top-10              { margin-top:10px;}
 .margin-top-15              { margin-top:15px;}
+.margin-10-15               { margin:10px 15px;}
 
 .pos-relative               { position: relative;}
 .panel-login                { background:#f7f7f7;}

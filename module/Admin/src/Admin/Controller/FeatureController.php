@@ -30,17 +30,17 @@ class FeatureController extends AbstractActionController {
         $request = $this->getRequest();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         if($request->isPost()){
-            $file = $this->params()->fromFiles('feat_image');
-            $name = $file['name'];
-            $ext = pathinfo($name, PATHINFO_EXTENSION);
-            $newName = uniqid(). '.' . $ext;
+//            $file = $this->params()->fromFiles('feat_image');
+//            $name = $file['name'];
+//            $ext = pathinfo($name, PATHINFO_EXTENSION);
+//            $newName = uniqid(). '.' . $ext;
             try{
                 //store to folder
-                $dir = 'public/img/feature';
-                if(file_exists($dir))
-                {
-                    move_uploaded_file($file['tmp_name'], $dir.'/'.$newName);
-                }
+//                $dir = 'public/img/featured';
+//                if(file_exists($dir))
+//                {
+//                    move_uploaded_file($file['tmp_name'], $dir.'/'.$newName);
+//                }
 
                 // save to database
                 $companyId = $this->params()->fromPost('company_id');
@@ -51,7 +51,7 @@ class FeatureController extends AbstractActionController {
                     'company_id' => $companyId,
                     'feat_started_date' => $feat_started_date,
                     'feat_end_date' => $feat_end_date,
-                    'feat_image' => $newName,
+//                    'feat_image' => $newName,
                     'feat_ordering' => $feat_ordering
                 );
                 $sm->ZF2_Insert('feature',$values);

@@ -5,73 +5,12 @@
                 Featured Companies
             </header>
             <div class="margin-10-0 row font-13 padding-5-0">
-                <div class="col-md-2 text-left">
-                    <img src="<?php echo $this->basePath()?>/img/featured/1.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
+                <?php foreach($this->feature as $k=>$v):?>
+                <div class="col-md-2 text-center <?php if($k==0 || $k+1 % 6==0) echo " no-padding-left"?> ">
+                    <img  src="<?php echo $this->basePath()?>/img/company/<?php echo $v["com_logo"]; ?>" style="max-height:60px; max-width:100%">
                 </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/2.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/3.jpg" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/4.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/5.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-right">
-                    <img src="<?php echo $this->basePath()?>/img/featured/6.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
+                <?php endforeach;?>
             </div>
-            <div class="margin-10-0 row padding-5-0">
-                <div class="col-md-2 text-left">
-                    <img src="<?php echo $this->basePath()?>/img/featured/7.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/8.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/9.jpg" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/10.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/11.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-right">
-                    <img src="<?php echo $this->basePath()?>/img/featured/12.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-            </div>
-
-            <div class="margin-10-0 row padding-5-0">
-                <div class="col-md-2 text-left">
-                    <img src="<?php echo $this->basePath()?>/img/featured/13.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/14.jpg" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-                <div class="col-md-2 text-center">
-                    <img src="<?php echo $this->basePath()?>/img/featured/15.png" class="row">
-                    <label class="row padding-5-0 color-link">Company Name</label>
-                </div>
-            </div>
-
 
         </div>
         <?php echo $this->partial("application/index/_docshare"); ?>
