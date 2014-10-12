@@ -18,10 +18,10 @@ class SeekerController extends AbstractActionController
     }
     public function indexAction()
     {
-        $sm= $this->serviceLocator->get('admin\Model\GlobalModel');
-        $resumeData = $sm->getResume();
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+        $employerData = $sm->ZF2_Select("users",array("user_type"=>1));
         return array(
-            'resumeData' => $resumeData
+            'userData'=>$employerData,
         );
     }
     public function newresumeAction()

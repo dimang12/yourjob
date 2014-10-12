@@ -19,13 +19,20 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
            </div>
        </div>
        <div class="row">
+           <div class="col-md-6">
+               <div class="padding-10-0 font-13">How do you intend in employer or seeker?</div>
+               <?php echo $this->formselect($form->get('option_register')->setAttributes(array('class'=>'form-control opt-register','options'=>$optionRegister)))?>
+           </div>
+       </div>
+       <br>
+       <div class="row">
            <div class="col-md-3"><label>First Name</label> <?php echo $this->formrow($form->get('first_name')->setAttributes(array('class'=>'form-control')))?></div>
            <div class="col-md-3"><label>Last Name</label><?php echo $this->formrow($form->get('last_name')->setAttributes(array('class'=>'form-control')))?></div>
            <div class="col-md-3"><label>Phone</label><?php echo $this->formrow($form->get('user_phone')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
        <div class="row">
            <div class="col-md-3"><label>Gender</label><?php echo $this->formselect($form->get('gender')->setAttributes(array('class'=>'form-control','options'=>$gender)))?></div>
-           <div class="col-md-3"><label>Email</label><?php echo $this->formrow($form->get('user_email')->setAttributes(array('class'=>'form-control')))?></div>
+           <div class="col-md-3"><label>Personal Email</label><?php echo $this->formrow($form->get('user_email')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
        <div class="row">
            <div class="col-md-3"><label>User Name</label><?php echo $this->formrow($form->get('user_name')->setAttributes(array('class'=>'form-control')))?></div>
@@ -33,21 +40,15 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
            <div class="col-md-3"><label>Re-Password </label><?php echo $this->formrow($form->get('repassword')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
        <br>
-       <div class="row">
-           <div class="col-md-9"><label>User Information</label><?php echo $this->formtextarea($form->get('user_info')->setAttributes(array('class'=>'form-control')))?></div>
-       </div>
-       <br>
-       <div class="row">
+       <div class="row user-info">
            <div class="col-md-9"><label>User Address</label><?php echo $this->formtextarea($form->get('user_address')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
-       <div class="row">
-           <div class="col-md-6">
-                <div class="padding-10-0 font-13">How do you intend in employer or seeker?</div>
-               <?php echo $this->formselect($form->get('option_register')->setAttributes(array('class'=>'form-control opt-register','options'=>$optionRegister)))?>
-
-           </div>
-
+       <br>
+       <div class="row user-info">
+           <div class="col-md-9"><label>User Information</label><?php echo $this->formtextarea($form->get('user_info')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
+
+
        <div class="company-info hidden">
            <div class="row">
                <div class="col-md-12">
@@ -55,25 +56,29 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
                    <hr>
                </div>
            </div>
-
            <div class="row">
+               <div class="col-md-3">
+                   <?php echo $this->formrow($form->get('images')->setAttributes(array('class'=>'form-control')));?>
+                   <?php echo $this->error;?>
+               </div>
                <div class="col-md-3"><label>Company Name</label><?php echo $this->formrow($form->get('com_name')->setAttributes(array('class'=>'form-control')))?></div>
-               <div class="col-md-3"><label>Contact Name</label><?php echo $this->formrow($form->get('contact_name')->setAttributes(array('class'=>'form-control')))?></div>
-               <div class="col-md-3"> <label>Phone</label><?php echo $this->formrow($form->get('com_phone')->setAttributes(array('class'=>'form-control')))?></div>
+<!--               <div class="col-md-3"><label>Contact Name</label>--><?php //echo $this->formrow($form->get('contact_name')->setAttributes(array('class'=>'form-control')))?><!--</div>-->
+               <div class="col-md-3"> <label>Company Phone</label><?php echo $this->formrow($form->get('com_phone')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
            <div class="row">
-               <div class="col-md-3"><label>Email</label><?php echo $this->formrow($form->get('com_email')->setAttributes(array('class'=>'form-control')))?></div>
+               <div class="col-md-3"><label>Company Email</label><?php echo $this->formrow($form->get('com_email')->setAttributes(array('class'=>'form-control')))?></div>
                <div class="col-md-3"><label>Website</label><?php echo $this->formrow($form->get('com_website')->setAttributes(array('class'=>'form-control')))?></div>
-               <div class="col-md-3"><label>Service Phone</label><?php echo $this->formrow($form->get('com_service_phone')->setAttributes(array('class'=>'form-control')))?></div>
-           </div>
-           <br>
-           <div class="row">
-               <div class="col-md-9"><label>Company Information</label><?php echo $this->formtextarea($form->get('com_info')->setAttributes(array('class'=>'form-control')))?></div>
+               <div class="col-md-3"><label>Working Time</label><?php echo $this->formrow($form->get('com_service_phone')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
            <br>
            <div class="row">
                <div class="col-md-9"><label>Company Address</label><?php echo $this->formtextarea($form->get('com_address')->setAttributes(array('class'=>'form-control')))?></div>
            </div>
+           <br>
+           <div class="row">
+               <div class="col-md-9"><label>Company Information</label><?php echo $this->formtextarea($form->get('com_info')->setAttributes(array('class'=>'form-control')))?></div>
+           </div>
+
        </div>
        <br>
         <div class="row">
@@ -92,8 +97,10 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
             opt = $(this).val();
             if(opt==1){
                 $('.company-info').addClass('hidden');
+                $('.user-info').removeClass('hidden');
             }else{
                 $('.company-info').removeClass('hidden');
+                $('.user-info').addClass('hidden');
             }
         });
         $('textarea').wysihtml5();

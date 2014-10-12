@@ -26,9 +26,9 @@ class EmployerController extends AbstractActionController{
     public function indexAction(){
         $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $jobData = $sm->getJobByUserId($user_id);
+        $employerData = $sm->ZF2_Select("users",array("user_type"=>2));
         return array(
-            'jobData'=>$jobData,
+            'empData'=>$employerData,
         );
     }
     public function jobpostingAction()

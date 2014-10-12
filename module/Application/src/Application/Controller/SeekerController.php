@@ -14,6 +14,7 @@ use Zend\Db\Sql\Expression;
 use Zend\Mvc\Controller\AbstractActionController;
 use Admin\Form\LoginForm;
 use Zend\Authentication\Adapter\DbTable;
+use Zend\View\Model\ViewModel;
 
 class SeekerController extends AbstractActionController{
     public function checkAuthornicationService(){
@@ -42,6 +43,7 @@ class SeekerController extends AbstractActionController{
     public function loginAction(){
         $authService = $this->serviceLocator->get('auth_login');
         if ($authService->hasIdentity()) {
+
             // if not log in, redirect to login page
             return $this->redirect()->toRoute('job-seeker', array(
                 'controller' => 'Seeker',
@@ -52,15 +54,16 @@ class SeekerController extends AbstractActionController{
         $loginForm = new LoginForm();
 
         if ($this->getRequest()->isPost()) {
+            print_r($this->getRequest()->getPost());
             $loginForm->setData($this->getRequest()->getPost());
             if (!$loginForm->isValid()) {
-
                 // not valid form
                 return new ViewModel(array(
                     'loginForm'  => $loginForm
                 ));
 
             }
+
             $dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
             $loginData = $loginForm->getData();
             $authAdapter = new DbTable($dbAdapter, 'users', 'username', 'password', 'MD5(?)');
@@ -90,7 +93,7 @@ class SeekerController extends AbstractActionController{
         }
 
         $authService->clearIdentity();
-        $loginForm = new LoginForm();
+        //$loginForm = new LoginForm();
         //$viewModel = new ViewModel(array('loginForm'=> $loginForm));
         return $this->redirect()->toRoute('job-seeker', array(
             'controller' => 'Seeker',
