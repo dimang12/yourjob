@@ -33,7 +33,7 @@ class EducationTable extends TableGateway{
                     ->columns(array("*",new Expression("LEFT(educ_detail,200) AS detail")))
                     ->order("educ_post_date DESC");
 
-        return DB::executeQuery($db, $sql);
+        return DB::executeQuery($db, $sql)->toArray();
     }
 
     /*
