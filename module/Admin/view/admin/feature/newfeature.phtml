@@ -15,11 +15,6 @@
         <br>
         <div class="row">
             <div class="col-md-4">
-                <?php echo $this->formlabel($form->get('feat_image'));?>
-                <?php echo $this->forminput($form->get('feat_image')->setAttributes(array('class'=>'form-control col-md-12','required'=>true)));?>
-                <?php echo $this->error ?>
-            </div>
-            <div class="col-md-4">
                 <?php
                 $groups = array ();
                 foreach ( $companyData as $value ) {

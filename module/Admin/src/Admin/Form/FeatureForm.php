@@ -8,15 +8,15 @@ class FeatureForm extends Form
         parent::__construct('feature');
         $this->setAttributes(array('method'=>'post','enctype'=>'multipart/form-data'));
 
-        $this->add(array(
-            'name' =>'feat_image',
-            'attributes' => array(
-                'type' 	=>'file'
-            ),
-            'options'  =>array(
-                'label' =>'Choose an Image',
-            ),
-        ));
+//        $this->add(array(
+//            'name' =>'feat_image',
+//            'attributes' => array(
+//                'type' 	=>'file'
+//            ),
+//            'options'  =>array(
+//                'label' =>'Choose an Image',
+//            ),
+//        ));
         $this->add(array(
             'name' => 'submit',
             'attributes'	=> array(

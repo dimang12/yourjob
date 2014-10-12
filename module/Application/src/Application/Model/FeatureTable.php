@@ -17,6 +17,7 @@ class FeatureTable extends SuperTableGateway{
     public function getFeatures(){
         $sql = $this->db->select()
                         ->from("feature")
+                        ->join("company","feature.company_id=company.company_id")
                         ->order("feat_ordering ASC")
             ;
 

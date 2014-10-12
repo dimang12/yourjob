@@ -32,7 +32,6 @@ class IndexController extends AbstractActionController
         $newEducation = $eduDb->getLatestEducation();
 
 
-
         return new ViewModel(array(
             "categories" => $cateDb->getAllCate()->toArray(),
             "urgentJob" => json_encode($urgentJob),
