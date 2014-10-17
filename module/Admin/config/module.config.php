@@ -974,6 +974,36 @@ return array (
                             )
                         )
                     ),
+                    'resume-request' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/resume-request',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Job',
+                                'action' => 'resumerequest'
+                            )
+                        )
+                    ),
+                    'resume-request-view' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/resume-request-view',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Job',
+                                'action' => 'resumerequestview'
+                            )
+                        )
+                    ),
+                    'approvalresume' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/approvalresume',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Job',
+                                'action' => 'approvalresume'
+                            )
+                        )
+                    ),
                 ),
 
 		),

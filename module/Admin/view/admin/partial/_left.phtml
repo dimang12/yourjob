@@ -57,12 +57,12 @@ if ($routeMatch) {
                 </a>
             </h4>
         </div>
-        <div id="resume" class="panel-collapse collapse <?php if($router == 'resume-search' || $router == 'resume-purchase' || $router == 'resume-view') echo 'in'?>">
+        <div id="resume" class="panel-collapse collapse <?php if($router == 'resume-search' || $router == 'resume-purchase' || $router == 'resume-view' || $router == 'resume-request' || $router == 'resume-request-view') echo 'in'?>">
             <div class="panel-body">
                 <ul>
                     <li><a class="<?php if($router == 'resume-search' || $router == 'resume-view') echo 'active'?>" href="<?php echo $this->url('resume-search')?>">Resume Search</a></li>
                     <li><a class="<?php if($router == 'resume-purchase' ) echo 'active'?>" href="<?php echo $this->url('resume-purchase')?>">Resume Purchase</a></li>
-                    <li><a href="#">Resume Request</a></li>
+                    <li><a class="<?php if($router == 'resume-request' || $router == 'resume-request-view' ) echo 'active'?>" href="<?php echo $this->url('resume-request')?>">Resume Request</a></li>
                 </ul>
             </div>
         </div>

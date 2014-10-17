@@ -1,0 +1,43 @@
+<?php
+    foreach($this->resumeData as $row){
+        $name = $row['username'];
+        $current_position = $row['resu_current_position'];
+        $position_apply = $row['resu_position'];
+        $salary = $row['resu_salary'];
+        $schedule = $row['resu_schedule'];
+        $age = $row['resu_age'];
+        $gender = $row['resu_gender'];
+        $experience = $row['resu_year_experience'];
+        $language = $row['resu_language'];
+        $interest = $row['resu_interesting'];
+        $skill = $row['resu_skill'];
+    }
+?>
+<div class="row-fluid box-admin-main">
+    <div class="col-md-2 padding-left-0">
+        <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    </div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-10'><h4 class='text-warning'>Resume Detail</h4></div>
+            <div class="col-md-2 text-right"><a href="<?php echo $this->url('resume-request')?>" class="btn btn-default margin-top-2 col-md-12">Back</a></div>
+        </div>
+        <br>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class="row"><div class="col-md-3 text-right"><label>Name:</label></div><div class="col-md-9">: <?php echo $name?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Current Position</label></div><div class="col-md-9">: <?php echo $current_position?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Apply For</label></div><div class="col-md-9">: <?php echo $position_apply?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Salary</label></div><div class="col-md-9">: <?php echo $salary?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Schedule</label></div><div class="col-md-9">: <?php echo $schedule?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Age</label></div><div class="col-md-9">: <?php echo $age?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Gender</label></div><div class="col-md-9">: <?php echo $gender?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Experience</label></div><div class="col-md-9">: <?php echo $experience?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Language</label></div><div class="col-md-9">: <?php echo $language?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Interesting</label></div><div class="col-md-9">: <?php echo $interest?></div></div>
+                <div class="row"><div class="col-md-3 text-right"><label>Skill</label></div><div class="col-md-9">: <?php echo $skill?></div></div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

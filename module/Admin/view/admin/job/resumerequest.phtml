@@ -5,9 +5,9 @@
     <div class='col-md-10 box-admin-right'>
         <div class='row box-row-title'>
             <form method="get">
-            <div class='col-md-2'><h4 class='text-warning'>Resume Search</h4></div>
-            <div class="col-md-7"><input type="text" name="search" class="form-control margin-top-2" placeholder="Search here..."></div>
-            <div class="col-md-3 text-right"><button type="submit" class="btn btn-info margin-top-2 col-md-12"><span class="glyphicon glyphicon-search pull-left"></span>Search</button></div>
+                <div class='col-md-2'><h4 class='text-warning'>Resume Request</h4></div>
+                <div class="col-md-7"><input type="text" name="search" class="form-control margin-top-2" placeholder="Search here..."></div>
+                <div class="col-md-3 text-right"><button type="submit" class="btn btn-info margin-top-2 col-md-12"><span class="glyphicon glyphicon-search pull-left"></span>Search</button></div>
             </form>
         </div>
         <br>
@@ -22,17 +22,19 @@
                             <th>Apply For</th>
                             <th>Salary</th>
                             <th>Resume</th>
+                            <th>Approval</th>
                         </tr>
                         <?php
                         $i=1;
-                        foreach ( $resumeData as $key => $row ) {?>
+                        foreach ( $resumeData as $key => $row ) { $checked="";if($row["resu_status"]==1) $checked="checked";?>
                             <tr>
                                 <td><?php echo $row['resume_id']?></td>
                                 <td><?php echo $row['user_first_name']."  ".$row["user_last_name"]?></td>
                                 <td><?php echo $row['resu_current_position']?></td>
                                 <td><?php echo $row['resu_position']?></td>
                                 <td><?php echo $row['resu_salary']?></td>
-                                <td><a href="<?php echo $this->url('resume-view')?>?resumeId=<?php echo $row['resume_id']?>"> View</a></td>
+                                <td><a href="<?php echo $this->url('resume-request-view')?>?resumeId=<?php echo $row['resume_id']?>"> View</a></td>
+                                <td><input resumeId=<?php echo $row['resume_id']?> type="checkbox" class="approval" <?php echo $checked?>></td>
                             </tr>
                             <?php $i++; }?>
                     </table>
@@ -46,21 +48,22 @@
 
 <script>
     $(function(){
-        $('.icon-remove').on('click',function(){
-            var jobId = $(this).attr('data-remove');
-            if(jobId != '')
-            {
-                if(confirm('Are you sure to delete?'))
+        $('.approval').click(function(){
+            if(confirm("Are you sure to approval this resume?")){
+                resumeId = $(this).attr('resumeId');
+                ch ="0";
+                if($(this).is(":checked"))
                 {
-                    var url ='<?php echo $this->url('job-delete')?>?jobId='+jobId;
-                    $.ajax({url: url, success:function(){window.location.href='';}});
+                    ch="1";
                 }
-                return false;
+                url='<?php echo $this->url('approvalresume')?>?resumeId='+resumeId+'&ch='+ch;
+                $.ajax({
+                    url:url,
+                    success:function(){
+                        window.location.href='';
+                    }
+                });
             }
-        });
-        $('.purchase').on('click',function(){
-            alert(0);
         });
     });
 </script>
-

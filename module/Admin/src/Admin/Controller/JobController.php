@@ -190,4 +190,39 @@ class JobController extends AbstractActionController{
         $resumeData = $sm->getResumeById($resume_id);
         return array('resumeData'=>$resumeData);
     }
+    public function resumerequestAction()
+    {
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+        $resumeData = $sm->getResumeRequest();
+        if($this->getRequest()->isGet()){
+            $search = $this->params()->fromQuery('search');
+            $resumeData = $sm->searchResumeRequest($search);
+        }
+        $page = $this->params()->fromQuery('page');
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($resumeData));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        $paginator->setPageRange(4);
+        return array(
+            'resumeData' => $paginator
+        );
+    }
+    public function resumerequestviewAction()
+    {
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+        $resume_id = $this->params()->fromQuery('resumeId');
+        $resumeData = $sm->getResumeById($resume_id);
+        return array('resumeData'=>$resumeData);
+    }
+    public function approvalresumeAction()
+    {
+        $this->layout("layout\ajax_layout");
+        $resumeId = $this->params()->fromQuery("resumeId");
+        $ch = $this->params()->fromQuery("ch");
+        if(!empty($resumeId)){
+            $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+            $sm->ZF2_Update("resume",array("resu_status"=>$ch),array("resume_id"=>$resumeId));
+        }
+        return false;
+    }
 }

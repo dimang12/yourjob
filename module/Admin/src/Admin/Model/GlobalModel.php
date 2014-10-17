@@ -1381,4 +1381,29 @@ class GlobalModel extends AbstractTableGateway {
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();
     }
+
+    // get resume request
+    public function getResumeRequest()
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('r'=>'resume'))
+            ->join(array('u'=>'users'),'r.user_id=u.user_id')
+            ->where(array("resu_status"=>"0"));
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+    // search resume Request
+    public function searchResumeRequest($search)
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array('r'=>'resume'))
+            ->join(array('u'=>'users'),'r.user_id=u.user_id')
+            ->where("resu_status=0 AND (u.username LIKE '%$search%' OR resu_current_position LIKE '%$search%' OR resu_position LIKE '%$search%' OR resu_salary LIKE '%$search%')")
+        ;
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
 }
