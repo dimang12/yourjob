@@ -1,0 +1,78 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">BUY RESUME</h4>
+                </div>
+                <div class="modal-body">
+                    Number of Resume for Purchase :
+                   <input name="num_purchase" class="form-control">
+                   <input type="hidden" class="userId" name="user_id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="row-fluid box-admin-main">
+    <div class="col-md-2 padding-left-0">
+        <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    </div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-10'><h4 class='text-warning'>New Purchase</h4></div>
+            <div class="col-md-2"><a href="<?php echo $this->url("resume-purchase")?>" class="btn btn-default col-md-12 margin-top-2 pull-right">BACK</a></div>
+        </div>
+        <br>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr class="box-row-title">
+                            <th>No</th>
+                            <th>User Purchase name</th>
+                            <th>Sex</th>
+                            <th>Tel</th>
+                            <th>Purchase</th>
+                        </tr>
+                        <?php
+                        $i=1;
+                        foreach ( $this->employerData as $key => $row ) {?>
+                            <tr>
+                                <td><?php echo $row['user_id']?></td>
+                                <td><?php echo $row['user_first_name']."  ".$row["user_last_name"]?></td>
+                                <td><?php echo $row['user_gender']?></td>
+                                <td><?php echo $row['user_phone']?></td>
+                                <td>
+                                    <button user-id="<?php echo $row['user_id']?>" class="btn btn-primary buy" data-toggle="modal" data-target="#myModal">
+                                        Buy
+                                    </button>
+                                </td>
+                            </tr>
+                            <?php $i++; }?>
+                    </table>
+                    <?php echo $this->paginationControl($this->employerData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<script>
+    $(function(){
+        $('.buy').click(function(){
+            userId = $(this).attr('user-id');
+            $('.userId').val(userId);
+        });
+    });
+</script>
+
+

@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 use Admin\Form\JobForm;
 
+use Zend\Db\Sql\Expression;
 use Zend\Mvc\Controller\AbstractActionController;
 
 /**
@@ -181,7 +182,17 @@ class JobController extends AbstractActionController{
     }
     public function resumepurchaseAction()
     {
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+        $purchaseData = $sm->getResumePurchase();
 
+        $page = $this->params()->fromQuery('page');
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($purchaseData));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        $paginator->setPageRange(4);
+        return array(
+            'purchaseData' => $paginator
+        );
     }
     public function resumeviewAction()
     {
@@ -224,5 +235,31 @@ class JobController extends AbstractActionController{
             $sm->ZF2_Update("resume",array("resu_status"=>$ch),array("resume_id"=>$resumeId));
         }
         return false;
+    }
+    public function newpurchaseAction()
+    {
+        $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+        $request = $this->getRequest();
+        if($request->isPost()){
+            $numberPurchase = $this->params()->fromPost("num_purchase");
+            $userId = $this->params()->fromPost("user_id");
+            $values = array(
+                "user_id" => $userId,
+                "rsp_number_purchase" => $numberPurchase,
+                "rsp_dates" => new Expression("NOW()")
+            );
+            $sm->ZF2_Insert("resume_purchase",$values);
+            return $this->redirect()->toUrl("resume-purchase");
+        }
+
+        $employerData = $sm->getEmployerForPurchase();
+        $page = $this->params()->fromQuery('page');
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($employerData));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(10);
+        $paginator->setPageRange(4);
+        return array(
+            'employerData' => $paginator
+        );
     }
 }

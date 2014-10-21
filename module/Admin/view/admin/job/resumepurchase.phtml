@@ -4,12 +4,37 @@
     </div>
     <div class='col-md-10 box-admin-right'>
         <div class='row box-row-title'>
-            <div class='col-md-9'><h4 class='text-warning'>Resume Purchase</h4></div>
+            <div class='col-md-10'><h4 class='text-warning'>Resume Purchase</h4></div>
+            <div class="col-md-2"><a href="<?php echo $this->url("newpurchase")?>" class="btn btn-default col-md-12 margin-top-2 pull-right">New Purchase</a></div>
         </div>
         <br>
         <div class='row'>
             <div class='col-md-12'>
-                Resume Purchase
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr class="box-row-title">
+                            <th>No</th>
+                            <th>User Purchase name</th>
+                            <th>Sex</th>
+                            <th>Tel</th>
+                            <th>Date Purchase</th>
+                            <th>Number Purchase</th>
+                        </tr>
+                        <?php
+                        $i=1;
+                        foreach ( $this->purchaseData as $key => $row ) {?>
+                            <tr>
+                                <td><?php echo $row['resume_purchase_id']?></td>
+                                <td><?php echo $row['user_first_name']."  ".$row["user_last_name"]?></td>
+                                <td><?php echo $row['user_gender']?></td>
+                                <td><?php echo $row['user_phone']?></td>
+                                <td><?php echo $row['rsp_dates']?></td>
+                                <td><?php echo $row['rsp_number_purchase']?></td>
+                            </tr>
+                            <?php $i++; }?>
+                    </table>
+                    <?php echo $this->paginationControl($this->purchaseData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                </div>
             </div>
         </div>
         <br>

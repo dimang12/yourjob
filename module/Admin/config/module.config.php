@@ -1004,6 +1004,16 @@ return array (
                             )
                         )
                     ),
+                    'newpurchase' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/newpurchase',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Job',
+                                'action' => 'newpurchase'
+                            )
+                        )
+                    ),
                 ),
 
 		),

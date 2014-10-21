@@ -44,7 +44,7 @@ if ($routeMatch) {
                 <ul>
                     <li><a class="<?php if($router == 'admin-job' || $router == 'job-editing') echo 'active';?>" href="<?php echo $this->url('admin-job')?>">Job Viewing</a></li>
                     <li><a class="<?php if($router == 'job-posting') echo 'active'?>" href="<?php echo $this->url('job-posting')?>">Job Posting</a></li>
-                    <li><a href="#">Composing Sample</a></li>
+<!--                    <li><a href="#">Composing Sample</a></li>-->
                 </ul>
             </div>
         </div>
@@ -57,25 +57,25 @@ if ($routeMatch) {
                 </a>
             </h4>
         </div>
-        <div id="resume" class="panel-collapse collapse <?php if($router == 'resume-search' || $router == 'resume-purchase' || $router == 'resume-view' || $router == 'resume-request' || $router == 'resume-request-view') echo 'in'?>">
+        <div id="resume" class="panel-collapse collapse <?php if($router == 'resume-search' || $router == 'resume-purchase' || $router == 'resume-view' || $router == 'resume-request' || $router == 'resume-request-view' || $router == 'newpurchase') echo 'in'?>">
             <div class="panel-body">
                 <ul>
                     <li><a class="<?php if($router == 'resume-search' || $router == 'resume-view') echo 'active'?>" href="<?php echo $this->url('resume-search')?>">Resume Search</a></li>
-                    <li><a class="<?php if($router == 'resume-purchase' ) echo 'active'?>" href="<?php echo $this->url('resume-purchase')?>">Resume Purchase</a></li>
+                    <li><a class="<?php if($router == 'resume-purchase' || $router == 'newpurchase') echo 'active'?>" href="<?php echo $this->url('resume-purchase')?>">Resume Purchase</a></li>
                     <li><a class="<?php if($router == 'resume-request' || $router == 'resume-request-view' ) echo 'active'?>" href="<?php echo $this->url('resume-request')?>">Resume Request</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a href="#">
-                    Sale Managemet
-                </a>
-            </h4>
-        </div>
-    </div>
+<!--    <div class="panel panel-default">-->
+<!--        <div class="panel-heading">-->
+<!--            <h4 class="panel-title">-->
+<!--                <a href="#">-->
+<!--                    Sale Managemet-->
+<!--                </a>-->
+<!--            </h4>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -141,6 +141,24 @@ if ($routeMatch) {
                     <li><a class="<?php if($router == 'advertisement' && $action=='new') echo 'active'?>" href="<?php echo $this->url('advertisement').'new'?>">New Advertisement</a></li>
                 </ul>
             </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a  href="<?php echo $this->url("admin-employer")?>">
+                    Employer
+                </a>
+            </h4>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a  href="<?php echo $this->url("admin-job-seeker")?>">
+                    Job Seeker
+                </a>
+            </h4>
         </div>
     </div>
 </div>
