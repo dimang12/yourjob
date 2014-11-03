@@ -35,7 +35,7 @@ label                       { font-weight:normal;}
 .margin-10-15               { margin:10px 15px;}
 
 .pos-relative               { position: relative;}
-.panel-login                { background:#f7f7f7;}
+.panel-login                { background:#ffffff;}
 
 .logo                       { margin:15px 0;}
 .up-10                      { position:relative; top:-7px;}
@@ -83,24 +83,25 @@ label                       { font-weight:normal;}
 			
 
 /*~~~~~~~~~~form control~~~~~~~~~~~~~*/
-.text						{ background:#fdffe9; border:#daddca solid 1px; border-top-width:2px; border-left-width:2px;}
+.text						{ background:#fdffe9; border:#daddca solid 1px;}
 .dropdown-gray				{ 
-							  background-image: -moz-linear-gradient(top, #9ca9af, #8f9a9e);
-							  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#9ca9af), to(#8f9a9e));
-							  background-image: linear-gradient(to bottom, #9ca9af, #8f9a9e);
-							  color:#fff; text-shadow:1px 1px 0 #767e81;
+							  background-image: -moz-linear-gradient(top, #fdffe9, #fdffe9);
+							  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdffe9), to(#fdffe9));
+							  background-image: linear-gradient(to bottom, #fdffe9, #fdffe9);
+    color:#74756a; text-shadow:1px 1px 0 #fdffe9;
+                              border:#e0e0e0 solid 1px;
 }
 .dropdwon-gray i			{
-							  background-image: -moz-linear-gradient(top, #8d989c, #818a8f);
-							  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8d989c), to(#818a8f));
-							  background-image: linear-gradient(to bottom, #0064bf, #818a8f);
+							  background-image: -moz-linear-gradient(top, #fdffe9, #fdffe9);
+							  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdffe9), to(#fdffe9));
+							  background-image: linear-gradient(to bottom, #fdffe9, #fdffe9);
 							  border-right:#778085 solid 1px;
 }
 
 .btn-find-job				{
-							  background-image: -moz-linear-gradient(top, #f93334, #e41a1a);
-							  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f93334), to(#e41a1a));
-							  background-image: linear-gradient(to bottom, #f93334, #e41a1a);
+							  background-image: -moz-linear-gradient(top, #ff6464, #f25252);
+							  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff6464), to(#f25252));
+							  background-image: linear-gradient(to bottom, #ff6464, #f25252);
 							  border-right:#778085 solid 1px;
 }
 
@@ -126,7 +127,7 @@ label                       { font-weight:normal;}
 .color-blue                 { color:#106cad;}
 
 
-.border-light-gray			{ border:#ccc solid 1px;}
+.border-light-gray			{ border:#eaeaea solid 1px;}
 .border-gray				{ border:#999 solid 1px;}
 .no-border					{ border:0;}
 .no-border-left             { border-left:0;}
@@ -148,11 +149,13 @@ label                       { font-weight:normal;}
     background-image: -moz-linear-gradient(top, #efefef, #e0e0e0);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#efefef), to(#e0e0e0));
     background-image: linear-gradient(to bottom, #efefef, #e0e0e0);
+    color:#74756a;
 }
 .bg-gradient-dark-gray		{
-    background-image: -moz-linear-gradient(top, #8d989c, #818a8f);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8d989c), to(#818a8f));
-    background-image: linear-gradient(to bottom, #8d989c, #818a8f);
+    background-image: -moz-linear-gradient(top, #fdffe9, #fdffe9);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdffe9), to(#fdffe9));
+    background-image: linear-gradient(to bottom, #fdffe9, #fdffe9);
+    color:#74756a; border:#e0e0e0 solid 1px;
 }
 
 
@@ -171,5 +174,7 @@ label                       { font-weight:normal;}
     border-color: #106cad; border-bottom: none; font-weight:bold; background:#106cad; color:#fff;
 }
 .nav-tabs                   { border-bottom:none;}
-.margin-top-10{margin-top: 10px;}
-.margin-top-5{margin-top: 5px;}
+.margin-top-10              { margin-top: 10px;}
+.margin-top-5               { margin-top: 5px;}
+.btn-group > .dropdown-gray:hover     { background-image: linear-gradient(to bottom, #fdffe9, #fdffe9);
+                              border: 1px solid #e0e0e0;  color: #74756a; text-shadow: 1px 1px 0 #fdffe9; }
