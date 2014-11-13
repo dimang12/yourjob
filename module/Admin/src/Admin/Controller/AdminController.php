@@ -10,9 +10,7 @@ class AdminController extends AbstractActionController
 		
 		if($authLogin->hasIdentity()){
 			return $this->redirect()->toUrl($this->getRequest()->getBasePath()."/dashboard");
-		
 		}else{
-		
 			return $this->redirect()->toUrl($this->getRequest()->getBasePath().'/login'); //go to login
 		}
 		return array();
@@ -20,6 +18,7 @@ class AdminController extends AbstractActionController
 	
 	public function dashboardAction()
 	{
+
 		$authLogin = $this->serviceLocator->get('auth_login');
 		if($authLogin->hasIdentity())
 		{

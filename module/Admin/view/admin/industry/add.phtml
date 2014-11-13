@@ -1,0 +1,41 @@
+<?php $form = $this->form; echo $this->form()->openTag($form)?>
+<div class="row-fluid box-admin-main">
+    <div class="col-md-2 padding-left-0">
+        <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    </div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-8'><h4 class='text-warning'>New industry</h4></div>
+            <div class="pull-right text-right">
+                <button type="submit" class="btn btn-info margin-top-2 "> <i class="glyphicon glyphicon-floppy-disk"></i> Save</button>
+                <a href="<?php echo $this->url("dashboard-industry")?>" class="btn btn-default margin-top-2">
+                    <i class="glyphicon glyphicon-circle-arrow-left"></i>
+                    Back
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class='row'>
+            <div class='col-md-8'>
+                <?php echo $this->formlabel($form->get('indu_name'))?>
+                <?php echo $this->forminput($form->get('indu_name')->setAttributes(array('class'=>'form-control col-md-12 ','required'=>true)))?>
+            </div>
+
+            <div class='col-md-4'>
+                <?php echo $this->formlabel($form->get('indu_order'))?>
+                <?php echo $this->forminput($form->get('indu_order')->setAttributes(array('class'=>'form-control col-md-12 ')))?>
+            </div>
+
+        </div>
+
+        <div class='row'>
+            <div class='col-md-12'><br>
+                <?php echo $this->formlabel($form->get('indu_details'))?>
+                <?php echo $this->formtextarea($form->get('indu_details')->setAttributes(array('class'=>'form-control col-md-12','rows'=>5)))?>
+            </div>
+
+        </div>
+        <br>
+    </div>
+</div>
+<?php echo $this->form()->closeTag($form)?>

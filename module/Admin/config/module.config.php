@@ -15,7 +15,8 @@ return array (
                         'Admin\Controller\Seeker' => 'Admin\Controller\SeekerController',
                         'Admin\Controller\Advertisement' => 'Admin\Controller\AdvertisementController',
                         'Admin\Controller\Education' => 'Admin\Controller\EducationController',
-				) 
+                        'Admin\Controller\Industry' => 'Admin\Controller\IndustryController',
+				)
 		),
 		'router' => array (
 				'routes' => array (
@@ -225,6 +226,46 @@ return array (
 										)
 								)
 						),
+                        'dashboard-industry' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/dashboard-industry',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Industry',
+                                    'action' => 'index'
+                                )
+                            )
+                        ),
+                        'dashboard-industry-add' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/dashboard-industry-add',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Industry',
+                                    'action' => 'add'
+                                )
+                            )
+                        ),
+                        'dashboard-industry-edit' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/dashboard-industry-edit',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Industry',
+                                    'action' => 'edit'
+                                )
+                            )
+                        ),
+                        'dashboard-industry-delete' => array (
+                            'type' => 'Literal',
+                            'options' => array (
+                                'route' => '/dashboard-industry-delete',
+                                'defaults' => array (
+                                    'controller' => 'Admin\Controller\Category',
+                                    'action' => 'delete'
+                                )
+                            )
+                        ),
 						'dashboard-category-sub-add' => array (
 								'type' => 'Literal',
 								'options' => array (
@@ -246,357 +287,7 @@ return array (
 										)
 								)
 						),
-						
-						'dashboard-production' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-production',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'index'
-										)
-								)
-						),
-						
-						'dashboard-product-add' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-add',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'add'
-										)
-								)
-						),
-						'dashboard-product-edit' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-edit',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'edit'
-										)
-								)
-						),
-						'dashboard-product-delete' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-delete',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'deleteproduct'
-										)
-								)
-						),
-						'dashboard-product-media' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-media',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'media'
-										)
-								)
-						),
-						'dashboard-product-media-remove' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-media-remove',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'mediaremove'
-										)
-								)
-						),
-						'dashboard-product-media-update' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-media-update',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'mediaupdate'
-										)
-								)
-						),
-						'dashboard-product-information' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-information',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'information'
-										)
-								)
-						),
-						'dashboard-product-info-add' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-info-add',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'addinfo'
-										)
-								)
-						),
-						'dashboard-product-info-edit' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-info-edit',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'editinfo'
-										)
-								)
-						),
-						'dashboard-product-info-remove' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-info-remove',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'removeinfo'
-										)
-								)
-						),
-						'dashboard-product-technical' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-technical',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'technical'
-										)
-								)
-						),
-						'dashboard-product-technical-add' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-technical-add',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'addtechnical'
-										)
-								)
-						),
-						'dashboard-product-technical-edit' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-technical-edit',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'edittechnical'
-										)
-								)
-						),
-						'dashboard-product-technical-remove' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-technical-remove',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'removeTechnical'
-										)
-								)
-						),
-						
-						'dashboard-product-standard' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-standard',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'standard'
-										)
-								)
-						),
-						'dashboard-product-specification' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-specification',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'specification'
-										)
-								)
-						),
-						'dashboard-product-standard-remove' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-standard-remove',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'removestandard'
-										)
-								)
-						),
-						'dashboard-product-standard-update' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-standard-update',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'updatestandard'
-										)
-								)
-						),
-						'dashboard-product-specification-remove' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-specification-remove',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'removeSpecification'
-										)
-								)
-						),
-						'dashboard-product-specification-update' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-specification-update',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'updateSpecification'
-										)
-								)
-						),
-						'beyondliving-parent-remove' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/beyondliving-parent-remove',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Beyond',
-												'action' => 'removeParent'
-										)
-								)
-						),
-						'beyondliving-parent-update' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/beyondliving-parent-update',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Beyond',
-												'action' => 'updateParent'
-										)
-								)
-						),
-						
-						'admin-slide' => array ('type' => 'Literal',
-								'options' => array (
-										'route' => '/admin-slide',
-										'defaults' => array ('controller' => 'Admin\Controller\Slide','action' => 'index')
-								)
-						),
-						'dashboard-slide-remove' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-slide-remove',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Slide',
-												'action' => 'removeslide' //default action
-										)
-								)
-						),
-						'dashboard-slide-edit' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-slide-edit',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Slide',
-												'action' => 'editslide' //default action
-										)
-								)
-						),
-						'dashboard-slide-filter' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-slide-filter',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Slide',
-												'action' => 'filterslide' //default action
-										)
-								)
-						),
-						'dashboard-category-filter' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-category-filter',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Category',
-												'action' => 'catefilter'
-										)
-								)
-						),
-						'dashboard-production-filter' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-production-filter',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'productfilter'
-										)
-								)
-						),
-						
-						'dashboard-product-specification-filter' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-specification-filter',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'filterspecification'
-										)
-								)
-						),
-						'dashboard-product-standard-filter' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-standard-filter',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'filterstandard'
-										)
-								)
-						),
-						'dashboard-product-information-filter' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-information-filter',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'informationfilter'
-										)
-								)
-						),
-						'dashboard-product-technical-filter' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-technical-filter',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'filtertechnical'
-										)
-								)
-						),
-						'dashboard-product-specification-addtocat' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-product-specification-addtocat',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'addtocat'
-										)
-								)
-						),
-						'dashboard-standard-addtocate' => array (
-								'type' => 'Literal',
-								'options' => array (
-										'route' => '/dashboard-standard-addtocate',
-										'defaults' => array (
-												'controller' => 'Admin\Controller\Production',
-												'action' => 'standardaddtocate'
-										)
-								)
-						),
+
                     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~your job block
                         'admin-job' => array (
                             'type' => 'Literal',

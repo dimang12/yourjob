@@ -1,3 +1,6 @@
+<?php
+$f = $this->feature;
+?>
 <div class="clearfix">
     <aside class="w70">
         <div class="box-white border-radius-5 p-15">
@@ -5,11 +8,25 @@
                 Featured Companies
             </header>
             <div class="margin-10-0 row font-13 padding-5-0">
-                <?php foreach($this->feature as $k=>$v):?>
-                <div class="col-md-2 text-center <?php if($k==0 || $k+1 % 6==0) echo " no-padding-left"?> ">
-                    <img  src="<?php echo $this->basePath()?>/img/company/<?php echo $v["com_logo"]; ?>" style="max-height:60px; max-width:100%">
-                </div>
-                <?php endforeach;?>
+                <?php for($i=0; $i<=17; $i++):
+                    if($i<count($f)):
+                    ?>
+                    <div class="col-md-2 margin-10-0  text-center <?php if($i==0 || ($i+1) % 7==0) echo " "?> ">
+                        <div class="full-w border-light-gray" style="height:70px; ">
+                            <img class="margin-top-5" src="<?php echo $this->basePath()?>/img/company/<?php echo $f[$i]["com_logo"]; ?>" style="max-height:60px; max-width:100%">
+                        </div>
+                    </div>
+                    <?php else: ?>
+                    <div class="col-md-2 margin-10-0 text-center <?php if($i==0 || ($i+1) %7==0) echo " "?> ">
+                        <div class="full-w border-light-gray" style="height:70px; ">
+                            <img class="margin-top-5" src="<?php echo $this->basePath()?>/img/no-img.png" style="max-height:60px; max-width:100%">
+                        </div>
+                    </div>
+
+                    <?php endif; ?>
+
+
+                <?php endfor;?>
             </div>
 
         </div>

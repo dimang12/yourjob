@@ -126,6 +126,25 @@ if ($routeMatch) {
             </div>
         </div>
     </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#industry">
+                    Industries
+                </a>
+            </h4>
+        </div>
+        <div id="industry" class="panel-collapse collapse <?php if($router == 'dashboard-industry' || $router == 'dashboard-industry-add' || $router == 'dashboard-industry-edit') echo 'in'?>">
+            <div class="panel-body">
+                <ul>
+                    <li><a class="<?php if($router == 'dashboard-industry' || $router == 'dashboard-industry-edit') echo 'active'?>" href="<?php echo $this->url('dashboard-industry')?>">Industies </a></li>
+                    <li><a class="<?php if($router == 'dashboard-industry-add') echo 'active'?>" href="<?php echo $this->url('dashboard-industry-add')?>">New Industry</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
