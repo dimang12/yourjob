@@ -1420,12 +1420,15 @@ class GlobalModel extends AbstractTableGateway {
     }
 
     // get employer data
-    public function getEmployerForPurchase()
+    public function getEmployerForPurchase($search="")
     {
         $sql = new Sql($this->adapter);
-        $select = $sql->select(array('u'=>'users'))
-                ->where(array("user_type"=>1))
-        ;
+        $select = $sql->select(array('u'=>'users'));
+        if(!empty($search)){
+            $select->where("user_type=2 AND (user_first_name LIKE '%$search%' OR  user_last_name LIKE '%$search%' OR  username LIKE '%$search%')");
+        }else{
+            $select->where("user_type=2");
+        }
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();

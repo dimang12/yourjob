@@ -33,6 +33,8 @@
  }
 #cssmenu > ul > li:first-child {
     border-top: 1px solid #CECBCB;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 #cssmenu > ul > li > a {
   display: block;
@@ -97,7 +99,7 @@
     display: block;
 }
 hr{margin-top: 0px;}
-.box-right{border-left:1px solid #C9C9C9;border-top:1px solid #C9C9C9;border-bottom:1px solid #C9C9C9;margin-bottom: 10px;}
+.box-right{border:1px solid #C9C9C9;margin-bottom: 10px;border-top-right-radius: 5px;border-top-left-radius: 5px;}
 .box-row-title{background:#f2f2f2;}
 .placeholder {
     background-color: #fff;
@@ -127,3 +129,5 @@ hr{margin-top: 0px;}
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
 }
+
+.padding-right-15  {padding-right: 15px;}

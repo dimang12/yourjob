@@ -66,7 +66,8 @@ class SeekerController extends AbstractActionController{
 
             $dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
             $loginData = $loginForm->getData();
-            $authAdapter = new DbTable($dbAdapter, 'users', 'username', 'password', 'MD5(?)');
+            // user_type = 2 mean  login only for employer
+            $authAdapter = new DbTable($dbAdapter, 'users', 'username', 'password', 'MD5(?) AND user_type=2');
             $authAdapter->setIdentity($loginData['username'])->setCredential($loginData['password']);
 
             $authService = $this->serviceLocator->get('auth_login');

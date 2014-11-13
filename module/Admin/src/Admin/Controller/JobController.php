@@ -251,15 +251,16 @@ class JobController extends AbstractActionController{
             $sm->ZF2_Insert("resume_purchase",$values);
             return $this->redirect()->toUrl("resume-purchase");
         }
-
-        $employerData = $sm->getEmployerForPurchase();
+        $search = $this->params()->fromQuery("search");
+        $employerData = $sm->getEmployerForPurchase($search);
         $page = $this->params()->fromQuery('page');
         $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($employerData));
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage(10);
         $paginator->setPageRange(4);
         return array(
-            'employerData' => $paginator
+            'employerData' => $paginator,
+            'search'=>$search
         );
     }
 }
