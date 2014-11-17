@@ -87,7 +87,7 @@ class RegisterController extends AbstractActionController{
                             'com_phone_schedule'=>$this->params()->fromPost("com_service_phone"),
                             'com_info'=>$this->params()->fromPost("com_info"),
                             'com_address'=>$this->params()->fromPost("com_address"),
-                            'com_image'=>$newName
+                            'com_logo'=>$newName
                         );
                         $sm->saveUserWithCompany($valueUser,$valueCom);
                         return $this->redirect()->toRoute('job-seeker', array(

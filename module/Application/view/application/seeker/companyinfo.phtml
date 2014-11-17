@@ -17,7 +17,7 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
         $com_address =$row["com_address"];
     }
 ?>
-<div class="box-white border-radius-5 margin-10-0 clearfix">
+<div class="box-white border-radius-5 padding-right-15 margin-10-0 clearfix">
     <div class="row-fluid">
         <div class="col-md-3">
             <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
@@ -32,13 +32,13 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
             <br>
             <div class="row">
                 <div class="col-md-4"><label>Company Name</label><?php echo $this->formrow($form->get('com_name')->setAttributes(array('class'=>'form-control','value'=>$com_name)))?></div>
-                <div class="col-md-4"><label>Contact Name</label><?php echo $this->formrow($form->get('contact_name')->setAttributes(array('class'=>'form-control','value'=>$com_contact_person)))?></div>
+<!--                <div class="col-md-4"><label>Contact Name</label>--><?php //echo $this->formrow($form->get('contact_name')->setAttributes(array('class'=>'form-control','value'=>$com_contact_person)))?><!--</div>-->
                 <div class="col-md-4"> <label>Phone</label><?php echo $this->formrow($form->get('com_phone')->setAttributes(array('class'=>'form-control','value'=>$com_phone)))?></div>
             </div>
             <div class="row">
                 <div class="col-md-4"><label>Email</label><?php echo $this->formrow($form->get('com_email')->setAttributes(array('class'=>'form-control','value'=>$com_email)))?></div>
                 <div class="col-md-4"><label>Website</label><?php echo $this->formrow($form->get('com_website')->setAttributes(array('class'=>'form-control','value'=>$com_website)))?></div>
-                <div class="col-md-4"><label>Service Phone</label><?php echo $this->formrow($form->get('com_service_phone')->setAttributes(array('class'=>'form-control','value'=>$com_phone_schedule)))?></div>
+                <div class="col-md-4"><label>Working Time</label><?php echo $this->formrow($form->get('com_service_phone')->setAttributes(array('class'=>'form-control','value'=>$com_phone_schedule)))?></div>
             </div>
             <br>
             <div class="row">
