@@ -1,1 +1,41 @@
-Resume page
+<div class="box-white border-radius-5 clearfix margin-10-0">
+    <div class="col-md-12 bg-gray border-radius-top-5 border-bottom-gray no-padding">
+        <ol class="breadcrumb no-margin no-background">
+            <li><a href="#"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <li class="active"> <i class="glyphicon glyphicon-file"></i> Resume</li>
+        </ol>
+    </div>
+    <div class="padding-10-0 clearfix">
+        <br>
+        <div class="col-md-3">
+            <br>
+            <div class="list-group">
+                <a href="#" class="list-group-item active">
+                    General Information
+                </a>
+                <a href="#" class="list-group-item">Career Profile</a>
+                <a href="#" class="list-group-item">Job Preference</a>
+                <a href="#" class="list-group-item">Education</a>
+                <a href="#" class="list-group-item">Experiences</a>
+                <a href="#" class="list-group-item">Skills</a>
+            </div>
+        </div>
+        <div class="col-md-9  font-13">
+            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">General Information
+                <a class="font-13 pull-right" href="#"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+            </h4>
+            <?php echo $this->partial("application/resume/_general"); ?>
+            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Career Profile</h4>
+            <?php echo $this->partial("application/resume/_career_profile"); ?>
+            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Job Preferences</h4>
+            <?php echo $this->partial("application/resume/_preference"); ?>
+            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Education</h4>
+            <?php echo $this->partial("application/resume/_education"); ?>
+            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Experiences</h4>
+            <?php echo $this->partial("application/resume/_experience"); ?>
+            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Skills</h4>
+            <?php echo $this->partial("application/resume/_skill"); ?>
+        </div>
+    </div>
+
+</div>

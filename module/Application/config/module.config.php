@@ -38,12 +38,12 @@ return array (
 //						),
 						
 						'resume' => array (
-								'type' => 'Zend\Mvc\Router\Http\Literal',
+								'type' => 'Segment',
 								'options' => array (
-										'route' => '/resume',
+										'route' => '/resume[/:action]',
 										'defaults' => array (
 												'controller' => 'Application\Controller\Resume',
-												'action' => 'index' 
+												'action' => 'index'
 										) 
 								) 
 						),

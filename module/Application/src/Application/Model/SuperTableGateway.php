@@ -24,5 +24,14 @@ class SuperTableGateway extends TableGateway{
         return DB::executeQuery($this->db, $sql);
     }
 
+    /*
+     * execute sql statement
+     * @return last inserted id
+     */
+    public function execute($sql){
+        $inserted = $this->db->prepareStatementForSqlObject($sql)->execute();
+        return $inserted->getGeneratedValue();
+    }
+
 
 }
