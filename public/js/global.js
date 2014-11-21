@@ -29,3 +29,10 @@ $(document).ready(function(){
     });
 
 });
+
+function setValueToField(d){
+    $('.frm .form-control').each(function(k,v){
+        n = $(v).attr('name');
+        $(v).val(d[n]);
+    });
+}

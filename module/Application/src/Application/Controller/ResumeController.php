@@ -24,6 +24,56 @@ class ResumeController extends AbstractActionController{
         $this->checkLogin();
     }
 
+    /*
+     * action edit data of general information
+     */
+    public function generalAction(){
+        $this->checkLogin();
+
+        $db = new ResumeTable($this->getAdapter());
+        $generalInfo = $db->getSeekerGeneralInfo();
+
+        return new ViewModel(array(
+            "general" => current($generalInfo)
+        ));
+    }
+
+    /*
+     * action edit career profile
+     */
+    public function careerprofileAction(){
+        $this->checkLogin();
+
+        $db = new ResumeTable($this->getAdapter());
+    }
+
+    /*
+     * action edit education
+     */
+    public function educationAction(){
+        $this->checkLogin();
+    }
+
+    /*
+     * action edit preference
+     */
+    public function preferenceAction(){
+        $this->checkLogin();
+    }
+
+    /*
+     * action edit experience
+     */
+    public function experienceAction(){
+        $this->checkLogin();
+    }
+
+    /*
+     * action edit skill
+     */
+    public function skillAction(){
+        $this->checkLogin();
+    }
 
     /*
      * member login

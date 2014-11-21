@@ -18,6 +18,31 @@ class ResumeTable extends SuperTableGateway
     }
 
     /*
+     * get seeker general info
+     */
+    public function getSeekerGeneralInfo(){
+        //declare variable
+        $seekerSession = new Container("seeker_session");
+        $userId = $seekerSession->seekerUserId;
+
+        //queries block
+        $sql = $this->db->select()
+                    ->from(array("u"=>"users"))
+                    ->join(array("r"=>"resume"),
+                           "r.user_id = u.user_id",
+                           array("resu_dob","resu_pob", "resu_address", "resu_nationality"),
+                           "LEFT")
+                    ->where("u.user_id = $userId")
+        ;
+
+        $res = $this->executeQuery($sql)->toArray();
+
+        // return value
+        return $res;
+
+    }
+
+    /*
      * login
      * return true if found, else return false
      * create session if found

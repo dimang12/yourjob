@@ -1,0 +1,84 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 11/21/14
+ * Time: 8:01 PM
+ */
+
+?>
+
+<div class="frm">
+    <h3 class="margin-10-0 border-bottom-gray padding-10-0">General Information
+        <a href="<?php echo $this->basepath();?>/resume" class="font-14 pull-right margin-top-10">
+            <i class="glyphicon glyphicon-chevron-left"></i> Back
+        </a>
+    </h3>
+    <div>
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>First name:</label>
+                <input class="form-control" type="text" name="user_first_name" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Last name:</label>
+                <input class="form-control" type="text" name="user_last_name" />
+            </div>
+        </div>
+
+        <div class="clearfix">
+
+            <div class="col-md-6 form-group">
+                <label>Gender:</label>
+                <select class="form-control" name="user_gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Nationality:</label>
+                <input class="form-control" type="text" name="resu_nationality" />
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>Date of birth:</label>
+                <input class="form-control" type="text" name="resu_dob" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Place of birth:</label>
+                <input class="form-control" type="text" name="resu_pob" />
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>Email:</label>
+                <input class="form-control" type="text" name="user_email" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Phone number:</label>
+                <input class="form-control" type="text" name="user_phone" />
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="col-md-12 form-group">
+                <label>Address:</label>
+                <input class="form-control" type="text" name="resu_address" />
+            </div>
+        </div>
+
+        <div class="clearfix text-center">
+            <button class="btn btn-danger"> <i class="glyphicon glyphicon-remove-sign"></i> Cancel</button>
+            <button class="btn btn-info"> <i class="glyphicon glyphicon-floppy-disk"></i> Save General</button>
+        </div>
+    </div>
+</div>
+<script>
+    var general = <?php if(count($this->general)>0) echo json_encode($this->general); else echo '[]'?>;
+    $(function(){
+       setValueToField(general);
+    });
+</script>

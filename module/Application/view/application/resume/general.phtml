@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 11/21/14
+ * Time: 6:31 PM
+ */
+?>
+<div class="box-white border-radius-5 margin-10-0">
+    <div class="bg-gray border-radius-top-5 border-bottom-gray no-padding">
+        <?php echo $this->partial("application/resume/partial/_breadcrumb", array("curPage"=>"General Information")); ?>
+    </div>
+    <div class="clearfix padding-10-0">
+        <div class="col-md-3">
+            <?php echo $this->partial("application/resume/partial/_edit_left", array("curPage"=>"General")); ?>
+        </div>
+        <div class="col-md-9">
+            <?php echo $this->partial("application/resume/form/_general_form"); ?>
+        </div>
+    </div>
+</div>

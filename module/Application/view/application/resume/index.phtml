@@ -10,31 +10,41 @@
         <div class="col-md-3">
             <br>
             <div class="list-group">
-                <a href="#" class="list-group-item active">
+                <a href="#general-info" class="list-group-item active">
                     General Information
                 </a>
-                <a href="#" class="list-group-item">Career Profile</a>
-                <a href="#" class="list-group-item">Job Preference</a>
-                <a href="#" class="list-group-item">Education</a>
-                <a href="#" class="list-group-item">Experiences</a>
-                <a href="#" class="list-group-item">Skills</a>
+                <a href="#career-profile" class="list-group-item">Career Profile</a>
+                <a href="#job-preference" class="list-group-item">Job Preference</a>
+                <a href="#educations" class="list-group-item">Education</a>
+                <a href="#experiences" class="list-group-item">Experiences</a>
+                <a href="#skills" class="list-group-item">Skills</a>
             </div>
         </div>
         <div class="col-md-9  font-13">
-            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">General Information
+            <h4 id="general-info" class="padding-10-0 margin-15-0 border-bottom-gray">General Information
+                <a class="font-13 pull-right" href="<?php echo $this->basepath();?>/resume/general"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+            </h4>
+            <?php echo $this->partial("application/resume/partial/_general"); ?>
+            <h4 id="career-profile" class="padding-10-0 margin-15-0 border-bottom-gray">Career Profile
+                <a class="font-13 pull-right" href="<?php echo $this->basepath();?>/resume/careerprofile"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+            </h4>
+            <?php echo $this->partial("application/resume/partial/_career_profile"); ?>
+            <h4 id="job-preference" class="padding-10-0 margin-15-0 border-bottom-gray">Job Preferences
                 <a class="font-13 pull-right" href="#"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
             </h4>
-            <?php echo $this->partial("application/resume/_general"); ?>
-            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Career Profile</h4>
-            <?php echo $this->partial("application/resume/_career_profile"); ?>
-            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Job Preferences</h4>
-            <?php echo $this->partial("application/resume/_preference"); ?>
-            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Education</h4>
-            <?php echo $this->partial("application/resume/_education"); ?>
-            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Experiences</h4>
-            <?php echo $this->partial("application/resume/_experience"); ?>
-            <h4 class="padding-10-0 margin-15-0 border-bottom-gray">Skills</h4>
-            <?php echo $this->partial("application/resume/_skill"); ?>
+            <?php echo $this->partial("application/resume/partial/_preference"); ?>
+            <h4 id="educations" class="padding-10-0 margin-15-0 border-bottom-gray">Education
+                <a class="font-13 pull-right" href="#"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+            </h4>
+            <?php echo $this->partial("application/resume/partial/_education"); ?>
+            <h4 id="experiences" class="padding-10-0 margin-15-0 border-bottom-gray">Experiences
+                <a class="font-13 pull-right" href="#"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+            </h4>
+            <?php echo $this->partial("application/resume/partial/_experience"); ?>
+            <h4 id="skills" class="padding-10-0 margin-15-0 border-bottom-gray">Skills
+                <a class="font-13 pull-right" href="#"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+            </h4>
+            <?php echo $this->partial("application/resume/partial/_skill"); ?>
         </div>
     </div>
 
