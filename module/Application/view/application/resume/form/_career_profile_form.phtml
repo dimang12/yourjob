@@ -3,5 +3,95 @@
  * Created by PhpStorm.
  * User: dimang12
  * Date: 11/21/14
- * Time: 8:28 PM
- */ 
+ * Time: 8:01 PM
+ */
+//$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/jquery-ui.css');
+?>
+
+<div class="frm">
+    <h3 class="margin-10-0 border-bottom-gray padding-10-0">Career Profile
+        <span class="label label-danger pull-right font-14 margin-top-10 hidden sms-fail"> Update fail.</span>
+        <i class="loading pull-right margin-top-10 hidden"></i>
+    </h3>
+    <div>
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>Highest Qualification(Degree):</label>
+                <input class="form-control" type="text" name="resu_current_degree" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Latest Career Level:</label>
+                <input class="form-control" type="text" name="resu_position_level" />
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>Latest Position:</label>
+                <input class="form-control" type="text" name="resu_current_position" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Year of Experience:</label>
+                <input class="form-control" type="text" name="resu_year_experience" />
+            </div>
+
+        </div>
+
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>Latest Job Category:</label>
+                <select name="category_id" class="form-control">
+                    <?php foreach($this->categories as $k=>$v): ?>
+                    <option value="<?php echo $v["category_id"] ?>"><?php echo $v["cate_name"];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Latest Job Industry:</label>
+                <select name="industry_id" class="form-control">
+                    <?php foreach($this->industries as $k=>$v): ?>
+                        <option value="<?php echo $v["industry_id"] ?>"><?php echo $v["indu_name"];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>Lasest Salary:</label>
+                <input class="form-control" type="text" name="resu_salary" />
+            </div>
+        </div>
+
+        <div class="clearfix text-center">
+            <a href="<?php echo $this->basepath()?>/resume" class="btn btn-danger"> <i class="glyphicon glyphicon-remove-sign"></i> Cancel</a>
+            <button class="btn btn-info btn-update"> <i class="glyphicon glyphicon-floppy-disk"></i> Save General</button>
+        </div>
+    </div>
+</div>
+<script>
+    var general = <?php if(count($this->general)>0) echo json_encode($this->general); else echo '[]'?>;
+    var baseUrl = '<?php echo $this->basepath(); ?>';
+    $(function(){
+        setValueToField(general, '.frm');
+        $('.btn-update').on('click', function () {
+            $('.loading').removeClass('hidden');
+            $('.sms-fail').addClass('hidden');
+            $.ajax({
+                url: baseUrl + '/resume/updatecareer',
+                data: getValueFromField('.frm'),
+                type:'post',
+                success: function(){
+                    $('.loading').addClass('hidden');
+                    window.location.href = baseUrl + '/resume'
+                },
+                error: function(){
+                    $('.loading').addClass('hidden');
+                    $('.sms-fail').removeClass('hidden');
+                }
+            });
+        });
+
+        $('.form-control.dob ').datepicker({dateFormat:'yy-mm-dd'});
+    });
+</script>

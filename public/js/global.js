@@ -30,9 +30,18 @@ $(document).ready(function(){
 
 });
 
-function setValueToField(d){
-    $('.frm .form-control').each(function(k,v){
+function setValueToField(d, cls){
+    $( cls + ' .form-control').each(function(k,v){
         n = $(v).attr('name');
         $(v).val(d[n]);
     });
+}
+
+function getValueFromField(cls){
+    var values = '';
+    $(cls + ' .form-control').each(function(k,v){
+        n = $(v).attr('name');
+        values+= n+'='+$(v).val()+'&';
+    });
+    return values;
 }

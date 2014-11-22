@@ -30,8 +30,10 @@ class ResumeTable extends SuperTableGateway
                     ->from(array("u"=>"users"))
                     ->join(array("r"=>"resume"),
                            "r.user_id = u.user_id",
-                           array("resu_dob","resu_pob", "resu_address", "resu_nationality"),
+                           array("*"),
                            "LEFT")
+                    ->join(array("cate"=>"categories"),"r.category_id=cate.category_id", array("cate_name"))
+                    ->join(array("indu"=>"industries"),"r.industry_id=indu.industry_id", array("indu_name"))
                     ->where("u.user_id = $userId")
         ;
 
@@ -41,6 +43,80 @@ class ResumeTable extends SuperTableGateway
         return $res;
 
     }
+
+    public function updateGeneralInfo($data){
+        //declare variable
+        $seekerSession = new Container("seeker_session");
+        $userId = $seekerSession->seekerUserId;
+
+        //update resume
+        $newData = array(
+            "resu_dob"=> $data["resu_dob"],
+            "resu_pob"=> $data["resu_pob"],
+            "resu_address"=> $data["resu_address"],
+            "resu_nationality"=> $data["resu_nationality"],
+        );
+
+        //find if exist
+        $sqlResume = $this->db->select()->from("resume")->where("user_id= $userId");
+        $resResume = $this->executeQuery($sqlResume)->toArray();
+        $sql= null;
+        if(count($resResume)>0){
+            $sql = $this->db->update("resume")->set($newData)->where("user_id=$userId");
+        }else{
+            $newData["user_id"] = $userId;
+            $newData["resu_posting_date"] = date("Y-m-d");
+            $sql = $this->db->insert("resume")->values($newData);
+        }
+
+        $this->execute($sql);
+    }
+
+    /*
+     * update career profile
+     */
+    public function updateCareerProfile($data){
+        //declare variable
+        $seekerSession = new Container("seeker_session");
+        $userId = $seekerSession->seekerUserId;
+
+        //update resume
+        $newData = array(
+            "resu_current_degree"=> $data["resu_current_degree"],
+            "resu_position_level"=> $data["resu_position_level"],
+            "resu_current_position"=> $data["resu_current_position"],
+            "resu_year_experience"=> $data["resu_year_experience"],
+            "category_id"=> $data["category_id"],
+            "industry_id"=> $data["industry_id"],
+            "resu_salary"=> $data["resu_salary"],
+        );
+
+        //find if exist
+        $sqlResume = $this->db->select()->from("resume")->where("user_id= $userId");
+        $resResume = $this->executeQuery($sqlResume)->toArray();
+        $sql= null;
+        if(count($resResume)>0){
+            $sql = $this->db->update("resume")->set($newData)->where("user_id=$userId");
+        }else{
+            $newData["user_id"] = $userId;
+            $newData["resu_posting_date"] = date("Y-m-d");
+            $sql = $this->db->insert("resume")->values($newData);
+        }
+
+        $this->execute($sql);
+    }
+
+    /*
+     * get all rows without condition
+     */
+    public function getAllRows($table){
+        $sql = $this->db->select()
+                        ->from($table)
+                ;
+        return $this->executeQuery($sql)->toArray();
+    }
+
+
 
     /*
      * login

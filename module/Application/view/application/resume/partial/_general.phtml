@@ -5,44 +5,43 @@
     <div class="col-md-9">
         <div class="clearfix">
             <label class="col-md-4"><b>Full Name</b></label>
-            <span>: CHOU Dimang</span>
+            <span>: {{r.user_first_name +' '+ r.user_last_name}}</span>
         </div>
 
         <div class="clearfix">
             <label class="col-md-4"><b>Date of birth</b></label>
-            <span>: January 12 1989</span>
+            <span>: {{r.resu_dob}}</span>
         </div>
 
         <div class="clearfix">
             <label class="col-md-4"><b>Gender</b></label>
-            <span>: Male</span>
+            <span>: {{r.user_gender}}</span>
         </div>
-
 
 
         <div class="clearfix">
             <label class="col-md-4"><b>Nationality</b></label>
-            <span>: Cambodia</span>
+            <span>: {{r.resu_nationality}}</span>
         </div>
 
         <div class="clearfix">
-            <label class="col-md-4"><b>Location of Residence</b></label>
-            <span>: Phnom Penh</span>
+            <label class="col-md-4"><b>Place of birth</b></label>
+            <span>: {{r.resu_pob}}</span>
         </div>
 
         <div class="clearfix">
             <label class="col-md-4"><b>Email</b></label>
-            <span>: dimang12@gmail.com</span>
+            <span>: {{r.user_email}}</span>
         </div>
 
         <div class="clearfix">
             <label class="col-md-4"><b>Phone Number</b></label>
-            <span>: 012 952 975 / 010 952 975</span>
+            <span>: {{r.user_phone}}</span>
         </div>
 
         <div class="clearfix">
             <label class="col-md-4"><b>Address</b></label>
-            <span>: #59Cz, Street 150z, Sangkat Psa Depot II, Khan Toul Kork, Phnom Penh, Cambodia</span>
+            <span>: {{r.resu_address}}</span>
         </div>
     </div>
 </div>

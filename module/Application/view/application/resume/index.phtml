@@ -1,4 +1,7 @@
-<div class="box-white border-radius-5 clearfix margin-10-0">
+<?php
+    $this->headScript()->prependFile($this->basepath()."/js/angular.js");
+?>
+<div ng-app = "resume"  class="box-white border-radius-5 clearfix margin-10-0">
     <div class="col-md-12 bg-gray border-radius-top-5 border-bottom-gray no-padding">
         <ol class="breadcrumb no-margin no-background">
             <li><a href="#"><i class="glyphicon glyphicon-home"></i> Home</a></li>
@@ -14,13 +17,13 @@
                     General Information
                 </a>
                 <a href="#career-profile" class="list-group-item">Career Profile</a>
-                <a href="#job-preference" class="list-group-item">Job Preference</a>
+<!--                <a href="#job-preference" class="list-group-item">Job Preference</a>-->
                 <a href="#educations" class="list-group-item">Education</a>
                 <a href="#experiences" class="list-group-item">Experiences</a>
                 <a href="#skills" class="list-group-item">Skills</a>
             </div>
         </div>
-        <div class="col-md-9  font-13">
+        <div class="col-md-9  font-13" ng-controller = "resumeController">
             <h4 id="general-info" class="padding-10-0 margin-15-0 border-bottom-gray">General Information
                 <a class="font-13 pull-right" href="<?php echo $this->basepath();?>/resume/general"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
             </h4>
@@ -29,16 +32,13 @@
                 <a class="font-13 pull-right" href="<?php echo $this->basepath();?>/resume/careerprofile"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
             </h4>
             <?php echo $this->partial("application/resume/partial/_career_profile"); ?>
-            <h4 id="job-preference" class="padding-10-0 margin-15-0 border-bottom-gray">Job Preferences
-                <a class="font-13 pull-right" href="#"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-            </h4>
-            <?php echo $this->partial("application/resume/partial/_preference"); ?>
+
             <h4 id="educations" class="padding-10-0 margin-15-0 border-bottom-gray">Education
-                <a class="font-13 pull-right" href="#"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                <a class="font-13 pull-right" href="<?php echo $this->basepath();?>/resume/education"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
             </h4>
             <?php echo $this->partial("application/resume/partial/_education"); ?>
             <h4 id="experiences" class="padding-10-0 margin-15-0 border-bottom-gray">Experiences
-                <a class="font-13 pull-right" href="#"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                <a class="font-13 pull-right" href=""><i class="glyphicon glyphicon-pencil"></i> Edit</a>
             </h4>
             <?php echo $this->partial("application/resume/partial/_experience"); ?>
             <h4 id="skills" class="padding-10-0 margin-15-0 border-bottom-gray">Skills
@@ -49,3 +49,9 @@
     </div>
 
 </div>
+<script>
+    var resumeApp = angular.module("resume", []);
+    resumeApp.controller("resumeController",function($scope){
+        $scope.r = <?php if(count($this->general)>0) echo json_encode($this->general); else echo '{}'; ?>;
+    });
+</script>

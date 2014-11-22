@@ -14,6 +14,7 @@ use Admin\Form\LoginForm;
 use Application\Model\ResumeTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Session\Container;
+use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
 
 class ResumeController extends AbstractActionController{
@@ -22,6 +23,13 @@ class ResumeController extends AbstractActionController{
 
     public function indexAction(){
         $this->checkLogin();
+
+        $db = new ResumeTable($this->getAdapter());
+        $generalInfo = $db->getSeekerGeneralInfo();
+
+        return new ViewModel(array(
+            "general" => current($generalInfo)
+        ));
     }
 
     /*
@@ -45,6 +53,15 @@ class ResumeController extends AbstractActionController{
         $this->checkLogin();
 
         $db = new ResumeTable($this->getAdapter());
+        $categories = $db->getAllRows("categories");
+        $industies = $db->getAllRows("industries");
+        $generalInfo = $db->getSeekerGeneralInfo();
+
+        return new ViewModel(array(
+            "categories" => $categories,
+            "industries" => $industies,
+            "general" => current($generalInfo)
+        ));
     }
 
     /*
@@ -74,6 +91,39 @@ class ResumeController extends AbstractActionController{
     public function skillAction(){
         $this->checkLogin();
     }
+
+    /*
+     * ajax action general
+     */
+    public function updategeneralAction(){
+        //init
+        $this->layout("layout/ajax_layout");
+
+        //declare params
+        $db= new ResumeTable($this->getAdapter());
+        $data = $this->params()->fromPost();
+
+        $db->updateGeneralInfo($data);
+        return false;
+    }
+
+
+    /*
+     * ajax action general
+     */
+    public function updatecareerAction(){
+        //init
+        $this->layout("layout/ajax_layout");
+
+        //declare params
+        $db= new ResumeTable($this->getAdapter());
+        $data = $this->params()->fromPost();
+
+        $db->updateCareerProfile($data);
+        return false;
+    }
+
+
 
     /*
      * member login
@@ -108,6 +158,7 @@ class ResumeController extends AbstractActionController{
                 $username = $this->params()->fromPost("username");
                 $password = $this->params()->fromPost("password");
                 $dbSeeker->login($username, $password);
+                $this->request()->toUrl($this->getRequest()->getBaseUrl(). "/resume/login");
             }
 
         }
@@ -127,7 +178,7 @@ class ResumeController extends AbstractActionController{
         $seekerSession = new Container("seeker_session");
         $seekerSession->seekerUserId = "";
         $seekerSession->seekerUserName = "";
-        $this->redirect()->toUrl("login");
+        $this->redirect()->toUrl($this->getRequest()->getBaseUrl(). "/resume/login");
     }
 
     private function getAdapter(){

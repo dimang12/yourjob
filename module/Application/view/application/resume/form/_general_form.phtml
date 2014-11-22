@@ -5,14 +5,13 @@
  * Date: 11/21/14
  * Time: 8:01 PM
  */
-
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/jquery-ui.css');
 ?>
 
 <div class="frm">
     <h3 class="margin-10-0 border-bottom-gray padding-10-0">General Information
-        <a href="<?php echo $this->basepath();?>/resume" class="font-14 pull-right margin-top-10">
-            <i class="glyphicon glyphicon-chevron-left"></i> Back
-        </a>
+        <span class="label label-danger pull-right font-14 margin-top-10 hidden sms-fail"> Update fail.</span>
+        <i class="loading pull-right margin-top-10 hidden"></i>
     </h3>
     <div>
         <div class="clearfix">
@@ -31,8 +30,8 @@
             <div class="col-md-6 form-group">
                 <label>Gender:</label>
                 <select class="form-control" name="user_gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
             </div>
             <div class="col-md-6 form-group">
@@ -43,8 +42,8 @@
 
         <div class="clearfix">
             <div class="col-md-6 form-group">
-                <label>Date of birth:</label>
-                <input class="form-control" type="text" name="resu_dob" />
+                <label>Date of birth (1989-01-25):</label>
+                <input class="form-control dob" type="text" name="resu_dob" />
             </div>
             <div class="col-md-6 form-group">
                 <label>Place of birth:</label>
@@ -71,14 +70,34 @@
         </div>
 
         <div class="clearfix text-center">
-            <button class="btn btn-danger"> <i class="glyphicon glyphicon-remove-sign"></i> Cancel</button>
-            <button class="btn btn-info"> <i class="glyphicon glyphicon-floppy-disk"></i> Save General</button>
+            <a href="<?php echo $this->basepath()?>/resume" class="btn btn-danger"> <i class="glyphicon glyphicon-remove-sign"></i> Cancel</a>
+            <button class="btn btn-info btn-update"> <i class="glyphicon glyphicon-floppy-disk"></i> Save General</button>
         </div>
     </div>
 </div>
 <script>
     var general = <?php if(count($this->general)>0) echo json_encode($this->general); else echo '[]'?>;
+    var baseUrl = '<?php echo $this->basepath(); ?>';
     $(function(){
-       setValueToField(general);
+       setValueToField(general, '.frm');
+        $('.btn-update').on('click', function () {
+            $('.loading').removeClass('hidden');
+            $('.sms-fail').addClass('hidden');
+            $.ajax({
+                url: baseUrl + '/resume/updategeneral',
+                data: getValueFromField('.frm'),
+                type:'post',
+                success: function(){
+                    $('.loading').addClass('hidden');
+                    window.location.href = baseUrl + '/resume'
+                },
+                error: function(){
+                    $('.loading').addClass('hidden');
+                    $('.sms-fail').removeClass('hidden');
+                }
+            });
+        });
+
+        $('.form-control.dob ').datepicker({dateFormat:'yy-mm-dd'});
     });
 </script>

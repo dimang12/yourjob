@@ -46,7 +46,7 @@ label                       { font-weight:normal;}
 .full-w						{ width:100%;}
 .w70                        { width:71%; margin-right:1%; float:left;}
 .w30                        { width:28%; float:left;}
-
+.loading                    { display:inline-block; width:16px; height:16px; background:url("../img/ajax-loader.gif")}
 /*~~~~~~~~~~Text Shadow~~~~~~~~~~~~~*/
 .text-shadow				{ text-shadow:1px 1px 0 #144568;}
 .text-overflow              { text-overflow:ellipsis; overflow:hidden; white-space:nowrap; height:30px;}
