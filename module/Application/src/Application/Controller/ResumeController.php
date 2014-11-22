@@ -24,6 +24,8 @@ class ResumeController extends AbstractActionController{
     public function indexAction(){
         $this->checkLogin();
 
+
+
         $db = new ResumeTable($this->getAdapter());
         $generalInfo = $db->getSeekerGeneralInfo();
 
@@ -69,6 +71,13 @@ class ResumeController extends AbstractActionController{
      */
     public function educationAction(){
         $this->checkLogin();
+
+        $db = new ResumeTable($this->getAdapter());
+        $education = $db->getEducation();
+
+        return new ViewModel(array(
+            "education" => current($education)
+        ));
     }
 
     /*
@@ -76,6 +85,17 @@ class ResumeController extends AbstractActionController{
      */
     public function preferenceAction(){
         $this->checkLogin();
+    }
+
+    public function updateeducationAction(){
+        $this->layout("layout/ajax_layout");
+
+        //declare params
+        $db= new ResumeTable($this->getAdapter());
+        $data = $this->params()->fromPost();
+
+        $db->updateEducation($data);
+        return false;
     }
 
     /*
@@ -134,15 +154,6 @@ class ResumeController extends AbstractActionController{
             $this->redirect()->toUrl( $this->getRequest()->getBaseUrl(). "/resume/index");
         }
 
-        $authService = $this->serviceLocator->get('auth_login');
-        if ($authService->hasIdentity()) {
-
-            // if not log in, redirect to login page
-            return $this->redirect()->toRoute('job-seeker', array(
-                'controller' => 'Seeker',
-                'action' =>  'index'
-            ));
-        }
 
         $loginForm = new LoginForm();
 
@@ -158,7 +169,7 @@ class ResumeController extends AbstractActionController{
                 $username = $this->params()->fromPost("username");
                 $password = $this->params()->fromPost("password");
                 $dbSeeker->login($username, $password);
-                $this->request()->toUrl($this->getRequest()->getBaseUrl(). "/resume/login");
+                $this->request()->toUrl($this->getRequest()->getBaseUrl(). "/resume/index");
             }
 
         }
