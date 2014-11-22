@@ -1,6 +1,6 @@
 <?php
 $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/accordion.css');
-$this->headScript ()->prependFile ( $this->basePath () . '/js/accordion.js');
+//$this->headScript ()->prependFile ( $this->basePath () . '/js/accordion.js');
 ?>
 <?php
     $sm = $this->getHelperPluginManager ()->getServiceLocator ();
@@ -14,14 +14,14 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/accordion.js');
 ?>
 <div id='cssmenu'>
     <ul>
-        <li class='<?php if($action=="index")echo "active"?>'><a href='<?php echo $this->url("job-seeker")?>'><span>Home</span></a></li>
-        <li class='has-sub <?php if($action == 'accountinfo' || $action == 'companyinfo') echo 'active';?>'><a href='#'><span>Profile Setting</span></a>
+        <li class='<?php if($action=="index")echo "actived"?>'><a href='<?php echo $this->url("job-seeker")?>'><span>Home</span></a></li>
+        <li class='has-sub'><a href='#'><span>Profile Setting</span></a>
             <ul <?php if($action == 'accountinfo' || $action == 'companyinfo') echo "style='display: block;'";?>>
                 <li class="<?php if($action == 'accountinfo') echo 'actived';?>"><a href='<?php echo $this->url("job-seeker")."accountinfo";?>'><span>Account Information</span></a></li>
                 <li class="<?php if($action == 'companyinfo') echo 'actived';?>"><a href='<?php echo $this->url("job-seeker")."companyinfo";?>'><span>Company Information</span></a></li>
             </ul>
         </li>
-        <li class='has-sub <?php if($action == 'joblisting' || $action == 'newjob' || $action == 'editjob') echo 'active';?>'><a href='#'><span>Job Management</span></a>
+        <li class='has-sub'><a href='#'><span>Job Management</span></a>
             <ul <?php if($action == 'joblisting' || $action == 'newjob' || $action == 'editjob') echo "style='display: block;'";?>>
                 <li class="<?php if($action == 'joblisting' || $action == 'editjob') echo 'actived';?>"><a href='<?php echo $this->url("job-seeker")."joblisting";?>'><span>All Job</span></a></li>
                 <li class='<?php if($action == 'newjob') echo 'actived';?>'><a href='<?php echo $this->url("job-seeker")."newjob";?>'><span>New Job</span></a></li>

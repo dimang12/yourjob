@@ -6,7 +6,8 @@
 body {
 	padding-top: 60px;
 	font-size: 14px;
-	font-family: "Century Gothic", "wf_SegoeUI", "Segoe UI","Segoe", "Segoe WP", "Tahoma", "Verdana", "Arial", "sans-serif";
+	/*font-family: "Century Gothic", "wf_SegoeUI", "Segoe UI","Segoe", "Segoe WP", "Tahoma", "Verdana", "Arial", "sans-serif";*/
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	
 }
 

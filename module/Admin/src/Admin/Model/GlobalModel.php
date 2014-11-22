@@ -1304,7 +1304,7 @@ class GlobalModel extends AbstractTableGateway {
         $sql = new Sql($this->adapter);
         $select = $sql->select(array('r'=>'resume'))
             ->join(array('u'=>'users'),'r.user_id=u.user_id')
-            ->where("u.username LIKE '%$search%' OR resu_current_position LIKE '%$search%' OR resu_position LIKE '%$search%' OR resu_salary LIKE '%$search%'")
+            ->where("u.username LIKE '%$search%' OR resu_current_position LIKE '%$search%' OR resu_position_level LIKE '%$search%' OR resu_salary LIKE '%$search%'")
         ;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
@@ -1400,7 +1400,7 @@ class GlobalModel extends AbstractTableGateway {
         $sql = new Sql($this->adapter);
         $select = $sql->select(array('r'=>'resume'))
             ->join(array('u'=>'users'),'r.user_id=u.user_id')
-            ->where("resu_status=0 AND (u.username LIKE '%$search%' OR resu_current_position LIKE '%$search%' OR resu_position LIKE '%$search%' OR resu_salary LIKE '%$search%')")
+            ->where("resu_status=0 AND (u.username LIKE '%$search%' OR resu_current_position LIKE '%$search%' OR resu_position_level LIKE '%$search%' OR resu_salary LIKE '%$search%')")
         ;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();

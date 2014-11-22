@@ -34,17 +34,16 @@ if ($routeMatch) {
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#jobmgt">
-                    Job Management
+                <a data-toggle="collapse" data-parent="#accordion" href="#advertisement">
+                    Advertisement
                 </a>
             </h4>
         </div>
-        <div id="jobmgt" class="panel-collapse collapse <?php if($router == 'admin-job' || $router == 'job-posting' || $router == 'job-editing') echo 'in'?>">
+        <div id="advertisement" class="panel-collapse collapse <?php if($router == 'advertisement') echo 'in'?>">
             <div class="panel-body">
                 <ul>
-                    <li><a class="<?php if($router == 'admin-job' || $router == 'job-editing') echo 'active';?>" href="<?php echo $this->url('admin-job')?>">Job Viewing</a></li>
-                    <li><a class="<?php if($router == 'job-posting') echo 'active'?>" href="<?php echo $this->url('job-posting')?>">Job Posting</a></li>
-<!--                    <li><a href="#">Composing Sample</a></li>-->
+                    <li><a class="<?php if(($router == 'advertisement' && $action=='index') || ($router == 'advertisement' && $action=='edit')) echo 'active'?>" href="<?php echo $this->url('advertisement')?>">Advertisement Info</a></li>
+                    <li><a class="<?php if($router == 'advertisement' && $action=='new') echo 'active'?>" href="<?php echo $this->url('advertisement').'new'?>">New Advertisement</a></li>
                 </ul>
             </div>
         </div>
@@ -52,30 +51,20 @@ if ($routeMatch) {
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#resume">
-                    Resume Management
+                <a data-toggle="collapse" data-parent="#accordion" href="#category">
+                    Category
                 </a>
             </h4>
         </div>
-        <div id="resume" class="panel-collapse collapse <?php if($router == 'resume-search' || $router == 'resume-purchase' || $router == 'resume-view' || $router == 'resume-request' || $router == 'resume-request-view' || $router == 'newpurchase') echo 'in'?>">
+        <div id="category" class="panel-collapse collapse <?php if($router == 'dashboard-category' || $router == 'dashboard-category-add' || $router == 'dashboard-category-edit') echo 'in'?>">
             <div class="panel-body">
                 <ul>
-                    <li><a class="<?php if($router == 'resume-search' || $router == 'resume-view') echo 'active'?>" href="<?php echo $this->url('resume-search')?>">Resume Search</a></li>
-                    <li><a class="<?php if($router == 'resume-purchase' || $router == 'newpurchase') echo 'active'?>" href="<?php echo $this->url('resume-purchase')?>">Resume Purchase</a></li>
-                    <li><a class="<?php if($router == 'resume-request' || $router == 'resume-request-view' ) echo 'active'?>" href="<?php echo $this->url('resume-request')?>">Resume Request</a></li>
+                    <li><a class="<?php if($router == 'dashboard-category' || $router == 'dashboard-category-edit') echo 'active'?>" href="<?php echo $this->url('dashboard-category')?>">Category Info</a></li>
+                    <li><a class="<?php if($router == 'dashboard-category-add') echo 'active'?>" href="<?php echo $this->url('dashboard-category-add')?>">New Category</a></li>
                 </ul>
             </div>
         </div>
     </div>
-<!--    <div class="panel panel-default">-->
-<!--        <div class="panel-heading">-->
-<!--            <h4 class="panel-title">-->
-<!--                <a href="#">-->
-<!--                    Sale Managemet-->
-<!--                </a>-->
-<!--            </h4>-->
-<!--        </div>-->
-<!--    </div>-->
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -90,6 +79,15 @@ if ($routeMatch) {
                     <li><a class="<?php if($router == 'admin-education') echo 'active'?>" href="<?php echo $this->url("admin-education")?>">Education Info</a></li>
                 </ul>
             </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a  href="<?php echo $this->url("admin-employer")?>">
+                    Employer
+                </a>
+            </h4>
         </div>
     </div>
     <div class="panel panel-default">
@@ -112,24 +110,6 @@ if ($routeMatch) {
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#category">
-                    Category
-                </a>
-            </h4>
-        </div>
-        <div id="category" class="panel-collapse collapse <?php if($router == 'dashboard-category' || $router == 'dashboard-category-add' || $router == 'dashboard-category-edit') echo 'in'?>">
-            <div class="panel-body">
-                <ul>
-                    <li><a class="<?php if($router == 'dashboard-category' || $router == 'dashboard-category-edit') echo 'active'?>" href="<?php echo $this->url('dashboard-category')?>">Category Info</a></li>
-                    <li><a class="<?php if($router == 'dashboard-category-add') echo 'active'?>" href="<?php echo $this->url('dashboard-category-add')?>">New Category</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#industry">
                     Industries
                 </a>
@@ -144,31 +124,22 @@ if ($routeMatch) {
             </div>
         </div>
     </div>
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#advertisement">
-                    Advertisement
+                <a data-toggle="collapse" data-parent="#accordion" href="#jobmgt">
+                    Job Management
                 </a>
             </h4>
         </div>
-        <div id="advertisement" class="panel-collapse collapse <?php if($router == 'advertisement') echo 'in'?>">
+        <div id="jobmgt" class="panel-collapse collapse <?php if($router == 'admin-job' || $router == 'job-posting' || $router == 'job-editing') echo 'in'?>">
             <div class="panel-body">
                 <ul>
-                    <li><a class="<?php if(($router == 'advertisement' && $action=='index') || ($router == 'advertisement' && $action=='edit')) echo 'active'?>" href="<?php echo $this->url('advertisement')?>">Advertisement Info</a></li>
-                    <li><a class="<?php if($router == 'advertisement' && $action=='new') echo 'active'?>" href="<?php echo $this->url('advertisement').'new'?>">New Advertisement</a></li>
+                    <li><a class="<?php if($router == 'admin-job' || $router == 'job-editing') echo 'active';?>" href="<?php echo $this->url('admin-job')?>">Job Viewing</a></li>
+                    <li><a class="<?php if($router == 'job-posting') echo 'active'?>" href="<?php echo $this->url('job-posting')?>">Job Posting</a></li>
+                    <!--                    <li><a href="#">Composing Sample</a></li>-->
                 </ul>
             </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a  href="<?php echo $this->url("admin-employer")?>">
-                    Employer
-                </a>
-            </h4>
         </div>
     </div>
     <div class="panel panel-default">
@@ -180,6 +151,32 @@ if ($routeMatch) {
             </h4>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#resume">
+                    Resume Management
+                </a>
+            </h4>
+        </div>
+        <div id="resume" class="panel-collapse collapse <?php if($router == 'resume-search' || $router == 'resume-purchase' || $router == 'resume-view' || $router == 'resume-request' || $router == 'resume-request-view' || $router == 'newpurchase') echo 'in'?>">
+            <div class="panel-body">
+                <ul>
+                    <li><a class="<?php if($router == 'resume-search' || $router == 'resume-view') echo 'active'?>" href="<?php echo $this->url('resume-search')?>">Resume Search</a></li>
+                    <li><a class="<?php if($router == 'resume-purchase' || $router == 'newpurchase') echo 'active'?>" href="<?php echo $this->url('resume-purchase')?>">Resume Purchase</a></li>
+                    <li><a class="<?php if($router == 'resume-request' || $router == 'resume-request-view' ) echo 'active'?>" href="<?php echo $this->url('resume-request')?>">Resume Post</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!--    <div class="panel panel-default">-->
+<!--        <div class="panel-heading">-->
+<!--            <h4 class="panel-title">-->
+<!--                <a href="#">-->
+<!--                    Sale Managemet-->
+<!--                </a>-->
+<!--            </h4>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>
-
 <!-- End collapse menu -->

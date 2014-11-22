@@ -1,29 +1,35 @@
 <?php
+$sm = $this->getHelperPluginManager ()->getServiceLocator ();
+$routeMatch = $sm->get ( 'Application' )->getMvcEvent ()->getRouteMatch ();
+$router = $routeMatch->getMatchedRouteName();
+?>
+
+<?php
 //$services = $this->getServiceManager();
 //
 //$router = $services->get('router');
 ?>
 <ul class="menu">
     <li>
-        <a class="bg-blue actived" href="<?php echo $this->basePath(); ?>">
+        <a class="bg-blue <?php if($router=="home") echo "actived"?>" href="<?php echo $this->basePath(); ?>">
             <i class="glyphicon glyphicon-home"></i>
             <span><?php echo $this->translate("Home");?></span>
         </a>
     </li>
     <li>
-        <a class="bg-blue text-shadow" href="<?php echo $this->basePath(); ?>/job-seeker">
+        <a class="bg-blue text-shadow <?php if($router=="job-seeker") echo "actived"?>" href="<?php echo $this->basePath(); ?>/job-seeker">
             <i class="glyphicon glyphicon-search"></i>
             <span><?php echo $this->translate("Employer");?></span>
         </a>
     </li>
     <li>
-        <a class="bg-blue text-shadow" href="<?php echo $this->basePath(); ?>/resume">
+        <a class="bg-blue text-shadow <?php if($router=="resume") echo "actived"?>" href="<?php echo $this->basePath(); ?>/resume">
             <i class="glyphicon glyphicon-file"></i>
             <span><?php echo $this->translate("Resumes");?></span>
         </a>
     </li>
     <li>
-        <a class="bg-blue text-shadow" href="<?php echo $this->basePath(); ?>/education">
+        <a class="bg-blue text-shadow <?php if($router=="education") echo "actived"?>" href="<?php echo $this->basePath(); ?>/education">
             <i class="glyphicon glyphicon-book"></i>
             <span><?php echo $this->translate("Education");?></span>
         </a>

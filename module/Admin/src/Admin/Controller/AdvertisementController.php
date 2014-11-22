@@ -40,6 +40,11 @@ class AdvertisementController extends AbstractActionController {
                     'adv_image' => $newName
                 );
                 $sm->ZF2_Insert('advertisement',$values);
+                $dir = 'public/img/promotion';
+                if(file_exists($dir))
+                {
+                    move_uploaded_file($file['tmp_name'], $dir.'/'.$newName);
+                }
                 return $this->redirect()->toRoute('advertisement');
             }
         }
