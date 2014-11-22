@@ -43,7 +43,7 @@ $this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js
                 type:'post',
                 success: function(){
                     $('.loading').addClass('hidden');
-                    //window.location.href = baseUrl + '/resume'
+                    window.location.href = baseUrl + '/resume'
                 },
                 error: function(){
                     $('.loading').addClass('hidden');
