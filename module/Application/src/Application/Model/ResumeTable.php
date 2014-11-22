@@ -44,6 +44,31 @@ class ResumeTable extends SuperTableGateway
 
     }
 
+    /*
+     * get resume detail
+     */
+    public function getResumeDetail(){
+        //declare variable
+        $seekerSession = new Container("seeker_session");
+        $userId = $seekerSession->seekerUserId;
+
+        //queries block
+        $sql = $this->db->select()->columns(array())
+            ->from(array("u"=>"users"))
+            ->join(array("r"=>"resume"), "r.user_id = u.user_id", array(), "LEFT")
+            ->join(array("edu"=>"resume_education"),"r.resume_id=edu.resume_id", array("edu_detail"),"LEFT")
+            ->join(array("exp"=>"resume_experience"),"r.resume_id=exp.resume_id", array("exp_detail"),"LEFT")
+            ->join(array("sk"=>"resume_skill"),"r.resume_id=sk.resume_id", array("skil_detail"),"LEFT")
+
+            ->where("u.user_id = $userId")
+        ;
+
+        $res = $this->executeQuery($sql)->toArray();
+
+        // return value
+        return $res;
+    }
+
     public function getEducation(){
         //declare variable
         $seekerSession = new Container("seeker_session");
@@ -152,6 +177,44 @@ class ResumeTable extends SuperTableGateway
 
         if(count($resume)>0){
             $sql = $this->db->update("resume_education")->set($data)->where("resume_id=" . $resume[0]["resume_id"]);
+            $this->execute($sql);
+        }
+    }
+
+    public function updateExperience($data){
+        //declare variable
+        $seekerSession = new Container("seeker_session");
+        $userId = $seekerSession->seekerUserId;
+
+        //get resume idf
+        $sql = $this->db->select()->from("resume")
+            ->where("user_id = $userId")
+            ->limit(1)
+        ;
+
+        $resume = $this->executeQuery($sql)->toArray();
+
+        if(count($resume)>0){
+            $sql = $this->db->update("resume_experience")->set($data)->where("resume_id=" . $resume[0]["resume_id"]);
+            $this->execute($sql);
+        }
+    }
+
+    public function updateSkill($data){
+        //declare variable
+        $seekerSession = new Container("seeker_session");
+        $userId = $seekerSession->seekerUserId;
+
+        //get resume idf
+        $sql = $this->db->select()->from("resume")
+            ->where("user_id = $userId")
+            ->limit(1)
+        ;
+
+        $resume = $this->executeQuery($sql)->toArray();
+
+        if(count($resume)>0){
+            $sql = $this->db->update("resume_skill")->set($data)->where("resume_id=" . $resume[0]["resume_id"]);
             $this->execute($sql);
         }
     }
