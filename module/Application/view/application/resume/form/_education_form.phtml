@@ -18,7 +18,7 @@ $this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js
     <div>
         <div class="clearfix">
             <div class="col-md-12 form-group">
-                <textarea class="form-control" rows="10"></textarea>
+                <textarea class="form-control" name="edu_detail" rows="10"></textarea>
             </div>
         </div>
 
@@ -26,10 +26,11 @@ $this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js
             <a href="<?php echo $this->basepath()?>/resume" class="btn btn-danger"> <i class="glyphicon glyphicon-remove-sign"></i> Cancel</a>
             <button class="btn btn-info btn-update"> <i class="glyphicon glyphicon-floppy-disk"></i> Save Education</button>
         </div>
+
     </div>
 </div>
 <script>
-    var general = <?php if(count($this->general)>0) echo json_encode($this->general); else echo '[]'?>;
+    var general = <?php if(count($this->education)>0) echo json_encode($this->education); else echo '[]'?>;
     var baseUrl = '<?php echo $this->basepath(); ?>';
     $(function(){
         setValueToField(general, '.frm');
@@ -37,12 +38,12 @@ $this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js
             $('.loading').removeClass('hidden');
             $('.sms-fail').addClass('hidden');
             $.ajax({
-                url: baseUrl + '/resume/updateducation',
+                url: baseUrl + '/resume/updateeducation',
                 data: getValueFromField('.frm'),
                 type:'post',
                 success: function(){
                     $('.loading').addClass('hidden');
-                    window.location.href = baseUrl + '/resume'
+                    //window.location.href = baseUrl + '/resume'
                 },
                 error: function(){
                     $('.loading').addClass('hidden');

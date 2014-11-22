@@ -32,8 +32,8 @@ class ResumeTable extends SuperTableGateway
                            "r.user_id = u.user_id",
                            array("*"),
                            "LEFT")
-                    ->join(array("cate"=>"categories"),"r.category_id=cate.category_id", array("cate_name"))
-                    ->join(array("indu"=>"industries"),"r.industry_id=indu.industry_id", array("indu_name"))
+                    ->join(array("cate"=>"categories"),"r.category_id=cate.category_id", array("cate_name"),"LEFT")
+                    ->join(array("indu"=>"industries"),"r.industry_id=indu.industry_id", array("indu_name"),"LEFT")
                     ->where("u.user_id = $userId")
         ;
 
@@ -42,6 +42,36 @@ class ResumeTable extends SuperTableGateway
         // return value
         return $res;
 
+    }
+
+    public function getEducation(){
+        //declare variable
+        $seekerSession = new Container("seeker_session");
+        $userId = $seekerSession->seekerUserId;
+
+        //get resume idf
+        $sql = $this->db->select()->from(array("red"=> "resume_education"))
+            ->join(array("r"=>"resume"), "red.resume_id = r.resume_id",array())
+            ->where("r.user_id = $userId")
+            ->limit(1)
+        ;
+
+        return $this->executeQuery($sql)->toArray();
+    }
+
+    public function getExperience(){
+        //declare variable
+        $seekerSession = new Container("seeker_session");
+        $userId = $seekerSession->seekerUserId;
+
+        //get resume idf
+        $sql = $this->db->select()->from(array("red"=> "resume_education"))
+            ->join(array("r"=>"resume"), "red.resume_id = r.resume_id")
+            ->where("r.user_id = $userId")
+            ->limit(1)
+        ;
+
+        return $this->executeQuery($sql)->toArray();
     }
 
     public function updateGeneralInfo($data){
@@ -104,6 +134,26 @@ class ResumeTable extends SuperTableGateway
         }
 
         $this->execute($sql);
+    }
+
+    public function updateEducation($data){
+        //declare variable
+        $seekerSession = new Container("seeker_session");
+        $userId = $seekerSession->seekerUserId;
+
+        //get resume idf
+        $sql = $this->db->select()->from("resume")
+                ->where("user_id = $userId")
+                ->limit(1)
+            ;
+
+        $resume = $this->executeQuery($sql)->toArray();
+
+
+        if(count($resume)>0){
+            $sql = $this->db->update("resume_education")->set($data)->where("resume_id=" . $resume[0]["resume_id"]);
+            $this->execute($sql);
+        }
     }
 
     /*

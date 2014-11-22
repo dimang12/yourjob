@@ -43,6 +43,21 @@ class CategoriesTable extends AbstractTableGateway {
 
     }
 
+    public function getAllIndustries(){
+        $db = new Sql($this->adapter);
+        $sql =  $db->select()
+            ->from(array("c"=>"industries"))
+            ->columns(array("*",new Expression("count(job.job_id) AS num")))
+            ->join("job", "job.industry_id = c.industry_id",array(), "LEFT")
+            ->group("c.industry_id")
+        ;
+
+        $statement  = $db->prepareStatementForSqlObject($sql);
+
+        $resultSet = new ResultSet();
+        return $resultSet->initialize($statement->execute())->buffer();
+    }
+
     public function getCategoryById($cateId){
         $db = new Sql($this->adapter);
         $sql = $db->select()

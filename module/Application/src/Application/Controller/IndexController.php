@@ -23,6 +23,7 @@ class IndexController extends AbstractActionController
     {
         //declare variables
         $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
+
         $eduDb = new EducationTable($this->getAdapter());
         $locatDB = new LocationTable($this->getAdapter());
         $featureDb = new FeatureTable($this->getAdapter());
@@ -31,6 +32,7 @@ class IndexController extends AbstractActionController
         $urgentJob = $cateDb->getNewestJob();
         $newEducation = $eduDb->getLatestEducation();
 
+       // $industries = $cateDb->getAllIndustries()->toArray();
 
         return new ViewModel(array(
             "categories" => $cateDb->getAllCate()->toArray(),
