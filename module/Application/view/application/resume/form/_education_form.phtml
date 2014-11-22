@@ -5,7 +5,9 @@
  * Date: 11/21/14
  * Time: 8:01 PM
  */
-//$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/jquery-ui.css');
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/bootstrap-wysihtml5.css');
+$this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js")
+                   ->prependFile($this->basepath() . "/js/wysihtml5-0.3.0.js");
 ?>
 
 <div class="frm">
@@ -16,8 +18,7 @@
     <div>
         <div class="clearfix">
             <div class="col-md-12 form-group">
-                <label>Education Detail:</label>
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" rows="10"></textarea>
             </div>
         </div>
 
@@ -36,7 +37,7 @@
             $('.loading').removeClass('hidden');
             $('.sms-fail').addClass('hidden');
             $.ajax({
-                url: baseUrl + '/resume/updatecareer',
+                url: baseUrl + '/resume/updateducation',
                 data: getValueFromField('.frm'),
                 type:'post',
                 success: function(){
@@ -50,6 +51,6 @@
             });
         });
 
-        $('.form-control.dob ').datepicker({dateFormat:'yy-mm-dd'});
+        $('textarea').wysihtml5();
     });
 </script>
