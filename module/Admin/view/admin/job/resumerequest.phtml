@@ -31,7 +31,7 @@
                                 <td><?php echo $row['resume_id']?></td>
                                 <td><?php echo $row['user_first_name']."  ".$row["user_last_name"]?></td>
                                 <td><?php echo $row['resu_current_position']?></td>
-                                <td><?php echo $row['resu_position']?></td>
+                                <td><?php echo $row['resu_position_level']?></td>
                                 <td><?php echo $row['resu_salary']?></td>
                                 <td><a href="<?php echo $this->url('resume-request-view')?>?resumeId=<?php echo $row['resume_id']?>"> View</a></td>
                                 <td><input resumeId=<?php echo $row['resume_id']?> type="checkbox" class="approval" <?php echo $checked?>></td>
