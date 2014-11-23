@@ -8,7 +8,7 @@
     <div class="box-body">
         <div class="col-md-12 clearfix">
             <h4 class="color-blue padding-10-0 border-bottom-gray" style="padding-bottom:20px;">Education Information
-                <button class="btn btn-sm btn-default pull-right"><i class="glyphicon glyphicon-plus"></i> Post new aducation</button>
+                <a href="<?php echo $this->basepath();?>/education/add" class="font-13 pull-right margin-top-10"><i class="glyphicon glyphicon-plus"></i> Post new aducation</a>
             </h4>
 
         </div>
@@ -16,8 +16,9 @@
             <aside class="col-md-8" style="padding-top:15px;">
                 <?php foreach($this->eduData as $k=>$v): ?>
                 <div class="media margin-10-0 clearfix">
-                    <a href="#"><h4 class="media-heading color-blue pa"><?php echo $v["educ_title"];?></h4></a>
-                    <a class="pull-left" href="#">
+                    <a href="<?php echo $this->basepath()."/education/detail/".$v["education_id"]?>">
+                        <h4 class="media-heading color-blue font-16"><?php echo $v["educ_title"];?></h4></a>
+                    <a class="pull-left" href="<?php echo $this->basepath()."/education/detail/".$v["education_id"]?>">
                         <img src="<?php echo $this->basePath(); ?>/img/user-login.png" alt="" class="img-thumbnail" width="100">
                     </a>
                     <div class="media-body">

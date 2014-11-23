@@ -24,7 +24,23 @@ class EducationController extends  AbstractActionController{
         ));
     }
 
+    /*
+     * action add
+     */
+    public function addAction(){
+
+    }
+
+    /*
+     * action detail
+     */
+    public function detailAction(){
+
+    }
+
     public function getAdapter(){
         return $this->getServiceLocator()->get("Zend\Db\Adapter\Adapter");
     }
+
+
 } 

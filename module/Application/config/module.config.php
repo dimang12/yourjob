@@ -49,9 +49,9 @@ return array (
 						),
 						
 						'education' => array (
-								'type' => 'Zend\Mvc\Router\Http\Literal',
+								'type' => 'Segment',
 								'options' => array (
-										'route' => '/education',
+										'route' => '/education[/:action[/:id]]',
 										'defaults' => array (
 												'controller' => 'Application\Controller\Education',
 												'action' => 'index' 

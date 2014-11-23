@@ -1,0 +1,70 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 11/23/14
+ * Time: 1:40 PM
+ */
+$this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js")
+    ->prependFile($this->basepath() . "/js/wysihtml5-0.3.0.js");
+
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/jquery-ui.css')
+                  ->prependStylesheet ( $this->basePath () . '/css/bootstrap-wysihtml5.css');;
+?>
+<div class="frm padding-10-0">
+    <h3 class="margin-10-0 border-bottom-gray padding-10-0">Document
+        <span class="label label-danger pull-right font-14 margin-top-10 hidden sms-fail"> Update fail.</span>
+        <i class="loading pull-right margin-top-10 hidden"></i>
+    </h3>
+    <div>
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>Title:</label>
+                <input class="form-control" type="text" name="educ_title" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Post by:</label>
+                <input class="form-control" type="text" name="educ_post_by" />
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>Start date:</label>
+                <input class="form-control" type="text" name="educ_start_date" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Close date:</label>
+                <input class="form-control" type="text" name="educ_close_date" />
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="col-md-6 form-group">
+                <label>Contact Information:</label>
+                <input class="form-control" type="text" name="educ_contact" />
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label>Image:</label>
+                <input class="form-control" type="file" name="resu_year_experience" />
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="col-md-12 form-group">
+                <label>Detail:</label>
+                <textarea rows="15" class="form-control" name="educ_detail"></textarea>
+            </div>
+        </div>
+
+
+        <div class="clearfix text-center">
+            <a href="<?php echo $this->basepath()?>/resume" class="btn btn-danger"> <i class="glyphicon glyphicon-remove-sign"></i> Cancel</a>
+            <button class="btn btn-info btn-update"> <i class="glyphicon glyphicon-floppy-disk"></i> Save General</button>
+        </div>
+    </div>
+</div>
+<script>
+    $('textarea').wysihtml5();
+    $('.form-control[name="educ_detail"] ').datepicker({dateFormat:'yy-mm-dd'});
+</script>
