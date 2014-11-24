@@ -13,6 +13,7 @@
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">
                         <tr class="box-row-title">
+                            <th>No</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Gender</th>
@@ -20,8 +21,9 @@
                             <th>Email</th>
                              <th>Count Resume</th>
                         </tr>
-                        <?php foreach ( $this->seekerData as $key => $row ) {?>
+                        <?php $i=1; foreach ( $this->seekerData as $key => $row ) { ?>
                             <tr>
+                                <td><?php echo $i;?></td>
                                 <td><?php echo $row['user_first_name']?></td>
                                 <td><?php echo $row['user_last_name']?></td>
                                 <td><?php echo $row['user_gender']?></td>
@@ -29,7 +31,7 @@
                                 <td><?php echo $row['user_email']?></td>
                                 <td><?php echo $row['count_resume']?></td>
                             </tr>
-                        <?php }  ?>
+                        <?php $i++;}  ?>
                     </table>
                     <?php echo $this->paginationControl($this->seekerData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
                 </div>

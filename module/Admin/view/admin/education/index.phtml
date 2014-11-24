@@ -18,14 +18,19 @@
                             <th>Education Detail</th>
                             <th>Education Close Date</th>
                             <th>Post By</th>
+                            <th>Approval</th>
+                            <th>Action</th>
                         </tr>
                         <?php foreach ( $this->eduData as $key => $row ) {?>
+                        <?php $check = $row["educ_approval"]==1?"checked":"";?>
                             <tr>
                                 <td><?php echo $row['education_id']?></td>
                                 <td><?php echo $row['educ_title']?></td>
                                 <td><?php echo $row['educ_detail']?></td>
                                 <td><?php echo $row['educ_post_date']?></td>
                                 <td><?php echo $row['educ_post_by']?></td>
+                                <td align="center"><input education-id="<?php echo $row["education_id"]?>" class="chk-approval" type="checkbox" <?php echo $check?>></td>
+                                <td align="center"><a href="#" class="btn btn-danger btn-delete" delete-id="<?php echo $row["education_id"]?>">Delete</a> </td>
                             </tr>
                         <?php }?>
                     </table>
@@ -36,3 +41,36 @@
         <br>
     </div>
 </div>
+
+<script>
+    $(function(){
+        $('.btn-delete').click(function(){
+            if(confirm("Are you sure you want to delete?")){
+                education_id = $(this).attr('delete-id');
+                url='<?php echo $this->url('delete-education')?>?educationId='+education_id;
+                $.ajax({
+                    url:url,
+                    success:function(){
+                        window.location.href='';
+                    }
+                });
+            }
+
+        });
+        $('.chk-approval').click(function(){
+            education_id = $(this).attr('education-id');
+            ch ="0";
+            if($(this).is(":checked"))
+            {
+                ch="1";
+            }
+            url='<?php echo $this->url('approval-education')?>?educationId='+education_id+'&ch='+ch;
+            $.ajax({
+                url:url,
+                success:function(){
+
+                }
+            });
+        });
+    });
+</script>

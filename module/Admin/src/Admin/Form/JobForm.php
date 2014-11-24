@@ -180,6 +180,22 @@ class JobForm extends Form
                 'class'=>'form-control'
             )
         ));
+        $this->add(array(
+            'name'=>'job_description',
+            'type' => 'Textarea',
+            'attributes'=>array(
+                'class'=>'form-control',
+                'style'=>'height:300px'
+            )
+        ));
+        $this->add(array(
+            'name'=>'job_contact',
+            'type' => 'Textarea',
+            'attributes'=>array(
+                'class'=>'form-control',
+                'style'=>'height:300px'
+            )
+        ));
     }
     public function getInputFilter()
     {
