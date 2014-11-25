@@ -8,6 +8,8 @@
 
 namespace Application\Controller;
 
+use Application\Form\EducationForm;
+use Application\Form\EducationValidator;
 use Application\Model\EducationTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -27,8 +29,24 @@ class EducationController extends  AbstractActionController{
     /*
      * action add
      */
-    public function addAction(){
+    public function addAction()
+    {
+        $form = new EducationForm();
+        $request = $this->getRequest();
 
+        if ($request->isPost()) {
+            $formValidator = new EducationValidator();
+            $form->setInputFilter($formValidator->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                print_r($request->getPost());
+            }
+        }
+
+        return new ViewModel(array(
+            "form" => $form
+        ));
     }
 
     /*
