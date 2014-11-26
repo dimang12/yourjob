@@ -36,13 +36,17 @@ class EducationController extends  AbstractActionController{
 
         if ($request->isPost()) {
             $formValidator = new EducationValidator();
-            print_r($request->getFiles());
-            $form->setInputFilter($formValidator->getInputFilter());$post = array_merge_recursive($request->getPost()->toArray, $request->getFiles()->toArray());
-
+            $form->setInputFilter($formValidator->getInputFilter());
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
+                $db = new EducationTable($this->getAdapter());
+                $values = $this->params()->fromPost();
+                $values ["educ_post_date"] = date("Y-m-d");
+                unset($values["_wysihtml5_mode"]);
 
+                //save to table
+                $db->save($values);
             }
         }
 

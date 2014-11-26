@@ -19,7 +19,10 @@ class EducationTable extends SuperTableGateway{
 
     public function __construct($adapter){
         $this->adapter = $adapter;
+        $this->_table = "education";
+        $this->_fieldId = "education_id";
         parent::__construct($adapter);
+
     }
 
     /*
@@ -56,8 +59,11 @@ class EducationTable extends SuperTableGateway{
 
 
     /*
-     *
+     * save education
      */
+//    public function save($data){
+//
+//    }
 
 
 
