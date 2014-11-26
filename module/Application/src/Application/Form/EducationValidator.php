@@ -23,22 +23,9 @@ class EducationValidator implements InputFilterAwareInterface
 
     public function getInputFilter()
     {
-        if (!$this->inputFilter)
-        {
             $inputFilter = new InputFilter();
             $factory = new InputFactory();
 
-
-            $inputFilter->add($factory->createInput([
-                'name' => 'educ_title',
-                'required' => true,
-                'filters' => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim'),
-                ),
-                'validators' => array(
-                ),
-            ]));
 
             $inputFilter->add($factory->createInput([
                 'name' => 'educ_post_by',
@@ -116,7 +103,7 @@ class EducationValidator implements InputFilterAwareInterface
         ]));
 
             $this->inputFilter = $inputFilter;
-        }
+
 
         return $this->inputFilter;
     }

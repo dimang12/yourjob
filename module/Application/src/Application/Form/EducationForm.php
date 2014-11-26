@@ -12,10 +12,13 @@ namespace Application\Form;
 use Zend\Captcha;
 use Zend\Form\Element;
 use Zend\Form\Form;
+use Zend\InputFilter\InputFilter;
 
 
 class EducationForm extends Form
 {
+    protected $inputeFilter;
+
     public function __construct($name = null)
     {
         parent::__construct('');
@@ -118,5 +121,13 @@ class EducationForm extends Form
             'name' => 'csrf',
             'type' => 'Zend\Form\Element\Csrf',
         ));
+    }
+
+
+    public function getInputFilter(){
+        $inputFilter = new InputFilter();
+
+        return $inputFilter;
+
     }
 }

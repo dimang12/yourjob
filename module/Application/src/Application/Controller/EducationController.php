@@ -36,11 +36,13 @@ class EducationController extends  AbstractActionController{
 
         if ($request->isPost()) {
             $formValidator = new EducationValidator();
-            $form->setInputFilter($formValidator->getInputFilter());
+            print_r($request->getFiles());
+            $form->setInputFilter($formValidator->getInputFilter());$post = array_merge_recursive($request->getPost()->toArray, $request->getFiles()->toArray());
+
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                print_r($request->getPost());
+
             }
         }
 
