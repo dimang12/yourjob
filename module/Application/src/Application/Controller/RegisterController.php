@@ -16,6 +16,7 @@ class RegisterController extends AbstractActionController{
         $form = new RegisterForm();
         $request = $this->getRequest();
         $error ="";
+        $optionRegister=1;
         if($request->isPost()){
             $optionRegister = $this->params()->fromPost("option_register");
             $fn = $this->params()->fromPost("first_name");
@@ -100,7 +101,8 @@ class RegisterController extends AbstractActionController{
         }
         return array(
             'form'=>$form,
-            'error'=>$error
+            'error'=>$error,
+            'option' => $optionRegister
         );
     }
 }
