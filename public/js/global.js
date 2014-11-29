@@ -45,3 +45,9 @@ function getValueFromField(cls){
     });
     return values;
 }
+
+function popitup(url) {
+    newwindow=window.open(url,'name','height=450,width=600,top=300px,left=350px');
+    if (window.focus) {newwindow.focus()}
+    return false;
+}
