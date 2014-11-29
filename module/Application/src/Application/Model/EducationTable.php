@@ -58,13 +58,6 @@ class EducationTable extends SuperTableGateway{
     }
 
 
-    /*
-     * save education
-     */
-//    public function save($data){
-//
-//    }
-
 
 
 }

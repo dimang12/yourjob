@@ -1,8 +1,8 @@
 <div class="bg-white border-bottom-gray">
 	<div class="w-center padding-10-0 ">
-		<form action="<?php echo $this->basePath()?>/search/" method="get" class="clearfix padding-5-0">
+		<form action="<?php echo $this->basePath()?>/home/search" method="get" class="clearfix padding-5-0">
 			<div class="col-md-4 no-padding">
-				<input style="padding:6px 5px 7px 5px;" type="text" name="txtSearch" class="text border-radius-5 full-w" id="txtSearch" placeholder="Search, Keywords" >
+				<input style="padding:6px 5px 7px 5px;" value="<?php echo $this->txtSearch; ?>" type="text" name="s" class="text border-radius-5 full-w" id="txtSearch" placeholder="Search, Keywords" >
 			</div>
 			<div class="col-md-4">
 
@@ -19,6 +19,7 @@
                             <?php echo $this->partial("layout/_category"); ?>
                         </li>
                     </ul>
+
                 </div>
 			</div>
             <div class="btn-group col-md-2 no-padding">

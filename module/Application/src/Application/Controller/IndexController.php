@@ -7,6 +7,7 @@ use Application\Model\CategoriesTable;
 
 use Application\Model\EducationTable;
 use Application\Model\FeatureTable;
+use Application\Model\JobTable;
 use Application\Model\LocationTable;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -93,8 +94,23 @@ class IndexController extends AbstractActionController
 
     public function searchAction(){
         //get and declare params
+        $page = $this->params()->fromQuery("page",1);
         $txtSearch = $this->params()->fromQuery("s");
-        
+        $db = new JobTable($this->getAdapter());
+        $jobs = $db->search($txtSearch);
+
+        $paginator = new Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobs));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(20);
+
+        //pass to layout
+        $this->layout()->txtSearch = $txtSearch;
+
+        return new ViewModel(array(
+            "search" => $txtSearch,
+            "paginator" => $paginator
+
+        ));
     }
     
 

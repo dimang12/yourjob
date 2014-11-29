@@ -22,6 +22,10 @@ class SuperTableGateway extends TableGateway{
         $this->db = new Sql($adapter);
     }
 
+    /*
+     * to execute sql statement
+     * return buffer of data
+     */
     public function executeQuery($sql){
         return DB::executeQuery($this->db, $sql);
     }
@@ -33,6 +37,22 @@ class SuperTableGateway extends TableGateway{
     public function execute($sql){
         $inserted = $this->db->prepareStatementForSqlObject($sql)->execute();
         return $inserted->getGeneratedValue();
+    }
+
+    /*
+     * get list of table
+     */
+    public function getList(){
+        $sql = $this->db->select($this->_table);
+        return $this->executeQuery($sql)->toArray();
+    }
+
+    /*
+     * get detail of a row
+     */
+    public function getDetail($id){
+        $sql = $this->db->select($this->_table)->where($this->_where() .$id);
+        return $this->executeQuery($sql)->toArray();
     }
 
     /*
@@ -49,7 +69,7 @@ class SuperTableGateway extends TableGateway{
      * no return value
      */
     public function deleteRow($id){
-        $sql = $this->db->delete($this->_table)->where($this->_fieldId ."=" .$id);
+        $sql = $this->db->delete($this->_table)->where($this->_where() .$id);
         $this->execute($sql);
     }
 
@@ -58,10 +78,16 @@ class SuperTableGateway extends TableGateway{
      * no return values
      */
     public function updateRow($values, $id){
-        $sql = $this->db->update($this->_table)->set($values)->where($this->_fieldId. "=" .$id);
+        $sql = $this->db->update($this->_table)->set($values)->where($this->_where() .$id);
         $this->execute($sql);
     }
 
+    /*
+     * create default where condition
+     */
+    protected function _where(){
+        return $this->_fieldId ."=";
+    }
 
 
 }
