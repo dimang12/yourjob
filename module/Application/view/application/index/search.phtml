@@ -1,0 +1,11 @@
+<div class="box-white margin-10-0 border-radius-5 clearfix">
+    <div class="bg-gray clearfix border-bottom-gray border-radius-top-5">
+        <ol class="breadcrumb no-margin no-background">
+            <li><a href="<?php echo $this->basePath(); ?>/">Home</a></li>
+            <li class="active">Search on <?php echo $this->search; ?></li>
+        </ol>
+    </div>
+    <div class="margin-10-0 col-md-12">
+        <?php echo $this->partial("application/index/_job_list"); ?>
+    </div>
+</div>

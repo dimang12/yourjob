@@ -12,13 +12,17 @@ use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Predicate\Expression;
 use Application\Model\DB;
 
-class EducationTable extends TableGateway{
+class EducationTable extends SuperTableGateway{
 
     protected $tableGateway;
     protected $adapter;
 
     public function __construct($adapter){
         $this->adapter = $adapter;
+        $this->_table = "education";
+        $this->_fieldId = "education_id";
+        parent::__construct($adapter);
+
     }
 
     /*
@@ -52,5 +56,8 @@ class EducationTable extends TableGateway{
 
         return Db::executeQuery($db, $sql)->toArray();
     }
+
+
+
 
 }

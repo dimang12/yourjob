@@ -10,50 +10,54 @@ $this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js
 
 $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/jquery-ui.css')
                   ->prependStylesheet ( $this->basePath () . '/css/bootstrap-wysihtml5.css');;
+$form = $this->form;
+$form->setAttribute("action",$this->basepath()."/education/add");
+$form->prepare();
 ?>
 <div class="frm padding-10-0">
     <h3 class="margin-10-0 border-bottom-gray padding-10-0">Document
         <span class="label label-danger pull-right font-14 margin-top-10 hidden sms-fail"> Update fail.</span>
         <i class="loading pull-right margin-top-10 hidden"></i>
     </h3>
-    <div>
+    <?php echo $this->form()->openTag($this->form); ?>
         <div class="clearfix">
             <div class="col-md-6 form-group">
-                <label>Title:</label>
-                <input class="form-control" type="text" name="educ_title" />
+                <?php echo $this->formLabel($form->get("educ_title")); ?>
+                <?php echo $this->formInput($form->get("educ_title")); ?>
+
             </div>
             <div class="col-md-6 form-group">
-                <label>Post by:</label>
-                <input class="form-control" type="text" name="educ_post_by" />
+                <?php echo $this->formLabel($form->get("educ_post_by")); ?>
+                <?php echo $this->formInput($form->get("educ_post_by")); ?>
             </div>
         </div>
 
         <div class="clearfix">
             <div class="col-md-6 form-group">
-                <label>Start date:</label>
-                <input class="form-control" type="text" name="educ_start_date" />
+                <?php echo $this->formLabel($form->get("educ_start_date")); ?>
+                <?php echo $this->formInput($form->get("educ_start_date")); ?>
             </div>
             <div class="col-md-6 form-group">
-                <label>Close date:</label>
-                <input class="form-control" type="text" name="educ_close_date" />
+                <?php echo $this->formLabel($form->get("educ_close_date")); ?>
+                <?php echo $this->formInput($form->get("educ_close_date")); ?>
             </div>
         </div>
         <div class="clearfix">
             <div class="col-md-6 form-group">
-                <label>Contact Information:</label>
-                <input class="form-control" type="text" name="educ_contact" />
+                <?php echo $this->formLabel($form->get("educ_contact")); ?>
+                <?php echo $this->formInput($form->get("educ_contact")); ?>
             </div>
 
             <div class="col-md-6 form-group">
-                <label>Image:</label>
-                <input class="form-control" type="file" name="resu_year_experience" />
+                <?php echo $this->formLabel($form->get("image")); ?>
+                <?php echo $this->formFile($form->get("image")); ?>
             </div>
         </div>
 
         <div class="clearfix">
             <div class="col-md-12 form-group">
-                <label>Detail:</label>
-                <textarea rows="15" class="form-control" name="educ_detail"></textarea>
+                <?php echo $this->formLabel($form->get("educ_detail")); ?>
+                <?php echo $this->formTextarea($form->get("educ_detail")); ?>
             </div>
         </div>
 
@@ -62,9 +66,9 @@ $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/jquery-ui.css
             <a href="<?php echo $this->basepath()?>/resume" class="btn btn-danger"> <i class="glyphicon glyphicon-remove-sign"></i> Cancel</a>
             <button class="btn btn-info btn-update"> <i class="glyphicon glyphicon-floppy-disk"></i> Save General</button>
         </div>
-    </div>
+    <?php echo $this->form()->closeTag() ;?>
 </div>
 <script>
     $('textarea').wysihtml5();
-    $('.form-control[name="educ_detail"] ').datepicker({dateFormat:'yy-mm-dd'});
+    $('.form-control[name="educ_start_date"],.form-control[name="educ_close_date"] ').datepicker({dateFormat:'yy-mm-dd'});
 </script>

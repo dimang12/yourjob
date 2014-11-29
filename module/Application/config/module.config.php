@@ -58,17 +58,18 @@ return array (
 										) 
 								) 
 						),
-						
-						'beyond-living' => array (
-								'type' => 'Zend\Mvc\Router\Http\Literal',
-								'options' => array (
-										'route' => '/beyond-living',
-										'defaults' => array (
-												'controller' => 'Application\Controller\beyondliving',
-												'action' => 'index' 
-										) 
-								) 
-						),
+
+                        'home' => array (
+                            'type' => 'Segment',
+                            'options' => array (
+                                'route' => '/home[/:action[/:id]]',
+                                'defaults' => array (
+                                    'controller' => 'Application\Controller\Index',
+                                    'action' => 'index'
+                                )
+                            )
+                        ),
+
 						
 						'en' => array (
 								'type' => 'Zend\Mvc\Router\Http\Literal',
@@ -106,17 +107,6 @@ return array (
 										'route' => '/promotion',
 										'defaults' => array (
 												'controller' => 'Application\Controller\Promotion',
-												'action' => 'index' 
-										) 
-								) 
-						),
-						
-						'showcases' => array (
-								'type' => 'Zend\Mvc\Router\Http\Literal',
-								'options' => array (
-										'route' => '/showcases',
-										'defaults' => array (
-												'controller' => 'Application\Controller\Showcase',
 												'action' => 'index' 
 										) 
 								) 
@@ -169,16 +159,7 @@ return array (
                         )
                     ),
 
-						'scene' => array (
-								'type' => 'Zend\Mvc\Router\Http\Literal',
-								'options' => array (
-										'route' => '/scene',
-										'defaults' => array (
-												'controller' => 'Application\Controller\Showcase',
-												'action' => 'scene' 
-										) 
-								) 
-						),
+
                         'register'=>array(
                             'type' => 'segment',
                             'options' =>array(
@@ -200,7 +181,7 @@ return array (
 						'application' => array (
 								'type' => 'Literal',
 								'options' => array (
-										'route' => '/application',
+										'route' => '/',
 										'defaults' => array (
 												'__NAMESPACE__' => 'Application\Controller',
 												'controller' => 'Index',
