@@ -43,6 +43,15 @@ class CategoriesTable extends AbstractTableGateway {
 
     }
 
+    public function getCategories(){
+        $db = new Sql($this->adapter);
+        $sql = $db->select()
+                    ->from("categories")
+                    ->order("cate_name")
+                ;
+        return DB::executeQuery($db,$sql)->toArray();
+    }
+
     public function getAllIndustries(){
         $db = new Sql($this->adapter);
         $sql =  $db->select()

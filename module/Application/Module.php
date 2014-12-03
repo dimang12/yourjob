@@ -2,6 +2,8 @@
 
 namespace Application;
 
+use Application\View\Helper\getCategories;
+use Application\View\Helper\getLocations;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Application\View\Helper\Language;
@@ -65,8 +67,17 @@ class Module {
 							$b = new getBeyondLiving();
 							$b->setServiceLocator($serviceLocator);
 							return $b;
-						} 
-				) 
+						},
+                        'getCategories' => function ($sm) {
+                            $adapter = $sm->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+                            $cateHelper =  new getCategories($adapter);
+                            $cateHelper->setAdapter($adapter);
+                            return $cateHelper;
+                        },
+                        'getLocations' => function ($sm){
+                            new getLocations($sm->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
+                        }
+				)
 		
 		// other here!
 				);
