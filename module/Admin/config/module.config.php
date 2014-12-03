@@ -665,6 +665,26 @@ return array (
                             )
                         )
                     ),
+                    'approval-education' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/approval-education',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Education',
+                                'action' => 'approval'
+                            )
+                        )
+                    ),
+                    'delete-education' => array (
+                        'type' => 'Literal',
+                        'options' => array (
+                            'route' => '/delete-education',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Education',
+                                'action' => 'delete'
+                            )
+                        )
+                    ),
                     'resume-request' => array (
                         'type' => 'Literal',
                         'options' => array (

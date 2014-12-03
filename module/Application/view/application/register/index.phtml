@@ -8,6 +8,7 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
     echo $this->form()->openTag($form);
     $gender = ["Male"=>"Male","Female"=>"Female"];
     $optionRegister = [1=>"Seeker",2=>"Employer"];
+    $option = $this->option; // 1 mean seeker 2 mean employer
 ?>
 <div class="box-white clearfix border-radius-5 margin-10-0 font-13">
 
@@ -21,7 +22,7 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
        <div class="row">
            <div class="col-md-6">
                <div class="padding-10-0 font-13">How do you intend in employer or seeker?</div>
-               <?php echo $this->formselect($form->get('option_register')->setAttributes(array('class'=>'form-control opt-register','options'=>$optionRegister)))?>
+               <?php echo $this->formselect($form->get('option_register')->setAttributes(array('class'=>'form-control opt-register','options'=>$optionRegister,'value'=>$option)))?>
            </div>
        </div>
        <br>
@@ -40,16 +41,16 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
            <div class="col-md-3"><label>Re-Password </label><?php echo $this->formrow($form->get('repassword')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
        <br>
-       <div class="row user-info">
+       <div class="row user-info <?php if($option==2){echo "hidden";}else{echo "";}?>">
            <div class="col-md-9"><label>User Address</label><?php echo $this->formtextarea($form->get('user_address')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
        <br>
-       <div class="row user-info">
+       <div class="row user-info <?php if($option==2){echo "hidden";}else{echo "";}?>">
            <div class="col-md-9"><label>User Information</label><?php echo $this->formtextarea($form->get('user_info')->setAttributes(array('class'=>'form-control')))?></div>
        </div>
 
 
-       <div class="company-info hidden">
+       <div class="company-info <?php if($option==1){echo "hidden";}else{echo "";}?>">
            <div class="row">
                <div class="col-md-12">
                    <h4 class="">Company Information</h4>

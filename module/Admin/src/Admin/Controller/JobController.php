@@ -64,6 +64,7 @@ class JobController extends AbstractActionController{
                 $job_age_from = $this->params()->fromPost('job_age_from');
                 $job_age_to = $this->params()->fromPost('job_age_to');
                 $jobCategory = $this->params()->fromPost("category_id");
+                $job_contact = $this->params()->fromPost("job_contact");
 
                 $values = array(
                     'user_id' =>$user_id,
@@ -84,7 +85,8 @@ class JobController extends AbstractActionController{
                     'job_status'=>1,
                     'gender'=>$gender,
                     'job_age_from' => $job_age_from,
-                    'job_age_to' => $job_age_to
+                    'job_age_to' => $job_age_to,
+                    'job_contact'=>$job_contact
                 );
                 $sm->ZF2_Insert('job',$values);
                 return $this->redirect()->toUrl("admin-job");
@@ -125,6 +127,7 @@ class JobController extends AbstractActionController{
                 $city_id = $this->params()->fromPost('city_id');
                 $job_age_from = $this->params()->fromPost('job_age_from');
                 $job_age_to = $this->params()->fromPost('job_age_to');
+                $job_contact = $this->params()->fromPost("job_contact");
                 $values = array(
                     'user_id' =>1,
                     'city_id' =>$city_id,
@@ -143,7 +146,8 @@ class JobController extends AbstractActionController{
                     'job_status'=>1,
                     'Gender'=>$gender,
                     'job_age_from' => $job_age_from,
-                    'job_age_to' => $job_age_to
+                    'job_age_to' => $job_age_to,
+                    'job_contact'=>$job_contact
                 );
                 $sm->ZF2_Update('job',$values,array('job_id'=>$job_id));
             }

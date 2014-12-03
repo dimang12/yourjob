@@ -29,6 +29,7 @@ foreach($this->jobData as $row){
     $city_id = $row['city_id'];
     $job_age_from = $row['job_age_from'];
     $job_age_to = $row['job_age_to'];
+    $job_contact = $row['job_contact'];
 }
 $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
 ?>
@@ -81,6 +82,8 @@ $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
         <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Closing Date : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_close_date')->setAttributes(array('id'=>'datetimepicker2','value'=> $job_close_date)))?></div></div>
         <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Job Description : </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_description')->setAttributes(array('value'=>$job_description)))?></div></div>
         <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Job Requirement : </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_requirement')->setAttributes(array('value'=>$job_requirement)))?></div></div>
+        <br><br>
+        <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Contact Information : </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_contact')->setAttributes(array('value'=>$job_contact)))?></div></div>
         <br>
         <div class="row box-row-title text-warning"><h4>&ensp;Job Posting Option</h4></div>
         <div class="row">
