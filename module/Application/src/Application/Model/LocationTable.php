@@ -11,13 +11,14 @@ use Zend\Db\Sql\Sql;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Predicate\Expression;
 
-class LocationTable extends TableGateway{
+class LocationTable extends SuperTableGateway{
 
     protected $tableGateway;
     protected $adapter;
 
     public function __construct($adapter){
         $this->adapter = $adapter;
+        parent::__construct($adapter);
     }
 
     /*
@@ -33,6 +34,16 @@ class LocationTable extends TableGateway{
                     ->group("city.city_id")
                     ;
         return DB::executeQuery($db, $query)->toArray();
+    }
+
+    /*
+     * get all location
+     */
+    public function getAllLocation(){
+        $sql  = $this->db->select()
+                         ->from("city")
+            ;
+        return $this->executeQuery($sql)->toArray();
     }
 
     /*

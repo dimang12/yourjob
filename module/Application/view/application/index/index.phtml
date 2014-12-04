@@ -31,7 +31,9 @@ echo $this->partial("application/index/_feature");
         h = $('.all-cate').height();
         $('.newest-job').height(h+2);
         h = $('.doc-share-panel').height();
-        $('.latest-edu').height(h);
+        featureH = $('.feature-panel').height();
+        advH = $('.adv-panel').height();
+        $('.latest-edu').height(h+featureH-advH+11);
 
         //initialize urgent jobs
         $.each(urgentJob, function(k,v){

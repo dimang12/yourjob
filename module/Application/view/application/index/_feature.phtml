@@ -3,7 +3,7 @@ $f = $this->feature;
 ?>
 <div class="clearfix">
     <aside class="w70">
-        <div class="box-white border-radius-5 p-15">
+        <div class="box-white border-radius-5 p-15 feature-panel">
             <header class="font-16 color-light-black padding-10-0 border-bottom-gray">
                 Featured Companies
             </header>
@@ -32,13 +32,14 @@ $f = $this->feature;
         </div>
         <?php echo $this->partial("application/index/_docshare"); ?>
     </aside>
-    <aside class="box-white border-radius-5 w30">
-        <header class="font-16 color-white padding-10-0">.</header>
-        <div>
-            <img src="<?php echo $this->basePath()?>/img/promotion/1.png" class="col-md-12">
-            <img src="<?php echo $this->basePath()?>/img/promotion/2.gif" class="col-md-12 margin-10-0">
+    <aside class="w30">
+        <div class="box-white border-radius-5 padding-10-0 clearfix adv-panel">
+            <div>
+                <img src="<?php echo $this->basePath()?>/img/promotion/1.png" class="col-md-12">
+            </div>
         </div>
-        <div class="lastest-edu pos-relative p-10 clearfix">
+
+        <div class="box-white border-radius-5 latest-edu pos-relative p-10 clearfix margin-10-0">
             <?php echo $this->partial("application/index/_edu_share"); ?>
         </div>
 
