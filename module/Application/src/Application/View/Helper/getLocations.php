@@ -32,6 +32,4 @@ class getLocations extends AbstractHelper
         $db = new LocationTable($this->adapter);
         return $db->getAllLocation();
     }
-
-
 }

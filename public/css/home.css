@@ -1,4 +1,4 @@
-.newest-job                     { overflow: hidden;}
+.newest-job, .edu-panel         { overflow: hidden;}
 .more                           { position: absolute; bottom: 7px;}
 .alert-label                    { position: absolute; right: 0; top:0px;}
 .text-alert-width               { width: 175px;}

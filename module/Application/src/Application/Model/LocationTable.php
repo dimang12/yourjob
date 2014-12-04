@@ -41,7 +41,7 @@ class LocationTable extends SuperTableGateway{
      */
     public function getAllLocation(){
         $sql  = $this->db->select()
-                         ->from("location")
+                         ->from("city")
             ;
         return $this->executeQuery($sql)->toArray();
     }

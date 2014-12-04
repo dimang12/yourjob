@@ -75,7 +75,7 @@ class Module {
                             return $cateHelper;
                         },
                         'getLocations' => function ($sm){
-                            new getLocations($sm->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
+                            return new getLocations($sm->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
                         }
 				)
 		

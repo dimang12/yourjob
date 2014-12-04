@@ -49,7 +49,7 @@ label                       { font-weight:normal;}
 .loading                    { display:inline-block; width:16px; height:16px; background:url("../img/ajax-loader.gif")}
 /*~~~~~~~~~~Text Shadow~~~~~~~~~~~~~*/
 .text-shadow				{ text-shadow:1px 1px 0 #144568;}
-.text-overflow              { text-overflow:ellipsis; overflow:hidden; white-space:nowrap; height:30px;}
+.text-overflow              { text-overflow:ellipsis; overflow:hidden; white-space:nowrap; height:27px;}
 .shadow-white				{ text-shadow:1px 1px 0 #fff;}
 .shadow-red					{ text-shadow:1px 1px 0 #8a1515;}
 
@@ -70,7 +70,7 @@ label                       { font-weight:normal;}
 .bold						{ font-weight:bold;}
 
 /*~~~~~~~~~~Menu~~~~~~~~~~~~~*/
-.menu						{ margin-top:30px;}
+.menu						{ margin-top:33px;}
 .menu li					{ display:inline-block; }
 .menu li a					{ display:inline-block; cursor:pointer; color:#fff; border-radius:5px 5px 0 0; text-decoration:none; font-weight:bold; padding:6px 15px;}
 .menu li a:hover, 

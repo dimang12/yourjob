@@ -5,7 +5,9 @@
     <div class='col-md-10 box-admin-right'>
         <div class='row box-row-title'>
             <div class='col-md-9'><h4 class='text-warning'>Job category</h4></div>
-            <div class="col-md-3 text-right"><a href="<?php echo $this->url('dashboard-category-add')?>" class="btn btn-info margin-top-2 col-md-12">New Category</a></div>
+            <div class="col-md-3 text-right margin-top-10"><a href="<?php echo $this->url('dashboard-category-add')?>" class="margin-top-2 col-md-12">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    New Category</a></div>
         </div>
         <br>
         <div class='row'>
@@ -30,7 +32,10 @@
                             </tr>
                         <?php endif; endforeach ?>
                     </table>
-                    <?php echo $this->paginationControl($this->catData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    <div class="text-center">
+                        <?php echo $this->paginationControl($this->catData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    </div>
+
                 </div>
             </div>
         </div>

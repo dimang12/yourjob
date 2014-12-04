@@ -40,7 +40,7 @@ $categories = $resultSet->initialize($this->categories);
                     $j = 1;
                     foreach($categories as $k=>$v){
                         if($j > (($i-1) * ($perColumn+$add))  &&  $j <= ($i * ($perColumn+$add))){
-                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["num"].')</label></li>';
+                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["category_id"].'" class="col-md-10 color-black no-padding text-overflow">'.$v["cate_name"].'</a><label class="pull-right">('.$v["num"].')</label></li>';
                         }
                         $j++;
                     }
