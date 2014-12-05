@@ -656,9 +656,9 @@ return array (
                         )
                     ),
                     'admin-education' => array (
-                        'type' => 'Literal',
+                        'type' => 'Segment',
                         'options' => array (
-                            'route' => '/admin-education',
+                            'route' => '/admin-education[/:action[/:id]]',
                             'defaults' => array (
                                 'controller' => 'Admin\Controller\Education',
                                 'action' => 'index'
@@ -725,6 +725,7 @@ return array (
                             )
                         )
                     ),
+
                 ),
 
 		),

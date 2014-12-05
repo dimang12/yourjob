@@ -6,8 +6,8 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
 <?php
     $form = $this->form;
     echo $this->form()->openTag($form);
-    $gender = ["Male"=>"Male","Female"=>"Female"];
-    $optionRegister = [1=>"Seeker",2=>"Employer"];
+    $gender = array("Male"=>"Male","Female"=>"Female");
+    $optionRegister = array(1=>"Seeker",2=>"Employer");
     $option = $this->option; // 1 mean seeker 2 mean employer
 ?>
 <div class="box-white clearfix border-radius-5 margin-10-0 font-13">
@@ -83,8 +83,8 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/wysihtml5-0.3.0.js
        </div>
        <br>
         <div class="row">
-           <div class="col-md-12">
-               <button type="submit" class="btn btn-success col-md-2">Submit</button>
+           <div class="col-md-9 text-right">
+               <button type="submit" class="btn btn-success">Submit</button>
            </div>
        </div>
        <br>

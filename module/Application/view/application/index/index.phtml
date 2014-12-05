@@ -8,6 +8,7 @@ echo $this->partial("application/index/_feature");
 <script>
     var urgentJob = <?php echo $this->urgentJob;?>;
     var currentUrgentId = null;
+    var baseUrl = '<?php $this->basepath();?>';
 
     $(document).ready(function(){
 
@@ -37,7 +38,7 @@ echo $this->partial("application/index/_feature");
 
         //initialize urgent jobs
         $.each(urgentJob, function(k,v){
-            $('.newest-panel').append('<li class="text-overflow"><a>'+ v.job_name+' </a>- '+ v.com_info+'</li>');
+            $('.newest-panel').append('<li class="text-overflow"><a href="'+baseUrl+'/jobdt/?job='+ v.job_id+'">'+ v.job_name+' </a>- '+ v.com_info+'</li>');
         });
     });
 </script>

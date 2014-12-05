@@ -40,7 +40,6 @@ class CategoriesTable extends AbstractTableGateway {
 
         $resultSet = new ResultSet();
         return $resultSet->initialize($statement->execute())->buffer();
-
     }
 
     public function getCategories(){
@@ -64,7 +63,7 @@ class CategoriesTable extends AbstractTableGateway {
         $statement  = $db->prepareStatementForSqlObject($sql);
 
         $resultSet = new ResultSet();
-        return $resultSet->initialize($statement->execute())->buffer();
+        return $resultSet->initialize($statement->execute())->buffer()->toArray();
     }
 
     public function getCategoryById($cateId){

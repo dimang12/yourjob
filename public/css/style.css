@@ -135,6 +135,7 @@ label                       { font-weight:normal;}
 .border-top-blue			{ border-top:#106cad solid 3px;}
 .border-bottom-blue			{ border-bottom:#106cad solid 2px !important;}
 .border-bottom-gray			{ border-bottom:#CCC solid 1px;}
+.border-top-gray			{ border-top:#CCC solid 1px;}
 .border-left-gray           { border-left:#ccc solid 1px;}
 .border-right-gray          { border-right:#ccc solid 1px;}
 .border-radius-5			{ border-radius: 5px;}

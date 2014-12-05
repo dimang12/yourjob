@@ -85,7 +85,15 @@ class EducationController extends  AbstractActionController{
      * action detail
      */
     public function detailAction(){
+        // params or variable
+        $id = $this->params()->fromRoute("id");
+        $db = new EducationTable($this->getAdapter());
 
+        $education = $db->getDetail($id);
+
+        return new ViewModel(array(
+            "education" => current($education)
+        ));
     }
 
     public function getAdapter(){

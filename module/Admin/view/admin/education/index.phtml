@@ -14,10 +14,10 @@
                     <table class="table table-hover table-bordered">
                         <tr class="box-row-title">
                             <th>Code</th>
-                            <th>Education Title</th>
-                            <th>Education Detail</th>
-                            <th>Education Close Date</th>
-                            <th>Post By</th>
+                            <th>Title</th>
+                            <th>Posted By</th>
+                            <th>Posting By</th>
+                            <th>Closing Date</th>
                             <th>Approval</th>
                             <th>Action</th>
                         </tr>
@@ -25,16 +25,18 @@
                         <?php $check = $row["educ_approval"]==1?"checked":"";?>
                             <tr>
                                 <td><?php echo $row['education_id']?></td>
-                                <td><?php echo $row['educ_title']?></td>
-                                <td><?php echo $row['educ_detail']?></td>
-                                <td><?php echo $row['educ_post_date']?></td>
+                                <td><a href="<?php echo $this->basepath()."/admin-education/detail/".$row["education_id"];?>"><?php echo $row['educ_title']?></a></td>
                                 <td><?php echo $row['educ_post_by']?></td>
+                                <td><?php echo $row['educ_post_date']?></td>
+                                <td><?php echo $row['educ_close_date']?></td>
                                 <td align="center"><input education-id="<?php echo $row["education_id"]?>" class="chk-approval" type="checkbox" <?php echo $check?>></td>
                                 <td align="center"><a href="#" class="btn btn-danger btn-delete" delete-id="<?php echo $row["education_id"]?>">Delete</a> </td>
                             </tr>
                         <?php }?>
                     </table>
-                    <?php echo $this->paginationControl($this->eduData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    <div class="text-center">
+                        <?php echo $this->paginationControl($this->eduData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    </div>
                 </div>
             </div>
         </div>

@@ -58,7 +58,7 @@ class LoginForm extends Form
 						array(
 								'name' => 'StringLength',
 								'options' => array(
-										'min' => 4
+										'min' => 2
 								)
 						)
 				)

@@ -72,3 +72,43 @@ body						{ padding:0; margin:0; font-family: 'Helvetica Neue Normal','helvetica
 .active                         {color: #ff0000;}
 
 .btn-link                       {background:none; border:0; color:#428bca;}
+
+
+
+/*~~~~~~~~~~background, color, border~~~~~~~~~*/
+.bg-white					{ background:#fff;}
+.bg-gray					{ background:#F1F1F2;}
+.bg-blue					{ background:#106cad;}
+.bg-red						{ background:#106cad;}
+.bg-green					{ background:#52B000;}
+.bg-pink					{ background:#FF0AF2;}
+
+
+.color-black				{ color:#000;}
+.color-white				{ color:#fff;}
+.color-light-black			{ color:#333;}
+.color-ultra-light-black	{ color:#666;}
+.color-active				{ color:#5a646d;}
+.color-yellow				{ color:#F3AD12;}
+.color-link					{ color:#1487c0;}
+.color-green				{ color:#52B000;}
+.color-pink					{ color:#FF0AF2;}
+.color-red                  { color:#e00b0b !important;}
+.color-blue                 { color:#106cad;}
+
+
+.border-light-gray			{ border:#eaeaea solid 1px;}
+.border-gray				{ border:#999 solid 1px;}
+.no-border					{ border:0;}
+.no-border-left             { border-left:0;}
+.no-border-right            { border-right:0;}
+.border-top-blue			{ border-top:#106cad solid 3px;}
+.border-bottom-blue			{ border-bottom:#106cad solid 2px !important;}
+.border-bottom-gray			{ border-bottom:#CCC solid 1px;}
+.border-top-gray			{ border-top:#CCC solid 1px;}
+.border-left-gray           { border-left:#ccc solid 1px;}
+.border-right-gray          { border-right:#ccc solid 1px;}
+.border-radius-5			{ border-radius: 5px;}
+.border-radius-top-5        { border-top-right-radius:5px; border-top-left-radius:5px;}
+.border-radius-bottom-5     { border-bottom-right-radius:5px; border-bottom-left-radius:5px;}
+.border-radius-0            { border-radius:0;}

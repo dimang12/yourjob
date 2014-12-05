@@ -1,0 +1,49 @@
+<?php
+$this->headLink()->prependStylesheet($this->basePath() . '/css/education.css');
+?>
+
+<div class="box-white border-radius-5 margin-10-0 clearfix">
+    <div class="bg-gray padding-5-0 clearfix border-bottom-gray border-radius-top-5">
+        <ol class="breadcrumb no-margin no-background">
+            <li><a href="<?php echo $this->basePath(); ?>/">Home</a></li>
+            <li class="active">Education</li>
+        </ol>
+    </div>
+    <div class="box-body">
+        <div class="col-md-12 clearfix">
+            <h4 class="color-blue padding-10-0 border-bottom-gray" style="padding-bottom:20px;">Education Information
+                <a href="<?php echo $this->basepath();?>/education/add" class="font-13 pull-right margin-top-10"><i class="glyphicon glyphicon-plus"></i> Post new aducation</a>
+            </h4>
+
+        </div>
+        <div class="padding-10-0 clearfix">
+            <aside class="col-md-8" style="padding-top:15px;">
+                <?php foreach($this->eduData as $k=>$v): ?>
+                    <div class="media margin-10-0 clearfix">
+                        <a href="<?php echo $this->basepath()."/education/detail/".$v["education_id"]?>">
+                            <h4 class="media-heading color-blue font-14 margin-15-0"><?php echo $v["educ_title"];?></h4></a>
+                        <a class="pull-left" href="<?php echo $this->basepath()."/education/detail/".$v["education_id"];?>">
+                            <?php if(!empty($v["educ_img"])): ?>
+                                <img src="<?php echo $this->basePath()."/img/education/".$v["educ_img"]; ?>" alt="" class="img-thumbnail" width="100">
+                            <?php else: ?>
+                                <img src="<?php echo $this->basePath(); ?>/img/user-login.png" alt="" class="img-thumbnail" width="100">
+                            <?php endif;?>
+                        </a>
+                        <div class="media-body">
+                            <small class="color-ultra-light-black display-block margin-bottom-10 clearfix"> <b class="color-black">post by:</b> <?php echo $v["educ_post_by"]?> <b class="color-black">close date: </b> <?php echo date("d M, Y",strtotime($v["educ_post_date"]));?></small>
+                            <?php echo $v["detail"];?>... <a href="#" class="color-red"> read more</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                <div class="text-center"> <?php echo $this->paginationControl($this->eduData,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
+            </aside>
+            <aside class="col-md-4 no-padding-right">
+                <br>
+                <div>
+                    <img src="<?php echo $this->basePath()?>/img/promotion/1.png" class="col-md-12">
+                    <img src="<?php echo $this->basePath()?>/img/promotion/2.gif" class="col-md-12 margin-10-0">
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>

@@ -33,14 +33,13 @@ class IndexController extends AbstractActionController
         $urgentJob = $cateDb->getNewestJob();
         $newEducation = $eduDb->getLatestEducation();
 
-       // $industries = $cateDb->getAllIndustries()->toArray();
-
         return new ViewModel(array(
             "categories" => $cateDb->getAllCate()->toArray(),
             "urgentJob" => json_encode($urgentJob),
             "education" => $newEducation,
-            "location" => $locatDB->getAllLocationJobs(),
-            "feature" => $feature
+            "locations" => $locatDB->getAllLocationJobs(),
+            "feature" => $feature,
+            "industries" => $cateDb->getAllIndustries()
         ));
     }
 
@@ -68,6 +67,35 @@ class IndexController extends AbstractActionController
             "jobs" => $jobs,
             'paginator'=>$paginator,
             "category"=>$cateId
+        ));
+    }
+
+    /*
+     * location action
+     */
+    public function locationAction(){
+        //declare params
+        $cityId =  $this->params()->fromRoute("id");
+        $page = $this->params()->fromQuery("page",1);
+        $db = new LocationTable($this->getAdapter());
+        $jobs = array();
+
+        //it is won't works if category id is empty
+        if(!empty($cityId)){
+            $jobs = $db->getJobByCity($cityId);
+        }
+
+        $paginator = new Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobs));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage(20);
+
+
+        //pass params to view
+        return new ViewModel(array(
+            "jobs" => $jobs,
+            'paginator'=>$paginator,
+            "cityId"=>$cityId,
+            "city" => $db->getLocation($cityId)
         ));
     }
 

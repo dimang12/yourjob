@@ -5,7 +5,7 @@
     <?php foreach($this->education as $k=>$v): ?>
         <li class="text-overflow margin-5">
             <img width="30" class="img-thumbnail" alt="" src="/ourjob/public/img/user-login.png">
-            <a href=""> <?php echo $v["educ_title"]; ?></a></li>
+            <a href="<?php echo $this->basepath()."/education/detail/".$v["education_id"] ?>"> <?php echo $v["educ_title"]; ?></a></li>
     <?php endforeach; ?>
 </ul>
 <div class="more full-w" style="left:0">
