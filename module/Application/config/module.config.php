@@ -185,6 +185,17 @@ return array (
                                 ),
                             ) ,
                         ),
+                        'info'=>array(
+                            'type' => 'Segment',
+                            'options' =>array(
+                                'route' => '/info[/][:action][/:id]',
+                                'constraints' => array(),
+                                'defaults'=>array(
+                                    'controller' => 'Application\Controller\Info',
+                                    'action' => 'about',
+                                ),
+                            ) ,
+                        ),
 						// The following is a route to simplify getting started creating
 						// new controllers and actions without needing to create a new
 						// module. Simply drop new controllers in, and you can access them
@@ -243,6 +254,7 @@ return array (
                         'Application\Controller\Ajax' => 'Application\Controller\AjaxController',
 				        'Application\Controller\Register' => 'Application\Controller\RegisterController',
 				        'Application\Controller\Share' => 'Application\Controller\ShareController',
+				        'Application\Controller\Info' => 'Application\Controller\InfoController',
 				)
 		),
 		'view_manager' => array (
