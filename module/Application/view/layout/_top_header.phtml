@@ -5,7 +5,7 @@
 		</aside>
 		<aside class="col-md-7 no-padding text-right clearfix">
 			<div class="clearfix font-11">
-                <?php echo $this->translate("Welcome to,");?> <b>John Doe</b>
+                <span class="color-blue"><?php echo $this->translate("Welcome to,");?> <b>John Doe</b></span>
                 <span> | </span>
 				<a class="color-ultra-light-black shadow-white" href="#"><?php echo $this->translate("Experience Share");?></a>
                 <span> | </span>
@@ -19,7 +19,7 @@
 				<span> | </span>
 				<a class="color-ultra-light-black" href="<?php echo $this->url("register")?>"><?php echo $this->translate("Register");?></a>
                 <span> | </span>
-                <a class="color-ultra-light-black" href="<?php echo $this->url("logout")?>"><?php echo $this->translate("Logout");?></a>
+                <a class="color-red" href="<?php echo $this->url("logout")?>"><?php echo $this->translate("Logout");?></a>
             </div>
             <?php echo $this->partial("layout/_menu"); ?>
 		</aside>

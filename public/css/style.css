@@ -72,7 +72,7 @@ label                       { font-weight:normal;}
 /*~~~~~~~~~~Menu~~~~~~~~~~~~~*/
 .menu						{ margin-top:33px;}
 .menu li					{ display:inline-block; }
-.menu li a					{ display:inline-block; cursor:pointer; color:#fff; border-radius:5px 5px 0 0; text-decoration:none; font-weight:bold; padding:6px 15px;}
+.menu li a					{ border-top:#106cad solid 2px; display:inline-block; cursor:pointer; color:#fff; border-radius:5px 5px 0 0; text-decoration:none; font-weight:bold; padding:6px 15px;}
 .menu li a:hover, 
 .menu li a.actived			{ background:#fff; border-top:#106cad solid 2px; color:#5a646d; text-shadow:none;}
 
