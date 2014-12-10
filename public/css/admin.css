@@ -1,13 +1,26 @@
 
 @font-face 					{ font-family:'Helvetica Neue Normal'; src: url('HelveticaNeue.otf');}
-body						{ padding:0; margin:0; font-family: 'Helvetica Neue Normal','helvetica Neue',helvetica,arial,sans-serif; font-size:13px;}
-.bg{ margin-left: 10px;margin-top: 10px;padding-right: 10px;}
+body						{ padding:0; margin:0; font-family: 'Helvetica Neue Normal','helvetica Neue',helvetica,arial,sans-serif; font-size:13px;background: url("../img/whole-back.png") repeat scroll 0 0 rgba(0, 0, 0, 0);}
+
+table th {text-align: center;}
+table tr:first-child {background: #f2f2f2;}
+.panel.panel-default  h5  {margin: 0}
+.bg-gradient-light-gray		{
+    background-image: -moz-linear-gradient(top, #efefef, #e0e0e0);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#efefef), to(#e0e0e0));
+    background-image: linear-gradient(to bottom, #efefef, #e0e0e0);
+    color:#74756a;
+}
+.header-bottom{ background: #ffffff;height: 35px;border-bottom: 1px solid #cacaca;}
+.header-bottom ul li{list-style: none;display: inline-block;margin-right: 13px;margin-top: 9px;}
+.box-content    {background: #ffffff;border-radius: 5px;border: 1px solid #cacaca;padding: 10px;}
+.bg{ margin-left: 10px;margin-top: 10px;padding-right: 10px;margin-left: 20px;}
 .bg-title{background: #F2F2F2;margin-bottom: 5px; border: 1px solid #f2dede;}
 .margin-top-5{margin-top: 5px;}
 .margin-top-10{margin-top: 10px;}
 
 .padding-0{padding: 0px;}
-.padding-left-0 {padding-left: 0px !important;}
+.padding-left-0 {padding-left: 0px !important;padding-right: 10px !important;}
 
 
 .panel-heading > .panel-title a{
@@ -44,8 +57,8 @@ body						{ padding:0; margin:0; font-family: 'Helvetica Neue Normal','helvetica
 .fixed-left					{ position:fixed; left:0;}
 .full-w						{ width:100%;}
 
-.box-admin-right            {border-top-right-radius:5px; border-top-left-radius:5px;border:1px solid #C9C9C9;margin-bottom: 10px;padding-left: 10px;}
-.box-row-title              {background:#f2f2f2;}
+.box-admin-right            {border-top-right-radius:5px; border-top-left-radius:5px;border:1px solid #C9C9C9;margin-bottom: 10px;padding-left: 10px;background: #ffffff;}
+.box-row-title              {background:#fff;border-bottom: 1px solid #DDDDDD;}
 .margin-top-2               {margin-top: 2px;}
 .box-admin-main             {padding: 10px;}
 .text-overflow              { text-overflow:ellipsis; overflow:hidden; white-space:nowrap; height:30px;}
@@ -59,7 +72,7 @@ body						{ padding:0; margin:0; font-family: 'Helvetica Neue Normal','helvetica
 .panel-body ul                  { margin-top: 0px;margin-bottom: 0px;}
 .panel-body ul li               {
                                   border-bottom: 1px solid #f2f2f2;
-                                  line-height: 50px;
+                                  line-height: 35px;
                                   list-style: none;
                                   margin-left: -40px;
                                   padding-left: 20px;

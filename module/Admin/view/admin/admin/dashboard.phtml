@@ -1,10 +1,10 @@
 <div class="row-fluid box-admin-main">
-    <div class="col-md-2 padding-left-0">
+    <div class="col-md-3 padding-left-0">
         <?php echo $this->partial('admin/partial/_left.phtml'); ?>
     </div>
-    <div class='col-md-10'>
+    <div class='col-md-9 box-admin-right' style="height: 500px;padding-top: 10px;">
         <div class='row'>
-            <div class='col-md-3'>
+            <div class='col-md-4'>
                 <a href='<?php echo $this->url('admin-job')?>'>
                     <div class="placeholder col-md-12">
                         <span class='glyphicon glyphicon-home'></span>
@@ -13,15 +13,15 @@
                 </a>
             </div>
 
-            <div class='col-md-3'>
+            <div class='col-md-4'>
                 <a href='<?php echo $this->url('dashboard-category')?>'>
                     <div class="placeholder col-md-12">
                         <span class='glyphicon glyphicon-th-large'></span>
-                        <h4>Category</h4>
+                        <h4>Categories</h4>
                     </div>
                 </a>
             </div>
-            <div class='col-md-3'>
+            <div class='col-md-4'>
                 <a href='<?php echo $this->url('admin-feature')?>'>
                     <div class="placeholder col-md-12">
                         <span class='glyphicon glyphicon-shopping-cart'></span>
@@ -29,7 +29,9 @@
                     </div>
                 </a>
             </div>
-            <div class='col-md-3'>
+        </div>
+        <div class='row'>
+            <div class='col-md-4'>
                 <a href='<?php echo $this->url('admin-employer')?>'>
                     <div class="placeholder col-md-12">
                         <span class='glyphicon glyphicon-map-marker'></span>
@@ -37,10 +39,7 @@
                     </div>
                 </a>
             </div>
-
-        </div>
-        <div class='row'>
-            <div class='col-md-3'>
+            <div class='col-md-4'>
                 <a href='<?php echo $this->url('advertisement')?>'>
                     <div class="placeholder col-md-12">
                         <span class='glyphicon glyphicon-sound-stereo'></span>
@@ -48,7 +47,7 @@
                     </div>
                 </a>
             </div>
-            <div class='col-md-3'>
+            <div class='col-md-4'>
                 <a href='<?php echo $this->url('admin-job-seeker')?>'>
                     <div class="placeholder col-md-12">
                         <span class='glyphicon glyphicon-user'></span>
@@ -57,6 +56,5 @@
                 </a>
             </div>
         </div>
-
     </div>
 </div>

@@ -35,10 +35,10 @@ $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
 ?>
 <div class="row-fluid box-admin-main">
         <?php echo $this->form()->openTag($form)?>
-        <div class="col-md-2 padding-left-0">
+        <div class="col-md-3 padding-left-0">
             <?php echo $this->partial('admin/partial/_left.phtml'); ?>
         </div>
-    <div class='col-md-10 box-admin-right'>
+    <div class='col-md-9 box-admin-right'>
         <div class='row box-row-title'>
             <div class='col-md-9'><h4 class='text-warning'>Job Editing</h4></div>
             <div class="col-md-3 text-right"><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array("class"=>"btn btn-info margin-top-2 col-md-12")));?>Update<?php echo $this->formbutton()->closeTag();?></div>
