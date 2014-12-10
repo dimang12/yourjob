@@ -24,8 +24,12 @@
     </head>
 <body>
 	<?php echo $this->partial('layout/_header', array('a'=>$this->media))?>
-	<?php echo $this->content?>
-    <?php echo $this->inlineScript();?>
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+            <?php echo $this->content?>
+            <?php echo $this->inlineScript();?>
+        </div>
+    </div>
     </body>
 </html>
 

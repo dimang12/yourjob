@@ -4,12 +4,13 @@
 }
 
 body {
-	padding-top: 60px;
-	font-size: 14px;
+	padding-top: 83px;
+	font-size: 13px;
 	/*font-family: "Century Gothic", "wf_SegoeUI", "Segoe UI","Segoe", "Segoe WP", "Tahoma", "Verdana", "Arial", "sans-serif";*/
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	
 }
+
 
 .navbar-brand,.navbar-brand:hover,.navbar-brand:active,.navbar-brand:focus{
 	background:url('../img/logo.png') no-repeat center;
@@ -88,12 +89,12 @@ body {
 }
 
 .i1 {
-	background-color: #384851;
-	height: 50px;
+	/*background-color: #384851;*/
+
 }
 
 .i1 a span {
-	color: #fff;
+	color: #ff0000;
 }
 /*
  * Main content
@@ -135,7 +136,7 @@ body {
 	padding-bottom: 10px;
 	text-align: center;
 	background-color: #fff;
-	border: 1px solid #f1f1f1;
+	/*border: 1px solid #f1f1f1;*/
 	text-align: center;
 }
 

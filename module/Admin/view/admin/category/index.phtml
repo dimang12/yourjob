@@ -1,10 +1,10 @@
 <div class="row-fluid box-admin-main">
-    <div class="col-md-2 padding-left-0">
+    <div class="col-md-3 padding-left-0">
         <?php echo $this->partial('admin/partial/_left.phtml'); ?>
     </div>
-    <div class='col-md-10 box-admin-right'>
+    <div class='col-md-9 box-admin-right'>
         <div class='row box-row-title'>
-            <div class='col-md-9'><h4 class='text-warning'>Job category</h4></div>
+            <div class='col-md-9'><h4 class='text-warning'>Job categories</h4></div>
             <div class="col-md-3 text-right margin-top-10"><a href="<?php echo $this->url('dashboard-category-add')?>" class="margin-top-2 col-md-12">
                     <i class="glyphicon glyphicon-plus"></i>
                     New Category</a></div>
@@ -14,6 +14,8 @@
             <div class='col-md-12'>
                 <div class='table-responsive'>
                     <table class='table table-hover table-bordered'>
+                        <colgroup align="center">
+                        </colgroup>
                         <tr class='box-row-title'>
                             <th>No.</th>
                             <th>Job Category Name</th>
