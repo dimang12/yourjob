@@ -2,23 +2,24 @@
 /**
  * Created by PhpStorm.
  * User: dimang12
- * Date: 7/2/14
- * Time: 10:07 PM
+ * Date: 12/4/14
+ * Time: 10:03 PM
  */
-
 namespace Application\Controller;
 
-use Application\Form\EducationForm;
-use Application\Form\EducationValidator;
+use Application\Form\ShareForm;
 use Application\Model\EducationTable;
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Paginator;
 use Zend\View\Model\ViewModel;
 
-class EducationController extends  AbstractActionController{
 
+class ShareController extends MainController
+{
+
+    /*
+     * index action
+     */
     public function indexAction(){
-
         $page = $this->params()->fromQuery("page",1);
 
         $db = new EducationTable($this->getAdapter());
@@ -34,12 +35,11 @@ class EducationController extends  AbstractActionController{
         ));
     }
 
-    /*
-     * action add
+    /**
+     * @return ViewModel
      */
-    public function addAction()
-    {
-        $form = new EducationForm();
+    public function addAction(){
+        $form = new ShareForm();
         $request = $this->getRequest();
 
         if ($request->isPost()) {
@@ -81,24 +81,5 @@ class EducationController extends  AbstractActionController{
         ));
     }
 
-    /*
-     * action detail
-     */
-    public function detailAction(){
-        // params or variable
-        $id = $this->params()->fromRoute("id");
-        $db = new EducationTable($this->getAdapter());
 
-        $education = $db->getDetail($id);
-
-        return new ViewModel(array(
-            "education" => current($education)
-        ));
-    }
-
-    public function getAdapter(){
-        return $this->getServiceLocator()->get("Zend\Db\Adapter\Adapter");
-    }
-
-
-} 
+}

@@ -40,4 +40,26 @@ class EducationController extends  AbstractActionController{
         }
         return true;
     }
+    /*
+     * preview education
+     */
+    public function detailAction(){
+        // params or variable
+        $id = $this->params()->fromRoute("id");
+        $db = new EducationTable($this->getAdapter());
+
+        $education = $db->getDetail($id);
+
+        return new ViewModel(array(
+            "education" => current($education)
+        ));
+    }
+
+    /*
+     * create adapter
+     */
+    public function getAdapter(){
+        return $this->getServiceLocator()->get("Zend\Db\Adapter\Adapter");
+    }
+
 }

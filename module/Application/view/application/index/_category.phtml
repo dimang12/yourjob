@@ -1,6 +1,7 @@
 <?php
 $resultSet = new \Zend\Db\ResultSet\ResultSet();
 $categories = $resultSet->initialize($this->categories);
+$industries = $this->industries;
 
 ?>
 <div class="clearfix margin-10-0 font-13 nav nav-tabs" role="tablist">
@@ -50,19 +51,19 @@ $categories = $resultSet->initialize($this->categories);
                 ?>
             </div>
             <div class="tab-pane fade" id="location">
-                <?php  //echo $this->partial("application/index/_location"); ?>
+                <?php  echo $this->partial("application/index/_location"); ?>
             </div>
             <div class="tab-pane fade" id="messages">
 
                 <?php
                 $cateList = '';
                 $asideList = '';
-                $perColumn = round($categories->count() / 3);
+                $perColumn = round(count($industries) / 3);
                 $add=1;
 
                 for($i=1; $i<=3; $i++){
-                    if(($categories->count() % 3) <> 0){
-                        if($i > ($categories->count() % 3) ){
+                    if((count($industries) % 3) <> 0){
+                        if($i > (count($industries) % 3) ){
                             $add=0;
                         }
                     }
@@ -74,9 +75,9 @@ $categories = $resultSet->initialize($this->categories);
                         $asideList = '<aside class="col-md-4 no-padding-right"><ul>';
                     }
                     $j = 1;
-                    foreach($categories as $k=>$v){
+                    foreach($industries as $k=>$v){
                         if($j > (($i-1) * ($perColumn+$add))  &&  $j <= ($i * ($perColumn+$add))){
-                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["category_id"].'" class="pull-left color-black">'.$v["cate_name"].'</a><label class="pull-right">('.$v["num"].')</label></li>';
+                            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/category/?c=".$v["industry_id"].'" class="col-md-10 color-black no-padding text-overflow">'.$v["indu_name"].'</a><label class="pull-right">('.$v["num"].')</label></li>';
                         }
                         $j++;
                     }

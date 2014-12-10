@@ -35,6 +35,7 @@ class EducationTable extends SuperTableGateway{
         $sql = $db->select()
                     ->from("education")
                     ->columns(array("*",new Expression("LEFT(educ_detail,200) AS detail")))
+                    ->where("educ_approval=1")
                     ->order("educ_post_date DESC");
 
         return DB::executeQuery($db, $sql)->toArray();
@@ -48,9 +49,10 @@ class EducationTable extends SuperTableGateway{
     public function getLatestEducation($limit = 10){
         $db = new Sql($this->adapter);
         $sql = $db->select()
-                  ->columns(array("educ_title"))
+                  ->columns(array("educ_title","education_id","educ_img"))
                   ->from("education")
                   ->order("educ_post_date")
+                  ->where("educ_approval=1")
                   ->limit($limit)
             ;
 

@@ -1,0 +1,35 @@
+<?php
+    $e = $this->education;
+?>
+
+<div class="box-white border-radius-5 margin-10-0 clearfix">
+    <div class="bg-gray border-radius-top-5 border-bottom-gray no-padding">
+        <?php echo $this->partial("application/education/partial/_breadcrumb", array("curPage"=>"Education Detail","icon"=>" glyphicon-plus")); ?>
+    </div>
+
+    <div class="col-md-12">
+        <h4 class="border-bottom-gray padding-10-0"><?php echo $e["educ_title"]; ?> </h4>
+        <div class="clearfix">
+            <aside class="col-md-9">
+                <div class="padding-10-0" style="text-align:justify;">
+                    <?php echo $e["educ_detail"]; ?>
+                </div>
+            </aside>
+            <aside class="col-md-3">
+                <img class="full-w" src="<?php echo $this->basepath()."/img/education/". $e["educ_img"];?>" />
+            </aside>
+        </div>
+
+        <div class="clearfix border-top-gray padding-10-0">
+            <aside class="col-md-4">
+                <span>Posted by: </span><label class="color-blue"><?php echo $e["educ_post_by"]; ?></label>
+            </aside>
+            <aside class="col-md-4">
+                <span>Posting date: </span><label class="color-blue"><?php echo $e["educ_post_date"]; ?></label>
+            </aside>
+            <aside class="col-md-4">
+                <span>Closing Date: </span><label class="color-blue"><?php echo $e["educ_close_date"]; ?></label>
+            </aside>
+        </div>
+    </div>
+</div>

@@ -186,9 +186,11 @@ class ResumeController extends AbstractActionController{
         $loginForm = new LoginForm();
 
         if ($this->getRequest()->isPost()) {
+
             $loginForm->setData($this->getRequest()->getPost());
             if (!$loginForm->isValid()) {
                 // not valid form
+                print_r($this->getRequest()->getPost());
                 return new ViewModel(array(
                     'loginForm'  => $loginForm
                 ));

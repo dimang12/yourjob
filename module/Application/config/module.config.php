@@ -161,7 +161,7 @@ return array (
 
 
                         'register'=>array(
-                            'type' => 'segment',
+                            'type' => 'Segment',
                             'options' =>array(
                                 'route' => '/register[/][:action][/:id]',
                                 'constraints' => array(
@@ -171,6 +171,28 @@ return array (
                                 'defaults'=>array(
                                     'controller' => 'Application\Controller\Register',
                                     'action' => 'index',
+                                ),
+                            ) ,
+                        ),
+                        'document-share'=>array(
+                            'type' => 'Segment',
+                            'options' =>array(
+                                'route' => '/document-share[/][:action][/:id]',
+                                'constraints' => array(),
+                                'defaults'=>array(
+                                    'controller' => 'Application\Controller\Share',
+                                    'action' => 'index',
+                                ),
+                            ) ,
+                        ),
+                        'info'=>array(
+                            'type' => 'Segment',
+                            'options' =>array(
+                                'route' => '/info[/][:action][/:id]',
+                                'constraints' => array(),
+                                'defaults'=>array(
+                                    'controller' => 'Application\Controller\Info',
+                                    'action' => 'about',
                                 ),
                             ) ,
                         ),
@@ -231,7 +253,9 @@ return array (
                         'Application\Controller\Education' => 'Application\Controller\EducationController',
                         'Application\Controller\Ajax' => 'Application\Controller\AjaxController',
 				        'Application\Controller\Register' => 'Application\Controller\RegisterController',
-				) 
+				        'Application\Controller\Share' => 'Application\Controller\ShareController',
+				        'Application\Controller\Info' => 'Application\Controller\InfoController',
+				)
 		),
 		'view_manager' => array (
 				'display_not_found_reason' => true,
