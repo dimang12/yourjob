@@ -112,6 +112,7 @@ class ShareForm extends Form
             'attributes' => array(
                 'class' => 'form-control',
                 'required' => 'required',
+                'rows' => 10
             ),
             'options' => array(
                 'label' => "Detail:"

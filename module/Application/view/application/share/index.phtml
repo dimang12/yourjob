@@ -16,33 +16,40 @@ $this->headLink()->prependStylesheet($this->basePath() . '/css/education.css');
             </h4>
         </div>
         <div class="padding-10-0 clearfix">
+            <aside class="col-md-4">
+                <br>
+                <div class="list-group">
+                    <a href="<?php echo $this->basepath();?>/share/general" class="list-group-item <?php if($this->curPage == "General") echo "active" ?>">
+                        General Information
+                    </a>
+                    <a href="<?php echo $this->basepath();?>/share/careerprofile" class="list-group-item <?php if($this->curPage == "Career profile") echo "active" ?> ">Career Profile</a>
+                    <a href="<?php echo $this->basepath();?>/share/education" class="list-group-item <?php if($this->curPage == "Educations") echo "active" ?>">Educations</a>
+                    <a href="<?php echo $this->basepath();?>/share/experience" class="list-group-item <?php if($this->curPage == "Experiences") echo "active" ?>">Experiences</a>
+                    <a href="<?php echo $this->basepath();?>/share/skill" class="list-group-item <?php if($this->curPage == "Skills") echo "active" ?>">Skills</a>
+                </div>
+
+            </aside>
             <aside class="col-md-8" style="padding-top:15px;">
                 <?php foreach($this->eduData as $k=>$v): ?>
                     <div class="media margin-10-0 clearfix">
                         <a href="<?php echo $this->basepath()."/education/detail/".$v["education_id"]?>">
-                            <h4 class="media-heading color-blue font-14 margin-15-0"><?php echo $v["educ_title"];?></h4></a>
+                            <h4 class="media-heading color-blue font-14 margin-15-0"><?php echo $v["shar_title"];?></h4></a>
                         <a class="pull-left" href="<?php echo $this->basepath()."/education/detail/".$v["education_id"];?>">
-                            <?php if(!empty($v["educ_img"])): ?>
-                                <img src="<?php echo $this->basePath()."/img/education/".$v["educ_img"]; ?>" alt="" class="img-thumbnail" width="100">
+                            <?php if(!empty($v["shar_img"])): ?>
+                                <img src="<?php echo $this->basePath()."/img/share/".$v["shar_img"]; ?>" alt="" class="img-thumbnail" width="100">
                             <?php else: ?>
                                 <img src="<?php echo $this->basePath(); ?>/img/user-login.png" alt="" class="img-thumbnail" width="100">
                             <?php endif;?>
                         </a>
                         <div class="media-body">
-                            <small class="color-ultra-light-black display-block margin-bottom-10 clearfix"> <b class="color-black">post by:</b> <?php echo $v["educ_post_by"]?> <b class="color-black">close date: </b> <?php echo date("d M, Y",strtotime($v["educ_post_date"]));?></small>
-                            <?php echo $v["detail"];?>... <a href="#" class="color-red"> read more</a>
+                            <small class="color-ultra-light-black display-block margin-bottom-10 clearfix"> <b class="color-black">post by:</b> <?php echo $v["shar_post_by"]?> <b class="color-black">close date: </b> <?php echo date("d M, Y",strtotime($v["shar_post_date"]));?></small>
+                            <?php echo $v["shar_detail"];?>... <a href="#" class="color-red"> read more</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
                 <div class="text-center"> <?php echo $this->paginationControl($this->eduData,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
             </aside>
-            <aside class="col-md-4 no-padding-right">
-                <br>
-                <div>
-                    <img src="<?php echo $this->basePath()?>/img/promotion/1.png" class="col-md-12">
-                    <img src="<?php echo $this->basePath()?>/img/promotion/2.gif" class="col-md-12 margin-10-0">
-                </div>
-            </aside>
+
         </div>
     </div>
 </div>

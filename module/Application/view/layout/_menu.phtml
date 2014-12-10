@@ -7,7 +7,7 @@ $router = $routeMatch->getMatchedRouteName();
 
 <ul class="menu">
     <li>
-        <a class="bg-blue <?php if($router=="home" || $router=="application" ) echo "actived"?>" href="<?php echo $this->basePath(); ?>">
+        <a class="bg-blue <?php if($router=="home" || $router=="application" ) echo "actived"?>" href="<?php echo $this->basePath(); ?>/">
             <i class="glyphicon glyphicon-home"></i>
             <span><?php echo $this->translate("Home");?></span>
         </a>

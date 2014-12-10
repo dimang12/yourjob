@@ -11,41 +11,31 @@ $this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js
 $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/jquery-ui.css')
     ->prependStylesheet ( $this->basePath () . '/css/bootstrap-wysihtml5.css');;
 $form = $this->form;
-$form->setAttribute("action",$this->basepath()."/education/add");
+$form->setAttribute("action",$this->basepath()."/document-share/add");
 $form->prepare();
 ?>
 <div class="frm padding-10-0">
-    <h3 class="margin-10-0 border-bottom-gray padding-10-0">Document
+    <h3 class="margin-10-0 border-bottom-gray padding-10-0">Share Document
         <span class="label label-danger pull-right font-14 margin-top-10 hidden sms-fail"> Update fail.</span>
         <i class="loading pull-right margin-top-10 hidden"></i>
     </h3>
     <?php echo $this->form()->openTag($this->form); ?>
     <div class="clearfix">
         <div class="col-md-6 form-group">
-            <?php echo $this->formLabel($form->get("educ_title")); ?>
-            <?php echo $this->formInput($form->get("educ_title")); ?>
+            <?php echo $this->formLabel($form->get("shar_title")); ?>
+            <?php echo $this->formInput($form->get("shar_title")); ?>
 
         </div>
         <div class="col-md-6 form-group">
-            <?php echo $this->formLabel($form->get("educ_post_by")); ?>
-            <?php echo $this->formInput($form->get("educ_post_by")); ?>
+            <?php echo $this->formLabel($form->get("shar_post_by")); ?>
+            <?php echo $this->formInput($form->get("shar_post_by")); ?>
         </div>
     </div>
 
     <div class="clearfix">
         <div class="col-md-6 form-group">
-            <?php echo $this->formLabel($form->get("educ_start_date")); ?>
-            <?php echo $this->formInput($form->get("educ_start_date")); ?>
-        </div>
-        <div class="col-md-6 form-group">
-            <?php echo $this->formLabel($form->get("educ_close_date")); ?>
-            <?php echo $this->formInput($form->get("educ_close_date")); ?>
-        </div>
-    </div>
-    <div class="clearfix">
-        <div class="col-md-6 form-group">
-            <?php echo $this->formLabel($form->get("educ_contact")); ?>
-            <?php echo $this->formInput($form->get("educ_contact")); ?>
+            <?php echo $this->formLabel($form->get("shar_contact")); ?>
+            <?php echo $this->formInput($form->get("shar_contact")); ?>
         </div>
 
         <div class="col-md-6 form-group">
@@ -56,8 +46,8 @@ $form->prepare();
 
     <div class="clearfix">
         <div class="col-md-12 form-group">
-            <?php echo $this->formLabel($form->get("educ_detail")); ?>
-            <?php echo $this->formTextarea($form->get("educ_detail")); ?>
+            <?php echo $this->formLabel($form->get("shar_detail")); ?>
+            <?php echo $this->formTextarea($form->get("shar_detail")); ?>
         </div>
     </div>
 
@@ -70,5 +60,5 @@ $form->prepare();
 </div>
 <script>
     $('textarea').wysihtml5();
-    $('.form-control[name="educ_start_date"],.form-control[name="educ_close_date"] ').datepicker({dateFormat:'yy-mm-dd'});
+    $('.form-control[name="shar_start_date"],.form-control[name="shar_close_date"] ').datepicker({dateFormat:'yy-mm-dd'});
 </script>
