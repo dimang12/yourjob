@@ -231,7 +231,7 @@ class JobController extends AbstractActionController{
     }
     public function approvalresumeAction()
     {
-        $this->layout("layout\ajax_layout");
+        $this->layout("layout/ajax_layout");
         $resumeId = $this->params()->fromQuery("resumeId");
         $ch = $this->params()->fromQuery("ch");
         if(!empty($resumeId)){
