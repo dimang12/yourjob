@@ -1,8 +1,8 @@
 <?php
 foreach($this->catData as $row){
-    $cat_name = $row['cate_name'];
-    $cat_order = $row['cate_order'];
-    $cat_detail = $row['cate_details'];
+    $cat_name = $row['indu_name'];
+    $cat_order = $row['indu_order'];
+    $cat_detail = $row['indu_details'];
 }
 ?>
 <?php $form = $this->form; echo $this->form()->openTag($form)?>
@@ -12,30 +12,28 @@ foreach($this->catData as $row){
         </div>
         <div class='col-md-10 box-admin-right'>
             <div class='row box-row-title'>
-                <div class='clearfix padding-5'>
-                    <h4 class='text-warning pull-left col-md-6'>Edit Category</h4>
+                <div class='col-md-8'><h4 class='text-warning'>Edit Category</h4></div>
+                <div class="col-md-4 padding-top-10 text-right"><button type="submit" class="btn-link"><span class="glyphicon glyphicon-save"></span> Update</button>
+                    <a href="<?php echo $this->url("dashboard-industry")?>" class=""><span class="glyphicon glyphicon-chevron-left"></span> Back</a></div>
 
-                    <button type="submit" class="btn btn-info pull-right" style="margin:0 10px;">Update</button>
-                    <a href="<?php echo $this->url("dashboard-category")?>" class="btn btn-default pull-right ">Back</a>
-                </div>
             </div>
             <br>
             <div class='row'>
                 <div class='col-md-8'>
-                    <?php echo $this->formlabel($form->get('cate_name'))?>
-                    <?php echo $this->forminput($form->get('cate_name')->setAttributes(array('class'=>'form-control col-md-12 ','required'=>true,'value'=>$cat_name)))?>
+                    <?php echo $this->formlabel($form->get('indu_name'))?>
+                    <?php echo $this->forminput($form->get('indu_name')->setAttributes(array('class'=>'form-control col-md-12 ','required'=>true,'value'=>$cat_name)))?>
                 </div>
 
                 <div class='col-md-4'>
-                    <?php echo $this->formlabel($form->get('cate_order'))?>
-                    <?php echo $this->forminput($form->get('cate_order')->setAttributes(array('class'=>'form-control col-md-12 ','value'=> $cat_order)))?>
+                    <?php echo $this->formlabel($form->get('indu_order'))?>
+                    <?php echo $this->forminput($form->get('indu_order')->setAttributes(array('class'=>'form-control col-md-12 ','value'=> $cat_order)))?>
                 </div>
             </div>
 
             <div class='row'>
                 <div class='col-md-12'><br>
-                    <?php echo $this->formlabel($form->get('cate_details'))?>
-                    <?php echo $this->formtextarea($form->get('cate_details')->setAttributes(array('class'=>'form-control col-md-12','rows'=>5,'value'=>$cat_detail)))?>
+                    <?php echo $this->formlabel($form->get('indu_details'))?>
+                    <?php echo $this->formtextarea($form->get('indu_details')->setAttributes(array('class'=>'form-control col-md-12','rows'=>5,'value'=>$cat_detail)))?>
                 </div>
 
             </div>

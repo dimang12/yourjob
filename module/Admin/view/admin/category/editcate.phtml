@@ -12,12 +12,14 @@
         </div>
     <div class='col-md-9 box-admin-right'>
         <div class='row box-row-title'>
-            <div class='clearfix padding-5'>
+            <div class="col-md-8">
                 <h4 class='text-warning pull-left col-md-6'>Edit Category</h4>
-
-                <button type="submit" class="btn btn-info pull-right" style="margin:0 10px;">Update</button>
-                <a href="<?php echo $this->url("dashboard-category")?>" class="btn btn-default pull-right ">Back</a>
             </div>
+            <div class="col-md-4 padding-top-10">
+                <a href="<?php echo $this->url("dashboard-category")?>" class="btn-link pull-right "><span class="glyphicon glyphicon-chevron-left"></span>  Back</a>
+                <button type="submit" class="btn-link pull-right"   ><span class="glyphicon glyphicon-save"></span> Update</button>
+            </div>
+
         </div>
         <br>
         <div class='row'>

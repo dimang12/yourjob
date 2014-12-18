@@ -26,7 +26,7 @@
     <div class='col-md-9 box-admin-right'>
         <div class='row box-row-title'>
             <div class='col-md-9'><h4 class='text-warning'>Job Posting</h4></div>
-            <div class="col-md-3 text-right"><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array("class"=>"btn btn-info margin-top-2 col-md-12")));?>Save & Submit<?php echo $this->formbutton()->closeTag();?></div>
+            <div class="col-md-3 text-right" style="padding-right: 0"><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array("class"=>"btn btn-link margin-top-2 col-md-12")));?><span class="glyphicon glyphicon-save"></span> Save<?php echo $this->formbutton()->closeTag();?></div>
         </div>
         <br>
         <div class="row box-row-title"><div class="col-md-12 text-warning"> <h4>&ensp;Basic Information</h4></div></div>
@@ -68,11 +68,11 @@
         <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Publishing Date : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_published_date')->setAttributes(array('id'=>'datetimepicker1')))?></div></div>
         <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Closing Date : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_close_date')->setAttributes(array('id'=>'datetimepicker2')))?></div></div>
         <br><br>
-        <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Job Description : </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_description'))?></div></div>
+        <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Description</label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_description'))?></div></div>
         <br><br>
-        <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Job Requirement : </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_requirement'))?></div></div>
+        <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Requirement</label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_requirement'))?></div></div>
         <br><br>
-        <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Contact Information : </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_contact'))?></div></div>
+        <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Contact </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_contact'))?></div></div>
         <br>
         <div class="row box-row-title text-warning"><h4>&ensp;Job Posting Option</h4></div>
         <div class="row">
