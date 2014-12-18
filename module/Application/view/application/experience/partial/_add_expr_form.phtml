@@ -1,0 +1,95 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 12/15/14
+ * Time: 3:45 PM
+ */
+
+$this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js")
+    ->prependFile($this->basepath() . "/js/wysihtml5-0.3.0.js");
+
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/jquery-ui.css')
+    ->prependStylesheet ( $this->basePath () . '/css/bootstrap-wysihtml5.css');;
+$form = $this->form;
+$form->setAttribute("action",$this->basepath()."/experience-share/add");
+$form->prepare();
+?>
+<div class="frm padding-10-0">
+    <h3 class="margin-10-0 border-bottom-gray padding-10-0">Experience Share
+        <span class="label label-danger pull-right font-14 margin-top-10 hidden sms-fail"> Update fail.</span>
+        <i class="loading pull-right margin-top-10 hidden"></i>
+    </h3>
+    <?php echo $this->form()->openTag($this->form); ?>
+    <div class="clearfix">
+        <div class="col-md-6 form-group">
+            <?php echo $this->formLabel($form->get("expr_title")); ?>
+            <?php echo $this->formInput($form->get("expr_title")); ?>
+
+        </div>
+        <div class="col-md-6 form-group">
+            <?php echo $this->formLabel($form->get("expr_post_by")); ?>
+            <?php echo $this->formInput($form->get("expr_post_by")); ?>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-md-6 form-group">
+            <?php echo $this->formLabel($form->get("expr_contact")); ?>
+            <?php echo $this->formInput($form->get("expr_contact")); ?>
+            <div class="sub-contact" style="display: none;">
+                <?php echo $this->formLabel($form->get("expr_address")); ?>
+                <?php echo $this->formInput($form->get("expr_address")); ?><br>
+                <?php echo $this->formLabel($form->get("expr_phone")); ?>
+                <?php echo $this->formInput($form->get("expr_phone")); ?><br>
+                <?php echo $this->formLabel($form->get("expr_email")); ?>
+                <?php echo $this->formInput($form->get("expr_email")); ?><br>
+                <?php echo $this->formLabel($form->get("expr_website")); ?>
+                <?php echo $this->formInput($form->get("expr_website")); ?>
+            </div>
+        </div>
+
+        <div class="col-md-6 form-group">
+            <label>Image <input type="radio" name="expr_type" checked class="expr_type" class-id="expr-img" value="1" /></label>
+            <label>&nbsp;&nbsp; or Youtube Video <input type="radio" name="expr_type" class="expr_type" class-id="expr-video" value="2" /></label>
+            <?php echo $this->formFile($form->get("image")); ?>
+            <?php echo $this->formInput($form->get("expr_video")); ?>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-md-12 form-group">
+            <?php echo $this->formLabel($form->get("expr_detail")); ?>
+            <?php echo $this->formTextarea($form->get("expr_detail")); ?>
+        </div>
+    </div>
+
+
+    <div class="clearfix text-center">
+        <a href="<?php echo $this->basepath()?>/experience-share" class="btn btn-danger"> <i class="glyphicon glyphicon-remove-sign"></i> Cancel</a>
+        <button class="btn btn-info btn-update"> <i class="glyphicon glyphicon-floppy-disk"></i> Save General</button>
+    </div>
+    <?php echo $this->form()->closeTag() ;?>
+</div>
+<script>
+    $(document).ready(function(){
+        $('textarea').wysihtml5();
+        $('.form-control[name="expr_start_date"],.form-control[name="expr_close_date"] ').datepicker({dateFormat:'yy-mm-dd'});
+        $('.contact').on('focus', function(){
+            $('.sub-contact').slideDown(400);
+            $(this).addClass('hidden');
+            $('.address').focus();
+            $(this).prev().addClass('hidden');
+        });
+        $('.expr_type').on('change', function () {
+            var idName = $(this).attr('class-id');
+
+            $('.img-video').addClass('hidden');
+            $('#' +idName).removeClass('hidden');
+        });
+
+        $('.expr_type:checked').trigger('change');
+
+    });
+
+</script>

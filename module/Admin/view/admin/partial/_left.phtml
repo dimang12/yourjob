@@ -65,6 +65,25 @@ if ($routeMatch) {
             </div>
         </div>
     </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h5 class="">
+                <a data-toggle="collapse" data-parent="#accordion" href="#document-share">
+                    Document share
+                </a>
+            </h5>
+        </div>
+        <div id="document-share" class="panel-collapse collapse <?php if($router == 'admin-share') echo 'in'?>">
+            <div class="panel-body">
+                <ul>
+                    <li><a class="<?php if($router == 'admin-share') echo 'active' ?>" href="<?php echo $this->url('admin-share')?>">All Doc Shares</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h5 class="">

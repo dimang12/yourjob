@@ -16,40 +16,57 @@ $this->headLink()->prependStylesheet($this->basePath() . '/css/education.css');
             </h4>
         </div>
         <div class="padding-10-0 clearfix">
-            <aside class="col-md-4">
-                <br>
-                <div class="list-group">
-                    <a href="<?php echo $this->basepath();?>/share/general" class="list-group-item <?php if($this->curPage == "General") echo "active" ?>">
-                        General Information
-                    </a>
-                    <a href="<?php echo $this->basepath();?>/share/careerprofile" class="list-group-item <?php if($this->curPage == "Career profile") echo "active" ?> ">Career Profile</a>
-                    <a href="<?php echo $this->basepath();?>/share/education" class="list-group-item <?php if($this->curPage == "Educations") echo "active" ?>">Educations</a>
-                    <a href="<?php echo $this->basepath();?>/share/experience" class="list-group-item <?php if($this->curPage == "Experiences") echo "active" ?>">Experiences</a>
-                    <a href="<?php echo $this->basepath();?>/share/skill" class="list-group-item <?php if($this->curPage == "Skills") echo "active" ?>">Skills</a>
-                </div>
 
-            </aside>
-            <aside class="col-md-8" style="padding-top:15px;">
-                <?php foreach($this->eduData as $k=>$v): ?>
-                    <div class="media margin-10-0 clearfix">
-                        <a href="<?php echo $this->basepath()."/education/detail/".$v["education_id"]?>">
-                            <h4 class="media-heading color-blue font-14 margin-15-0"><?php echo $v["shar_title"];?></h4></a>
-                        <a class="pull-left" href="<?php echo $this->basepath()."/education/detail/".$v["education_id"];?>">
-                            <?php if(!empty($v["shar_img"])): ?>
-                                <img src="<?php echo $this->basePath()."/img/share/".$v["shar_img"]; ?>" alt="" class="img-thumbnail" width="100">
-                            <?php else: ?>
-                                <img src="<?php echo $this->basePath(); ?>/img/user-login.png" alt="" class="img-thumbnail" width="100">
-                            <?php endif;?>
+            <aside class="col-md-12" style="padding-top:15px;">
+                <?php foreach($this->paginator as $k=>$v): ?>
+                    <div class="media margin-10-0 clearfix col-md-6 no-padding-left">
+
+                        <a class="col-md-3 margin-5 border-light-gray" href="<?php echo $this->basepath()."/education/detail/".$v["share_id"];?>"
+                            style="background-image: url('<?php echo $this->basepath()."/img/share/".$v["shar_img"]; ?>'); height:90px; background-position: center; background-size: cover; "
+                            >
                         </a>
-                        <div class="media-body">
-                            <small class="color-ultra-light-black display-block margin-bottom-10 clearfix"> <b class="color-black">post by:</b> <?php echo $v["shar_post_by"]?> <b class="color-black">close date: </b> <?php echo date("d M, Y",strtotime($v["shar_post_date"]));?></small>
-                            <?php echo $v["shar_detail"];?>... <a href="#" class="color-red"> read more</a>
+                        <div class="media-body padding-0-5">
+                            <a href="<?php echo $this->basepath()."/document-share/detail/".$v["share_id"]?>">
+                                <h4 class="media-heading color-blue font-14 no-margin"><?php echo $v["shar_title"];?></h4></a>
+                                <small class="color-ultra-light-black display-block margin-bottom-10 clearfix margin-10-0">
+                                    <span class="clearfix tooltip-panel">
+                                        <label class="color-black col-md-4 no-padding-left">Uploaded by</label>
+                                        :<a style="width: 300px;" href="#" data-toggle="popover" class="bottom" data-placement="bottom" title="<?php echo $v["shar_title"]; ?>" ><?php echo $v["shar_post_by"]?></a>
+                                        <div class="tooltip bottom tooltip-content" role="tooltip">
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Uploaded by</div>:<?php echo $v["shar_post_by"] ?></div>
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Address</div>:<?php echo $v["shar_address"] ?></div>
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Phone Number</div>:<?php echo $v["shar_phone"] ?></div>
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Email Address</div>:<?php echo $v["shar_email"] ?></div>
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Website</div>:<?php echo $v["shar_website"] ?></div>
+                                        </div>
+                                    </span>
+                                    <span class="clearfix">
+                                        <label class="color-black col-md-4 no-padding-left">Uploaded date </label> :<?php echo date("d M, Y",strtotime($v["shar_post_date"]));?>
+                                    </span>
+                                </small>
+                            <?php echo substr($v["shar_detail"],0,80);?>
                         </div>
                     </div>
                 <?php endforeach; ?>
-                <div class="text-center"> <?php echo $this->paginationControl($this->eduData,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
+                <div class="text-center"> <?php echo $this->paginationControl($this->paginator,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
             </aside>
 
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+
+        $('[data-toggle="popover"]').each(function(k,v){
+            var title = $(v).text();
+            var body = $(v).parents('.tooltip-panel').find('.tooltip-content').html();
+            $(v).popover({
+                title: title,
+                content: body,
+                html:true,
+                container:'body'
+            });
+            $(v).on('click', function(){ return false;});
+        });
+    });
+</script>

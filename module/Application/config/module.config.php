@@ -185,6 +185,17 @@ return array (
                                 ),
                             ) ,
                         ),
+                        'experience-share'=>array(
+                            'type' => 'Segment',
+                            'options' =>array(
+                                'route' => '/experience-share[/][:action][/:id]',
+                                'constraints' => array(),
+                                'defaults'=>array(
+                                    'controller' => 'Application\Controller\Experience',
+                                    'action' => 'index',
+                                ),
+                            ) ,
+                        ),
                         'info'=>array(
                             'type' => 'Segment',
                             'options' =>array(
@@ -255,6 +266,7 @@ return array (
 				        'Application\Controller\Register' => 'Application\Controller\RegisterController',
 				        'Application\Controller\Share' => 'Application\Controller\ShareController',
 				        'Application\Controller\Info' => 'Application\Controller\InfoController',
+				        'Application\Controller\Experience' => 'Application\Controller\ExperienceController',
 				)
 		),
 		'view_manager' => array (

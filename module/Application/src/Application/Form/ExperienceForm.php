@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: dimang12
- * Date: 12/6/14
+ * Date: 12/15/14
  * Time: 1:44 PM
  */
 
@@ -16,7 +16,7 @@ use Zend\Form\Element;
 use Zend\InputFilter\InputFilter;
 
 
-class ShareForm extends Form
+class ExperienceForm extends Form
 {
     protected $inputeFilter;
 
@@ -27,7 +27,7 @@ class ShareForm extends Form
         $this->setAttribute('method', 'post');
 
         $this->add(array(
-            'name' => 'shar_title',
+            'name' => 'expr_title',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'class' => 'form-control',
@@ -40,7 +40,7 @@ class ShareForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'shar_post_by',
+            'name' => 'expr_post_by',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'class' => 'form-control',
@@ -53,7 +53,7 @@ class ShareForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'shar_start_date',
+            'name' => 'expr_start_date',
             'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'class' => 'form-control',
@@ -67,7 +67,7 @@ class ShareForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'shar_address',
+            'name' => 'expr_address',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'class' => 'form-control address',
@@ -82,7 +82,7 @@ class ShareForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'shar_phone',
+            'name' => 'expr_phone',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'class' => 'form-control',
@@ -97,7 +97,7 @@ class ShareForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'shar_email',
+            'name' => 'expr_email',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'class' => 'form-control',
@@ -113,7 +113,7 @@ class ShareForm extends Form
 
 
         $this->add(array(
-            'name' => 'shar_website',
+            'name' => 'expr_website',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'class' => 'form-control',
@@ -128,7 +128,7 @@ class ShareForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'shar_close_date',
+            'name' => 'expr_close_date',
             'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'class' => 'form-control',
@@ -143,14 +143,27 @@ class ShareForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'shar_contact',
+            'name' => 'expr_contact',
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'class' => 'form-control contact',
                 'placeholder' => 'click here',
             ),
             'options' => array(
-                'label' => 'Contact information',
+                'label' => 'Contact information:',
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'expr_video',
+            'type' => 'Zend\Form\Element\Text',
+            'attributes' => array(
+                'class' => 'form-control img-video hidden',
+                'id' => 'expr-video',
+                'placeholder' => 'video link in youtube...',
+            ),
+            'options' => array(
+                'label' => 'Video Url:',
             ),
         ));
 
@@ -158,8 +171,9 @@ class ShareForm extends Form
             'name' => 'image',
             'type' => 'file',
             'attributes' => array(
-                'class' => 'form-control',
-                'required' => 'required',
+                'class' => 'form-control img-video',
+                'id' => 'expr-img',
+//                'required' => 'required',
             ),
             'options' => array(
                 'label' => 'Image',
@@ -167,7 +181,7 @@ class ShareForm extends Form
         ));
 
         $this->add(array(
-            'name' => 'shar_detail',
+            'name' => 'expr_detail',
             'type' => 'Zend\Form\Element\Textarea',
             'attributes' => array(
                 'class' => 'form-control',
@@ -188,8 +202,6 @@ class ShareForm extends Form
 
     public function getInputFilter(){
         $inputFilter = new InputFilter();
-
         return $inputFilter;
-
     }
 }

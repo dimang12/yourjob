@@ -1,0 +1,74 @@
+<div class="row-fluid box-admin-main">
+    <div class="col-md-3 padding-left-0">
+        <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    </div>
+    <div class='col-md-9 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-8'><h4 class='text-warning'>Document share</h4></div>
+            <div class='col-md-4 text-right'></div>
+        </div>
+        <br>
+        <div class='row'>
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr class="box-row-title">
+                            <th>Code</th>
+                            <th>Title</th>
+                            <th>Posted By</th>
+                            <th>Approval</th>
+                            <th>Action</th>
+                        </tr>
+                        <?php foreach ( $this->paginator as $key => $row ) {?>
+                            <?php $check = $row["shar_approval"]==1?"checked":"";?>
+                            <tr>
+                                <td><?php echo $row['share_id']?></td>
+                                <td><a href="<?php echo $this->basepath()."/admin-share/detail/".$row["share_id"];?>"><?php echo $row['shar_title']?></a></td>
+                                <td><?php echo $row['shar_post_by']?></td>
+                                <td align="center"><input share-id="<?php echo $row["share_id"]?>" class="chk-approval" type="checkbox" <?php echo $check?>></td>
+                                <td align="center"><a href="#" class="btn btn-danger btn-delete btn-xs" delete-id="<?php echo $row["share_id"]?>">Delete</a> </td>
+                            </tr>
+                        <?php }?>
+                    </table>
+                    <div class="text-center">
+                        <?php echo $this->paginationControl($this->paginator,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $('.btn-delete').click(function(){
+            if(confirm("Are you sure you want to delete?")){
+                share_id = $(this).attr('delete-id');
+                url='<?php echo $this->basepath()."/admin-share/delete/"?>'+share_id;
+                $.ajax({
+                    url:url,
+                    success:function(){
+                        window.location.href='';
+                    }
+                });
+            }
+
+        });
+        $('.chk-approval').click(function(){
+            share_id = $(this).attr('share-id');
+            ch ="0";
+            if($(this).is(":checked"))
+            {
+                ch="1";
+            }
+            url='<?php echo $this->basepath()."/admin-share/approve/";?>'+share_id+'?ch='+ch;
+            $.ajax({
+                url:url,
+                success:function(){
+
+                }
+            });
+        });
+    });
+</script>

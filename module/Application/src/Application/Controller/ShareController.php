@@ -25,7 +25,7 @@ class ShareController extends MainController
         $page = $this->params()->fromQuery("page",1);
 
         $db = new ShareTable($this->getAdapter());
-        $share = $db->getAllShare();
+        $share = $db->getAllShare(1);
 
 
         $paginator = new Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($share));
@@ -33,7 +33,22 @@ class ShareController extends MainController
         $paginator->setItemCountPerPage(10);
 
         return new ViewModel(array(
-            "eduData"=>$paginator
+            "paginator"=>$paginator
+        ));
+    }
+
+    /**
+     * detail action
+     * @return ViewModel
+     */
+    public function detailAction(){
+        $id = $this->params()->fromRoute("id");
+        $db = new ShareTable();
+        $share = $db->getDetail($id);
+
+
+        return new ViewModel(array(
+            "share" => current($share)
         ));
     }
 

@@ -12,6 +12,7 @@ class EducationController extends  AbstractActionController{
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $eduData = $sm->getAllEducation();
 
+
         $page = $this->params()->fromQuery('page');
         $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($eduData));
         $paginator->setCurrentPageNumber($page);

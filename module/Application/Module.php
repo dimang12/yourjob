@@ -34,6 +34,10 @@ class Module {
 			$response = $e->getResponse ()->getHeaders ();
 			$response->addHeader ( $cookie );
 		}
+
+        //inject static adapter
+        $adapter = $e->getApplication()->getServiceManager()->get('Zend\Db\Adapter\Adapter');
+        \Zend\Db\TableGateway\Feature\GlobalAdapterFeature::setStaticAdapter($adapter);
 	}
 	public function getConfig() {
 		return include __DIR__ . '/config/module.config.php';

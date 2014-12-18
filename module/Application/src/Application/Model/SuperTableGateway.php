@@ -18,7 +18,13 @@ class SuperTableGateway extends TableGateway{
     public $_table = "";
     public $_fieldId = "";
 
-    public function __construct($adapter){
+    /*
+     *
+     */
+    public function __construct($adapter=null){
+        if($adapter == null){
+            $adapter = \Zend\Db\TableGateway\Feature\GlobalAdapterFeature::getStaticAdapter();
+        }
         $this->db = new Sql($adapter);
     }
 
@@ -42,8 +48,11 @@ class SuperTableGateway extends TableGateway{
     /*
      * get list of table
      */
-    public function getList(){
+    public function getList($where=""){
         $sql = $this->db->select($this->_table);
+        if(!empty($where)){
+            $sql->where($where);
+        }
         return $this->executeQuery($sql)->toArray();
     }
 

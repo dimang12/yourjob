@@ -14,6 +14,7 @@ label                       { font-weight:normal;}
 .no-background              { background:none;}
 
 .padding-5					{ padding:5px;}
+.padding-10                 { padding:10px;}
 .padding-5-0				{ padding:5px 0;}
 .padding-10-0				{ padding:10px 0;}
 .padding-0-5				{ padding:0 5px;}
@@ -128,7 +129,7 @@ label                       { font-weight:normal;}
 
 
 .border-light-gray			{ border:#eaeaea solid 1px;}
-.border-gray				{ border:#999 solid 1px;}
+.border-gray				{ border:#ccc    solid 1px;}
 .no-border					{ border:0;}
 .no-border-left             { border-left:0;}
 .no-border-right            { border-right:0;}

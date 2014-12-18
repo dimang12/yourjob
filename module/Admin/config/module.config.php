@@ -16,6 +16,7 @@ return array (
                         'Admin\Controller\Advertisement' => 'Admin\Controller\AdvertisementController',
                         'Admin\Controller\Education' => 'Admin\Controller\EducationController',
                         'Admin\Controller\Industry' => 'Admin\Controller\IndustryController',
+                        'Admin\Controller\Share' => 'Admin\Controller\ShareController',
 				)
 		),
 		'router' => array (
@@ -722,6 +723,17 @@ return array (
                             'defaults' => array (
                                 'controller' => 'Admin\Controller\Job',
                                 'action' => 'newpurchase'
+                            )
+                        )
+                    ),
+
+                    'admin-share' => array (
+                        'type' => 'Segment',
+                        'options' => array (
+                            'route' => '/admin-share[/][:action][/:id]',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Share',
+                                'action' => 'index'
                             )
                         )
                     ),

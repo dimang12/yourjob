@@ -1,0 +1,62 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 12/18/14
+ * Time: 5:39 PM
+ */
+?>
+
+<div class="box-body box-white border-radius-5">
+    <div class="col-md-12 clearfix">
+        <h4 class="color-blue padding-10-0 border-bottom-gray" style="padding-bottom:20px;">Experience Share, Video
+            <a href="<?php echo $this->basepath();?>/experience-share/add" class="font-13 pull-right margin-top-10"><i class="glyphicon glyphicon-plus"></i> Post new video</a>
+        </h4>
+    </div>
+    <div class="padding-10-0 clearfix">
+
+        <aside class="col-md-12" style="padding-top:15px;">
+            <?php foreach($this->video as $k=>$v):
+                    $img = "";
+                    if(!empty($v["expr_video"])){
+                        $url = $v["expr_video"];
+                        $queryString = parse_url($url);
+                        parse_str($queryString['query'], $query);
+                        $img = "http://img.youtube.com/vi/{$query["v"]}/default.jpg";
+                    }else{
+                        $img = "{$this->baseUrl()}/img/user-login.png";
+                    }
+                ?>
+                <div class="margin-10-0 col-md-6 no-padding-left">
+                    <a class="col-md-3 margin-5 border-light-gray" href="<?php echo $this->basepath()."/experience-share/detail/".$v["experience_id"];?>"
+                       style="background-image: url('<?php echo $img; ?>'); height:90px; background-position: center; background-size: cover; "
+                        >
+                    </a>
+                    <div class="media-body padding-0-5">
+                        <a href="<?php echo $this->basepath()."/experience-share/detail/".$v["share_id"]?>">
+                            <h4 class="media-heading color-blue font-14 no-margin"><?php echo $v["expr_title"];?></h4></a>
+                        <small class="color-ultra-light-black display-block margin-bottom-10 clearfix margin-10-0">
+                            <span class="clearfix tooltip-panel">
+                                <label class="color-black col-md-4 no-padding-left">Uploaded by</label>
+                                :<a style="width: 300px;" href="#" data-toggle="popover" class="bottom" data-placement="bottom" title="<?php echo $v["expr_title"]; ?>" ><?php echo $v["expr_post_by"]?></a>
+                                <div class="tooltip bottom tooltip-content" role="tooltip">
+                                    <div class="clearfix"><div class="col-md-5 bold no-padding-left">Uploaded by</div>:<?php echo $v["expr_post_by"] ?></div>
+                                    <div class="clearfix"><div class="col-md-5 bold no-padding-left">Address</div>:<?php echo $v["expr_address"] ?></div>
+                                    <div class="clearfix"><div class="col-md-5 bold no-padding-left">Phone Number</div>:<?php echo $v["expr_phone"] ?></div>
+                                    <div class="clearfix"><div class="col-md-5 bold no-padding-left">Email Address</div>:<?php echo $v["expr_email"] ?></div>
+                                    <div class="clearfix"><div class="col-md-5 bold no-padding-left">Website</div>:<?php echo $v["expr_website"] ?></div>
+                                </div>
+                            </span>
+                            <span class="clearfix">
+                                <label class="color-black col-md-4 no-padding-left">Uploaded date </label> :<?php echo date("d M, Y",strtotime($v["expr_post_date"]));?>
+                            </span>
+                        </small>
+                        <?php echo substr(strip_tags($v["expr_detail"]),0,30);?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <div class="text-center"> <?php //echo $this->paginationControl($this->paginator,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
+        </aside>
+
+    </div>
+</div>

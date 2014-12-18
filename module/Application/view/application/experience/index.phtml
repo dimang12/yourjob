@@ -1,0 +1,37 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 12/14/14
+ * Time: 11:05 PM
+ */
+$this->headLink()->prependStylesheet($this->basePath() . '/css/education.css');
+?>
+
+<div class="margin-10-0 clearfix">
+    <div class="border-gray border-radius-5 bg-gray padding-5-0 clearfix margin-bottom-10">
+        <ol class="breadcrumb no-margin no-background">
+            <li><a href="<?php echo $this->basePath(); ?>/">Home</a></li>
+            <li class="active">Experience Share, Document</li>
+        </ol>
+    </div>
+    <?php echo $this->partial("application/experience/partial/_document"); ?>
+    <?php echo $this->partial("application/experience/partial/_video"); ?>
+
+</div>
+<script>
+    $(document).ready(function(){
+
+        $('[data-toggle="popover"]').each(function(k,v){
+            var title = $(v).text();
+            var body = $(v).parents('.tooltip-panel').find('.tooltip-content').html();
+            $(v).popover({
+                title: title,
+                content: body,
+                html:true,
+                container:'body'
+            });
+            $(v).on('click', function(){ return false;});
+        });
+    });
+</script>

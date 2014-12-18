@@ -8,10 +8,32 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Paginator\Adapter\ArrayAdapter;
+use Zend\Paginator\Paginator;
 
 class MainController extends AbstractActionController
 {
+    /**
+     * create an object of adapter to connect to db
+     * @return array|object
+     */
     public function getAdapter(){
         return $this->getServiceLocator()->get("Zend\Db\Adapter\Adapter");
+    }
+
+    /**
+     * create a pagination data
+     * @param $data is an array
+     * @param int $page is current page
+     * @param int $limit limits how many rows are presented per-page
+     * @return Paginator
+     */
+    public function getPaginator($data, $page, $limit=25){
+
+        $paginator = new Paginator(new ArrayAdapter($data));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($limit);
+
+        return $paginator;
     }
 }
