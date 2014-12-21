@@ -8,15 +8,15 @@ class FeatureForm extends Form
         parent::__construct('feature');
         $this->setAttributes(array('method'=>'post','enctype'=>'multipart/form-data'));
 
-//        $this->add(array(
-//            'name' =>'feat_image',
-//            'attributes' => array(
-//                'type' 	=>'file'
-//            ),
-//            'options'  =>array(
-//                'label' =>'Choose an Image',
-//            ),
-//        ));
+        $this->add(array(
+            'name' =>'feat_image',
+            'attributes' => array(
+                'type' 	=>'file'
+            ),
+            'options'  =>array(
+                'label' =>'Upload Logo',
+            ),
+        ));
         $this->add(array(
             'name' => 'submit',
             'attributes'	=> array(
@@ -31,7 +31,7 @@ class FeatureForm extends Form
                 'type' => 'Zend\Form\Element\Text'
             ),
             'options' =>array(
-                'label' => 'Feature Started Date',
+                'label' => 'Posting Date',
             ),
         ));
         $this->add(array(
@@ -40,14 +40,14 @@ class FeatureForm extends Form
                 'type' => 'Zend\Form\Element\Text'
             ),
             'options' =>array(
-                'label' => 'Feature End Date',
+                'label' => 'Deadline:',
             ),
         ));
         $this->add(array(
-            'name' => 'company_id',
-            'type' => 'Zend\Form\Element\Select',
+            'name' => 'company_name',
+            'type' => 'Zend\Form\Element\Text',
             'options' =>array(
-                'label' => 'Company',
+                'label' => 'Company:',
             ),
         ));
         $this->add(array(
@@ -56,7 +56,7 @@ class FeatureForm extends Form
                 'type' => 'Zend\Form\Element\Text'
             ),
             'options' =>array(
-                'label' => 'Ordering',
+                'label' => 'Order Number:',
             ),
         ));
     }

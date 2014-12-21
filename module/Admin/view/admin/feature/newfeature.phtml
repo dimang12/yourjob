@@ -14,32 +14,41 @@
         </div>
         <br>
         <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4"><?php echo $this->formlabel($form->get('company_name'))?></div>
+                    <div class="col-md-8">
+                        <?php echo $this->formInput($form->get('company_name')->setAttributes(array('class'=>'col-md-12 form-control')  ));?>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4"><?php echo $this->formlabel($form->get("feat_started_date"))?></div>
+                    <div class="col-md-8">
+
+                        <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control','id'=>'datetimepicker1','required'=>true)));?>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4"><?php echo $this->formlabel($form->get("feat_end_date"))?></div>
+                    <div class="col-md-8">
+                        <?php echo $this->forminput($form->get('feat_end_date')->setAttributes(array('class'=>'col-md-12 form-control','id'=>'datetimepicker2','required'=>true)));?>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4"><?php echo $this->formlabel($form->get("feat_ordering"))?></div>
+                    <div class="col-md-8">
+                        <?php echo $this->forminput($form->get('feat_ordering')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-4">
-                <?php
-                $groups = array ();
-                foreach ( $companyData as $value ) {
-                    $groups [$value ['company_id']] = $value ['com_name'];
-                }
-                ?>
-                <?php echo $this->formlabel($form->get('company_id'))?>
-                <?php echo $this->formSelect($form->get('company_id')->setAttributes(array('class'=>'col-md-12 form-control','options'=>$groups)));?>
+                    <?php echo $this->formRow($form->get("feat_image"))?>
             </div>
         </div>
-        <br>
-        <div class="row">
-            <div class="col-md-4">
-                <?php echo $this->formlabel($form->get("feat_started_date"))?>
-                <?php echo $this->forminput($form->get('feat_started_date')->setAttributes(array('class'=>'col-md-12 form-control','id'=>'datetimepicker1','required'=>true)));?>
-            </div>
-            <div class="col-md-4">
-                <?php echo $this->formlabel($form->get("feat_end_date"))?>
-                <?php echo $this->forminput($form->get('feat_end_date')->setAttributes(array('class'=>'col-md-12 form-control','id'=>'datetimepicker2','required'=>true)));?>
-            </div>
-            <div class="col-md-4">
-                <?php echo $this->formlabel($form->get("feat_ordering"))?>
-                <?php echo $this->forminput($form->get('feat_ordering')->setAttributes(array('class'=>'col-md-12 form-control')));?>
-            </div>
-        </div>
+
         <br>
     </div>
 </div>
