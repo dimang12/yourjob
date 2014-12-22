@@ -13,10 +13,10 @@
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">
                         <tr class="box-row-title">
-                            <th>Code</th>
+                            <th>No</th>
                             <th>Title</th>
                             <th>Posted By</th>
-                            <th>Posting By</th>
+                            <th>Posting Date</th>
                             <th>Closing Date</th>
                             <th>Approval</th>
                             <th>Action</th>
@@ -30,7 +30,7 @@
                                 <td><?php echo $row['educ_post_date']?></td>
                                 <td><?php echo $row['educ_close_date']?></td>
                                 <td align="center"><input education-id="<?php echo $row["education_id"]?>" class="chk-approval" type="checkbox" <?php echo $check?>></td>
-                                <td align="center"><a href="#" class="btn btn-danger btn-delete" delete-id="<?php echo $row["education_id"]?>">Delete</a> </td>
+                                <td align="center"><a href="#" class="btn-delete" delete-id="<?php echo $row["education_id"]?>">Delete</a> </td>
                             </tr>
                         <?php }?>
                     </table>
