@@ -31,24 +31,28 @@ $this->headLink()->prependStylesheet($this->basePath() . '/css/education.css');
                                 <small class="color-ultra-light-black display-block margin-bottom-10 clearfix margin-10-0">
                                     <span class="clearfix tooltip-panel">
                                         <label class="color-black col-md-4 no-padding-left">Uploaded by</label>
-                                        :<a style="width: 300px;" href="#" data-toggle="popover" class="bottom" data-placement="bottom" title="<?php echo $v["shar_title"]; ?>" ><?php echo $v["shar_post_by"]?></a>
+                                        : <a style="width: 300px;" href="#" data-toggle="popover" class="bottom" data-placement="bottom" title="<?php echo $v["shar_title"]; ?>" ><?php echo $v["shar_post_by"]?></a>
                                         <div class="tooltip bottom tooltip-content" role="tooltip">
-                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Uploaded by</div>:<?php echo $v["shar_post_by"] ?></div>
-                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Address</div>:<?php echo $v["shar_address"] ?></div>
-                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Phone Number</div>:<?php echo $v["shar_phone"] ?></div>
-                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Email Address</div>:<?php echo $v["shar_email"] ?></div>
-                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Website</div>:<?php echo $v["shar_website"] ?></div>
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Uploaded by</div>: <?php echo $v["shar_post_by"] ?></div>
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Address</div>: <?php echo $v["shar_address"] ?></div>
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Phone Number</div>: <?php echo $v["shar_phone"] ?></div>
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Email Address</div>: <?php echo $v["shar_email"] ?></div>
+                                            <div class="clearfix"><div class="col-md-5 bold no-padding-left">Website</div>: <?php echo $v["shar_website"] ?></div>
                                         </div>
                                     </span>
                                     <span class="clearfix">
-                                        <label class="color-black col-md-4 no-padding-left">Uploaded date </label> :<?php echo date("d M, Y",strtotime($v["shar_post_date"]));?>
+                                        <label class="color-black col-md-4 no-padding-left">Uploaded date </label> : <?php echo date("d M, Y",strtotime($v["shar_post_date"]));?>
                                     </span>
                                 </small>
-                            <?php echo substr($v["shar_detail"],0,80);?>
+                            <?php echo substr(strip_tags($v["shar_detail"]),0,80);?>
                         </div>
                     </div>
+                    <?php
+                        if(($k+1)%2==0) echo "<div class='clearfix'></div>";
+                    ?>
                 <?php endforeach; ?>
-                <div class="text-center"> <?php echo $this->paginationControl($this->paginator,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
+                <div class="clearfix"></div>
+                <div class="text-center clearfix"> <?php echo $this->paginationControl($this->paginator,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
             </aside>
 
         </div>

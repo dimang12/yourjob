@@ -48,11 +48,31 @@ class SuperTableGateway extends TableGateway{
     /*
      * get list of table
      */
-    public function getList($where=""){
+    public function getList($where="", $order="", $limit=""){
         $sql = $this->db->select($this->_table);
+
+        /*
+         * check where condition
+         */
         if(!empty($where)){
             $sql->where($where);
         }
+
+        /*
+         * check ordering
+         */
+        if(!empty($order)){
+            $sql->order($order);
+        }
+
+        /*
+         * check limit
+         */
+        if(!empty($limit)){
+            $sql->limit($limit);
+        }
+
+
         return $this->executeQuery($sql)->toArray();
     }
 

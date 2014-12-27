@@ -5,66 +5,19 @@
             <a href="<?php echo $this->basepath()."/document-share";?>" class="pull-right font-13">View all <i class="glyphicon glyphicon-chevron-right"></i></a>
         </header>
         <div class="margin-10-0 row font-13 padding-5-0">
+            <?php foreach($this->document as $k=>$v):?>
             <aside class="col-md-4">
                 <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="<?php echo $this->basePath(); ?>/img/no-img.png" alt="..." width="64">
+                    <a class="pull-left" href="<?php echo $this->basepath()."/document-share/".$v["share_id"];?>">
+                        <img class="media-object" src="<?php echo $this->basepath(); ?>/img/share/<?php echo $v["shar_img"] ?>" alt="<?php echo $v["shar_title"]; ?>" width="64">
                     </a>
                     <div class="media-body">
-                        <h5 class="media-heading">Document share one</h5>
-                        Cras sit amet nibh libero, in gravida nulla.
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="<?php echo $this->basePath(); ?>/img/no-img.png" alt="..." width="64">
-                    </a>
-                    <div class="media-body">
-                        <h5 class="media-heading">Document share one</h5>
-                        Cras sit amet nibh libero, in gravida nulla.
+                        <h5 class="media-heading" title="<?php echo $v["shar_title"]; ?>"><?php echo substr($v["shar_title"],0,25)." ..."; ?></h5>
+                        <?php echo substr(strip_tags($v["shar_detail"]),0,30)." ..."; ?>
                     </div>
                 </div>
             </aside>
-            <aside class="col-md-4">
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="<?php echo $this->basePath(); ?>/img/no-img.png" alt="..." width="64">
-                    </a>
-                    <div class="media-body">
-                        <h5 class="media-heading">Document share one</h5>
-                        Cras sit amet nibh libero, in gravida nulla.
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="<?php echo $this->basePath(); ?>/img/no-img.png" alt="..." width="64">
-                    </a>
-                    <div class="media-body">
-                        <h5 class="media-heading">Document share one</h5>
-                        Cras sit amet nibh libero, in gravida nulla.
-                    </div>
-                </div>
-            </aside>
-            <aside class="col-md-4">
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="<?php echo $this->basePath(); ?>/img/no-img.png" alt="..." width="64">
-                    </a>
-                    <div class="media-body">
-                        <h5 class="media-heading">Document share one</h5>
-                        Cras sit amet nibh libero, in gravida nulla.
-                    </div>
-                </div>
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="<?php echo $this->basePath(); ?>/img/no-img.png" alt="..." width="64">
-                    </a>
-                    <div class="media-body">
-                        <h5 class="media-heading">Document share one</h5>
-                        Cras sit amet nibh libero, in gravida nulla.
-                    </div>
-                </div>
-            </aside>
+            <?php endforeach; ?>
         </div>
     </aside>
 </div>

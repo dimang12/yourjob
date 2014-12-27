@@ -6,9 +6,11 @@ use Application\Model\AclTable;
 use Application\Model\CategoriesTable;
 
 use Application\Model\EducationTable;
+use Application\Model\ExperienceShareTable;
 use Application\Model\FeatureTable;
 use Application\Model\JobTable;
 use Application\Model\LocationTable;
+use Application\Model\ShareTable;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Paginator;
@@ -28,10 +30,14 @@ class IndexController extends AbstractActionController
         $eduDb = new EducationTable($this->getAdapter());
         $locatDB = new LocationTable($this->getAdapter());
         $featureDb = new FeatureTable($this->getAdapter());
+        $docDb = new ShareTable();
+
+
 
         $feature = $featureDb->getFeatures();
         $urgentJob = $cateDb->getNewestJob();
         $newEducation = $eduDb->getLatestEducation();
+        $docShare = $docDb->getList("shar_approval=1","share_id DESC",6);
 
         return new ViewModel(array(
             "categories" => $cateDb->getAllCate()->toArray(),
@@ -39,7 +45,8 @@ class IndexController extends AbstractActionController
             "education" => $newEducation,
             "locations" => $locatDB->getAllLocationJobs(),
             "feature" => $feature,
-            "industries" => $cateDb->getAllIndustries()
+            "industries" => $cateDb->getAllIndustries(),
+            "document" => $docShare
         ));
     }
 

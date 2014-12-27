@@ -2,21 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: dimang12
- * Date: 12/18/14
- * Time: 5:39 PM
+ * Date: 12/20/14
+ * Time: 6:12 AM
  */
 ?>
 
 <div class="box-body box-white border-radius-5 margin-bottom-10">
     <div class="col-md-12 clearfix">
         <h4 class="color-blue padding-10-0 border-bottom-gray" style="padding-bottom:20px;">Experience Share, Document
-            <a href="<?php echo $this->url("experience-share")."more/1"; ?>" class="font-13 pull-right margin-top-5"> More <i class="glyphicon glyphicon-chevron-right"></i></a>
+            <a href="<?php echo $this->basepath();?>/experience-share/add" class="font-13 pull-right margin-top-10"><i class="glyphicon glyphicon-plus"></i> Post new, free</a>
         </h4>
     </div>
     <div class="padding-10-0 clearfix">
 
         <aside class="col-md-12" style="padding-top:15px;">
-            <?php foreach($this->document as $k=>$v):
+            <?php foreach($this->data as $k=>$v):
                 $img = "";
                 if(!empty($v["expr_img"])){
                     $img = "{$this->basepath()}/img/experience/{$v["expr_img"]}";
@@ -52,7 +52,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-            <div class="text-center"> <?php //echo $this->paginationControl($this->paginator,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
+            <div class="text-center"> <?php echo $this->paginationControl($this->data,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
         </aside>
 
     </div>

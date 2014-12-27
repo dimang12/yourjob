@@ -84,6 +84,25 @@ if ($routeMatch) {
         </div>
     </div>
 
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h5 class="">
+                <a data-toggle="collapse" data-parent="#accordion" href="#experience-share">
+                    Experience share
+                </a>
+            </h5>
+        </div>
+        <div id="experience-share" class="panel-collapse collapse <?php if($router == 'admin-experience') echo 'in'?>">
+            <div class="panel-body">
+                <ul>
+                    <li><a class="<?php if($router == 'admin-experience') echo 'active' ?>" href="<?php echo $this->url('admin-experience')?>">All Experience Shares</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h5 class="">

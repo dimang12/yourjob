@@ -1,0 +1,86 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 12/25/14
+ * Time: 5:04 PM
+ */
+?>
+
+<?php
+$e = $this->data;
+?>
+
+<div class="row-fluid box-admin-main">
+    <div class="col-md-2 padding-left-0">
+        <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+    </div>
+    <div class='col-md-10 box-admin-right'>
+        <div class='row box-row-title'>
+            <div class='col-md-8'><h4>Experience Information: view</h4></div>
+            <div class='col-md-4 text-right'></div>
+        </div>
+        <div class="">
+            <div class="box-white border-radius-5 margin-10-0 clearfix">
+                <div class="col-md-12">
+                    <h4 class="border-bottom-gray padding-10-0"><?php echo $e["expr_title"]; ?> </h4>
+                    <div class="clearfix">
+                        <aside class="col-md-9">
+                            <div class="padding-10-0">
+                                <?php echo $e["expr_detail"]; ?>
+                            </div>
+                        </aside>
+                        <aside class="col-md-3">
+                            <img class="full-w" src="<?php echo $this->basepath()."/img/experience/". $e["expr_img"];?>" />
+                        </aside>
+                    </div>
+
+                    <div class="clearfix border-top-gray padding-10-0">
+                        <aside class="col-md-4">
+                            <span>Posted by: </span><label class="color-blue"><?php echo $e["expr_post_by"]; ?></label>
+                        </aside>
+                        <aside class="col-md-4">
+                            <span>Posting date: </span><label class="color-blue"><?php echo $e["expr_post_date"]; ?></label>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="text-right col-md-12">
+            <button class="btn btn-default btn-sm color-red btn-delete">Delete</button>
+            <button class="btn btn-default btn-sm color-red btn-approval" data-approval="<?php echo ($e["expr_approval"]==0)?1:0; ?>">Approval</button>
+        </div>
+        <br><br>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        var id = '<?php echo $e["experience_id"]?>';
+        var baseUrl = '<?php echo $this->basepath();?>';
+        $('.btn-delete').click(function(){
+            if(confirm("Are you sure you want to delete?")){
+
+                url='<?php echo $this->basepath()."/experience-share/"?>'+id;
+                $.ajax({
+                    url:url,
+                    success:function(){
+                        window.location.href=baseUrl + '/admin-experience';
+                    }
+                });
+            }
+
+        });
+        $('.btn-approval').click(function(){
+            var ch =$(this).attr('data-approval');
+            url='<?php echo $this->basepath()."/experience-share/"?>?ch='+ch;
+            $.ajax({
+                url:url,
+                success:function(){
+                    window.location.href=baseUrl + '/admin-experience';
+                }
+            });
+        });
+    });
+</script>

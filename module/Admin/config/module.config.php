@@ -17,6 +17,7 @@ return array (
                         'Admin\Controller\Education' => 'Admin\Controller\EducationController',
                         'Admin\Controller\Industry' => 'Admin\Controller\IndustryController',
                         'Admin\Controller\Share' => 'Admin\Controller\ShareController',
+                        'Admin\Controller\Experience' => 'Admin\Controller\ExperienceController',
 				)
 		),
 		'router' => array (
@@ -733,6 +734,18 @@ return array (
                             'route' => '/admin-share[/][:action][/:id]',
                             'defaults' => array (
                                 'controller' => 'Admin\Controller\Share',
+                                'action' => 'index'
+                            )
+                        )
+                    ),
+
+
+                    'admin-experience' => array (
+                        'type' => 'Segment',
+                        'options' => array (
+                            'route' => '/admin-experience[/][:action][/:id]',
+                            'defaults' => array (
+                                'controller' => 'Admin\Controller\Experience',
                                 'action' => 'index'
                             )
                         )

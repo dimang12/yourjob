@@ -1,0 +1,78 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 12/19/14
+ * Time: 10:49 PM
+ */
+$v = $this->data;
+?>
+
+<div class="clearfix">
+    <div class="col-md-8 box-white border-radius-5">
+        <div class="">
+            <h4 class="border-bottom-gray padding-10-0"><?php echo $v["expr_title"]; ?> </h4>
+            <div class="clearfix">
+                <aside class="col-md-9">
+                    <div class="padding-10-0" style="text-align:justify;">
+                        <?php echo $v["expr_detail"]; ?>
+                    </div>
+                </aside>
+                <aside class="col-md-3">
+                    <img class="full-w" src="<?php echo $this->basepath()."/img/experience/". $v["expr_img"];?>" />
+                </aside>
+            </div>
+
+            <div class="clearfix border-top-gray padding-10-0">
+                <aside class="col-md-4">
+                    <span>Posted by: </span><label class="color-blue"><?php echo $v["expr_post_by"]; ?></label>
+                </aside>
+                <aside class="col-md-4">
+                    <span>Posting date: </span><label class="color-blue"><?php echo $v["expr_post_date"]; ?></label>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 no-padding-right">
+        <div class="box-white  border-radius-5">
+            <h4 class="padding-10 border-bottom-gray">Document by <?php echo $this->data["expr_post_by"] ?></h4>
+            <div class="clearfix" style="height:535px; overflow-y:scroll;">
+                <?php foreach($this->related as $k=>$v):
+                    $img = "";
+                    if(!empty($v["expr_img"])){
+                        $img = "{$this->basepath()}/img/experience/{$v["expr_img"]}";
+                    }else{
+                        $img = "{$this->basepath()}/img/user-login.png";
+                    }
+                    ?>
+                    <div class="margin-10-0 col-md-12">
+                        <a class="col-md-3 margin-5 border-light-gray" href="<?php echo $this->basepath()."/experience-share/detail/".$v["experience_id"];?>"
+                           style="background-image: url('<?php echo $img; ?>'); height:60px; background-position: center; background-size: cover; "
+                            >
+                        </a>
+                        <div class="media-body padding-0-5">
+                            <a href="<?php echo $this->basepath()."/experience-share/detail/".$v["experience_id"]?>/1">
+                                <h4 class="media-heading color-blue font-14 no-margin"><?php echo $v["expr_title"];?></h4></a>
+                            <small class="color-ultra-light-black display-block margin-bottom-10 clearfix margin-10-0">
+                                <span class="clearfix tooltip-panel">
+                                    <label class="color-black col-md-6 no-padding-left">Uploaded by</label>
+                                    : <a style="width: 300px;" href="#" data-toggle="popover" class="bottom" data-placement="bottom" title="<?php echo $v["expr_title"]; ?>" ><?php echo $v["expr_post_by"]?></a>
+                                    <div class="tooltip bottom tooltip-content" role="tooltip">
+                                        <div class="clearfix"><div class="col-md-5 bold no-padding-left">Uploaded by</div>: <?php echo $v["expr_post_by"] ?></div>
+                                        <div class="clearfix"><div class="col-md-5 bold no-padding-left">Address</div>: <?php echo $v["expr_address"] ?></div>
+                                        <div class="clearfix"><div class="col-md-5 bold no-padding-left">Phone Number</div>: <?php echo $v["expr_phone"] ?></div>
+                                        <div class="clearfix"><div class="col-md-5 bold no-padding-left">Email Address</div>: <?php echo $v["expr_email"] ?></div>
+                                        <div class="clearfix"><div class="col-md-5 bold no-padding-left">Website</div>: <?php echo $v["expr_website"] ?></div>
+                                    </div>
+                                </span>
+                                <span class="clearfix">
+                                    <label class="color-black col-md-6 no-padding-left">Uploaded date </label> : <?php echo date("d M, Y",strtotime($v["expr_post_date"]));?>
+                                </span>
+                            </small>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>

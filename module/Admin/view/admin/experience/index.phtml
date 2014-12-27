@@ -1,0 +1,85 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 12/21/14
+ * Time: 10:40 PM
+ */
+
+?>
+<div class="row-fluid box-admin-main">
+    <div class="col-md-3 padding-left-0">
+        <?php echo $this->partial('admin/partial/_left.phtml'); ?>
+</div>
+<div class='col-md-9 box-admin-right'>
+    <div class='row box-row-title'>
+        <div class='col-md-8'><h4 class='text-warning'>experience Information</h4></div>
+        <div class='col-md-4 text-right'></div>
+    </div>
+    <br>
+    <div class='row'>
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <tr class="box-row-title">
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>Posted By</th>
+                        <th>Posting By</th>
+                        <th>Approval</th>
+                        <th>Action</th>
+                    </tr>
+                    <?php foreach ( $this->data as $key => $row ) {?>
+                        <?php $check = $row["expr_approval"]==1?"checked":"";?>
+                        <tr>
+                            <td><?php echo $row['experience_id']?></td>
+                            <td><a href="<?php echo $this->basepath()."/admin-experience/detail/".$row["experience_id"];?>"><?php echo $row['expr_title']?></a></td>
+                            <td><?php echo $row['expr_post_by']?></td>
+                            <td><?php echo $row['expr_post_date']?></td>
+                            <td align="center"><input experience-id="<?php echo $row["experience_id"]?>" class="chk-approval" type="checkbox" <?php echo $check?>></td>
+                            <td align="center"><a href="#" class="btn btn-danger btn-delete" delete-id="<?php echo $row["experience_id"]?>">Delete</a> </td>
+                        </tr>
+                    <?php }?>
+                </table>
+                <div class="text-center">
+                    <?php  echo $this->paginationControl($this->data,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+</div>
+
+<script>
+    $(function(){
+        $('.btn-delete').click(function(){
+            if(confirm("Are you sure you want to delete?")){
+                experience_id = $(this).attr('delete-id');
+                url='<?php echo $this->basepath()."/experience-share/delete/"?>'+experience_id;
+                $.ajax({
+                    url:url,
+                    success:function(){
+                        window.location.href='';
+                    }
+                });
+            }
+
+        });
+        $('.chk-approval').click(function(){
+            experience_id = $(this).attr('experience-id');
+            ch ="0";
+            if($(this).is(":checked"))
+            {
+                ch="1";
+            }
+            url='<?php echo $this->basepath()."/experience-share/"?>'+experience_id+'?ch='+ch;
+            $.ajax({
+                url:url,
+                success:function(){
+
+                }
+            });
+        });
+    });
+</script>

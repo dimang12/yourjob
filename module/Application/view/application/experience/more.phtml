@@ -2,32 +2,33 @@
 /**
  * Created by PhpStorm.
  * User: dimang12
- * Date: 12/14/14
- * Time: 11:06 PM
+ * Date: 12/20/14
+ * Time: 6:07 AM
  */
 $this->headLink()->prependStylesheet($this->basePath() . '/css/education.css');
-
-
 ?>
 
 <div class="margin-10-0 clearfix">
     <div class="border-gray border-radius-5 bg-gray padding-5-0 clearfix margin-bottom-10">
         <ol class="breadcrumb no-margin no-background">
             <li><a href="<?php echo $this->basePath(); ?>/">Home</a></li>
-            <li><a href="<?php echo $this->url("experience-share"); ?>">Experience Share</a></li>
-            <li class="active">Video</li>
+            <li><a href="<?php echo $this->basePath(); ?>/experience-share">Experience Share</a></li>
+            <li class="active"><?php echo ($this->type==1)?"Document":"Video"; ?></li>
         </ol>
     </div>
-    <?php
-        $partial = ($this->type==1)?"_detail_document":"_detail_video";
-        echo $this->partial("application/experience/partial/{$partial}");
-    ?>
-</div>
 
+    <?php
+        if($this->type==1){
+            echo $this->partial("application/experience/partial/_more_document");
+        }else{
+            echo $this->partial("application/experience/partial/_more_video");
+        }
+     ?>
+</div>
 <script>
     $(document).ready(function(){
-        $('[data-toggle="popover"]').each(function(k,v){
 
+        $('[data-toggle="popover"]').each(function(k,v){
             var title = $(v).text();
             var body = $(v).parents('.tooltip-panel').find('.tooltip-content').html();
             $(v).popover({
@@ -39,5 +40,4 @@ $this->headLink()->prependStylesheet($this->basePath() . '/css/education.css');
             $(v).on('click', function(){ return false;});
         });
     });
-
 </script>

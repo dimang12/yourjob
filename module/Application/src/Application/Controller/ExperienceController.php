@@ -28,16 +28,39 @@ class ExperienceController extends MainController
         $page = $this->params()->fromQuery("page",1);
         $db = new ExperienceShareTable();
 
-        $video = $db->getList("expr_type=2");
+        $video = $db->getBrief(2);
 //        $paginator = $this->getPaginator($experience, $page, 10);
 
-        $document = $db->getList("expr_type=1");
+        $document = $db->getBrief(1);
         /*
          * return data to view
          */
         return new ViewModel(array(
             "video" => $video,
             "document" => $document
+        ));
+    }
+
+    /**
+     * @return ViewModel
+     */
+    public function moreAction(){
+        /*
+         * declare params
+         */
+        $page = $this->params()->fromQuery("page", 1);
+        $type = $this->params()->fromRoute("id", 2);
+        $db = new ExperienceShareTable();
+
+        $data = $db->getList("expr_type={$type}");
+        $paginator = $this->getPaginator($data,$page,20);
+
+        /*
+         * return data to view
+         */
+        return new ViewModel(array(
+            "type" => $type,
+            "data" => $paginator
         ));
     }
 
@@ -50,18 +73,20 @@ class ExperienceController extends MainController
          * declare params
          */
         $videoId = $this->params()->fromRoute("id");
+        $type = $this->params()->fromRoute("type",2);
         $db = new ExperienceShareTable();
 
         $detail = $db->getDetail($videoId);
 
-        $related = $db->getRelated($videoId);
+        $related = $db->getRelated($videoId, $type);
 
         /*
          * return values to view
          */
         return new ViewModel(array(
             "data" => current($detail),
-            "related" => $related
+            "related" => $related,
+            "type" => $type
         ));
     }
 

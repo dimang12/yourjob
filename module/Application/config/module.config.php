@@ -188,7 +188,7 @@ return array (
                         'experience-share'=>array(
                             'type' => 'Segment',
                             'options' =>array(
-                                'route' => '/experience-share[/][:action][/:id]',
+                                'route' => '/experience-share[/][:action][/:id][/:type]',
                                 'constraints' => array(),
                                 'defaults'=>array(
                                     'controller' => 'Application\Controller\Experience',
