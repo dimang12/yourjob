@@ -1326,8 +1326,7 @@ class GlobalModel extends AbstractTableGateway {
     public function getFeature(){
         //ZF2_Query("SELECT * FROM feature f INNER  JOIN company c ON f.company_id = c.company_id");
         $sql = new Sql($this->adapter);
-        $select = $sql->select(array('f'=>'feature'))
-            ->join(array('c'=>'company'),'f.company_id=c.company_id')
+        $select = $sql->select('feature')
         ;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
