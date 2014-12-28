@@ -17,6 +17,20 @@
 
         </div>
         <div class="padding-10-0 clearfix">
+            <aside class="col-md-4">
+                <br>
+                <div class="list-group">
+                    <a href="<?php echo $this->basepath();?>/education" class="list-group-item <?php if($this->cate == "") echo "active" ?>">
+                        All Categories
+                    </a>
+                    <?php  foreach($this->eduCate as $k=>$v):?>
+                    <a href="<?php echo $this->basepath()."/education?c={$v["education_category_id"]}";?>" class="list-group-item <?php if($this->curPage == "General") echo "active" ?>">
+                        <?php echo $v["edca_name"]; ?>
+                    </a>
+                    <?php endforeach; ?>
+
+                </div>
+            </aside>
             <aside class="col-md-8" style="padding-top:15px;">
                 <?php foreach($this->eduData as $k=>$v): ?>
                 <div class="media margin-10-0 clearfix">
@@ -37,13 +51,7 @@
                 <?php endforeach; ?>
                 <div class="text-center"> <?php echo $this->paginationControl($this->eduData,'sliding',array('layout/_paginator.phtml','viewmore'),array('controller' => 'Education','category'=>''));?> </div>
             </aside>
-            <aside class="col-md-4 no-padding-right">
-                <br>
-                <div>
-                    <img src="<?php echo $this->basePath()?>/img/promotion/1.png" class="col-md-12">
-                    <img src="<?php echo $this->basePath()?>/img/promotion/2.gif" class="col-md-12 margin-10-0">
-                </div>
-            </aside>
+
         </div>
     </div>
 </div>

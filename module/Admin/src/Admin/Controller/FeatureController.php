@@ -54,6 +54,7 @@ class FeatureController extends AbstractActionController {
                     'feat_image' => $newName,
                     'feat_ordering' => $feat_ordering
                 );
+
                 $sm->ZF2_Insert('feature',$values);
                 return $this->redirect()->toUrl('admin-feature');
             }catch (\Exception $ext){

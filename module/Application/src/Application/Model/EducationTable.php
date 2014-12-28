@@ -60,6 +60,12 @@ class EducationTable extends SuperTableGateway{
     }
 
 
+    public function getEducationCategory(){
+        $sql = $this->db->select()->from("education_category")->order("edca_name ASC");
+        return $this->executeQuery($sql)->toArray();
+    }
+
+
 
 
 }

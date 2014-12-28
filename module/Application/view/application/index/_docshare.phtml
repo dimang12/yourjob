@@ -6,7 +6,7 @@
         </header>
         <div class="margin-10-0 row font-13 padding-5-0">
             <?php foreach($this->document as $k=>$v):?>
-            <aside class="col-md-4">
+            <aside class="col-md-4 margin-top-10">
                 <div class="media">
                     <a class="pull-left" href="<?php echo $this->basepath()."/document-share/".$v["share_id"];?>">
                         <img class="media-object" src="<?php echo $this->basepath(); ?>/img/share/<?php echo $v["shar_img"] ?>" alt="<?php echo $v["shar_title"]; ?>" width="64">
@@ -17,6 +17,7 @@
                     </div>
                 </div>
             </aside>
+                <?php if(($k+1)%3==0) echo "<div class='padding-5-0' style='clear: both;'></div>" ?>
             <?php endforeach; ?>
         </div>
     </aside>

@@ -17,12 +17,16 @@ use Zend\View\Model\ViewModel;
 
 class EducationController extends  AbstractActionController{
 
+    /**
+     * @return array|ViewModel
+     */
     public function indexAction(){
 
         $page = $this->params()->fromQuery("page",1);
 
         $db = new EducationTable($this->getAdapter());
         $eduData = $db->getAllEducation();
+        $eduCate = $db->getEducationCategory();
 
 
         $paginator = new Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($eduData));
@@ -30,7 +34,8 @@ class EducationController extends  AbstractActionController{
         $paginator->setItemCountPerPage(10);
 
         return new ViewModel(array(
-            "eduData"=>$paginator
+            "eduData"=>$paginator,
+            "eduCate"=>$eduCate
         ));
     }
 
