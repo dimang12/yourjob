@@ -38,6 +38,9 @@ class ShareController extends AbstractActionController
         ));
     }
 
+    /**
+     * @return bool
+     */
     public function approveAction(){
         $this->layout("layout/ajax_layout");
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
@@ -49,6 +52,30 @@ class ShareController extends AbstractActionController
         }
         return true;
     }
+
+    /**
+     * @return ViewModel
+     */
+    public function detailAction(){
+        $id = $this->params()->fromRoute("id");
+        $db = new ShareTable();
+        $detail = $db->getDetail($id);
+
+        return new ViewModel(array(
+            "detail" => current($detail)
+        ));
+    }
+
+    public function deleteAction(){
+        $id = $this->params()->fromRoute("id");
+        $db = new ShareTable();
+
+        $db->deleteRow($id);
+        return false;
+    }
+
+
+
     /**
      * @return array|object
      */

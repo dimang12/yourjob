@@ -72,7 +72,7 @@ class ExperienceForm extends Form
             'attributes' => array(
                 'class' => 'form-control address',
                 'placeholder' => 'Type address...',
-                'required' => 'required',
+//                'required' => 'required',
 
                 'step' => '1',
             ),
@@ -87,7 +87,7 @@ class ExperienceForm extends Form
             'attributes' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Type phone number...',
-                'required' => 'required',
+//                'required' => 'required',
 
                 'step' => '1',
             ),
@@ -102,7 +102,7 @@ class ExperienceForm extends Form
             'attributes' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Type email address...',
-                'required' => 'required',
+//                'required' => 'required',
 
                 'step' => '1',
             ),
@@ -118,7 +118,7 @@ class ExperienceForm extends Form
             'attributes' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Type website...',
-                'required' => 'required',
+//                'required' => 'required',
 
                 'step' => '1',
             ),
@@ -185,7 +185,7 @@ class ExperienceForm extends Form
             'type' => 'Zend\Form\Element\Textarea',
             'attributes' => array(
                 'class' => 'form-control',
-                'required' => 'required',
+//                'required' => 'required',
                 'rows' => 10
             ),
             'options' => array(

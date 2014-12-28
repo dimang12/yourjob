@@ -110,11 +110,11 @@ class EducationForm extends Form
             'type' => 'Zend\Form\Element\Textarea',
              'attributes' => array(
                 'class' => 'form-control',
-                'required' => 'required',
                  'rows' => 15
             ),
             'options' => array(
                 'label' => "Detail:"
+
             ),
         ));
 
@@ -126,7 +126,8 @@ class EducationForm extends Form
                 'required' => 'required',
             ),
             'options' => array(
-                'label' => "Education Category:"
+                'label' => "Education Category:",
+                'options' => array()
             ),
         ));
 

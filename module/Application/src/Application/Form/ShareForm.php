@@ -72,7 +72,7 @@ class ShareForm extends Form
             'attributes' => array(
                 'class' => 'form-control address',
                 'placeholder' => 'Type address...',
-                'required' => 'required',
+//                'required' => 'required',
 
                 'step' => '1',
             ),
@@ -87,7 +87,7 @@ class ShareForm extends Form
             'attributes' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Type phone number...',
-                'required' => 'required',
+//                'required' => 'required',
 
                 'step' => '1',
             ),
@@ -102,7 +102,7 @@ class ShareForm extends Form
             'attributes' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Type email address...',
-                'required' => 'required',
+//                'required' => 'required',
 
                 'step' => '1',
             ),
