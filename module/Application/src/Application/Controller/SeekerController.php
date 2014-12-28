@@ -168,7 +168,7 @@ class SeekerController extends AbstractActionController{
                     'job_published_date'=>$job_published_date,
                     'job_close_date'=>$job_close_date,
                     'job_status'=>1,
-                    'gender'=>$gender,
+                    'job_gender'=>$gender,
                     'job_age_from' => $job_age_from,
                     'job_age_to' => $job_age_to,
                     'job_contact' => $job_contact
@@ -231,7 +231,7 @@ class SeekerController extends AbstractActionController{
                     'job_published_date'=>$job_published_date,
                     'job_close_date'=>$job_close_date,
                     'job_status'=>1,
-                    'Gender'=>$gender,
+                    'job_gender'=>$gender,
                     'job_age_from' => $job_age_from,
                     'job_age_to' => $job_age_to,
                     'job_contact' => $job_contact
@@ -243,7 +243,7 @@ class SeekerController extends AbstractActionController{
                 ));
             }
         }
-        $jobData = $sm->ZF2_Query("SELECT * FROM  job INNER JOIN city ON job.city_id = city.city_id WHERE job_id =$job_id");
+        $jobData = $sm->getJobWithCity($job_id);
         $cityData = $sm->ZF2_Select_AllColumn('city');
         return array(
             'jobData' => $jobData,

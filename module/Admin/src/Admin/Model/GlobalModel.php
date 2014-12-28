@@ -1432,4 +1432,20 @@ class GlobalModel extends AbstractTableGateway {
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();
     }
+
+    /*
+     * get job join with city
+     */
+    public function getJobWithCity($jobId=null){
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array("j"=>"job"))
+            ->join(array("c"=>"city"),"j.city_id = c.city_id")
+            ;
+        if(!empty($jobId)){
+            $select->where("job_id=$jobId");
+        }
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
 }
