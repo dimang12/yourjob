@@ -30,7 +30,7 @@ class LocationTable extends SuperTableGateway{
         $query = $db->select()
                     ->from("city")
                     ->columns(array("*",new Expression("count(job.job_id) AS num")))
-                    ->join("job", "city.city_id=job.city_id",array(), "LEFT")
+                    ->join("job", new Expression("city.city_id=job.city_id AND DATE(job.job_close_date) > DATE(NOW())"),array(), "LEFT")
                     ->group("city.city_id")
                     ;
         return DB::executeQuery($db, $query)->toArray();

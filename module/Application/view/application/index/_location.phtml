@@ -1,15 +1,20 @@
 <?php
-$resultSet = new \Zend\Db\ResultSet\ResultSet();
-$locations = $resultSet->initialize($this->locations);
+//$resultSet = new \Zend\Db\ResultSet\ResultSet();
+//$locations = $resultSet->initialize($this->locations);
+$locations = $this->locations;
 
 $cateList = '';
 $asideList = '';
-$perColumn = round($locations->count() / 3);
-$add=1;
 
+$count = count($locations);
+$perColumn = round(($count-($count%3)) / 3);
+$add=0;
+$j=0;
 for($i=1; $i<=3; $i++){
-    if(($locations->count() % 3) <> 0){
-        if($i > ($locations->count() % 3) ){
+    if(($count % 3) <> 0){
+        if(($count % 3) >= $i){
+            $add=1;
+        }else{
             $add=0;
         }
     }
@@ -20,11 +25,10 @@ for($i=1; $i<=3; $i++){
     }else{
         $asideList = '<aside class="col-md-4 no-padding-right"><ul>';
     }
-    $j = 1;
-    foreach($locations as $k=>$v){
-        if($j > (($i-1) * ($perColumn+$add))  &&  $j <= ($i * ($perColumn+$add))){
-            $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/home/location/".$v["city_id"].'" class="pull-left color-black">'.$v["city_name"].'</a><label class="pull-right">('.$v["num"].')</label></li>';
-        }
+
+    $column = array_slice($locations,$j,($perColumn+$add));
+    foreach($column as $k=>$v){
+        $asideList .='<li class="full-w clearfix"><a href="'.$this->basepath()."/home/location/".$v["city_id"].'" class="pull-left color-black">'.$v["city_name"].'</a><label class="pull-right">('.$v["num"].')</label></li>';
         $j++;
     }
     $cateList .= $asideList .'</ul></aside>';

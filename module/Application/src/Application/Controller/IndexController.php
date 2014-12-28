@@ -3,6 +3,7 @@
 namespace Application\Controller;
 
 use Application\Model\AclTable;
+use Application\Model\AdvertisementTable;
 use Application\Model\CategoriesTable;
 
 use Application\Model\EducationTable;
@@ -40,7 +41,7 @@ class IndexController extends AbstractActionController
         $docShare = $docDb->getList("shar_approval=1","share_id DESC",6);
 
         return new ViewModel(array(
-            "categories" => $cateDb->getAllCate()->toArray(),
+            "categories" => $cateDb->getAllCate("cate_name ASC")->toArray(),
             "urgentJob" => json_encode($urgentJob),
             "education" => $newEducation,
             "locations" => $locatDB->getAllLocationJobs(),
@@ -51,29 +52,41 @@ class IndexController extends AbstractActionController
     }
 
 
-
+    /**
+     * @return ViewModel
+     */
     public function categoryAction(){
         //declare params
         $cateId =  $this->params()->fromQuery("c");
         $page = $this->params()->fromQuery("page",1);
         $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
+        $advsDb = new AdvertisementTable();
         $jobs = array();
+        $detail = array();
+        $advertisement = array();
 
         //it is won't works if category id is empty
         if(!empty($cateId)){
             $jobs = $cateDb->getJobByCate($cateId);
+            $detail = $cateDb->getDetail($cateId);
         }
+
+        $advertisement = $advsDb->getList("","adv_ordering ASC", "10");
 
         $paginator = new Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobs));
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage(20);
 
 
-        //pass params to view
+        /*
+         * pass params to view
+         */
         return new ViewModel(array(
             "jobs" => $jobs,
             'paginator'=>$paginator,
-            "category"=>$cateId
+            "category"=>$cateId,
+            "cateDetail" => current($detail),
+            "advs" => $advertisement
         ));
     }
 
