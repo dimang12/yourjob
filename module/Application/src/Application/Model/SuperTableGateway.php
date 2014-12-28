@@ -15,8 +15,8 @@ use Zend\Db\TableGateway\TableGateway;
 class SuperTableGateway extends TableGateway{
 
     public $db;
-    public $_table = "";
-    public $_fieldId = "";
+    public $_table = "share";
+    public $_fieldId = "share_id";
 
     /*
      *

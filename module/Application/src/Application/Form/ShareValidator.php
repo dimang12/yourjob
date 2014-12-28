@@ -27,7 +27,7 @@ class ShareValidator implements InputFilterAwareInterface
         $factory = new InputFactory();
 
 
-        $inputFilter->add($factory->createInput([
+        $inputFilter->add($factory->createInput(array(
             'name' => 'shar_post_by',
             'required' => true,
             'filters' => array(
@@ -36,10 +36,10 @@ class ShareValidator implements InputFilterAwareInterface
             ),
             'validators' => array(
             ),
-        ]));
+        )));
 
 
-        $inputFilter->add($factory->createInput([
+        $inputFilter->add($factory->createInput(array(
             'name' => 'shar_contact',
             'required' => true,
             'filters' => array(
@@ -48,9 +48,9 @@ class ShareValidator implements InputFilterAwareInterface
             ),
             'validators' => array(
             ),
-        ]));
+        )));
 
-        $inputFilter->add($factory->createInput([
+        $inputFilter->add($factory->createInput(array(
             'name' => 'image',
             'filters' => array(
                 array('name' => 'StripTags'),
@@ -59,9 +59,9 @@ class ShareValidator implements InputFilterAwareInterface
             'validators' => array(
 
             ),
-        ]));
+        )));
 
-        $inputFilter->add($factory->createInput([
+        $inputFilter->add($factory->createInput(array(
             'name' => 'shar_detail',
             'required' => true,
             'filters' => array(
@@ -70,11 +70,9 @@ class ShareValidator implements InputFilterAwareInterface
             ),
             'validators' => array(
             ),
-        ]));
+        )));
 
         $this->inputFilter = $inputFilter;
-
-
         return $this->inputFilter;
     }
 }
