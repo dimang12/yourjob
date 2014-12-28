@@ -46,10 +46,11 @@ class RegisterController extends AbstractActionController{
                 $form->setData($request->getPost());
                 if($form->isValid()){
                    $sm->ZF2_Insert("users",$valueUser);
-                    return $this->redirect()->toRoute('job-seeker', array(
-                        'controller' => 'Seeker',
-                        'action' =>  'index'
+                    return $this->redirect()->toRoute('resume', array(
+                        'controller' => 'Resume',
+                        'action' =>  'login'
                     ));
+
                 }
             }else{
                 $form->optRegister=$optionRegister;
@@ -59,24 +60,36 @@ class RegisterController extends AbstractActionController{
 
                     $file = $this->params()->fromFiles('images');
                     $name = $file['name'];
-                    $ext = pathinfo($name, PATHINFO_EXTENSION);
-                    $newName = uniqid(). '.' . $ext;
+                    $newName = "";
+                    if(empty($name)){
+                        $newName = "no_image.png";
+                    }else{
 
-                    $size = new Size(array('max' => 1048576)); // 1MB
-                    $adapter = new \Zend\File\Transfer\Adapter\Http();
-                    $adapter->setValidators(array($size), $file['name']);
+                        $ext = pathinfo($name, PATHINFO_EXTENSION);
+                        $newName = uniqid(). '.' . $ext;
+                        $size = new Size(array('max' => 1048576)); // 1MB
+                        $adapter = new \Zend\File\Transfer\Adapter\Http();
+                        $adapter->setValidators(array($size), $file['name']);
+                        if(! $adapter->isValid())
+                        {
+                            $error = 'Upload Fail, Maximum size (1MB)';
+                        }else{
+                            // move file uploaded to folder
+                            $dir = 'public/img/company';
+                            if(file_exists($dir))
+                            {
+                                move_uploaded_file($file['tmp_name'], $dir.'/'.$newName);
+                            }
+                        }
 
-                    if(! $adapter->isValid())
+                    }
+
+
+                    if(!empty($error))
                     {
-                        $error = 'Upload Fail, Maximum size (1MB)';
+                        //$error = 'Upload Fail, Maximum size (1MB)';
 
                     }else {
-                        // move file uploaded to folder
-                        $dir = 'public/img/company';
-                        if(file_exists($dir))
-                        {
-                            move_uploaded_file($file['tmp_name'], $dir.'/'.$newName);
-                        }
 
                         $valueCom = array(
                             'user_id'=>'',
