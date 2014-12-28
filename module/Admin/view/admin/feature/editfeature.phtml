@@ -9,6 +9,7 @@
     foreach($this->featureData as $row){
         $feat_started_date = $row['feat_started_date'];
         $feat_end_date = $row['feat_end_date'];
+        $feat_link = $row['feat_link'];
         $feat_ordering = $row['feat_ordering'];
     }
 ?>
@@ -36,6 +37,13 @@
             <div class="col-md-4">
                 <?php echo $this->formlabel($form->get("feat_ordering"))?>
                 <?php echo $this->forminput($form->get('feat_ordering')->setAttributes(array('class'=>'col-md-12 form-control','value'=>$feat_ordering)));?>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <?php echo $this->formlabel($form->get("feat_link"))?>
+                <?php echo $this->forminput($form->get('feat_link')->setAttributes(array('class'=>'col-md-12 form-control','value'=>$feat_link)));?>
             </div>
         </div>
         <br>

@@ -38,6 +38,13 @@
                 </div>
                 <br>
                 <div class="row">
+                    <div class="col-md-4"><?php echo $this->formlabel($form->get("feat_link"))?></div>
+                    <div class="col-md-8">
+                        <?php echo $this->forminput($form->get('feat_link')->setAttributes(array('class'=>'col-md-12 form-control')));?>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
                     <div class="col-md-4"><?php echo $this->formlabel($form->get("feat_ordering"))?></div>
                     <div class="col-md-8">
                         <?php echo $this->forminput($form->get('feat_ordering')->setAttributes(array('class'=>'col-md-12 form-control')));?>
