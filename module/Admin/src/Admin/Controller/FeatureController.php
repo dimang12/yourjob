@@ -45,12 +45,14 @@ class FeatureController extends AbstractActionController {
                 // save to database
                 $company_name = $this->params()->fromPost('company_name');
                 $feat_started_date= $this->params()->fromPost('feat_started_date');
+                $feat_link = $this->params()->fromPost('feat_link');
                 $feat_end_date = $this->params()->fromPost('feat_end_date');
                 $feat_ordering = $this->params()->fromPost('feat_ordering');
                 $values = array(
                     'company_name' => $company_name,
                     'feat_started_date' => $feat_started_date,
                     'feat_end_date' => $feat_end_date,
+                    'feat_link' => $feat_link,
                     'feat_image' => $newName,
                     'feat_ordering' => $feat_ordering
                 );
@@ -77,10 +79,12 @@ class FeatureController extends AbstractActionController {
             //try{
             $feat_started_date= $this->params()->fromPost('feat_started_date');
             $feat_end_date = $this->params()->fromPost('feat_end_date');
+            $feat_link = $this->params()->fromPost('feat_link');
             $feat_ordering = $this->params()->fromPost('feat_ordering');
             $values = array(
                 'feat_started_date' => $feat_started_date,
                 'feat_end_date' => $feat_end_date,
+                'feat_link' => $feat_link,
                 'feat_ordering' => $feat_ordering
             );
             $sm->ZF2_Update('feature',$values,array('feature_id'=>$feature_id));

@@ -59,6 +59,15 @@ class FeatureForm extends Form
                 'label' => 'Order Number:',
             ),
         ));
+        $this->add(array(
+            'name' => 'feat_link',
+            'attributes' => array(
+                'type' => 'Zend\Form\Element\Text'
+            ),
+            'options' =>array(
+                'label' => 'Link:',
+            ),
+        ));
     }
 
 }

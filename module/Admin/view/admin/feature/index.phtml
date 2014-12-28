@@ -17,6 +17,7 @@
                             <th>Company Name</th>
                             <th>Start Date</th>
                             <th>End Date</th>
+                            <th>Link</th>
                             <th>Ordering</th>
                             <th>Action</th>
                         </tr><?php $i = 1?>
@@ -26,6 +27,7 @@
                                 <td><?php echo $col['company_name']?></td>
                                 <td><?php echo $col['feat_started_date']?></td>
                                 <td><?php echo $col['feat_end_date']?></td>
+                                <td><?php echo $col['feat_link']?></td>
                                 <td><?php echo $col['feat_ordering']?></td>
                                 <td><a href="<?php echo $this->url('admin-feature-edit')?>?featId=<?php echo $col['feature_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
                                     <a href='#' title='Remove'><span data-remove='<?php echo $col['feature_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
