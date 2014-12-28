@@ -54,7 +54,6 @@ class SeekerController extends AbstractActionController{
         $loginForm = new LoginForm();
 
         if ($this->getRequest()->isPost()) {
-            print_r($this->getRequest()->getPost());
             $loginForm->setData($this->getRequest()->getPost());
             if (!$loginForm->isValid()) {
                 // not valid form
