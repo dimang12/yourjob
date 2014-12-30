@@ -125,6 +125,7 @@ class CategoriesTable extends SuperTableGateway {
     public function getRecommendedJob($categoryId){
         $db = new Sql($this->adapter);
         $sql = $db->select()->from("job")
+            ->columns(array("job_id", "job_description"))
             ->where("job.category_id = $categoryId")
             ->where("DATE(job.job_close_date) > DATE(NOW())")
         ;
@@ -136,6 +137,7 @@ class CategoriesTable extends SuperTableGateway {
     public function getRelatedJob($companyId){
         $db = new Sql($this->adapter);
         $sql = $db->select()->from("job")
+            ->columns(array("job_id","job_description"))
             ->join("company","job.user_id = company.user_id")
             ->where("job.category_id = $companyId")
             ->where("DATE(job.job_close_date) > DATE(NOW())")

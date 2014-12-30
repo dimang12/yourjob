@@ -7,11 +7,61 @@
  */
 ?>
 
-<div class="box-white margin-10-0 border-radius-5">
-    <div class="bg-gray border-radius-top-5 border-bottom-gray no-padding">
-        <?php echo $this->partial("application/info/partial/_breadcrumb", array("curPage"=>"About Us","icon"=>" glyphicon-plus")); ?>
-    </div>
-    <div class="clearfix">
-        <div class="col-md-12">About us page</div>
+<div class="bg-gray border-gray margin-10-0 border-radius-5">
+    <div class="border-radius-top-5 no-padding">
+        <?php echo $this->partial("application/info/partial/_breadcrumb", array("curPage"=>"About Us","icon"=>" glyphicon-user")); ?>
     </div>
 </div>
+
+<div class="box-white border-gray margin-10-0 border-radius-5 clearfix">
+    <div class="col-md-12">
+        <h4 class="border-bottom-gray padding-10-0">About Us</h4>
+        <div>
+            <div class="col-md-8 text-justify">
+                <h4 class="clearfix font-16 padding-10-0 border-bottom-gray color-light-black">Company Background</h4>
+                So if I create a Person object and then attempt to set a property called Person::$name, the __set() method is invoked, because this class does not define a $name property. The method is passed the string “name” and the value that the client assigned. How the value is then used depends upon the implementation of __set(). In this example, I construct a method name out of the property argument combined with the string “set”. The setName() method is found and duly invoked. This transforms the incoming value and stores it in a real property.
+
+                <br><br>
+                The __call() method is probably the most useful of all the interceptor methods. It is invoked when an undefined method is called by client code. __call() is invoked with the method name and an array holding all arguments passed by the client. Any value that you return from the __call() method is returned to the client as if it were returned by the method invoked.
+                The __call() method can be useful for delegation. Delegation is the mechanism by which one object passes method invocations on to a second. It is similar to inheritance, in that a child class passes on a method call to its parent implementation. With inheritance the relationship between child and parent is fixed, so the ability to switch the receiving object at runtime means that delegation can be more flexible than inheritance. An example clarify things a little. Here is a simple class for formatting information from the Person class:
+            </div>
+            <div class="col-md-4">
+                <br/><br/>
+                <img class="full-w margin-top-10" src="<?php echo $this->basepath("/img/no-img-512x512.png"); ?>" alt=""/>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-md-8 text-justify">
+                <h4 class="clearfix font-16 padding-10-0 border-bottom-gray color-light-black">Our Vision</h4>
+                So if I create a Person object and then attempt to set a property called Person::$name, the __set() method is invoked, because this class does not define a $name property. The method is passed the string “name” and the value that the client assigned. How the value is then used depends upon the implementation of __set(). In this example, I construct a method name out of the property argument combined with the string “set”. The setName() method is found and duly invoked. This transforms the incoming value and stores it in a real property.
+
+                <br><br>
+                The __call() method is probably the most useful of all the interceptor methods. It is invoked when an undefined method is called by client code. __call() is invoked with the method name and an array holding all arguments passed by the client. Any value that you return from the __call() method is returned to the client as if it were returned by the method invoked.
+                The __call() method can be useful for delegation. Delegation is the mechanism by which one object passes method invocations on to a second. It is similar to inheritance, in that a child class passes on a method call to its parent implementation. With inheritance the relationship between child and parent is fixed, so the ability to switch the receiving object at runtime means that delegation can be more flexible than inheritance. An example clarify things a little. Here is a simple class for formatting information from the Person class:
+            </div>
+
+            <div class="col-md-4">
+                <br/><br/>
+                <img class="full-w margin-top-10" src="<?php echo $this->basepath("/img/no-img-512x512.png"); ?>" alt=""/>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-md-8 text-justify">
+                <h4 class="clearfix font-16 padding-10-0 border-bottom-gray color-light-black">Our Mission</h4>
+                So if I create a Person object and then attempt to set a property called Person::$name, the __set() method is invoked, because this class does not define a $name property. The method is passed the string “name” and the value that the client assigned. How the value is then used depends upon the implementation of __set(). In this example, I construct a method name out of the property argument combined with the string “set”. The setName() method is found and duly invoked. This transforms the incoming value and stores it in a real property.
+
+                <br><br>
+                The __call() method is probably the most useful of all the interceptor methods. It is invoked when an undefined method is called by client code. __call() is invoked with the method name and an array holding all arguments passed by the client. Any value that you return from the __call() method is returned to the client as if it were returned by the method invoked.
+                The __call() method can be useful for delegation. Delegation is the mechanism by which one object passes method invocations on to a second. It is similar to inheritance, in that a child class passes on a method call to its parent implementation. With inheritance the relationship between child and parent is fixed, so the ability to switch the receiving object at runtime means that delegation can be more flexible than inheritance. An example clarify things a little. Here is a simple class for formatting information from the Person class:
+            </div>
+
+            <div class="col-md-4">
+                <br/><br/>
+                <img class="full-w margin-top-10" src="<?php echo $this->basepath("/img/no-img-512x512.png"); ?>" alt=""/>
+            </div>
+        </div>
+    </div>
+</div>
+

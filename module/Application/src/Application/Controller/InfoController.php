@@ -38,4 +38,17 @@ class InfoController extends MainController
         ));
     }
 
+    public function feedbackAction(){
+        /*
+         * declare
+         */
+
+        /*
+         * return to view
+         */
+        return new ViewModel(array(
+
+        ));
+    }
+
 }

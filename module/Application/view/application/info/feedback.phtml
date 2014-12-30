@@ -1,0 +1,58 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 12/29/14
+ * Time: 12:52 PM
+ */
+?>
+
+
+<div class="bg-gray border-gray margin-10-0 border-radius-5">
+    <div class="border-radius-top-5 no-padding">
+        <?php echo $this->partial("application/info/partial/_breadcrumb", array("curPage"=>"Feedback","icon"=>" glyphicon-envelope")); ?>
+    </div>
+</div>
+
+<div class="box-white border-gray margin-10-0 border-radius-5 clearfix">
+    <div class="col-md-12">
+        <h4 class="border-bottom-gray padding-10-0">Feedback</h4>
+        <div>
+            <div class="col-md-8 text-justify">
+
+
+                <br><br>
+                <div class="form-group">
+                    <label>Feedback Title: </label>
+                    <input class="form-control" type="text"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Feedback Detail: </label>
+                    <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Email: <i class="text-danger">*</i> </label>
+                    <div class="clearfix">
+                        <div class="col-md-9 no-padding-left">
+                            <input class="form-control col-md-10" type="email" required=""/>
+                        </div>
+                        <div class="col-md-3 no-padding-right">
+                            <button class="form-control btn-success">
+                                <i class="glyphicon glyphicon-send"> Send</i>
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <br/><br/>
+            </div>
+        </div>
+    </div>
+</div>
+

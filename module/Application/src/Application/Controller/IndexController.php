@@ -119,11 +119,16 @@ class IndexController extends AbstractActionController
         ));
     }
 
+    /**
+     * view job detail
+     * @return ViewModel
+     */
     public function jobdtAction(){
         //declare params
         $jobId = $this->params()->fromQuery("job");
         $db = new CategoriesTable($this->getCategoiesTableGateway());
         $jobDetail = $relatedJob = $recommendJob =  null;
+        $relatedJob = $recommendJob = array();
 
         if(!empty($jobId)){
             $jobDetail = $db->getJobDetail($jobId);
@@ -131,6 +136,10 @@ class IndexController extends AbstractActionController
             $recommendJob  = $db->getRecommendedJob($jobDetail[0]["category_id"]);
         }
 
+        print_r($recommendJob);
+        /*
+         * pass param to view
+         */
         return new ViewModel(
             array(
                 "jobDetail"=>current($jobDetail),

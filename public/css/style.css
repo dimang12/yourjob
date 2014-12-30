@@ -52,8 +52,10 @@ label                       { font-weight:normal;}
 /*~~~~~~~~~~Text Shadow~~~~~~~~~~~~~*/
 .text-shadow				{ text-shadow:1px 1px 0 #144568;}
 .text-overflow              { text-overflow:ellipsis; overflow:hidden; white-space:nowrap; height:27px;}
+.text-justify               { text-align: justify;}
 .shadow-white				{ text-shadow:1px 1px 0 #fff;}
 .shadow-red					{ text-shadow:1px 1px 0 #8a1515;}
+
 
 /*~~~~~~~~~~box~~~~~~~~~~~~~*/
 .box-white                  { background:#fff; border:#ccc solid 1px;}

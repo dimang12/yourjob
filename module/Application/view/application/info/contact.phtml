@@ -5,13 +5,43 @@
  * Date: 12/6/14
  * Time: 3:27 PM
  */
+$this->headLink()->prependStylesheet($this->basePath() . '/css/education.css');
 ?>
 
-<div class="box-white margin-10-0 border-radius-5">
-    <div class="bg-gray border-radius-top-5 border-bottom-gray no-padding">
-        <?php echo $this->partial("application/info/partial/_breadcrumb", array("curPage"=>"Contact Us","icon"=>" glyphicon-plus")); ?>
-    </div>
-    <div class="clearfix">
-        <div class="col-md-12">Contact page</div>
+<div class="bg-gray border-gray margin-10-0 border-radius-5">
+    <div class="border-radius-top-5 no-padding">
+        <?php echo $this->partial("application/info/partial/_breadcrumb", array("curPage"=>"Contact Us","icon"=>" glyphicon-phone")); ?>
     </div>
 </div>
+
+<div class="box-white border-gray margin-10-0 border-radius-5 clearfix">
+    <div class="col-md-12">
+        <h4 class="border-bottom-gray padding-10-0">Contact Us</h4>
+        <div>
+            <div class="col-md-3">
+                <img src="<?php echo $this->basepath("/img/contact_us_icon-orange.png") ?>" alt=""/>
+            </div>
+            <div class="col-md-9">
+                <div class="clearfix">
+                    <b class="col-md-3">Tel</b> : (+855) 00 000 000
+                </div>
+                <div class="clearfix margin-top-10">
+                    <b class="col-md-3">Email</b> : sales@youjob.info
+                </div>
+                <div class="clearfix margin-top-10">
+                    <b class="col-md-3">Working Hours</b> : 8:00 AM – 5:00 PM
+                </div>
+                <div class="clearfix margin-top-10">
+                    <b class="col-md-3">Working day</b> : Monday – Sunday
+                </div>
+                <div class="clearfix margin-top-10">
+                    <b class="col-md-3">Address</b> : Phnom Penh, Kingdom of Cambodia
+                </div>
+                <div class="clearfix border-top-gray margin-top-10 padding-10">
+                    Our team would like to thanks you for accessing and using our website. Please kindly contact us if you need some information or purchase any package of our website.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
