@@ -242,7 +242,7 @@ class ResumeTable extends SuperTableGateway
 
             $sql = $this->db->select()
                             ->from("users")
-                            ->where("username='$userName' AND password=MD5($password) AND user_type=1")
+                            ->where("username='$userName' AND password=MD5('$password') AND user_type=1")
                 ;
             $res = $this->executeQuery($sql)->toArray();
 
