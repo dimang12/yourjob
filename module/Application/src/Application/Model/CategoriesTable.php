@@ -15,26 +15,34 @@ use Zend\Db\Sql\Sql;
 use Zend\Db\TableGateway\AbstractTableGateway;
 use Zend\Db\TableGateway\TableGateway;
 
-class CategoriesTable extends AbstractTableGateway {
+class CategoriesTable extends SuperTableGateway {
     protected $tableGateway;
     protected $adapter;
+
 
     public function __construct(TableGateway $tableGateway){
         $this->tableGateway = $tableGateway;
         $this->adapter = $this->tableGateway->getAdapter();
+
+        $this->_table = "categories";
+        $this->_fieldId = "category_id";
+        parent::__construct();
     }
 
     /*
      * get all categories of categories table
      */
-    public function getAllCate(){
+    public function getAllCate($order=""){
         $db = new Sql($this->adapter);
         $sql =  $db->select()
                         ->from(array("c"=>"categories"))
                         ->columns(array("*",new Expression("count(job.job_id) AS num")))
-                        ->join("job", "job.category_id = c.category_id",array(), "LEFT")
+                        ->join("job", new Expression("job.category_id = c.category_id AND DATE(job.job_close_date) > DATE(NOW())"),array(), "LEFT")
                         ->group("c.category_id")
                 ;
+        if(!empty($order)){
+            $sql->order($order);
+        }
 
         $statement  = $db->prepareStatementForSqlObject($sql);
 
@@ -58,6 +66,7 @@ class CategoriesTable extends AbstractTableGateway {
             ->columns(array("*",new Expression("count(job.job_id) AS num")))
             ->join("job", "job.industry_id = c.industry_id",array(), "LEFT")
             ->group("c.industry_id")
+            ->order("indu_name ASC")
         ;
 
         $statement  = $db->prepareStatementForSqlObject($sql);
@@ -83,6 +92,7 @@ class CategoriesTable extends AbstractTableGateway {
                     ->join("city", "city.city_id = job.city_id")
                     ->join("company","job.user_id = company.user_id")
                     ->where("job.category_id = $cateId")
+                    ->where("DATE(job.job_close_date) > DATE(NOW())")
                     ->order("job_status ASC")
                     ;
         ;
@@ -116,6 +126,7 @@ class CategoriesTable extends AbstractTableGateway {
         $db = new Sql($this->adapter);
         $sql = $db->select()->from("job")
             ->where("job.category_id = $categoryId")
+            ->where("DATE(job.job_close_date) > DATE(NOW())")
         ;
         $statement = $db->prepareStatementForSqlObject($sql);
         $res = new ResultSet();
@@ -127,6 +138,7 @@ class CategoriesTable extends AbstractTableGateway {
         $sql = $db->select()->from("job")
             ->join("company","job.user_id = company.user_id")
             ->where("job.category_id = $companyId")
+            ->where("DATE(job.job_close_date) > DATE(NOW())")
         ;
         $statement = $db->prepareStatementForSqlObject($sql);
         $res = new ResultSet();
@@ -145,9 +157,12 @@ class CategoriesTable extends AbstractTableGateway {
             ->from("job")
             ->join("company","job.user_id = company.user_id",array("com_info"))
             ->where("job_status=1")
+            ->where("DATE(job.job_close_date) > DATE(NOW())")
         ;
         $statement = $db->prepareStatementForSqlObject($sql);
         $res = new ResultSet();
         return $res->initialize($statement->execute())->buffer()->toArray();
     }
+
+
 } 

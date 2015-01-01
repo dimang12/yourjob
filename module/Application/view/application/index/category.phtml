@@ -1,7 +1,7 @@
 <div class="box-white border-radius-5 margin-10-0 clearfix">
-    <aside class="col-md-9 ">
+    <aside class="col-md-10 ">
         <header class="font-16 color-light-black padding-10-0 border-bottom-gray">
-            Job :: Accounting/Audit/Tax Service
+            Job :: <?php echo $this->cateDetail["cate_name"]; ?>
         </header>
 
         <div class="margin-10-0 row padding-5-0">
@@ -39,11 +39,12 @@
         </div>
 
     </aside>
-    <aside class="col-md-3">
+    <aside class="col-md-2 no-padding-left">
         <header class="font-16 color-white padding-10-0">.</header>
         <div>
-            <img src="<?php echo $this->basePath()?>/img/promotion/1.png" class="col-md-12">
-            <img src="<?php echo $this->basePath()?>/img/promotion/2.gif" class="col-md-12 margin-10-0">
+            <?php foreach($this->advs as $k=>$v): ?>
+            <img src="<?php echo $this->basePath()?>/img/promotion/<?php echo $v["adv_image"] ?>" class="col-md-12 no-padding">
+            <?php endforeach; ?>
         </div>
     </aside>
 </div>
