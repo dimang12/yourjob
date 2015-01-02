@@ -183,3 +183,11 @@ label                       { font-weight:normal;}
 .margin-top-5               { margin-top: 5px;}
 .btn-group > .dropdown-gray:hover     { background-image: linear-gradient(to bottom, #fdffe9, #fdffe9);
                               border: 1px solid #e0e0e0;  color: #74756a; text-shadow: 1px 1px 0 #fdffe9; }
+.background-white       {background: #ffffff;}
+.border-bottom-gray-light			{ border-bottom:#F1F1F1 solid 1px;}
+.padding-bottom-11   { padding-bottom: 11px;}
+.padding-right-30   {padding-right: 30px;}
+.margin-top-0   {margin-top: 0;}
+.padding-right-11   {padding-right: 11px;}
+.height-514     { height: 514px;}
+.margin-bottom-dus-11   { margin-bottom: -11px;}

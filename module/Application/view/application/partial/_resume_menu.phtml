@@ -3,14 +3,14 @@ $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/accordion.css
 //$this->headScript ()->prependFile ( $this->basePath () . '/js/accordion.js');
 ?>
 <?php
-    $sm = $this->getHelperPluginManager ()->getServiceLocator ();
-    $routeMatch = $sm->get ( 'Application' )->getMvcEvent ()->getRouteMatch ();
-    $router = $routeMatch->getMatchedRouteName();
-    $action="";
-    if ($routeMatch) {
-        $controller = $routeMatch->getParam('controller');
-        $action     = $routeMatch->getParam('action');
-    }
+$sm = $this->getHelperPluginManager ()->getServiceLocator ();
+$routeMatch = $sm->get ( 'Application' )->getMvcEvent ()->getRouteMatch ();
+$router = $routeMatch->getMatchedRouteName();
+$action="";
+if ($routeMatch) {
+    $controller = $routeMatch->getParam('controller');
+    $action     = $routeMatch->getParam('action');
+}
 ?>
 <div id='cssmenu' class="background-white border-gray border-radius-5">
     <ul>
