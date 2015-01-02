@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 use Admin\Form\JobForm;
 
+use Application\Model\JobTable;
 use Zend\Db\Sql\Expression;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -13,6 +14,12 @@ use Zend\Mvc\Controller\AbstractActionController;
  */
 
 class JobController extends AbstractActionController{
+    private $table;
+
+    public function __construct(){
+        $this->table = new JobTable();
+    }
+
     public function checkAuthornicationService(){
         // check authornication service
         $authService = $this->serviceLocator->get('auth_login');
@@ -123,7 +130,7 @@ class JobController extends AbstractActionController{
                 $job_published_date = $this->params()->fromPost('job_published_date');
                 $job_close_date = $this->params()->fromPost('job_close_date');
 //            $job_status = $this->params()->fromPost('job_status');
-                $gender = $this->params()->fromPost('gender');
+                $gender = $this->params()->fromPost('job_gender');
                 $city_id = $this->params()->fromPost('city_id');
                 $job_age_from = $this->params()->fromPost('job_age_from');
                 $job_age_to = $this->params()->fromPost('job_age_to');
@@ -144,15 +151,17 @@ class JobController extends AbstractActionController{
                     'job_published_date'=>$job_published_date,
                     'job_close_date'=>$job_close_date,
                     'job_status'=>1,
-                    'Gender'=>$gender,
+                    'job_gender'=>$gender,
                     'job_age_from' => $job_age_from,
                     'job_age_to' => $job_age_to,
                     'job_contact'=>$job_contact
                 );
                 $sm->ZF2_Update('job',$values,array('job_id'=>$job_id));
+                $this->redirect()->toUrl("admin-job");
             }
         }
-        $jobData = $sm->ZF2_Query("SELECT * FROM  job INNER JOIN city ON job.city_id = city.city_id WHERE job_id =$job_id");
+
+        $jobData = $this->table->getJobDetail($job_id);
         $cityData = $sm->ZF2_Select_AllColumn('city');
         return array(
             'jobData' => $jobData,

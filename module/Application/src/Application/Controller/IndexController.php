@@ -136,7 +136,6 @@ class IndexController extends AbstractActionController
             $recommendJob  = $db->getRecommendedJob($jobDetail[0]["category_id"]);
         }
 
-        print_r($recommendJob);
         /*
          * pass param to view
          */

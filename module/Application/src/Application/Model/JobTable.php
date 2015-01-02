@@ -18,7 +18,7 @@ class JobTable extends SuperTableGateway{
     protected $tableGateway;
     protected $adapter;
 
-    public function __construct($adapter){
+    public function __construct($adapter=null){
         $this->adapter = $adapter;
         $this->_table = "job";
         $this->_fieldId = "job_id";
@@ -44,8 +44,10 @@ class JobTable extends SuperTableGateway{
         return $this->executeQuery($sql)->toArray();
     }
 
-    /*
+    /**
      * search from job
+     * @param $searchText
+     * @return mixed
      */
     public function livesearch($searchText){
         $sql = $this->db->select()
@@ -54,5 +56,19 @@ class JobTable extends SuperTableGateway{
                     ->where("job_name LIKE '%$searchText%'")
             ;
         return $this->executeQuery($sql)->toArray();
+    }
+
+    /**
+     * get job detail by Job Id
+     * @param $jobId
+     * @return $this
+     */
+    public function getJobDetail($jobId){
+        $sql = $this->db->select()
+                        ->from("job")
+                        ->join("city", "job.city_id=city.city_id")
+                        ->where("job_id={$jobId}")
+            ;
+        return $this->executeQuery($sql);
     }
 }

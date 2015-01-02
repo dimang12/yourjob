@@ -14,7 +14,7 @@ $job = $this->jobDetail;
 </div>
 
 <div class="clearfix">
-        <div class="w70 box-white border-radius-5 p-15">
+        <div class="w70 box-white border-radius-5 p-15 margin-bottom-10">
             <header class="full-w clearfix">
                 <h4 class="bold clearfix color-blue"><?php echo $job["job_name"]; ?></h4>
                 <div class="col-md-6 padding-5-0">
@@ -23,37 +23,52 @@ $job = $this->jobDetail;
                     <span class="col-md-12 no-padding-left"><b class="col-md-5">Hiring No.</b> : <?php echo $job["job_hiring_number"]; ?> position(s)</span>
                     <span class="col-md-12 no-padding-left"><b class="col-md-5">Salary</b> : <?php echo "$".$job["job_salary_from"] ." - " ."$".$job["job_salary_to"]; ?></span>
                 </div>
-                <div class="col-md-6 text-right">
+                <div class="col-md-6 text-right text-center">
+                    <?php if(!empty($job["com_logo"])): ?>
+                    <img src="<?php echo $this->basepath()."/img/company/".$job["com_logo"]; ?>" alt=""/>
+                    <?php endif; ?>
                     <h4 class=""><?php echo $job["com_name"]; ?></h4>
                 </div>
             </header>
 
             <div>
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16">Company Profile</h4>
-                <div class="col-md-12">
-                    <?php echo $job["com_info"]; ?>
+                <div class="clearfix">
+                    <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16">Company Profile</h4>
+                    <div class="col-md-12">
+                        <?php echo $job["com_info"]; ?>
+                    </div>
+
                 </div>
-                <br><br>
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16">Responsibilities</h4>
-                <div class="col-md-12">
-                    <?php echo $job["job_duty"] ?>
+                <br>
+
+                <div class="clearfix">
+                    <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16">Responsibilities</h4>
+                    <div class="col-md-12">
+                        <?php echo $job["job_duty"] ?>
+                    </div>
                 </div>
-                <br><br>
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16">Requirements</h4>
-                <div class="col-md-12 clearfix">
-                    <?php echo $job["job_requirement"]; ?>
+
+                <br>
+                <div class="clearfix">
+                    <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16">Requirements</h4>
+                    <div class="col-md-12 clearfix">
+                        <?php echo $job["job_requirement"]; ?>
+                    </div>
                 </div>
+
             </div>
-            <br><br>
-            <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16 clearfix">How To Apply</h4>
-            <p class="more-text-area col-md-12">
-                <b>Phone</b>: Call between 9:00 ~ 16:00 Monday ~ Friday<br>
-                <b>Contact Person:</b> Kakvei<br>
-                <b>Phone:</b> 063-964-206, 088-592-0392<br>
-                <b>Email:</b> recruit@skyrivers.net<br>
-                <b>Address:</b> T40 Borey Prem Prey, Sang kat Kouk chork, Siem Reap<br>
-                <b>Website:</b>http://www.skyrivers.net/</p>
-            </p>
+            <br>
+            <div class="clearfix">
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16 clearfix">How To Apply</h4>
+                <p class="more-text-area col-md-12">
+                    <b>Working time</b>: Call between <?php echo $job["com_phone_schedule"]; ?><br>
+                    <b>Contact Person:</b> <?php echo $job["com_contact_person"]; ?><br>
+                    <b>Phone:</b> <?php echo $job["com_phone"]; ?><br>
+                    <b>Email:</b> <?php echo $job["com_email"]; ?><br>
+                    <b>Address:</b> <?php echo $job["com_address"] ?><br>
+                    <b>Website:</b> <?php echo $job["com_website"]; ?></p>
+                </p>
+            </div>
 
         </div>
         <div class="w30 box-white border-radius-5 p-15">
@@ -63,21 +78,23 @@ $job = $this->jobDetail;
             <ul class="padding-10-0">
                 <li class="text-overflow"><a class="pull-left">Branch Director </a>  - This is a place to display</li>
                 <li class="text-overflow"><a>Maintenance Technician </a> - This is a place to display company name.</li>
-                <li class="text-overflow"><a>Sale indoor 2 position </a> - This is a place to display company name.</li>
-                <li class="text-overflow"><a>Assistance account </a>- This is a place to display company name.</li>
-                <li class="text-overflow"><a>Cashier </a> - This is a place to display company name.</li>
-                <li class="text-overflow"><a>Public Relation Manager </a> - This is a place to display company name.</li>
-                <li class="text-overflow"><a>Branch Director </a> - This is a place to display company name.</li>
-                <li class="text-overflow"><a>Branch Director </a> - This is a place to display company name.</li>
-                <li class="text-overflow"><a>Branch Director </a> - This is a place to display company name.</li>
-                <li class="text-overflow"><a>Branch Director </a>- This is a place to display company name.</li>
-                <li class="text-overflow"><a>Assistance account </a>- This is a place to display company name.</li>
+                <?php foreach($this->relatedJob as $k=>$v): ?>
+                    <li class="text-overflow"><a> <?php echo $v["job_name"]; ?> </a> - <?php echo substr(strip_tags($v["job_description"]),0,30); ?></li>
+                <?php endforeach; ?>
             </ul>
+        </div>
 
-
-            <menu class="no-padding border-bottom-gray font-16 padding-5-0">
+        <div class="w30 box-white border-radius-5 p-15 margin-top-10">
+            <menu class="no-padding border-bottom-gray font-16 padding-5-0 no-margin">
                 Recommended Jobs
             </menu>
+            <ul class="padding-10-0 ">
+                <?php foreach($this->recommendedJob as $k=>$v): ?>
+                    <li class="text-overflow" style=""><a href="/ourjob/public/jobdt/?job=15"> <?php echo $v["job_name"]; ?>  </a>- <?php echo substr(strip_tags($v["job_description"]),0,30);?></li>
+                <?php endforeach; ?>
+
+            </ul>
+
         </div>
 </div>
 <?php endif;?>

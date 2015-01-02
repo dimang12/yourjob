@@ -35,6 +35,7 @@ table tr:first-child {background: #f2f2f2;}
 .no-padding-left            { padding-left:0;}
 .no-padding-right           { padding-right:0;}
 .no-margin					{ margin:0;}
+.no-background              { background:none;}
 
 .padding-5					{ padding:5px;}
 .padding-5-0				{ padding:5px 0;}

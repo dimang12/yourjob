@@ -25,7 +25,7 @@ foreach($this->jobData as $row){
     $job_requirement = $row['job_requirement'];
     $job_published_date = $row['job_published_date'];
     $job_close_date = $row['job_close_date'];
-    $sex = $row['gender'];
+    $sex = $row['job_gender'];
     $city_id = $row['city_id'];
     $job_age_from = $row['job_age_from'];
     $job_age_to = $row['job_age_to'];
@@ -41,12 +41,14 @@ $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
     <div class='col-md-9 box-admin-right'>
         <div class='row box-row-title'>
             <div class='col-md-9'><h4 class='text-warning'>Job Editing</h4></div>
-            <div class="col-md-3 text-right"><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array("class"=>"btn btn-info margin-top-2 col-md-12")));?>Update<?php echo $this->formbutton()->closeTag();?></div>
+            <div class="col-md-3 text-right"><?php echo $this->formbutton()->openTag($form->get('submit')->setAttributes(array("class"=>"no-border no-background margin-top-10 color-blue")));?>
+                <i class="glyphicon glyphicon-floppy-disk"></i>
+                Update<?php echo $this->formbutton()->closeTag();?></div>
         </div>
 
         <br>
         <?php echo $this->form()->openTag($form)?>
-        <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Position / Title : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name')->setAttributes(array('value'=>$job_name)))?></div></div>
+        <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Position / Title : </label></div><div class="col-md-6 margin-top-5 "><?php echo $this->formrow($form->get('job_name')->setAttributes(array('value'=>$job_name)))?></div></div>
 
         <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Hiring Number : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_hiring_number')->setAttributes(array('value'=>$job_hiring_number)))?></div></div>
         <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Experience ( Year ) : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_year_experience')->setAttributes(array('value'=>$job_year_experience)))?></div></div>
