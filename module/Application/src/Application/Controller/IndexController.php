@@ -11,9 +11,9 @@ use Application\Model\ExperienceShareTable;
 use Application\Model\FeatureTable;
 use Application\Model\JobTable;
 use Application\Model\LocationTable;
+use Application\Model\SalaryTable;
 use Application\Model\ShareTable;
 use Zend\Db\TableGateway\TableGateway;
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Paginator;
 use Zend\View\Model\ViewModel;
 
@@ -21,7 +21,7 @@ use Zend\Session\Container;;
 use Zend\Session\Container as SessionContainer;
 
 
-class IndexController extends AbstractActionController
+class IndexController extends MainController
 {
 	public function indexAction()
     {
@@ -32,13 +32,15 @@ class IndexController extends AbstractActionController
         $locatDB = new LocationTable($this->getAdapter());
         $featureDb = new FeatureTable($this->getAdapter());
         $docDb = new ShareTable();
-
+        $salaryDb = new SalaryTable();
 
 
         $feature = $featureDb->getFeatures();
         $urgentJob = $cateDb->getNewestJob();
         $newEducation = $eduDb->getLatestEducation();
         $docShare = $docDb->getList("shar_approval=1","share_id DESC",6);
+        $salary = $salaryDb->getList();
+
 
         return new ViewModel(array(
             "categories" => $cateDb->getAllCate("cate_name ASC")->toArray(),
@@ -47,7 +49,8 @@ class IndexController extends AbstractActionController
             "locations" => $locatDB->getAllLocationJobs(),
             "feature" => $feature,
             "industries" => $cateDb->getAllIndustries(),
-            "document" => $docShare
+            "document" => $docShare,
+            "salary" => $salary
         ));
     }
 
@@ -56,9 +59,13 @@ class IndexController extends AbstractActionController
      * @return ViewModel
      */
     public function categoryAction(){
-        //declare params
+        /*
+         * declare params
+         */
         $cateId =  $this->params()->fromQuery("c");
         $page = $this->params()->fromQuery("page",1);
+        $min = $this->params()->fromQuery("min");
+        $max = $this->params()->fromQuery("max");
         $cateDb = new CategoriesTable($this->getCategoiesTableGateway());
         $advsDb = new AdvertisementTable();
         $jobs = array();
@@ -66,9 +73,13 @@ class IndexController extends AbstractActionController
         $advertisement = array();
 
         //it is won't works if category id is empty
+        $jobs = $cateDb->getJobByCate($cateId);
         if(!empty($cateId)){
-            $jobs = $cateDb->getJobByCate($cateId);
             $detail = $cateDb->getDetail($cateId);
+        }
+
+        if(!empty($min) && !empty($max)){
+            $jobs =$cateDb->getJobBySalary($min, $max);
         }
 
         $advertisement = $advsDb->getList("","adv_ordering ASC", "10");
@@ -172,9 +183,5 @@ class IndexController extends AbstractActionController
 
     private function getCategoiesTableGateway(){
         return new TableGateway("categories",$this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
-    }
-
-    private function getAdapter(){
-        return $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
     }
 }

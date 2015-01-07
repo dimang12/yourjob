@@ -86,19 +86,52 @@ class CategoriesTable extends SuperTableGateway {
     /*
      *
      */
-    public function getJobByCate($cateId){
+    public function getJobByCate($cateId=null){
         $db = new Sql($this->adapter);
         $sql = $db->select()->from("job")
+                    ->columns(array("*", new Expression("CASE WHEN (job_status = 1 AND job_status_approve = 0) THEN 4 ELSE job_status END AS job_status")))
                     ->join("city", "city.city_id = job.city_id")
                     ->join("company","job.user_id = company.user_id")
-                    ->where("job.category_id = $cateId")
                     ->where("DATE(job.job_close_date) > DATE(NOW())")
                     ->order("job_status ASC")
+                    ->order("job_published_date DESC")
                     ;
         ;
+        if(!($cateId==null)){
+            $sql->where("job.category_id = $cateId");
+        }
+
         $statement = $db->prepareStatementForSqlObject($sql);
         $res = new ResultSet();
         return $res->initialize($statement->execute())->buffer()->toArray();
+    }
+
+    /**
+     * get job between min and max salary
+     * @param null $min
+     * @param null $max
+     * @return mixed
+     */
+    public function getJobBySalary($min=null, $max=null){
+        $sql = $this->db->select()
+                        ->from("job")
+                        ->columns(array("*", new Expression("CASE WHEN (job_status = 1 AND job_status_approve = 0) THEN 4 ELSE job_status END AS job_status")))
+                        ->join("city", "city.city_id = job.city_id")
+                        ->join("company","job.user_id = company.user_id")
+                        ->where("DATE(job.job_close_date) > DATE(NOW())")
+                        ->order("job_status ASC")
+                        ->order("job_published_date DESC")
+            ;
+
+        /*
+         * if $min and $max not null
+         * it will be filtered
+         */
+        if($min!=null && $max!=null){
+            $sql->where("job_salary_from AND job_salary_to BETWEEN {$min} AND $max");
+        }
+
+        return $this->executeQuery($sql)->toArray();
     }
 
     /*

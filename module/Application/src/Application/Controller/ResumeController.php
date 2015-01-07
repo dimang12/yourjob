@@ -100,11 +100,20 @@ class ResumeController extends AbstractActionController{
         return false;
     }
 
-    /*
+    /**
      * action edit experience
+     *
      */
     public function experienceAction(){
         $this->checkLogin();
+
+        $db = new ResumeTable($this->getAdapter());
+        $experience = $db->getExperience();
+
+        return new ViewModel(array(
+            "experience" => current($experience)
+        ));
+
     }
 
     /*
@@ -112,6 +121,13 @@ class ResumeController extends AbstractActionController{
      */
     public function skillAction(){
         $this->checkLogin();
+
+        $db = new ResumeTable($this->getAdapter());
+        $skill = $db->getSkill();
+
+        return new ViewModel(array(
+            "skill" => current($skill)
+        ));
     }
 
     /*
@@ -171,6 +187,30 @@ class ResumeController extends AbstractActionController{
         return false;
     }
 
+    /**
+     * @return bool|\Zend\Http\Response
+     */
+    public function purchaseAction(){
+        /*
+         * set empty variable
+         */
+        $this->layout("layout/ajax_layout");
+        $resumeId = $this->params()->fromRoute("id");
+
+        $authService = $this->serviceLocator->get('auth_login');
+
+        if($authService->hasIdentity()){
+            $user_id= $authService->getStorage()->read();
+
+            $db = new ResumeTable();
+            echo $db->purchaseResume($resumeId, $user_id);
+        }else {
+            return $this->redirect()->toUrl('login');
+        }
+
+        return false;
+    }
+
 
 
     /*
@@ -190,11 +230,11 @@ class ResumeController extends AbstractActionController{
             $loginForm->setData($this->getRequest()->getPost());
             if (!$loginForm->isValid()) {
                 // not valid form
-                print_r($this->getRequest()->getPost());
                 return new ViewModel(array(
                     'loginForm'  => $loginForm
                 ));
             }else{
+
                 $dbSeeker = new ResumeTable($this->getAdapter());
                 $username = $this->params()->fromPost("username");
                 $password = $this->params()->fromPost("password");
@@ -230,7 +270,6 @@ class ResumeController extends AbstractActionController{
 
     private function checkLogin(){
         $seekerSession = new Container("seeker_session");
-
         if(empty($seekerSession->seekerUserId)){
             $this->redirect()->toUrl($this->getRequest()->getBaseUrl(). "/resume/login");
         }

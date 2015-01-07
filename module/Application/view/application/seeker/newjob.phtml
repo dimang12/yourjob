@@ -18,15 +18,15 @@ foreach ( $this->cateData as $value ) {
 }
 $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
 ?>
-<div class="box-white border-radius-5 margin-10-0 padding-right-15 clearfix">
+<div class="clearfix padding-10-0">
     <?php echo $this->form()->openTag($form)?>
     <div class="row-fluid">
-        <div class="col-md-3">
+        <div class="col-md-3 no-padding-left">
             <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
         </div>
 
-        <div class="col-md-9 box-right margin-top-10">
-                <div class="row box-row-title"><div class="col-md-12"> <h4>&ensp;Basic Information</h4></div></div>
+        <div class="col-md-9 box-right box-white">
+                <div class="row"><div class="col-md-12"> <h4 class="border-bottom-gray padding-bottom-11">&ensp;Basic Information</h4></div></div>
                 <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Position / Title : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name'))?></div></div>
                 <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Hiring Number : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_hiring_number'))?></div></div>
                 <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Experience ( Year ) : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_year_experience'))?></div></div>
@@ -44,7 +44,6 @@ $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
                     </div>
                 </div>
 
-                <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Qualification : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_duty'))?></div></div>
                 <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Gender : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formselect($form->get('gender')->setAttributes(array("options"=>$gender)));?></div></div>
 
                 <div class="row">
@@ -73,12 +72,19 @@ $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
                 <br><br>
                 <div class="row"><div class="col-md-2 text-right"><label class="margin-top-10">Contact: </label></div><div class="col-md-10 margin-top-5"><?php echo $this->formtextarea($form->get('job_contact'))?></div></div>
                 <br>
-                <div class="row box-row-title"><h4>&ensp;Job Posting Option</h4></div>
+                <div class="row"><h4>&ensp;Job Posting Option</h4></div>
                 <div class="row">
-                    <div class="col-md-3"><input type="checkbox" name="chx_urgent"><label class="margin-top-10">&ensp;Urgent </label></div>
-                    <div class="col-md-3"><input type="checkbox" name="chx_auto"><label class="margin-top-10">&ensp;Auto-Submit(10 mn) </label></div>
-                    <div class="col-md-3"><input type="checkbox" name="chx_newsign"><label class="margin-top-10">&ensp;New Sign </label></div>
-                    <div class="col-md-3"><input type="checkbox" name="chx_normal"><label class="margin-top-10">&ensp;Normal </label></div>
+                    <div class="col-md-2"><input type="radio" name="job_status" value="1"  /><label class="margin-top-10">&ensp;Urgent </label></div>
+                    <div class="col-md-4"><input type="radio" name="job_status" value="2" /><label class="margin-top-10">&ensp;Auto-Submit(10 minutes) </label></div>
+                    <div class="col-md-2"><input type="radio" name="job_status" value="3" /><label class="margin-top-10">&ensp;New Sign </label></div>
+                    <div class="col-md-3"><input type="radio" name="job_status" value="4" checked /><label class="margin-top-10">&ensp;Normal </label></div>
+
+                </div>
+                <div class="clearfix full-w padding-top-10 small">
+                    <br>
+                    <b>Note:</b> If you want to post job by <span class="text-danger">Urgent</span> or <span class="text-danger">Auto-Submit(10 minutes)</span> option,
+                    you need to order these packages from us.
+                    Please kindly <a href="<?php echo $this->basepath()."/info/contact" ?>"> contact us</a>.
                 </div>
                 <br>
                 <div class="row">

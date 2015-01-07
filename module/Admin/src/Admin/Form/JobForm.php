@@ -264,14 +264,14 @@ class JobForm extends Form
                 array('name'=>'StringTrim')
             ),
         ));
-        $inputFilter->add(array(
-            'name'=>'job_duty',
-            'required'=>true,
-            'filters'=>array(
-                array('name'=>'StripTags'),
-                array('name'=>'StringTrim')
-            ),
-        ));
+//        $inputFilter->add(array(
+//            'name'=>'job_duty',
+//            'required'=>true,
+//            'filters'=>array(
+//                array('name'=>'StripTags'),
+//                array('name'=>'StringTrim')
+//            ),
+//        ));
         $inputFilter->add(array(
             'name'=>'job_requirement',
             'required'=>true,

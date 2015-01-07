@@ -104,7 +104,7 @@ class RegisterController extends AbstractActionController{
                             'com_logo'=>$newName
                         );
                         $sm->saveUserWithCompany($valueUser,$valueCom);
-                        return $this->redirect()->toRoute('job-seeker', array(
+                        return $this->redirect()->toRoute('job-employer', array(
                             'controller' => 'Seeker',
                             'action' =>  'index'
                         ));

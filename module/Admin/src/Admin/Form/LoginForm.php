@@ -64,18 +64,18 @@ class LoginForm extends Form
 				)
 		)));
 		
-		$filter->add($factory->createInput(array(
-        		'name'	=> 'csrf',
-        		'required' => true,
-        		'validators' => array(
-        				array(
-        					'name' => 'Csrf',
-        					'options' => array(
-        							'timeout' => 600
-        						)
-        				)
-        			)
-        	)));
+//		$filter->add($factory->createInput(array(
+//        		'name'	=> 'csrf',
+//        		'required' => true,
+//        		'validators' => array(
+//        				array(
+//        					'name' => 'Csrf',
+//        					'options' => array(
+//        							'timeout' => 600
+//        						)
+//        				)
+//        			)
+//        	)));
 		
 		$this->setInputFilter($filter);
 	}

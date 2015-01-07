@@ -14,11 +14,11 @@ if ($routeMatch) {
 ?>
 <div id='cssmenu' class="background-white border-gray border-radius-5">
     <ul>
-        <li class='<?php if($action=="index")echo "actived"?>'><a href='<?php echo $this->url("job-seeker")?>'><span>Home</span></a></li>
+        <li class='<?php if($action=="index")echo "actived"?>'><a href='<?php echo $this->url("job-employer")?>'><span>Home</span></a></li>
         <li class='has-sub'><a href='#'><span>Job Management</span></a>
             <ul <?php if($action == 'joblisting' || $action == 'newjob' || $action == 'editjob') echo "style='display: block;'";?>>
-                <li class='<?php if($action == 'newjob') echo 'actived';?>'><a href='<?php echo $this->url("job-seeker")."newjob";?>'><span>Job Posting</span></a></li>
-                <li class="<?php if($action == 'joblisting' || $action == 'editjob') echo 'actived';?>"><a href='<?php echo $this->url("job-seeker")."joblisting";?>'><span>Job Viewing</span></a></li>
+                <li class='<?php if($action == 'newjob') echo 'actived';?>'><a href='<?php echo $this->url("job-employer")."newjob";?>'><span>Job Posting</span></a></li>
+                <li class="<?php if($action == 'joblisting' || $action == 'editjob') echo 'actived';?>"><a href='<?php echo $this->url("job-employer")."joblisting";?>'><span>Job Viewing</span></a></li>
                 <li class="<?php if($action == 'joblisting' || $action == 'editjob') echo '';?>"><a href='#'><span>Job Edition</span></a></li>
                 <li class="<?php if($action == 'joblisting' || $action == 'editjob') echo '';?>"><a href='#'><span>Composing Sample</span></a></li>
 
@@ -33,14 +33,14 @@ if ($routeMatch) {
         </li>
         <li class='has-sub'><a href='#'><span>Profile Setting</span></a>
             <ul <?php if($action == 'accountinfo' || $action == 'companyinfo') echo "style='display: block;'";?>>
-                <li class="<?php if($action == 'companyinfo') echo 'actived';?>"><a href='<?php echo $this->url("job-seeker")."companyinfo";?>'><span>Company Profile</span></a></li>
+                <li class="<?php if($action == 'companyinfo') echo 'actived';?>"><a href='<?php echo $this->url("job-employer")."companyinfo";?>'><span>Company Profile</span></a></li>
                 <li class="<?php if($action == 'companyinfo') echo '';?>"><a href='#'><span>Contact Person</span></a></li>
-                <li class="<?php if($action == 'accountinfo') echo 'actived';?>"><a href='<?php echo $this->url("job-seeker")."accountinfo";?>'><span>User Change</span></a></li>
+                <li class="<?php if($action == 'accountinfo') echo 'actived';?>"><a href='<?php echo $this->url("job-employer")."accountinfo";?>'><span>User Change</span></a></li>
 
             </ul>
         </li>
 
-        <li><a href='<?php echo $this->url("job-seeker")."logout";?>'><span class="color-red">Logout</span></a></li>
+        <li><a href='<?php echo $this->url("job-employer")."logout";?>'><span class="color-red">Logout</span></a></li>
     </ul>
 </div>
 <br>

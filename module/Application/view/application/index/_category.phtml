@@ -94,7 +94,7 @@ $industries = $this->industries;
                 ?>
             </div>
             <div class="tab-pane fade" id="settings">
-
+                <?php echo $this->partial("application/index/_salary"); ?>
             </div>
         </div>
         </div>
@@ -105,9 +105,9 @@ $industries = $this->industries;
         </menu>
         <ul class="newest-panel"></ul>
         <div class="row more full-w">
-            <button class="btn btn-default col-lg-12 border-radius-0 no-border-left no-border-right" style="position:relative; top:7px;">
+            <a href="<?php echo $this->basepath();?>/category/" class="btn btn-default col-lg-12 border-radius-0 no-border-left no-border-right" style="position:relative; top:7px;">
                 <i class="glyphicon glyphicon-chevron-down color-pink"></i>
-            </button>
+            </a>
         </div>
     </aside>
 </div>

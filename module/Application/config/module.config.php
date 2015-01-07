@@ -12,10 +12,10 @@ return array (
 										) 
 								) 
 						),
-                        'job-seeker' => array(
+                        'job-employer' => array(
                             'type'    => 'segment',
                             'options' => array(
-                                'route'    => '/job-seeker[/][:action][/:id]',
+                                'route'    => '/job-employer[/][:action][/:id]',
                                 'constraints' => array(
                                     'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                     'id'     => '[0-9]+',
@@ -26,10 +26,10 @@ return array (
                                 ),
                             ),
                         ),
-//						'job-seeker' => array (
+//						'job-employer' => array (
 //								'type' => 'Zend\Mvc\Router\Http\Literal',
 //								'options' => array (
-//										'route' => '/job-seeker',
+//										'route' => '/job-employer',
 //										'defaults' => array (
 //												'controller' => 'Application\Controller\Seeker',
 //												'action' => 'index'
@@ -40,7 +40,7 @@ return array (
 						'resume' => array (
 								'type' => 'Segment',
 								'options' => array (
-										'route' => '/resume[/:action]',
+										'route' => '/resume[/:action][/][:id]',
 										'defaults' => array (
 												'controller' => 'Application\Controller\Resume',
 												'action' => 'index'

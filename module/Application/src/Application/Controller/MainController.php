@@ -10,6 +10,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Adapter\ArrayAdapter;
 use Zend\Paginator\Paginator;
+use Zend\Session\Container;
 
 class MainController extends AbstractActionController
 {
@@ -29,11 +30,22 @@ class MainController extends AbstractActionController
      * @return Paginator
      */
     public function getPaginator($data, $page, $limit=25){
-
         $paginator = new Paginator(new ArrayAdapter($data));
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
 
         return $paginator;
+    }
+
+    /**
+     * check employer login or not
+     * @return bool
+     */
+    public static function isEmployer(){
+        $employerSession = new Container("employer_session");
+        if(!empty($employerSession->employerUserId)){
+            return true;
+        }
+        return false;
     }
 }

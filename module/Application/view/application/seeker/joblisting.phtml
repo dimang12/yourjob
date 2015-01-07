@@ -1,11 +1,11 @@
-<div class="box-white border-radius-5 margin-10-0 padding-right-15 clearfix">
+<div class="clearfix margin-top-10">
     <div class="row-fluid">
-        <div class="col-md-3">
+        <div class="col-md-3 no-padding-left">
             <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
         </div>
 
-        <div class="col-md-9 box-right margin-top-10">
-            <div class="row box-row-title"><div class="col-md-12"> <h4>Job Listing</h4></div></div>
+        <div class="col-md-9 box-right box-white" style="min-height: 515px;">
+            <div class="row"><div class="col-md-12"> <h4 class="padding-bottom-11 border-bottom-gray">Job Listing</h4></div></div>
             <br>
             <div class='container-fluid'>
                 <div class="table-responsive">
@@ -28,12 +28,12 @@
                                 <td><?php echo $row['job_published_date']?></td>
                                 <td><?php echo $row['city_name']?></td>
                                 <td><?php if($row['job_status']==1)echo 'Active'; else echo 'Expire';?></td>
-                                <td><a href="<?php echo $this->url('job-seeker')."editjob/".$row['job_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
+                                <td><a href="<?php echo $this->url('job-employer')."editjob/".$row['job_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
                                     <a href='#' title='Remove'><span data-remove='<?php echo $row['job_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
                             </tr>
                             <?php }?>
                     </table>
-                    <?php echo $this->paginationControl($this->jobData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    <div class="text-center"><?php echo $this->paginationControl($this->jobData,'Sliding','admin/partial/my_pagination_control.phtml'); ?></div>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
             {
                 if(confirm('Are you sure to delete?'))
                 {
-                    var url ='<?php echo $this->url('job-seeker')."deletejob/"?>'+jobId;
+                    var url ='<?php echo $this->url('job-employer')."deletejob/"?>'+jobId;
                     $.ajax({url: url, success:function(){window.location.href='';}});
                 }
                 return false;

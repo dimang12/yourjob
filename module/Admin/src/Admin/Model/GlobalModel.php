@@ -1263,6 +1263,8 @@ class GlobalModel extends AbstractTableGateway {
         $select = $sql->select(array('j'=>'job'))
             ->join(array('c'=>'company'),'j.user_id=c.user_id')
             ->join(array('ct'=>'city'),'j.city_id=ct.city_id')
+            ->order("job_status ASC")
+            ->order("job_id DESC")
         ;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
@@ -1279,7 +1281,7 @@ class GlobalModel extends AbstractTableGateway {
             ))
             ->join(array('c'=>'company'),'j.user_id=c.user_id')
             ->join(array('ct'=>'city'),'j.city_id=ct.city_id')
-            ->where("j.user_id=$user_id")
+            ->where("j.user_id='$user_id'")
         ;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
@@ -1363,6 +1365,7 @@ class GlobalModel extends AbstractTableGateway {
         $sql = new Sql($this->adapter);
         $select = $sql->select(array("u"=>"users"))
                 ->columns(array("*","count_job"=>new Expression("(SELECT COUNT(job_id) FROM job j WHERE j.user_id = u.user_id)")))
+//                ->join(array("ec"=>"employer_credit"),"u.user_id=ec.user_id",array("credit"),"LEFT")
                 ->where(array("u.user_type"=>2))
         ;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();

@@ -30,7 +30,7 @@ $this->headScript()->prependFile($this->basepath() . "/js/bootstrap-wysihtml5.js
     </div>
 </div>
 <script>
-    var general = <?php if(count($this->education)>0) echo json_encode($this->education); else echo '[]'?>;
+    var general = <?php if(count($this->skill)>0) echo json_encode($this->skill); else echo '[]'?>;
     var baseUrl = '<?php echo $this->basepath(); ?>';
     $(function(){
         setValueToField(general, '.frm');

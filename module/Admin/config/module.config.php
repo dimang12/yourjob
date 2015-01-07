@@ -292,9 +292,10 @@ return array (
 
                     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~your job block
                         'admin-job' => array (
-                            'type' => 'Literal',
+                            'type' => 'Segment',
                             'options' => array (
-                                'route' => '/admin-job',
+//                                'route' => '/admin-job',
+                                'route' => '/admin-job[/][:action][/][:id]',
                                 'defaults' => array (
                                     'controller' => 'Admin\Controller\Job',
                                     'action' => 'index'
@@ -317,9 +318,9 @@ return array (
                                 'defaults' => array ('controller' => 'Admin\Controller\Feature','action' => 'index')
                             )
                         ),
-                        'admin-employer' => array ('type' => 'Literal',
+                        'admin-employer' => array ('type' => 'Segment',
                             'options' => array (
-                                'route' => '/admin-employer',
+                                'route' => '/admin-employer[/][:action][/][:id]',
                                 'defaults' => array ('controller' => 'Admin\Controller\Employer','action' => 'index')
                             )
                         ),

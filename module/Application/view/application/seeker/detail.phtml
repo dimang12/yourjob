@@ -1,0 +1,68 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 1/7/15
+ * Time: 12:38 AM
+ */
+$this->headScript()->prependFile($this->basepath()."/js/angular.js");
+?>
+<div ng-app ="seeker"  class=" border-radius-5 margin-top-10">
+    <div class="row">
+        <div class="col-md-3 padding-right-11">
+            <?php echo $this->partial("application/partial/_employer_menu")?>
+        </div>
+        <div class="col-md-9  font-13 padding-right-30 margin-bottom-10" ng-controller = "seekerController">
+            <div class="row">
+                <div class="col-md-12 background-white border-gray border-radius-5">
+
+                    <h4 id="general-info" class="padding-10-0 margin-15-0 border-bottom-gray">General Information
+                        <?php if($this->isPurchased<>1): ?>
+                        <a data-id="<?php echo $this->resumeId; ?>" class="pull-right font-13 margin-top-10 color-blue btn-purchase" href="#"><i class="glyphicon glyphicon-ok"></i> Purchase Now</a>
+                        <?php endif; ?>
+                    </h4>
+                    <?php echo $this->partial("application/seeker/partial/_general"); ?>
+
+                    <h4 id="career-profile" class="padding-10-0 margin-15-0 border-bottom-gray">Career Profile</h4>
+                    <?php echo $this->partial("application/seeker/partial/_career_profile"); ?>
+
+                    <h4 id="educations" class="padding-10-0 margin-15-0 border-bottom-gray">Education</h4>
+                    <?php echo $this->partial("application/seeker/partial/_education"); ?>
+
+                    <h4 id="experiences" class="padding-10-0 margin-15-0 border-bottom-gray">Experiences</h4>
+                    <?php echo $this->partial("application/seeker/partial/_experience"); ?>
+
+                    <h4 id="skills" class="padding-10-0 margin-15-0 border-bottom-gray">Skills</h4>
+                    <?php echo $this->partial("application/seeker/partial/_skill"); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var seekerApp = angular.module("seeker", []);
+    seekerApp.controller("seekerController",function($scope){
+        $scope.r = <?php if(count($this->general)>0) echo json_encode($this->general); else echo '{}'; ?>;
+        $scope.d = <?php if(count($this->detail)>0) echo json_encode($this->detail); else echo '{}'; ?>;
+
+    });
+    $(function(){
+        $('.btn-purchase').on('click', function(){
+            if(confirm('Are you sure want to purchase this resume?')){
+                var url  = '<?php echo $this->basepath()."/resume/purchase/" ?>' + $(this).attr('data-id');
+
+                $.ajax({
+                    url: url,
+                    success: function (status) {
+                        if(status==0){
+                            alert("You don't have credit of our website. \nPlease kindly make resume-purchase from us.");
+                        }else{
+                            window.location.href = '';
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>

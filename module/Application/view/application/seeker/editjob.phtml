@@ -33,14 +33,14 @@ foreach($this->jobData as $row){
 }
 $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
 ?>
-<div class="box-white border-radius-5 margin-10-0 padding-right-15 clearfix">
+<div class="clearfix padding-10-0">
     <div class="row-fluid">
-        <div class="col-md-3">
+        <div class="col-md-3 no-padding-left">
             <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
         </div>
 
-        <div class="col-md-9 box-right margin-top-10">
-            <div class="row box-row-title"><h4>&ensp;Job Editing</h4></div>
+        <div class="col-md-9 box-right box-white">
+            <div class="col-md-12"><h4 class="border-bottom-gray padding-bottom-11">&ensp;Job Editing</h4></div>
             <?php echo $this->form()->openTag($form)?>
             <div class="row"><div class="col-md-4 text-right"><label class="margin-top-10">Position / Title : </label></div><div class="col-md-6 margin-top-5"><?php echo $this->formrow($form->get('job_name')->setAttributes(array('value'=>$job_name)))?></div></div>
 
@@ -85,10 +85,16 @@ $gender = array("Both"=>"Both", "Female"=>"Female", "Male"=>"Male");
             <br>
             <div class="row box-row-title"><h4>&ensp;Job Posting Option</h4></div>
             <div class="row">
-                <div class="col-md-3"><input type="checkbox" name="chx_urgent"><label class="margin-top-10">&ensp;Urgent </label></div>
-                <div class="col-md-3"><input type="checkbox" name="chx_auto"><label class="margin-top-10">&ensp;Auto-Submit(10 mn) </label></div>
-                <div class="col-md-3"><input type="checkbox" name="chx_newsign"><label class="margin-top-10">&ensp;New Sign </label></div>
-                <div class="col-md-3"><input type="checkbox" name="chx_normal"><label class="margin-top-10">&ensp;Normal </label></div>
+                <div class="col-md-2"><input type="radio" name="job_status" value="1" <?php echo ($this->jobData[0]["job_status"]==1)?"checked":""; ?> /><label class="margin-top-10">&ensp;Urgent </label></div>
+                <div class="col-md-4"><input type="radio" name="job_status" value="2" <?php echo ($this->jobData[0]["job_status"]==2)?"checked":""; ?> /><label class="margin-top-10">&ensp;Auto-Submit(10 minutes) </label></div>
+                <div class="col-md-2"><input type="radio" name="job_status" value="3" <?php echo ($this->jobData[0]["job_status"]==3)?"checked":""; ?> /><label class="margin-top-10">&ensp;New Sign </label></div>
+                <div class="col-md-3"><input type="radio" name="job_status" value="4" <?php echo ($this->jobData[0]["job_status"]==4)?"checked":""; ?> /><label class="margin-top-10">&ensp;Normal </label></div>
+            </div>
+            <div class="clearfix full-w padding-top-10 small">
+                <br>
+                <b>Note:</b> If you want to post job by <span class="text-danger">Urgent</span> or <span class="text-danger">Auto-Submit(10 minutes)</span> option,
+                you need to order these packages from us.
+                Please kindly <a href="<?php echo $this->basepath()."/info/contact" ?>"> contact us</a>.
             </div>
             <br>
             <div class="row">

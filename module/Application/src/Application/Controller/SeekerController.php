@@ -10,13 +10,15 @@ namespace Application\Controller;
 use Admin\Form\JobForm;
 use Admin\Form\UserForm;
 use Application\Form\RegisterForm;
+use Application\Model\ResumeTable;
+use Application\Model\UserTable;
 use Zend\Db\Sql\Expression;
 use Zend\Mvc\Controller\AbstractActionController;
 use Admin\Form\LoginForm;
 use Zend\Authentication\Adapter\DbTable;
 use Zend\View\Model\ViewModel;
 
-class SeekerController extends AbstractActionController{
+class SeekerController extends MainController{
     public function checkAuthornicationService(){
         // check authornication service
         $authService = $this->serviceLocator->get('auth_login');
@@ -30,14 +32,12 @@ class SeekerController extends AbstractActionController{
         $authLogin = $this->serviceLocator->get('auth_login');
 
         if(!$authLogin->hasIdentity()){
-            return $this->redirect()->toRoute('job-seeker', array(
+            return $this->redirect()->toRoute('job-employer', array(
                 'controller' => 'Seeker',
                 'action' =>  'login'
             ));
         }
         return array();
-
-
     }
 
     public function loginAction(){
@@ -45,7 +45,7 @@ class SeekerController extends AbstractActionController{
         if ($authService->hasIdentity()) {
 
             // if not log in, redirect to login page
-            return $this->redirect()->toRoute('job-seeker', array(
+            return $this->redirect()->toRoute('job-employer', array(
                 'controller' => 'Seeker',
                 'action' =>  'index'
             ));
@@ -63,6 +63,7 @@ class SeekerController extends AbstractActionController{
 
             }
 
+
             $dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
             $loginData = $loginForm->getData();
             // user_type = 2 mean  login only for employer
@@ -72,12 +73,12 @@ class SeekerController extends AbstractActionController{
             $authService = $this->serviceLocator->get('auth_login');
             $authService->setAdapter($authAdapter);
             $result = $authService->authenticate();
+
             if ($result->isValid()) {
 
-                echo $userId = $authAdapter->getResultRowObject('user_id')->user_id;
-                $authService->getStorage()
-                    ->write($userId);
-                return $this->redirect()->toRoute('job-seeker');
+                $userId = $authAdapter->getResultRowObject('user_id')->user_id;
+                $authService->getStorage()->write($userId);
+                return $this->redirect()->toRoute('job-employer');
             }
         }
         return array( 'loginForm'  => $loginForm);
@@ -86,7 +87,7 @@ class SeekerController extends AbstractActionController{
     {
         $authService = $this->serviceLocator->get('auth_login');
         if (! $authService->hasIdentity()) {
-            return $this->redirect()->toRoute('job-seeker', array(
+            return $this->redirect()->toRoute('job-employer', array(
                 'controller' => 'Seeker',
                 'action' =>  'login'
             ));
@@ -95,7 +96,7 @@ class SeekerController extends AbstractActionController{
         $authService->clearIdentity();
         //$loginForm = new LoginForm();
         //$viewModel = new ViewModel(array('loginForm'=> $loginForm));
-        return $this->redirect()->toRoute('job-seeker', array(
+        return $this->redirect()->toRoute('job-employer', array(
             'controller' => 'Seeker',
             'action' =>  'logout'
         ));
@@ -106,9 +107,10 @@ class SeekerController extends AbstractActionController{
 
     public function joblistingAction()
     {
-        $user_id = $this->checkAuthornicationService();
+        $userId = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $jobData = $sm->getJobByUserId($user_id);
+
+        $jobData = $sm->getJobByUserId($userId);
 
         $page = $this->params()->fromQuery('page');
         $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobData));
@@ -120,10 +122,86 @@ class SeekerController extends AbstractActionController{
             'jobData'=>$paginator,
         );
     }
+
+    /**
+     * search resumes action
+     * @return ViewModel
+     */
+    public function searchAction(){
+        /*
+         * declare variable
+         */
+        $search = $this->params()->fromQuery("s");
+        $cate = $this->params()->fromQuery("c");
+        $page = $this->params()->fromQuery("page",1);
+        $db = new ResumeTable();
+
+        $resume = $db->findResume($search,$cate);
+
+        $paginate = $this->getPaginator($resume,$page,20);
+
+        return new ViewModel(array(
+            "resume" => $paginate
+        ));
+    }
+
+    public function purchaseAction(){
+        /*
+        * declare variable
+        */
+        $search = $this->params()->fromQuery("s");
+        $cate = $this->params()->fromQuery("c");
+        $page = $this->params()->fromQuery("page",1);
+        $authService = $this->serviceLocator->get('auth_login');
+
+        $userId = $authService->getStorage()->read();
+        $db = new ResumeTable();
+
+        $resume = $db->getPurchaseResume($userId);
+        $paginate = $this->getPaginator($resume,$page,20);
+
+        return new ViewModel(array(
+            "resume" => $paginate
+        ));
+    }
+
+    /**
+     * @return ViewModel
+     */
+    public function detailAction(){
+        /*
+         * declare variables
+         */
+        $id = $this->params()->fromRoute("id");
+        $db = new ResumeTable();
+        $generalInfo = $db->getSeekerGeneralInfo($id);
+        $resumeDetail = $db->getResumeDetail($id);
+
+        $userId = null;
+        $isPurchased = '';
+
+        $authService = $this->serviceLocator->get('auth_login');
+        if($authService->hasIdentity()){
+            $userId= $authService->getStorage()->read();
+            $isPurchased = $db->checkIsPurchased($id, $userId);
+        }
+
+
+        return new ViewModel(array(
+            "general" => current($generalInfo),
+            "detail" => current($resumeDetail),
+            "resumeId" =>$id,
+            "isPurchased" => $isPurchased
+
+        ));
+    }
+
+
     public function newjobAction()
     {
         $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
+
         $form = new JobForm();
         $request = $this->getRequest();
         if($request->isPost()){
@@ -149,6 +227,7 @@ class SeekerController extends AbstractActionController{
                 $job_age_to = $this->params()->fromPost('job_age_to');
                 $jobCategory = $this->params()->fromPost("category_id");
                 $job_contact = $this->params()->fromPost("job_contact");
+                $jobStatus = $this->params()->fromPost("job_status");
 
                 $values = array(
                     'user_id' =>$user_id,
@@ -166,14 +245,14 @@ class SeekerController extends AbstractActionController{
                     'job_requirement'=>$job_requirement,
                     'job_published_date'=>$job_published_date,
                     'job_close_date'=>$job_close_date,
-                    'job_status'=>1,
+                    'job_status'=>$jobStatus,
                     'job_gender'=>$gender,
                     'job_age_from' => $job_age_from,
                     'job_age_to' => $job_age_to,
                     'job_contact' => $job_contact
                 );
                 $sm->ZF2_Insert('job',$values);
-                return $this->redirect()->toRoute('job-seeker', array(
+                return $this->redirect()->toRoute('job-employer', array(
                     'controller' => 'Seeker',
                     'action' =>  'joblisting'
                 ));
@@ -215,6 +294,7 @@ class SeekerController extends AbstractActionController{
                 $job_age_from = $this->params()->fromPost('job_age_from');
                 $job_age_to = $this->params()->fromPost('job_age_to');
                 $job_contact = $this->params()->fromPost("job_contact");
+                $job_status = $this->params()->fromPost("job_status");
                 $values = array(
                     'city_id' =>$city_id,
                     'job_name' => $job_name,
@@ -229,20 +309,22 @@ class SeekerController extends AbstractActionController{
                     'job_requirement'=>$job_requirement,
                     'job_published_date'=>$job_published_date,
                     'job_close_date'=>$job_close_date,
-                    'job_status'=>1,
+                    'job_status'=>$job_status,
                     'job_gender'=>$gender,
                     'job_age_from' => $job_age_from,
                     'job_age_to' => $job_age_to,
                     'job_contact' => $job_contact
+
                 );
                 $sm->ZF2_Update('job',$values,array('job_id'=>$job_id));
-                return $this->redirect()->toRoute('job-seeker', array(
+                return $this->redirect()->toRoute('job-employer', array(
                     'controller' => 'Seeker',
                     'action' =>  'joblisting'
                 ));
             }
         }
         $jobData = $sm->getJobWithCity($job_id);
+
         $cityData = $sm->ZF2_Select_AllColumn('city');
         return array(
             'jobData' => $jobData,
@@ -288,7 +370,7 @@ class SeekerController extends AbstractActionController{
                     'user_phone' => $phone
                 );
                 $sm->ZF2_Update('users',$values,array('user_id'=>$user_id));
-                return $this->redirect()->toRoute('job-seeker', array(
+                return $this->redirect()->toRoute('job-employer', array(
                     'controller' => 'Seeker',
                     'action' =>  'accountinfo'
                 ));
@@ -323,7 +405,7 @@ class SeekerController extends AbstractActionController{
                     'com_address'=>$this->params()->fromPost("com_address")
                 );
                 $sm->ZF2_Update("company",$valueCom,array("user_id"=>$user_id));
-                return $this->redirect()->toRoute('job-seeker', array(
+                return $this->redirect()->toRoute('job-employer', array(
                     'controller' => 'Seeker',
                     'action' =>  'index'
                 ));

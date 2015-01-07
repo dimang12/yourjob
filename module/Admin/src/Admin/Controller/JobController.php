@@ -37,7 +37,7 @@ class JobController extends AbstractActionController{
         $page = $this->params()->fromQuery('page');
         $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobData));
         $paginator->setCurrentPageNumber($page);
-        $paginator->setItemCountPerPage(10);
+        $paginator->setItemCountPerPage(15);
         $paginator->setPageRange(4);
         return array(
             'jobData'=>$paginator,
@@ -176,6 +176,15 @@ class JobController extends AbstractActionController{
         $sm->ZF2_Delete('job',array('job_id'=>$job_id));
         return false;
     }
+
+    public function approveAction(){
+        $this->layout('layout/ajax_layout');
+        $jobId = $this->params()->fromQuery("id");
+        $db = new JobTable();
+        $db->approveJob($jobId);
+        return false;
+    }
+
     public function resumesearchAction()
     {
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');

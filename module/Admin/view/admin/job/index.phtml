@@ -17,24 +17,34 @@
                             <th>Position</th>
                             <th>Hiring No</th>
                             <th>Posting Date</th>
-                            <th>Location</th>
+                            <th>Company</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th  width="80">Action</th>
                         </tr>
                         <?php foreach ( $jobData as $key => $row ) {?>
                             <tr>
                                 <td><?php echo $row['job_id']?></td>
-                                <td class="col-md-4 text-overflow"><?php echo $row['job_name']?></td>
+                                <td><?php echo $row['job_name']?></td>
                                 <td><?php echo $row['job_hiring_number']?></td>
                                 <td><?php echo date("d-M-Y", strtotime($row['job_published_date']));?></td>
-                                <td><?php echo $row['city_name']?></td>
+                                <td><?php echo $row['com_name']?></td>
                                 <td><?php if($row['job_status']==1)echo 'Active'; else echo 'Expire';?></td>
-                                <td><a href="<?php echo $this->url('job-editing')?>?job_id=<?php echo $row['job_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
-                                    <a href='#' title='Remove'><span data-remove='<?php echo $row['job_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a></td>
+                                <td>
+                                    <a href="<?php echo $this->url('job-editing')?>?job_id=<?php echo $row['job_id']?>"><span class='icon-edit glyphicon glyphicon-pencil'></span></a> |
+                                    <a href='#' title='Remove'><span data-remove='<?php echo $row['job_id']?>'  class='icon-remove glyphicon glyphicon-remove'></span></a> |
+                                    <?php if($row["job_status"]==1 || $row["job_status"]==2): ?>
+                                    <a href="#" title="Approve" data-id="<?php echo $row["job_id"] ?>" class="btn-approve">
+                                        <i class="glyphicon <?php echo ($row["job_status_approve"]==1)?"glyphicon-ok-circle":"glyphicon-ok";  ?>"></i>
+                                    </a>
+                                    <?php endif;?>
+                                </td>
                             </tr>
                             <?php }?>
                     </table>
-                    <?php echo $this->paginationControl($this->jobData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    <div class="text-center">
+                        <?php echo $this->paginationControl($this->jobData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -47,13 +57,24 @@
            var jobId = $(this).attr('data-remove');
             if(jobId != '')
             {
-                if(confirm('Are you sure to delete?'))
+                if(confirm('Are you sure want to delete?'))
                 {
                     var url ='<?php echo $this->url('job-delete')?>?jobId='+jobId;
                     $.ajax({url: url, success:function(){window.location.href='';}});
                 }
                 return false;
             }
+        });
+
+        $('.btn-approve').on('click', function(){
+            var id = $(this).attr('data-id');
+            if(id!=''){
+                if(confirm('Are you sure want to approve this job?')){
+                    var url ='<?php echo $this->basepath()."/admin-job/approve"?>?id='+id;
+                    $.ajax({url: url, success:function(){window.location.href='';}});
+                }
+            }
+            return false;
         });
     });
 

@@ -8,6 +8,7 @@ namespace Application\Model;
 
 
 use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Sql;
 use Zend\Db\TableGateway\AbstractTableGateway;
 use Zend\Db\TableGateway\TableGateway;
@@ -70,5 +71,15 @@ class JobTable extends SuperTableGateway{
                         ->where("job_id={$jobId}")
             ;
         return $this->executeQuery($sql);
+    }
+
+    /**
+     * @param $jobId
+     */
+    public function approveJob($jobId){
+        $sql = $this->db->update("job")
+            ->set(array("job_status_approve"=>new Expression("CASE WHEN job_status_approve=0 THEN 1 ELSE 0 END")))
+            ->where("job_id=$jobId");
+        $this->execute($sql);
     }
 }

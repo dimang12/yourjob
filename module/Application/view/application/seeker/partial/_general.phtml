@@ -1,0 +1,47 @@
+<div class="clearfix">
+    <div class="col-md-3">
+        <img class="full-w" src="<?php echo $this->basepath(); ?>/img/resume/dimang.jpg" />
+    </div>
+    <div class="col-md-9">
+        <div class="clearfix">
+            <label class="col-md-4"><b>Full Name</b></label>
+            <span>: {{r.user_first_name +' '+ r.user_last_name}}</span>
+        </div>
+
+        <div class="clearfix">
+            <label class="col-md-4"><b>Date of birth</b></label>
+            <span>: {{r.resu_dob}}</span>
+        </div>
+
+        <div class="clearfix">
+            <label class="col-md-4"><b>Gender</b></label>
+            <span>: {{r.user_gender}}</span>
+        </div>
+
+
+        <div class="clearfix">
+            <label class="col-md-4"><b>Nationality</b></label>
+            <span>: {{r.resu_nationality}}</span>
+        </div>
+
+        <div class="clearfix">
+            <label class="col-md-4"><b>Place of birth</b></label>
+            <span>: {{r.resu_pob}}</span>
+        </div>
+
+        <div class="clearfix">
+            <label class="col-md-4"><b>Email</b></label>
+            <span>: <?php echo ($this->isPurchased==1)?'{{r.user_email}}':"...........................";?></span>
+        </div>
+
+        <div class="clearfix">
+            <label class="col-md-4"><b>Phone Number</b></label>
+            <span>: <?php echo ($this->isPurchased==1)?'{{r.user_phone}}':"...........................";?></span>
+        </div>
+
+        <div class="clearfix">
+            <label class="col-md-4"><b>Address</b></label>
+            <span>: <?php echo ($this->isPurchased==1)?'{{r.resu_address}}':"...........................";?></span>
+        </div>
+    </div>
+</div>

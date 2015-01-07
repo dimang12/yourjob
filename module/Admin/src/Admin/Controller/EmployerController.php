@@ -10,7 +10,9 @@ namespace Admin\Controller;
 
 
 use Admin\Form\JobForm;
+use Application\Model\UserTable;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
 class EmployerController extends AbstractActionController{
 
@@ -38,6 +40,21 @@ class EmployerController extends AbstractActionController{
             'empData'=>$paginator,
         );
     }
+
+    public function addcreditAction(){
+        $this->layout("layout/_ajax_layout");
+        $userId = $this->params()->fromRoute("id");
+        $credit = $this->params()->fromQuery("c");
+
+        $db = new UserTable();
+
+        if(!empty($userId) && $credit){
+            $db->addCreditToEmployer($userId,$credit);
+        }
+
+        return false;
+    }
+
     public function jobpostingAction()
     {
         $user_id = $this->checkAuthornicationService();

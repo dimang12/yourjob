@@ -1,3 +1,6 @@
+<?php
+$this->headLink()->prependStylesheet ( $this->basePath () . '/css/jquery-ui.min.css' );
+?>
 <div class="row-fluid box-admin-main">
     <div class="col-md-3 padding-left-0">
         <?php echo $this->partial('admin/partial/_left.phtml'); ?>
@@ -16,27 +19,67 @@
                             <th>No</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Gender</th>
                             <th>Phone</th>
                             <th>Email</th>
                             <th>Count Job</th>
+                            <th>Credit</th>
                         </tr>
                         <?php $i=1; foreach ( $this->empData as $key => $row ) {?>
                             <tr>
                                 <td><?php echo $i;?></td>
                                 <td><?php echo $row['user_first_name']?></td>
                                 <td><?php echo $row['user_last_name']?></td>
-                                <td><?php echo $row['user_gender']?></td>
+
                                 <td><?php echo $row['user_phone']?></td>
                                 <td><?php echo $row['user_email']?></td>
                                 <td><?php echo $row['count_job']?></td>
+                                <td class="text-center"><a class="btn-credit" href="" data-id="<?php echo $row["user_id"];?>"><?php echo (empty($row["user_credit"]))?0:$row["user_credit"];?></a></td>
                             </tr>
                         <?php $i++;}  ?>
                     </table>
-                    <?php echo $this->paginationControl($this->empData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    <div class="text-center"><?php echo $this->paginationControl($this->empData,'Sliding','admin/partial/my_pagination_control.phtml'); ?></div>
                 </div>
             </div>
         </div>
         <br>
     </div>
 </div>
+<div id="dialog" title=" Add credit to employer">
+    <p>
+        <input class="form-control txt-credit" type="text"/>
+    </p>
+</div>
+<script>
+    $(function(){
+        var employerId = '';
+        var baseUrl = '<?php echo $this->basepath(); ?>';
+        $( "#dialog" ).dialog({
+            title:' Add credit to employer',
+            autoOpen:false,
+            modal:true,
+            buttons: {
+                'Add': function() {
+                    var credit = $('.txt-credit').val();
+                    url = baseUrl + '/admin-employer/addcredit/'+employerId+'?c='+credit;
+                    $.ajax({
+                        url:url,
+                        success: function(){
+                            window.location.href = '';
+                        }
+                    });
+                    $( this ).dialog( "close" );
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });
+        $('.btn-credit').on('click', function(){
+            employerId = $(this).attr('data-id');
+            var credit = $(this).text();
+            $('.txt-credit').val(credit);
+            $( "#dialog" ).dialog('open');
+            return false;
+        });
+    });
+</script>

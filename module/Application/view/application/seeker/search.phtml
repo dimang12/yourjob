@@ -1,0 +1,67 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dimang12
+ * Date: 1/6/15
+ * Time: 4:51 PM
+ */
+
+?>
+
+<div class="border-radius-5 margin-10-0  clearfix margin-bottom-dus-11">
+    <div class="row">
+        <div class="col-md-3 padding-right-11">
+            <?php echo $this->partial("application/partial/_employer_menu.phtml");?>
+        </div>
+
+        <div class="col-md-9  padding-right-30 box-white border-radius-5">
+            <h4 class="border-bottom-gray clearfix padding-bottom-11">
+                <label class="pull-left margin-top-5 ">Resume Search:</label>
+                <div class="small pull-left margin-0-5">
+                    <input class="form-control" type="text" placeholder="" />
+                </div>
+                <div class="pull-left margin-0-5">
+                    <select class="small form-control" name="" id="">
+                        <option> All Category </option>
+                    </select>
+                </div>
+                <div class="pull-left margin-0-5">
+                    <button class="btn btn-success">Search</button>
+                </div>
+            </h4>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <tr class="box-row-title">
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Current Position</th>
+                        <th>Level</th>
+                        <th>Experience</th>
+                        <th></th>
+                    </tr>
+                    <?php $i=1; foreach ( $this->resume as $key => $row ) { ?>
+                        <tr>
+                            <td><?php echo $i;?></td>
+                            <td><?php echo $row['user_first_name'] ." " .$row['user_last_name'];?></td>
+                            <td><?php echo $row["resu_current_position"]?></td>
+                            <td><?php echo $row['resu_position_level']?></td>
+                            <td><?php echo $row['resu_year_experience']?> year(s)</td>
+                            <td>
+                                <a href="<?php echo $this->basepath()."/job-employer/detail/".$row["resume_id"]; ?>">
+                                    <i class="glyphicon glyphicon-eye-open"></i> View
+                                </a>
+                                <span>&nbsp; | &nbsp;</span>
+                                <a data-id="<?php echo $row["resume_id"]; ?>" href="#"> <i class="glyphicon glyphicon-ok"></i> Buy</a>
+                            </td>
+                        </tr>
+                        <?php $i++;}  ?>
+                </table>
+                <div class="text-center"><?php echo $this->paginationControl($this->resume,'Sliding','admin/partial/my_pagination_control.phtml'); ?></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>

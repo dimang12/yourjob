@@ -5,4 +5,45 @@
  * Date: 1/1/15
  * Time: 7:56 PM
  */
+$salary = $this->salary;
 
+$cateList = '';
+$asideList = '';
+
+$count = count($salary);
+$perColumn = round(($count-($count%3)) / 3);
+$add=0;
+$j=0;
+for($i=1; $i<=3; $i++){
+    if(($count % 3) <> 0){
+        if(($count % 3) >= $i){
+            $add=1;
+        }else{
+            $add=0;
+        }
+    }
+    if($i==1){
+        $asideList = '<aside class="col-md-4 no-padding-left border-right-gray "><ul>';
+    }elseif($i == 2){
+        $asideList = '<aside class="col-md-4 border-right-gray"><ul>';
+    }else{
+        $asideList = '<aside class="col-md-4 no-padding-right"><ul>';
+    }
+
+    $column = array_slice($salary,$j,($perColumn+$add));
+    foreach($column as $k=>$v){
+        $name = ($j==0)?"$00 - $".$v["salary"]:"$".$salary[$j-1]["salary"]." - $" .$v["salary"];
+        $min = ($j==0)?0:$salary[$j-1]["salary"];
+
+        $asideList .='<li class="full-w clearfix">'.
+                        '<a class="col-md-10 color-black no-padding text-overflow" href="'.$this->basepath().'/category/?max='.$salary[$j]["salary"].'&min='.$min.'">'.
+                        $name.
+                        '</a>'.
+                        '<label class="pull-right">(0)</label>'.
+                    '</li>';
+        $j++;
+    }
+    $cateList .= $asideList .'</ul></aside>';
+}
+echo $cateList;
+?>
