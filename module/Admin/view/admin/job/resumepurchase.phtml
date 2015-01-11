@@ -5,7 +5,6 @@
     <div class='col-md-9 box-admin-right'>
         <div class='row box-row-title'>
             <div class='col-md-9'><h4 class='text-warning'>Resume Purchase</h4></div>
-            <div class="col-md-3"><a href="<?php echo $this->url("newpurchase")?>" class="btn btn-link col-md-12 margin-top-2 pull-right"><span class="glyphicon glyphicon-plus"></span> New Purchase</a></div>
         </div>
         <br>
         <div class='row'>
@@ -18,22 +17,27 @@
                             <th>Sex</th>
                             <th>Tel</th>
                             <th>Date Purchase</th>
-                            <th>Number Purchase</th>
+                            <th>View Resume</th>
                         </tr>
                         <?php
                         $i=1;
                         foreach ( $this->purchaseData as $key => $row ) {?>
                             <tr>
-                                <td><?php echo $row['resume_purchase_id']?></td>
+                                <td><?php echo $row['employer_resume_id']?></td>
                                 <td><?php echo $row['user_first_name']."  ".$row["user_last_name"]?></td>
-                                <td><?php echo $row['user_gender']?></td>
-                                <td><?php echo $row['user_phone']?></td>
-                                <td><?php echo $row['rsp_dates']?></td>
-                                <td><?php echo $row['rsp_number_purchase']?></td>
+                                <td align="center"><?php echo $row['user_gender']?></td>
+                                <td align="center"><?php echo $row['user_phone']?></td>
+                                <td align="center"><?php echo $row['purchase_date']?></td>
+                                <td align="center"><a href="<?php echo $this->url('resume-view').'?resumeId='.$row['resume_id']?>"> View </a> </td>
                             </tr>
                             <?php $i++; }?>
                     </table>
-                    <?php echo $this->paginationControl($this->purchaseData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <?php echo $this->paginationControl($this->purchaseData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

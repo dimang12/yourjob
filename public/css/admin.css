@@ -3,7 +3,7 @@
 body						{ padding:0; margin:0; font-family: 'Helvetica Neue Normal','helvetica Neue',helvetica,arial,sans-serif; font-size:13px;background: url("../img/whole-back.png") repeat scroll 0 0 rgba(0, 0, 0, 0);}
 
 table th {text-align: center;}
-table tr:first-child {background: #f2f2f2;}
+
 .panel.panel-default  h5  {margin: 0}
 .bg-gradient-light-gray		{
     background-image: -moz-linear-gradient(top, #efefef, #e0e0e0);
@@ -127,3 +127,6 @@ table tr:first-child {background: #f2f2f2;}
 .border-radius-bottom-5     { border-bottom-right-radius:5px; border-bottom-left-radius:5px;}
 .border-radius-0            { border-radius:0;}
 .padding-top-10             { padding-top: 10px;}
+
+.title-separate hr          {padding: 0;margin: 5px;}
+.title-separate h4          {padding: 0;margin: 0 }

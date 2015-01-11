@@ -1,8 +1,12 @@
 <?php
+    $name =  $current_position =  $position_apply = $salary =  $schedule =  $age = $gender = "";
+    $experience =  $language =  $interest =  $skill =  $nationality =  $dob =  $pob =  "";
+    $address =  $email = $phone =  $careerLevel =  $yearExperience = $latestPosition = "";
+    $latestSalary =  $jobCategory = $jobIndustry = $eduDetail =  $expDetail = $skillDetail ="";
     foreach($this->resumeData as $row){
-        $name = $row['username'];
+        $name = $row['user_last_name'].' '.$row['user_first_name'];
         $current_position = $row['resu_current_position'];
-        $position_apply = $row['resu_position'];
+        $position_apply = $row['resu_position_level'];
         $salary = $row['resu_salary'];
         $schedule = $row['resu_schedule'];
         $age = $row['resu_age'];
@@ -11,33 +15,102 @@
         $language = $row['resu_language'];
         $interest = $row['resu_interesting'];
         $skill = $row['resu_skill'];
+        $nationality = $row['resu_nationality'];
+        $dob = $row['resu_dob'];
+        $pob = $row['resu_pob'];
+        $address = $row['resu_address'];
+
+        $email = $row['user_email'];
+        $phone = $row['user_phone'];
+
+        $careerLevel = $row['resu_position_level'];
+        $yearExperience = $row['resu_year_experience'];
+        $latestPosition = $row['resu_current_position'];
+        $latestSalary = $row['resu_salary'];
+        $jobCategory = $row['cate_name'];
+        $jobIndustry = $row['indu_name'];
+
+        $eduDetail = $row['edu_detail'];
+        $expDetail = $row['exp_detail'];
+        $skillDetail = $row['skil_detail'];
+
     }
+
 ?>
 <div class="row-fluid box-admin-main">
     <div class="col-md-3 padding-left-0">
         <?php echo $this->partial('admin/partial/_left.phtml'); ?>
     </div>
     <div class='col-md-9 box-admin-right'>
-        <div class='row box-row-title'>
-            <div class='col-md-10'><h4 class='text-warning'>Resume Detail</h4></div>
-            <div class="col-md-2 text-right"><a href="<?php echo $this->url('resume-search')?>" class="btn btn-default margin-top-2 col-md-12">Back</a></div>
-        </div>
         <br>
-        <div class='row'>
-            <div class='col-md-12'>
-                <div class="row"><div class="col-md-3 text-right"><label>Name:</label></div><div class="col-md-9">: <?php echo $name?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Current Position</label></div><div class="col-md-9">: <?php echo $current_position?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Apply For</label></div><div class="col-md-9">: <?php echo $position_apply?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Salary</label></div><div class="col-md-9">: <?php echo $salary?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Schedule</label></div><div class="col-md-9">: <?php echo $schedule?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Age</label></div><div class="col-md-9">: <?php echo $age?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Gender</label></div><div class="col-md-9">: <?php echo $gender?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Experience</label></div><div class="col-md-9">: <?php echo $experience?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Language</label></div><div class="col-md-9">: <?php echo $language?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Interesting</label></div><div class="col-md-9">: <?php echo $interest?></div></div>
-                <div class="row"><div class="col-md-3 text-right"><label>Skill</label></div><div class="col-md-9">: <?php echo $skill?></div></div>
+        <div class="title-separate">
+            <h4 class="pull-left">General Information</h4><a href="<?php echo $this->preUrl?>" class="pull-right">Back</a>
+
+        </div>
+        <hr>
+        <table>
+            <colgroup><col width="200px"><col width="200px"><col width="200px"></colgroup>
+            <tr><td rowspan="9"><img src="<?php echo $this->basepath().'/img/resume/dimang.jpg'?>" width="150px"></td></tr>
+            <tr><td>Full Name</td>              <td>: <?php echo $name?>        </td></tr>
+            <tr><td>Date Of Birth</td>          <td>: <?php echo $dob?>         </td></tr>
+            <tr><td>Gender</td>                 <td>: <?php echo $gender?>      </td></tr>
+            <tr><td>Nationality</td>            <td>: <?php echo $nationality?> </td></tr>
+            <tr><td>Place Of Birth</td>         <td>: <?php echo $pob?>         </td></tr>
+            <tr><td>Email</td>                  <td>: <?php echo $email?>       </td></tr>
+            <tr><td>Phone Number</td>           <td>: <?php echo $phone?>       </td></tr>
+            <tr><td>Address</td>                <td>: <?php echo $address?>     </td></tr>
+        </table>
+        <br>
+
+        <div class="title-separate">
+            <h4>Career Profile </h4>
+            <hr>
+        </div>
+        <table>
+            <colgroup><col width="200px"></colgroup>
+
+            <tr><td>Latest Career Level</td>                <td>: <?php echo $careerLevel?>         </td></tr>
+            <tr><td>Year of Experience</td>                 <td>: <?php echo $yearExperience?>      </td></tr>
+            <tr><td>Latest Position</td>                    <td>: <?php echo $latestPosition?>      </td></tr>
+            <tr><td>Latest Job Category</td>                <td>: <?php echo $jobCategory?>         </td></tr>
+            <tr><td>Latest Job Industry</td>                <td>: <?php echo $jobIndustry?>         </td></tr>
+            <tr><td>Latest Salary</td>                      <td>: <?php echo $latestSalary?>        </td></tr>
+        </table>
+        <br>
+        <br>
+
+        <div class="title-separate">
+            <h4>Education </h4>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <?php echo $eduDetail?>
             </div>
         </div>
+        <br>
+
+        <div class="title-separate">
+            <h4>Skills </h4>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <?php echo $skillDetail?>
+            </div>
+        </div>
+        <br>
+
+        <div class="title-separate">
+            <h4>Experiences</h4>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <?php echo $expDetail?>
+            </div>
+        </div>
+        <br>
         <br>
     </div>
 </div>
