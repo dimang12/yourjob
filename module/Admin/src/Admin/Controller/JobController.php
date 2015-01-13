@@ -229,9 +229,10 @@ class JobController extends AbstractActionController{
 
         $db = new ResumeTable($this->getAdapter());
 
-        $preUrl = "";
+        $preUrl = $this->getRequest()->getHeader('Referer')->getUri();
         return array(
-            'resumeData'=>$resumeData
+            'resumeData'=>$resumeData,
+            'preUrl' => $preUrl
         );
     }
     public function resumerequestAction()

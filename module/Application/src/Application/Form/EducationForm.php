@@ -113,23 +113,25 @@ class EducationForm extends Form
                  'rows' => 15
             ),
             'options' => array(
-                'label' => "Detail:"
+                'label' => "Description:"
 
             ),
         ));
 
-        $this->add(array(
-            'name' => 'educ_detail',
-            'type' => 'Zend\Form\Element\Select',
+        /*$this->add(array(
+            'name' => 'education_category_id',
+            'type' => 'Zend\Form\Element\Radio',
             'attributes' => array(
                 'class' => 'form-control',
                 'required' => 'required',
             ),
             'options' => array(
-                'label' => "Education Category:",
-                'options' => array()
+                'value'=>array(
+                    '1'=>'1'
+                )
+
             ),
-        ));
+        ));*/
 
         $this->add(array(
             'name' => 'csrf',

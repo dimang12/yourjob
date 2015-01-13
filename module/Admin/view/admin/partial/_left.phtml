@@ -199,12 +199,12 @@ if ($routeMatch) {
                 </a>
             </h5>
         </div>
-        <div id="resume" class="panel-collapse collapse <?php if($router == 'resume-search' || $router == 'resume-purchase' || $router == 'resume-view' || $router == 'resume-request' || $router == 'resume-request-view' || $router == 'newpurchase') echo 'in'?>">
+        <div id="resume" class="panel-collapse collapse <?php if($router == 'resume-search' || $router == 'resume-purchase'  || $router == 'resume-request' || $router == 'resume-request-view' || $router == 'newpurchase') echo 'in'?>">
             <div class="panel-body">
                 <ul>
                     <li><a class="<?php if($router == 'resume-search' || $router == 'resume-view') echo 'active'?>" href="<?php echo $this->url('resume-search')?>">Resume Search</a></li>
                     <li><a class="<?php if($router == 'resume-purchase' || $router == 'newpurchase') echo 'active'?>" href="<?php echo $this->url('resume-purchase')?>">Resume Purchase</a></li>
-                    <li><a class="<?php if($router == 'resume-request' || $router == 'resume-request-view' ) echo 'active'?>" href="<?php echo $this->url('resume-request')?>">Resume Post</a></li>
+                    <li><a class="<?php if($router == 'resume-request' || $router == 'resume-request-view' ) echo 'active'?>" href="<?php echo $this->url('resume-request')?>">Resume Approve</a></li>
                 </ul>
             </div>
         </div>

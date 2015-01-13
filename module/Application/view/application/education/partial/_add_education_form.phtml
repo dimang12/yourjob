@@ -53,14 +53,33 @@ $form->prepare();
                 <?php echo $this->formFile($form->get("image")); ?>
             </div>
         </div>
+        <div class="clearfix">
+            <div class="col-md-12 form-group">
 
+                <ul class="ul-edu">
+                    <li><label>Education Categories<label class="color-red">*</label>:</label> </li>
+                    <li style="margin-left: 45px;"><label><input type="radio" name="education_category_id"/> Scholarship </label></li>
+                    <li style="margin-left: 120px;"><label><input type="radio" name="education_category_id"/> Seminar/Conference </label></li>
+                    <li style="margin-left: 120px;"><label><input type="radio" name="education_category_id"/> Career Exhibition </label></li>
+                </ul>
+
+                <ul class="ul-edu" style="margin-left: 182px;">
+                    <li><label><input type="radio" name="education_category_id"/> Student Exchange Program </label></li>
+                    <li style="margin-left: 28px;"><label><input type="radio" name="education_category_id"/> Social Charity </label></li>
+                    <li style="margin-left: 156px;"><label><input type="radio" name="education_category_id"/> Training Courses </label></li>
+                </ul>
+
+                <ul class="ul-edu" style="margin-left: 182px;">
+                    <li><label><input type="radio" name="education_category_id"/> Other Activities </label></li>
+                </ul>
+            </div>
+        </div>
         <div class="clearfix">
             <div class="col-md-12 form-group">
                 <?php echo $this->formLabel($form->get("educ_detail")); ?>
                 <?php echo $this->formTextarea($form->get("educ_detail")); ?>
             </div>
         </div>
-
 
         <div class="clearfix text-center">
             <a href="<?php echo $this->basepath()?>/resume" class="btn btn-danger"> <i class="glyphicon glyphicon-remove-sign"></i> Cancel</a>

@@ -1,17 +1,189 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: dimang12
- * Date: 12/6/14
- * Time: 3:47 PM
- */
-?>
 
-<div class="box-white margin-10-0 border-radius-5">
+<!--<div class="box-white margin-10-0 border-radius-5">
     <div class="bg-gray border-radius-top-5 border-bottom-gray no-padding">
-        <?php echo $this->partial("application/info/partial/_breadcrumb", array("curPage"=>"Our Service","icon"=>" glyphicon-plus")); ?>
+        <?php /*echo $this->partial("application/info/partial/_breadcrumb", array("curPage"=>"Our Service","icon"=>" glyphicon-plus")); */?>
     </div>
     <div class="clearfix">
         <div class="col-md-12">Service page</div>
     </div>
+</div>-->
+
+<div class="service-table box-white border-gray margin-10-0 border-radius-5 clearfix" style="line-height: 25px;">
+    <div class="col-md-12">
+        <h4 class="border-bottom-gray padding-10-0">Our Services</h4>
+        <div>
+            <div class="col-md-8 text-justify">
+                <h4 class="clearfix font-16 padding-10-0 border-bottom-gray color-light-black">Welcome to YOUJOB.INFO,</h4>
+                YOUJOB.INFO is professional and education information partner that you can trust in. It has many package options that you can advertise your job announcement and company with us. Here are packages that you can purchase from us:
+                <br><br>
+
+                <ul class="about-li" style="margin-left: 30px;">
+                    <li> Job Posting Services</li>
+                    <li> Resume Purchasing Packages</li>
+                    <li> Featured Company Services</li>
+                    <li> Banner Advertisement Services</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <br/><br/>
+                <img class="full-w margin-top-10" src="<?php echo $this->basepath("/img/no-img-512x512.png"); ?>" alt=""/>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-md-8 text-justify">
+                <h4 class="clearfix font-16 padding-10-0 border-bottom-gray color-light-black margin-top-35">Job Posting Services </h4>
+                <br/>
+                <table class="table table-bordered" border="1">
+                    <thead>
+                        <tr>
+                            <th>Optins / Packages</th>
+                            <th>URGENT</th>
+                            <th>AUTO-Submit (10 minutes)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>30 Days</td>
+                            <td>10$/Post</td>
+                            <td>5$/Post</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Promotion </td>
+                            <td>Buy 5 Posts + Get 1 Free</td>
+                            <td>Buy 5 Posts + Get 1 Free </td>
+                        </tr>
+                        <tr>
+                            <td style="background: none;text-align: center;">Buy 10 Posts + Get 3 Free </td>
+                            <td>Buy 10 Posts + Get 3 Free </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+                <br/><br/>
+                <img class="full-w margin-top-10" src="<?php echo $this->basepath("/img/no-img-512x512.png"); ?>" alt=""/>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-md-8 text-justify">
+                <h4 class="clearfix font-16 padding-10-0 border-bottom-gray color-light-black">Resume Purchasing Packages </h4>
+                <br/>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Optins / Resume</th>
+                            <th>5 Resumes</th>
+                            <th>10 Resumes</th>
+                            <th>10+ Resumes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Unlimited Day</td>
+                            <td>5$/Resume </td>
+                            <td>4$/Resume </td>
+                            <td>3$ </td>
+                        </tr>
+                        <tr>
+                            <td>Promotion </td>
+                            <td> - </td>
+                            <td> - </td>
+                            <td> - </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+                <br/><br/>
+                <img class="full-w margin-top-10" src="<?php echo $this->basepath("/img/no-img-512x512.png"); ?>" alt=""/>
+                <br/><br/>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-md-8 text-justify">
+                <h4 class="clearfix font-16 padding-10-0 border-bottom-gray color-light-black">Featured Company Services  </h4>
+                <br/>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Service / Duration</th>
+                        <th>1 Month </th>
+                        <th>2 Months</th>
+                        <th>3 Months</th>
+                        <th>4 Months</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Homepage</td>
+                        <td>15$ </td>
+                        <td>40$ </td>
+                        <td>75$ </td>
+                        <td>150$ </td>
+                    </tr>
+                    <tr>
+                        <td>Promotion </td>
+                        <td> - </td>
+                        <td> - </td>
+                        <td> - </td>
+                        <td> - </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+                <br/><br/>
+                <img class="full-w margin-top-10" src="<?php echo $this->basepath("/img/no-img-512x512.png"); ?>" alt=""/>
+                <br/><br/>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-md-8 text-justify">
+                <h4 class="clearfix font-16 padding-10-0 border-bottom-gray color-light-black">Banner Advertisement Services  </h4>
+                <br/>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Service / Duration</th>
+                        <th>1 Month </th>
+                        <th>3 Months</th>
+                        <th>6 Months</th>
+                        <th>1 Year</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Homepage</td>
+                        <td>25$ </td>
+                        <td>70$ </td>
+                        <td>130$ </td>
+                        <td>250$ </td>
+                    </tr>
+                    <tr>
+                        <td>Promotion </td>
+                        <td> - </td>
+                        <td> - </td>
+                        <td> - </td>
+                        <td> - </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+                <br/><br/>
+                <img class="full-w margin-top-10" src="<?php echo $this->basepath("/img/no-img-512x512.png"); ?>" alt=""/>
+                <br/><br/>
+            </div>
+        </div>
+    </div>
+    <br>
 </div>
+
