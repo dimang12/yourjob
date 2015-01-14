@@ -87,10 +87,7 @@ class SeekerController extends MainController{
     {
         $authService = $this->serviceLocator->get('auth_login');
         if (! $authService->hasIdentity()) {
-            return $this->redirect()->toRoute('job-employer', array(
-                'controller' => 'Seeker',
-                'action' =>  'login'
-            ));
+            return $this->redirect()->toRoute('application');
         }
 
         $authService->clearIdentity();

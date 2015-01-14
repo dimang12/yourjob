@@ -7,6 +7,7 @@
  */
 namespace Application\Controller;
 
+use Application\Model\UserTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Paginator\Adapter\ArrayAdapter;
 use Zend\Paginator\Paginator;
@@ -45,6 +46,29 @@ class MainController extends AbstractActionController
         $employerSession = new Container("employer_session");
         if(!empty($employerSession->employerUserId)){
             return true;
+        }
+        return false;
+    }
+
+
+    public function loginName(){
+        $userId = self::getLoginEmployerId();
+        $db = new UserTable();
+
+        $userData = current($db->getList("user_id=$userId"));
+
+    }
+
+    /**
+     * @return bool
+     */
+    public function getLoginEmployerId(){
+        /*
+         * check authentication service
+         */
+        $authService = $this->serviceLocator->get('auth_login');
+        if($authService->hasIdentity()){
+            return $user_id= $authService->getStorage()->read();
         }
         return false;
     }

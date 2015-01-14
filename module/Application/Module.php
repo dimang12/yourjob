@@ -4,6 +4,7 @@ namespace Application;
 
 use Application\View\Helper\getCategories;
 use Application\View\Helper\getLocations;
+use Application\View\Helper\GetLoginName;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Application\View\Helper\Language;
@@ -77,6 +78,12 @@ class Module {
                             $cateHelper =  new getCategories($adapter);
                             $cateHelper->setAdapter($adapter);
                             return $cateHelper;
+                        },
+                        'getLoginName' => function($sm){
+                            $serviceLocator  = $sm->getServiceLocator();
+                            $helper = new GetLoginName();
+                            $helper->setServiceLocator($serviceLocator);
+                            return $helper;
                         },
                         'getLocations' => function ($sm){
                             return new getLocations($sm->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));

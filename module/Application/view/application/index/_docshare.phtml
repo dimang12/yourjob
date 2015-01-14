@@ -9,11 +9,11 @@
             <aside class="col-md-4 margin-top-10">
                 <div class="media">
                     <a class="pull-left" href="<?php echo $this->basepath()."/document-share/".$v["share_id"];?>">
-                        <img class="media-object" src="<?php echo $this->basepath(); ?>/img/share/<?php echo $v["shar_img"] ?>" alt="<?php echo $v["shar_title"]; ?>" width="64">
+                        <span class="media-object" style="background-image: url('<?php echo $this->basepath() ."/img/share/".$v["shar_img"] ?>'); background-position: center; background-repeat: no-repeat; background-size:cover; width:60px; height:50px;"></span>
                     </a>
                     <div class="media-body">
                         <h5 class="media-heading" title="<?php echo $v["shar_title"]; ?>"><?php echo substr($v["shar_title"],0,25)." ..."; ?></h5>
-                        <?php echo substr(strip_tags($v["shar_detail"]),0,30)." ..."; ?>
+                        <?php //echo substr(strip_tags($v["shar_detail"]),0,30)." ..."; ?>
                     </div>
                 </div>
             </aside>
