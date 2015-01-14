@@ -9,13 +9,7 @@ $this->headLink()->prependStylesheet($this->basePath() . '/css/education.css');
 ?>
 
 <div class="margin-10-0 clearfix">
-    <div class="border-gray border-radius-5 bg-gray padding-5-0 clearfix margin-bottom-10">
-        <ol class="breadcrumb no-margin no-background">
-            <li><a href="<?php echo $this->basePath(); ?>/">Home</a></li>
-            <li><a href="<?php echo $this->url("experience-share"); ?>">Experience Share</a></li>
-            <li class="active">Video</li>
-        </ol>
-    </div>
+
     <?php
         $partial = ($this->type==1)?"_detail_document":"_detail_video";
         echo $this->partial("application/experience/partial/{$partial}");

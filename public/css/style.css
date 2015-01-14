@@ -194,9 +194,9 @@ label                       { font-weight:normal;}
 .margin-bottom-dus-11   { margin-bottom: -11px;}
 .margin-top-35       { margin-top: 35px;}
 .about-li li {list-style: disc;}
-.service-table table th { background: #DBE5F1;}
-.service-table table td:first-child { background: #FDE9D9;text-align: left;}
-.service-table table, th, td { border: 1px solid #4BACC6 !important;text-align: center;}
+table.service-table  th { background: #DBE5F1;}
+table.service-table td:first-child { background: #FDE9D9;text-align: left;}
+table.service-table th, table.service-table td { border: 1px solid #4BACC6 !important;text-align: center;}
 
 ul.ul-edu li:first-child {display: inline-table;margin-left:0px;}
 ul.ul-edu li {display: inline-table;}

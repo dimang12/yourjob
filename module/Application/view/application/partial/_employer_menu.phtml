@@ -19,7 +19,7 @@ $this->headLink ()->prependStylesheet ( $this->basePath () . '/css/accordion.css
             <ul <?php if($action == 'joblisting' || $action == 'newjob' || $action == 'editjob') echo "style='display: block;'";?>>
                 <li class='<?php if($action == 'newjob') echo 'actived';?>'><a href='<?php echo $this->url("job-employer")."newjob";?>'><span>Job Posting</span></a></li>
                 <li class="<?php if($action == 'joblisting' || $action == 'editjob') echo 'actived';?>"><a href='<?php echo $this->url("job-employer")."joblisting";?>'><span>Job Viewing</span></a></li>
-                <li class="<?php if($action == 'joblisting' || $action == 'editjob') echo 'actived';?>"><a href='<?php echo $this->url("job-employer")."joblisting";?>'><span>Job Viewing</span></a></li>
+                <li class="<?php if($action == 'joblisting' || $action == 'editjob') echo '';?>"><a href='#'><span>Job Editing</span></a></li>
                 <li class="<?php if($action == 'joblisting' || $action == 'editjob') echo '';?>"><a href='#'><span>Composing Sample</span></a></li>
 
             </ul>
