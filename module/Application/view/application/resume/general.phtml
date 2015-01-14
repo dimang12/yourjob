@@ -6,16 +6,19 @@
  * Time: 6:31 PM
  */
 ?>
-<div class="box-white border-radius-5 margin-10-0">
-    <div class="bg-gray border-radius-top-5 border-bottom-gray no-padding">
-        <?php echo $this->partial("application/resume/partial/_breadcrumb", array("curPage"=>"General Information")); ?>
-    </div>
-    <div class="clearfix padding-10-0">
-        <div class="col-md-3">
-            <?php echo $this->partial("application/resume/partial/_edit_left", array("curPage"=>"General")); ?>
+<div class=" border-radius-5 margin-top-10">
+    <div class="row">
+        <div class="col-md-3 padding-right-11">
+            <?php echo $this->partial("application/partial/_resume_menu")?>
         </div>
-        <div class="col-md-9">
-            <?php echo $this->partial("application/resume/form/_general_form"); ?>
+        <div class="col-md-9  font-13 padding-right-30 margin-bottom-10">
+            <div class="row">
+                <div class="col-md-12 background-white border-gray border-radius-5">
+                    <?php echo $this->partial("application/resume/form/_general_form"); ?>
+                    <br/>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

@@ -36,7 +36,11 @@
                             </tr>
                             <?php $i++; }?>
                     </table>
-                    <?php echo $this->paginationControl($this->resumeData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <?php echo $this->paginationControl($this->resumeData,'Sliding','admin/partial/my_pagination_control.phtml'); ?>
+                    </div>
                 </div>
             </div>
         </div>

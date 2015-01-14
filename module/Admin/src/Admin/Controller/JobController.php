@@ -3,6 +3,7 @@ namespace Admin\Controller;
 use Admin\Form\JobForm;
 
 use Application\Model\JobTable;
+use Application\Model\ResumeTable;
 use Zend\Db\Sql\Expression;
 use Zend\Mvc\Controller\AbstractActionController;
 
@@ -205,10 +206,11 @@ class JobController extends AbstractActionController{
     public function resumepurchaseAction()
     {
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $purchaseData = $sm->getResumePurchase();
+        $getEmployerPurchase = $sm->getEmployerPurchase();
+
 
         $page = $this->params()->fromQuery('page');
-        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($purchaseData));
+        $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($getEmployerPurchase));
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage(10);
         $paginator->setPageRange(4);
@@ -216,12 +218,22 @@ class JobController extends AbstractActionController{
             'purchaseData' => $paginator
         );
     }
+    private function getAdapter(){
+        return $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter');
+    }
     public function resumeviewAction()
     {
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
         $resume_id = $this->params()->fromQuery('resumeId');
         $resumeData = $sm->getResumeById($resume_id);
-        return array('resumeData'=>$resumeData);
+
+        $db = new ResumeTable($this->getAdapter());
+
+        $preUrl = $this->getRequest()->getHeader('Referer')->getUri();
+        return array(
+            'resumeData'=>$resumeData,
+            'preUrl' => $preUrl
+        );
     }
     public function resumerequestAction()
     {

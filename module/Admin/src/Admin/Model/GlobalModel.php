@@ -1318,7 +1318,13 @@ class GlobalModel extends AbstractTableGateway {
         $sql = new Sql($this->adapter);
         $select = $sql->select(array('r'=>'resume'))
             ->join(array('u'=>'users'),'r.user_id=u.user_id')
-            ->where("resume_id=$resume_id")
+            ->join(array('c'=>'categories'),'r.category_id=c.category_id')
+            ->join(array('i'=>'industries'),'r.industry_id=i.industry_id')
+            ->join(array("edu"=>"resume_education"),"r.resume_id=edu.resume_id", array("edu_detail"),"LEFT")
+            ->join(array("exp"=>"resume_experience"),"r.resume_id=exp.resume_id", array("exp_detail"),"LEFT")
+            ->join(array("sk"=>"resume_skill"),"r.resume_id=sk.resume_id", array("skil_detail"),"LEFT")
+
+            ->where("r.resume_id=$resume_id")
         ;
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
@@ -1447,6 +1453,21 @@ class GlobalModel extends AbstractTableGateway {
         if(!empty($jobId)){
             $select->where("job_id=$jobId");
         }
+        $stm = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($stm)->buffer()->toArray();
+    }
+
+    /*
+     * get employer purchase
+     */
+    public function getEmployerPurchase()
+    {
+        $sql = new Sql($this->adapter);
+        $select = $sql->select(array("e"=>"employer_resume"))
+            ->join(array("u"=>"users"),"e.user_id = u.user_id")
+            ->join(array("r"=>"resume"),"e.resume_id = r.resume_id");
+
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();

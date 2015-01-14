@@ -431,6 +431,4 @@ class ResumeTable extends SuperTableGateway
         }
 
     }
-
-
 }
