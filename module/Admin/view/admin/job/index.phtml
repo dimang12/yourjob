@@ -5,7 +5,11 @@
     <div class='col-md-9 box-admin-right'>
         <div class='row box-row-title'>
             <div class='col-md-8'><h4 class='text-warning'>Job Viewing</h4></div>
-            <div class='col-md-4 text-right'></div>
+            <div class='col-md-4 text-right'>
+                <form action="" method="get">
+                    <input name="s" value="<?php echo $this->searchText; ?>" class="form-control font-13 margin-5" type="text" placeholder="Search company..."/>
+                </form>
+            </div>
         </div>
         <br>
         <div class='row'>

@@ -59,7 +59,7 @@ $job = $this->jobDetail;
             </div>
             <br>
             <div class="clearfix">
-                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16 clearfix">How To Apply</h4>
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16 clearfix">Contact information</h4>
                 <p class="more-text-area col-md-12">
                     <b>Working time</b>: Call between <?php echo $job["com_phone_schedule"]; ?><br>
                     <b>Contact Person:</b> <?php echo $job["com_contact_person"]; ?><br>
@@ -69,7 +69,18 @@ $job = $this->jobDetail;
                     <b>Website:</b> <?php echo $job["com_website"]; ?></p>
                 </p>
             </div>
-
+            <br>
+            <div class="clearfix">
+                <h4 class="padding-10-0 margin-10-0 border-bottom-gray font-16 clearfix">Job Applying by <a
+                        href="<?php echo $this->basepath(); ?>/"> OurJob </a> Site</h4>
+                <p class="more-text-area col-md-12">
+                    <ul>
+                        <li>To find a good job, you can post your resumes in OurJob so we will introduce to employers.</li>
+                        <li>You can click <a href="" class="color-red">Apply Now</a> if you want to apply for the position which you interest directly.</li>
+                        <li class="text-right"> <button class="btn btn-success">Apply now</button> </li>
+                    </ul>
+                </p>
+            </div>
         </div>
         <div class="w30 box-white border-radius-5 p-15">
             <menu class="no-padding border-bottom-gray font-16 padding-5-0 no-margin">
@@ -92,7 +103,6 @@ $job = $this->jobDetail;
                 <?php foreach($this->recommendedJob as $k=>$v): ?>
                     <li class="text-overflow" style=""><a href="/ourjob/public/jobdt/?job=15"> <?php echo $v["job_name"]; ?>  </a>- <?php echo substr(strip_tags($v["job_description"]),0,30);?></li>
                 <?php endforeach; ?>
-
             </ul>
 
         </div>

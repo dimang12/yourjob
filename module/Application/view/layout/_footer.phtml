@@ -27,10 +27,10 @@
                 <aside class="col-md-3">
                     <div class="font-16 bold padding-10-0">Employer</div>
                     <div>
-                        <a href="">Post job</a>
-                        <a href="">Post urgent job</a><br>
-                        <a href="">Resume search</a><br>
-                        <a href="">Purchase Service Packages</a><br>
+                        <a href="<?php echo $this->basepath();?>/job-employer/newjob">Post job</a><br/>
+                        <a href="<?php echo $this->basepath(). '/job-employer/newjob/?status=urgent'; ?>">Post urgent job</a><br>
+                        <a href="<?php echo $this->basepath() ."/job-employer/search";?>">Resume search</a><br>
+                        <a href="<?php echo $this->basepath() ."/info/service" ?>">Purchase Service Packages</a><br>
                         <a href="">Questions & Answers</a>
                     </div>
                 </aside>
@@ -38,7 +38,7 @@
                 <aside class="col-md-3">
                     <div class="font-16 bold padding-10-0">Job Seeker</div>
                     <div>
-                        <a href="">Job search</a><br>
+                        <a href="<?php echo $this->basepath(). "/category/"?>">Job search</a><br>
                         <a href="">Create Resume</a><br>
                         <a href="">Job Alert and Saved Searches</a><br>
                         <a href="">Questions & Answers</a>

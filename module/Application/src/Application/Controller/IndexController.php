@@ -147,6 +147,7 @@ class IndexController extends MainController
             $recommendJob  = $db->getRecommendedJob($jobDetail[0]["category_id"]);
         }
 
+
         /*
          * pass param to view
          */

@@ -1257,7 +1257,7 @@ class GlobalModel extends AbstractTableGateway {
         return $rs->initialize($stm)->buffer()->toArray();
     }
     // get job
-    public function getJob()
+    public function getJob($searchText="")
     {
         $sql = new Sql($this->adapter);
         $select = $sql->select(array('j'=>'job'))
@@ -1266,6 +1266,15 @@ class GlobalModel extends AbstractTableGateway {
             ->order("job_status ASC")
             ->order("job_id DESC")
         ;
+
+        /*
+         * check if filter
+         */
+        if(!empty($searchText)){
+            $select->where("c.com_name LIKE  '%$searchText%'");
+        }
+
+
         $stm = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
         return $rs->initialize($stm)->buffer()->toArray();

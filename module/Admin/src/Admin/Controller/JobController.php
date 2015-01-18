@@ -30,10 +30,20 @@ class JobController extends AbstractActionController{
             return $this->redirect()->toUrl('login');
         }
     }
+
+    /**
+     * @return array
+     */
     public function indexAction(){
+        /*
+         * get params
+         */
         $user_id = $this->checkAuthornicationService();
         $sm = $this->serviceLocator->get('Admin\Model\GlobalModel');
-        $jobData = $sm->getJob();
+        $searchText = $this->params()->fromQuery("s");
+        $jobData = $sm->getJob($searchText);
+
+
 
         $page = $this->params()->fromQuery('page');
         $paginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter($jobData));
@@ -42,6 +52,7 @@ class JobController extends AbstractActionController{
         $paginator->setPageRange(4);
         return array(
             'jobData'=>$paginator,
+            'searchText' => $searchText
         );
     }
     public function jobpostingAction()
